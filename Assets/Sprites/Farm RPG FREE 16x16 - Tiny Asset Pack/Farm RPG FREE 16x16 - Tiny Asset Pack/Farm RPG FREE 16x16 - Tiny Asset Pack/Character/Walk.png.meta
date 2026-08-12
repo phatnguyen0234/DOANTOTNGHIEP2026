@@ -1,55 +1,61 @@
 fileFormatVersion: 2
-guid: 0fb75d19c24c3d5428ca3ccb87961e95
+guid: a95b659bc1883dd44ae97958cf58c850
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7669643529315636520
-    second: Mahogany Tree Animation_0
+      213: 4035959289877228764
+    second: Walk_0
   - first:
-      213: -2949446951172698808
-    second: Mahogany Tree Animation_1
+      213: -982904232830982447
+    second: Walk_1
   - first:
-      213: 1878783767888541050
-    second: Mahogany Tree Animation_2
+      213: -350908408369970039
+    second: Walk_2
   - first:
-      213: 4699916894212621607
-    second: Mahogany Tree Animation_3
+      213: -5409570386352685021
+    second: Walk_3
   - first:
-      213: -7043006855757235749
-    second: Mahogany Tree Animation_4
+      213: 1553940418269799609
+    second: Walk_4
   - first:
-      213: -8702007799128566522
-    second: Mahogany Tree Animation_5
+      213: 2416434504916517810
+    second: Walk_5
   - first:
-      213: -5345055108661657340
-    second: Mahogany Tree Animation_6
+      213: -6428935122508569504
+    second: Walk_6
   - first:
-      213: 8114459805872946195
-    second: Mahogany Tree Animation_7
+      213: 7144598999076838305
+    second: Walk_7
   - first:
-      213: -7277282708605198642
-    second: Mahogany Tree Animation_8
+      213: 7500509103958437945
+    second: Walk_8
   - first:
-      213: -8068938709914477253
-    second: Mahogany Tree Animation_9
+      213: 1008816216748069464
+    second: Walk_9
   - first:
-      213: -6042731357474737183
-    second: Mahogany Tree Animation_10
+      213: 11406907883527339
+    second: Walk_10
   - first:
-      213: -6148581234358670266
-    second: Mahogany Tree Animation_11
+      213: 8030128826893041618
+    second: Walk_11
   - first:
-      213: 2574514772055256612
-    second: Mahogany Tree Animation_12
+      213: 2315132830120601726
+    second: Walk_12
   - first:
-      213: 7413335627192868688
-    second: Mahogany Tree Animation_13
+      213: 7929438602540414932
+    second: Walk_13
   - first:
-      213: 2873285647309829150
-    second: Mahogany Tree Animation_14
+      213: 5250438378151091228
+    second: Walk_14
   - first:
-      213: -7403262579823332073
-    second: Mahogany Tree Animation_15
+      213: -1258472680374559522
+    second: Walk_15
+  - first:
+      213: 2155107402851330559
+    second: Walk_16
+  - first:
+      213: 7720552135500433751
+    second: Walk_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +102,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -158,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mahogany Tree Animation_0
+      name: Walk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 241
-        width: 128
-        height: 48
+        x: 9
+        y: 69
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8daa44978d3ff8590800000000000000
-      internalID: -7669643529315636520
+      spriteID: cdce119379b920830800000000000000
+      internalID: 4035959289877228764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_1
+      name: Walk_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 289
-        width: 26
-        height: 34
+        x: 41
+        y: 69
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84d0e7fef957117d0800000000000000
-      internalID: -2949446951172698808
+      spriteID: 1d6a1e1dec50c52f0800000000000000
+      internalID: -982904232830982447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_2
+      name: Walk_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 289
-        width: 28
-        height: 37
+        x: 73
+        y: 69
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +223,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7534c6f1e7c21a10800000000000000
-      internalID: 1878783767888541050
+      spriteID: 984096a69a2512bf0800000000000000
+      internalID: -350908408369970039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_3
+      name: Walk_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 289
-        width: 36
-        height: 39
+        x: 105
+        y: 69
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72586699385793140800000000000000
-      internalID: 4699916894212621607
+      spriteID: 320c9fd05685de4b0800000000000000
+      internalID: -5409570386352685021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_4
+      name: Walk_4
       rect:
         serializedVersion: 2
-        x: 100
-        y: 289
-        width: 28
-        height: 41
+        x: 137
+        y: 69
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd9f2f38496324e90800000000000000
-      internalID: -7043006855757235749
+      spriteID: 9b4e719c394b09510800000000000000
+      internalID: 1553940418269799609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_5
+      name: Walk_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 193
-        width: 128
-        height: 48
+        x: 169
+        y: 69
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 605534c03024c3780800000000000000
-      internalID: -8702007799128566522
+      spriteID: 2b3cb802166e88120800000000000000
+      internalID: 2416434504916517810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_6
+      name: Walk_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 145
-        width: 128
-        height: 48
+        x: 10
+        y: 37
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +311,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 401c55fa2bc82d5b0800000000000000
-      internalID: -5345055108661657340
+      spriteID: 06428da6195d7c6a0800000000000000
+      internalID: -6428935122508569504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_7
+      name: Walk_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 97
-        width: 128
-        height: 48
+        x: 42
+        y: 37
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,20 +333,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31cfd31833a5c9070800000000000000
-      internalID: 8114459805872946195
+      spriteID: 1ab169a9fe6b62360800000000000000
+      internalID: 7144598999076838305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_8
+      name: Walk_8
       rect:
         serializedVersion: 2
-        x: 8
-        y: 49
-        width: 16
-        height: 13
+        x: 74
+        y: 37
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ece9e77eee5e10b90800000000000000
-      internalID: -7277282708605198642
+      spriteID: 930b6086a49271860800000000000000
+      internalID: 7500509103958437945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_9
+      name: Walk_9
       rect:
         serializedVersion: 2
-        x: 36
-        y: 49
-        width: 25
-        height: 13
+        x: 106
+        y: 37
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,20 +377,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3d16219efe550090800000000000000
-      internalID: -8068938709914477253
+      spriteID: 8521ce21109000e00800000000000000
+      internalID: 1008816216748069464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_10
+      name: Walk_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1
-        width: 37
-        height: 48
+        x: 138
+        y: 37
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,20 +399,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e3ba9c98d7e32ca0800000000000000
-      internalID: -6042731357474737183
+      spriteID: bac1264b586882000800000000000000
+      internalID: 11406907883527339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_11
+      name: Walk_11
       rect:
         serializedVersion: 2
-        x: 66
-        y: 49
-        width: 35
-        height: 13
+        x: 170
+        y: 37
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,20 +421,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64c2b65a1f9dbaaa0800000000000000
-      internalID: -6148581234358670266
+      spriteID: 2df75936f9fb07f60800000000000000
+      internalID: 8030128826893041618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_12
+      name: Walk_12
       rect:
         serializedVersion: 2
-        x: 95
-        y: 1
-        width: 33
-        height: 48
+        x: 10
+        y: 5
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,20 +443,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42e69597b838ab320800000000000000
-      internalID: 2574514772055256612
+      spriteID: e78ee2bfa01012020800000000000000
+      internalID: 2315132830120601726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_13
+      name: Walk_13
       rect:
         serializedVersion: 2
-        x: 104
-        y: 49
-        width: 24
-        height: 13
+        x: 42
+        y: 5
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,20 +465,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05f1493b97571e660800000000000000
-      internalID: 7413335627192868688
+      spriteID: 4d7f0b4a5660b0e60800000000000000
+      internalID: 7929438602540414932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_14
+      name: Walk_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 36
-        height: 43
+        x: 74
+        y: 5
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,20 +487,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e14712aa216ffd720800000000000000
-      internalID: 2873285647309829150
+      spriteID: c1c16cc03ed4dd840800000000000000
+      internalID: 5250438378151091228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_15
+      name: Walk_15
       rect:
         serializedVersion: 2
-        x: 32
-        y: 1
-        width: 38
-        height: 47
+        x: 106
+        y: 5
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -503,8 +509,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71530b668e3524990800000000000000
-      internalID: -7403262579823332073
+      spriteID: edc9dbec3c1098ee0800000000000000
+      internalID: -1258472680374559522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_16
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 5
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9a4cfb3ca78ed10800000000000000
+      internalID: 2155107402851330559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_17
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 5
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75903621349e42b60800000000000000
+      internalID: 7720552135500433751
       vertices: []
       indices: 
       edges: []
@@ -523,22 +573,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mahogany Tree Animation_0: -7669643529315636520
-      Mahogany Tree Animation_1: -2949446951172698808
-      Mahogany Tree Animation_10: -6042731357474737183
-      Mahogany Tree Animation_11: -6148581234358670266
-      Mahogany Tree Animation_12: 2574514772055256612
-      Mahogany Tree Animation_13: 7413335627192868688
-      Mahogany Tree Animation_14: 2873285647309829150
-      Mahogany Tree Animation_15: -7403262579823332073
-      Mahogany Tree Animation_2: 1878783767888541050
-      Mahogany Tree Animation_3: 4699916894212621607
-      Mahogany Tree Animation_4: -7043006855757235749
-      Mahogany Tree Animation_5: -8702007799128566522
-      Mahogany Tree Animation_6: -5345055108661657340
-      Mahogany Tree Animation_7: 8114459805872946195
-      Mahogany Tree Animation_8: -7277282708605198642
-      Mahogany Tree Animation_9: -8068938709914477253
+      Walk_0: 4035959289877228764
+      Walk_1: -982904232830982447
+      Walk_10: 11406907883527339
+      Walk_11: 8030128826893041618
+      Walk_12: 2315132830120601726
+      Walk_13: 7929438602540414932
+      Walk_14: 5250438378151091228
+      Walk_15: -1258472680374559522
+      Walk_16: 2155107402851330559
+      Walk_17: 7720552135500433751
+      Walk_2: -350908408369970039
+      Walk_3: -5409570386352685021
+      Walk_4: 1553940418269799609
+      Walk_5: 2416434504916517810
+      Walk_6: -6428935122508569504
+      Walk_7: 7144598999076838305
+      Walk_8: 7500509103958437945
+      Walk_9: 1008816216748069464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

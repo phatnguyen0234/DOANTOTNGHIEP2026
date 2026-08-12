@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: f918e11c2bd867942a67f496fd1565da
+guid: 12f59ffae1a21564a8b4c942b48b99fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8749460892178695605
-    second: Gravestones_0
+      213: 3350097054102869487
+    second: Maple Tree_0
   - first:
-      213: 5708547097634863339
-    second: Gravestones_1
+      213: -4336392411842979198
+    second: Maple Tree_1
   - first:
-      213: 4922972187618324874
-    second: Gravestones_2
+      213: -1425678829478245854
+    second: Maple Tree_2
   - first:
-      213: -8830466164125178504
-    second: Gravestones_3
+      213: -7885282603317409273
+    second: Maple Tree_3
   - first:
-      213: 9096659976848965097
-    second: Gravestones_4
+      213: 1479057267234909098
+    second: Maple Tree_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gravestones_0
+      name: Maple Tree_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 17
-        height: 31
+        x: 12
+        y: 1
+        width: 9
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4a3489dcaba39680800000000000000
-      internalID: -8749460892178695605
+      spriteID: fe552e8658fed7e20800000000000000
+      internalID: 3350097054102869487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gravestones_1
+      name: Maple Tree_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 14
-        height: 16
+        x: 42
+        y: 1
+        width: 11
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be8fc121755d83f40800000000000000
-      internalID: 5708547097634863339
+      spriteID: 28a566d931a02d3c0800000000000000
+      internalID: -4336392411842979198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gravestones_2
+      name: Maple Tree_2
       rect:
         serializedVersion: 2
-        x: 31
+        x: 70
         y: 0
-        width: 18
-        height: 20
+        width: 22
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a813e122f19e15440800000000000000
-      internalID: 4922972187618324874
+      spriteID: 22a872d78a8f63ce0800000000000000
+      internalID: -1425678829478245854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gravestones_3
+      name: Maple Tree_3
       rect:
         serializedVersion: 2
-        x: 49
+        x: 95
         y: 0
-        width: 14
-        height: 16
+        width: 34
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 875663e3fc1e37580800000000000000
-      internalID: -8830466164125178504
+      spriteID: 70ac2b31049d19290800000000000000
+      internalID: -7885282603317409273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gravestones_4
+      name: Maple Tree_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 136
         y: 0
         width: 16
-        height: 21
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ed78928d04dd3e70800000000000000
-      internalID: 9096659976848965097
+      spriteID: aab2ff78fbaa68410800000000000000
+      internalID: 1479057267234909098
       vertices: []
       indices: 
       edges: []
@@ -248,11 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gravestones_0: -8749460892178695605
-      Gravestones_1: 5708547097634863339
-      Gravestones_2: 4922972187618324874
-      Gravestones_3: -8830466164125178504
-      Gravestones_4: 9096659976848965097
+      Maple Tree_0: 3350097054102869487
+      Maple Tree_1: -4336392411842979198
+      Maple Tree_2: -1425678829478245854
+      Maple Tree_3: -7885282603317409273
+      Maple Tree_4: 1479057267234909098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

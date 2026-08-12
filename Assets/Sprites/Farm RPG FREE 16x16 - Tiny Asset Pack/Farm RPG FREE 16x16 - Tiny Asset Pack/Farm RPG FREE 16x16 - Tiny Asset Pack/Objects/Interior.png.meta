@@ -1,55 +1,61 @@
 fileFormatVersion: 2
-guid: 0fb75d19c24c3d5428ca3ccb87961e95
+guid: 582c947f53f7d034fb1e54dff59d99f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7669643529315636520
-    second: Mahogany Tree Animation_0
+      213: 2590456727276172604
+    second: Interior_0
   - first:
-      213: -2949446951172698808
-    second: Mahogany Tree Animation_1
+      213: 2043840416680222737
+    second: Interior_1
   - first:
-      213: 1878783767888541050
-    second: Mahogany Tree Animation_2
+      213: 3828824807478644711
+    second: Interior_2
   - first:
-      213: 4699916894212621607
-    second: Mahogany Tree Animation_3
+      213: 7653548346239090213
+    second: Interior_3
   - first:
-      213: -7043006855757235749
-    second: Mahogany Tree Animation_4
+      213: -1043183626937019407
+    second: Interior_4
   - first:
-      213: -8702007799128566522
-    second: Mahogany Tree Animation_5
+      213: 5394966411689510528
+    second: Interior_5
   - first:
-      213: -5345055108661657340
-    second: Mahogany Tree Animation_6
+      213: -6208399540127108944
+    second: Interior_6
   - first:
-      213: 8114459805872946195
-    second: Mahogany Tree Animation_7
+      213: -1515594426285665026
+    second: Interior_7
   - first:
-      213: -7277282708605198642
-    second: Mahogany Tree Animation_8
+      213: -678701028727430131
+    second: Interior_8
   - first:
-      213: -8068938709914477253
-    second: Mahogany Tree Animation_9
+      213: -5584373557440825282
+    second: Interior_9
   - first:
-      213: -6042731357474737183
-    second: Mahogany Tree Animation_10
+      213: 1545761556831445746
+    second: Interior_10
   - first:
-      213: -6148581234358670266
-    second: Mahogany Tree Animation_11
+      213: 8500419742782556493
+    second: Interior_11
   - first:
-      213: 2574514772055256612
-    second: Mahogany Tree Animation_12
+      213: -4870937277659037287
+    second: Interior_12
   - first:
-      213: 7413335627192868688
-    second: Mahogany Tree Animation_13
+      213: -7557320277340731770
+    second: Interior_13
   - first:
-      213: 2873285647309829150
-    second: Mahogany Tree Animation_14
+      213: -5999068849582551165
+    second: Interior_14
   - first:
-      213: -7403262579823332073
-    second: Mahogany Tree Animation_15
+      213: 5677787298460136183
+    second: Interior_15
+  - first:
+      213: -7052221676277965354
+    second: Interior_16
+  - first:
+      213: 1801478871635049099
+    second: Interior_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +102,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -158,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mahogany Tree Animation_0
+      name: Interior_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 241
-        width: 128
-        height: 48
+        y: 112
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8daa44978d3ff8590800000000000000
-      internalID: -7669643529315636520
+      spriteID: c35315b2ba623f320800000000000000
+      internalID: 2590456727276172604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_1
+      name: Interior_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 289
-        width: 26
-        height: 34
+        x: 3
+        y: 127
+        width: 10
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +201,284 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84d0e7fef957117d0800000000000000
-      internalID: -2949446951172698808
+      spriteID: 110afcdb70e2d5c10800000000000000
+      internalID: 2043840416680222737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_2
+      name: Interior_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 127
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7efc7fc50e7b22530800000000000000
+      internalID: 3828824807478644711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 112
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52efbd0bbadd63a60800000000000000
+      internalID: 7653548346239090213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 127
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f35ae0b40ed581f0800000000000000
+      internalID: -1043183626937019407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_5
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 101
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 086caef1e55ceda40800000000000000
+      internalID: 5394966411689510528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_6
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 95
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b07603038557d9a0800000000000000
+      internalID: -6208399540127108944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_7
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 101
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef45ea536e687fae0800000000000000
+      internalID: -1515594426285665026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 79
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d046202a205c496f0800000000000000
+      internalID: -678701028727430131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_9
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 79
+        width: 50
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e38b7a736d15082b0800000000000000
+      internalID: -5584373557440825282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 67
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f2a46632f5a37510800000000000000
+      internalID: 1545761556831445746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49854a08be87f570800000000000000
+      internalID: 8500419742782556493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 991cce17a54f66cb0800000000000000
+      internalID: -4870937277659037287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_13
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686cf378f310f1790800000000000000
+      internalID: -7557320277340731770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior_14
       rect:
         serializedVersion: 2
         x: 34
-        y: 289
-        width: 28
-        height: 37
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +487,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7534c6f1e7c21a10800000000000000
-      internalID: 1878783767888541050
+      spriteID: 38f458d6aa60fbca0800000000000000
+      internalID: -5999068849582551165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_3
+      name: Interior_15
       rect:
         serializedVersion: 2
-        x: 64
-        y: 289
-        width: 36
-        height: 39
+        x: 50
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +509,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72586699385793140800000000000000
-      internalID: 4699916894212621607
+      spriteID: 7f2f0fa377d8bce40800000000000000
+      internalID: 5677787298460136183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_4
+      name: Interior_16
       rect:
         serializedVersion: 2
-        x: 100
-        y: 289
-        width: 28
-        height: 41
+        x: 67
+        y: 0
+        width: 26
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,174 +531,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd9f2f38496324e90800000000000000
-      internalID: -7043006855757235749
+      spriteID: 6dd542cefb9712e90800000000000000
+      internalID: -7052221676277965354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 193
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 605534c03024c3780800000000000000
-      internalID: -8702007799128566522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 145
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 401c55fa2bc82d5b0800000000000000
-      internalID: -5345055108661657340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 97
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31cfd31833a5c9070800000000000000
-      internalID: 8114459805872946195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_8
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 49
-        width: 16
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ece9e77eee5e10b90800000000000000
-      internalID: -7277282708605198642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_9
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 49
-        width: 25
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b3d16219efe550090800000000000000
-      internalID: -8068938709914477253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1
-        width: 37
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e3ba9c98d7e32ca0800000000000000
-      internalID: -6042731357474737183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_11
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 49
-        width: 35
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 64c2b65a1f9dbaaa0800000000000000
-      internalID: -6148581234358670266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_12
+      name: Interior_17
       rect:
         serializedVersion: 2
         x: 95
-        y: 1
-        width: 33
-        height: 48
+        y: 5
+        width: 66
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,74 +553,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42e69597b838ab320800000000000000
-      internalID: 2574514772055256612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_13
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 49
-        width: 24
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05f1493b97571e660800000000000000
-      internalID: 7413335627192868688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_14
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 36
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e14712aa216ffd720800000000000000
-      internalID: 2873285647309829150
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_15
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 1
-        width: 38
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71530b668e3524990800000000000000
-      internalID: -7403262579823332073
+      spriteID: b8abd263d73200910800000000000000
+      internalID: 1801478871635049099
       vertices: []
       indices: 
       edges: []
@@ -523,22 +573,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mahogany Tree Animation_0: -7669643529315636520
-      Mahogany Tree Animation_1: -2949446951172698808
-      Mahogany Tree Animation_10: -6042731357474737183
-      Mahogany Tree Animation_11: -6148581234358670266
-      Mahogany Tree Animation_12: 2574514772055256612
-      Mahogany Tree Animation_13: 7413335627192868688
-      Mahogany Tree Animation_14: 2873285647309829150
-      Mahogany Tree Animation_15: -7403262579823332073
-      Mahogany Tree Animation_2: 1878783767888541050
-      Mahogany Tree Animation_3: 4699916894212621607
-      Mahogany Tree Animation_4: -7043006855757235749
-      Mahogany Tree Animation_5: -8702007799128566522
-      Mahogany Tree Animation_6: -5345055108661657340
-      Mahogany Tree Animation_7: 8114459805872946195
-      Mahogany Tree Animation_8: -7277282708605198642
-      Mahogany Tree Animation_9: -8068938709914477253
+      Interior_0: 2590456727276172604
+      Interior_1: 2043840416680222737
+      Interior_10: 1545761556831445746
+      Interior_11: 8500419742782556493
+      Interior_12: -4870937277659037287
+      Interior_13: -7557320277340731770
+      Interior_14: -5999068849582551165
+      Interior_15: 5677787298460136183
+      Interior_16: -7052221676277965354
+      Interior_17: 1801478871635049099
+      Interior_2: 3828824807478644711
+      Interior_3: 7653548346239090213
+      Interior_4: -1043183626937019407
+      Interior_5: 5394966411689510528
+      Interior_6: -6208399540127108944
+      Interior_7: -1515594426285665026
+      Interior_8: -678701028727430131
+      Interior_9: -5584373557440825282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

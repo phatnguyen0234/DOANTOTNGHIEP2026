@@ -1,55 +1,43 @@
 fileFormatVersion: 2
-guid: 0fb75d19c24c3d5428ca3ccb87961e95
+guid: 473e5ce7621a97045ac6cc474e529911
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7669643529315636520
-    second: Mahogany Tree Animation_0
+      213: -144614346326550672
+    second: Male Cow Brown_0
   - first:
-      213: -2949446951172698808
-    second: Mahogany Tree Animation_1
+      213: 6912878689989386591
+    second: Male Cow Brown_1
   - first:
-      213: 1878783767888541050
-    second: Mahogany Tree Animation_2
+      213: 6934712634969683693
+    second: Male Cow Brown_2
   - first:
-      213: 4699916894212621607
-    second: Mahogany Tree Animation_3
+      213: 9050714840981337981
+    second: Male Cow Brown_3
   - first:
-      213: -7043006855757235749
-    second: Mahogany Tree Animation_4
+      213: 3909924222839053602
+    second: Male Cow Brown_4
   - first:
-      213: -8702007799128566522
-    second: Mahogany Tree Animation_5
+      213: -6054711120003513843
+    second: Male Cow Brown_5
   - first:
-      213: -5345055108661657340
-    second: Mahogany Tree Animation_6
+      213: 6852005267758875603
+    second: Male Cow Brown_6
   - first:
-      213: 8114459805872946195
-    second: Mahogany Tree Animation_7
+      213: -8651873736850015519
+    second: Male Cow Brown_7
   - first:
-      213: -7277282708605198642
-    second: Mahogany Tree Animation_8
+      213: -8903349555329232407
+    second: Male Cow Brown_8
   - first:
-      213: -8068938709914477253
-    second: Mahogany Tree Animation_9
+      213: 7690116755930556178
+    second: Male Cow Brown_9
   - first:
-      213: -6042731357474737183
-    second: Mahogany Tree Animation_10
+      213: 7969131944905411069
+    second: Male Cow Brown_10
   - first:
-      213: -6148581234358670266
-    second: Mahogany Tree Animation_11
-  - first:
-      213: 2574514772055256612
-    second: Mahogany Tree Animation_12
-  - first:
-      213: 7413335627192868688
-    second: Mahogany Tree Animation_13
-  - first:
-      213: 2873285647309829150
-    second: Mahogany Tree Animation_14
-  - first:
-      213: -7403262579823332073
-    second: Mahogany Tree Animation_15
+      213: 4820134363731130634
+    second: Male Cow Brown_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -158,13 +146,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mahogany Tree Animation_0
+      name: Male Cow Brown_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 241
-        width: 128
-        height: 48
+        x: 2
+        y: 63
+        width: 24
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,42 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8daa44978d3ff8590800000000000000
-      internalID: -7669643529315636520
+      spriteID: 077d7c9a40a3efdf0800000000000000
+      internalID: -144614346326550672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_1
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 289
-        width: 26
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84d0e7fef957117d0800000000000000
-      internalID: -2949446951172698808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_2
+      name: Male Cow Brown_1
       rect:
         serializedVersion: 2
         x: 34
-        y: 289
-        width: 28
-        height: 37
+        y: 63
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,196 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7534c6f1e7c21a10800000000000000
-      internalID: 1878783767888541050
+      spriteID: f516f24ea8a7fef50800000000000000
+      internalID: 6912878689989386591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 289
-        width: 36
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72586699385793140800000000000000
-      internalID: 4699916894212621607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_4
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 289
-        width: 28
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd9f2f38496324e90800000000000000
-      internalID: -7043006855757235749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 193
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 605534c03024c3780800000000000000
-      internalID: -8702007799128566522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 145
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 401c55fa2bc82d5b0800000000000000
-      internalID: -5345055108661657340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 97
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31cfd31833a5c9070800000000000000
-      internalID: 8114459805872946195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_8
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 49
-        width: 16
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ece9e77eee5e10b90800000000000000
-      internalID: -7277282708605198642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_9
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 49
-        width: 25
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b3d16219efe550090800000000000000
-      internalID: -8068938709914477253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1
-        width: 37
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e3ba9c98d7e32ca0800000000000000
-      internalID: -6042731357474737183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_11
+      name: Male Cow Brown_2
       rect:
         serializedVersion: 2
         x: 66
-        y: 49
-        width: 35
-        height: 13
+        y: 63
+        width: 24
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64c2b65a1f9dbaaa0800000000000000
-      internalID: -6148581234358670266
+      spriteID: de6f7ca566c0d3060800000000000000
+      internalID: 6934712634969683693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_12
+      name: Male Cow Brown_3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 1
-        width: 33
-        height: 48
+        x: 98
+        y: 63
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,20 +227,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42e69597b838ab320800000000000000
-      internalID: 2574514772055256612
+      spriteID: d777c04f1399a9d70800000000000000
+      internalID: 9050714840981337981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_13
+      name: Male Cow Brown_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 31
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d54017d57d24630800000000000000
+      internalID: 3909924222839053602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male Cow Brown_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 31
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d02459ac05859fba0800000000000000
+      internalID: -6054711120003513843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male Cow Brown_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 31
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d38fdfcc76371f50800000000000000
+      internalID: 6852005267758875603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male Cow Brown_7
       rect:
         serializedVersion: 2
         x: 104
-        y: 49
-        width: 24
-        height: 13
+        y: 31
+        width: 15
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,20 +315,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05f1493b97571e660800000000000000
-      internalID: 7413335627192868688
+      spriteID: 1eaf5890dae5ee780800000000000000
+      internalID: -8651873736850015519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_14
+      name: Male Cow Brown_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 36
-        height: 43
+        x: 8
+        y: 0
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,20 +337,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e14712aa216ffd720800000000000000
-      internalID: 2873285647309829150
+      spriteID: 9e1187b50c2f07480800000000000000
+      internalID: -8903349555329232407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_15
+      name: Male Cow Brown_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 1
-        width: 38
-        height: 47
+        x: 40
+        y: 0
+        width: 15
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -503,8 +359,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71530b668e3524990800000000000000
-      internalID: -7403262579823332073
+      spriteID: 217258e0278c8ba60800000000000000
+      internalID: 7690116755930556178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male Cow Brown_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df90e48184b089e60800000000000000
+      internalID: 7969131944905411069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male Cow Brown_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09f8d76aae84e240800000000000000
+      internalID: 4820134363731130634
       vertices: []
       indices: 
       edges: []
@@ -523,22 +423,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mahogany Tree Animation_0: -7669643529315636520
-      Mahogany Tree Animation_1: -2949446951172698808
-      Mahogany Tree Animation_10: -6042731357474737183
-      Mahogany Tree Animation_11: -6148581234358670266
-      Mahogany Tree Animation_12: 2574514772055256612
-      Mahogany Tree Animation_13: 7413335627192868688
-      Mahogany Tree Animation_14: 2873285647309829150
-      Mahogany Tree Animation_15: -7403262579823332073
-      Mahogany Tree Animation_2: 1878783767888541050
-      Mahogany Tree Animation_3: 4699916894212621607
-      Mahogany Tree Animation_4: -7043006855757235749
-      Mahogany Tree Animation_5: -8702007799128566522
-      Mahogany Tree Animation_6: -5345055108661657340
-      Mahogany Tree Animation_7: 8114459805872946195
-      Mahogany Tree Animation_8: -7277282708605198642
-      Mahogany Tree Animation_9: -8068938709914477253
+      Male Cow Brown_0: -144614346326550672
+      Male Cow Brown_1: 6912878689989386591
+      Male Cow Brown_10: 7969131944905411069
+      Male Cow Brown_11: 4820134363731130634
+      Male Cow Brown_2: 6934712634969683693
+      Male Cow Brown_3: 9050714840981337981
+      Male Cow Brown_4: 3909924222839053602
+      Male Cow Brown_5: -6054711120003513843
+      Male Cow Brown_6: 6852005267758875603
+      Male Cow Brown_7: -8651873736850015519
+      Male Cow Brown_8: -8903349555329232407
+      Male Cow Brown_9: 7690116755930556178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

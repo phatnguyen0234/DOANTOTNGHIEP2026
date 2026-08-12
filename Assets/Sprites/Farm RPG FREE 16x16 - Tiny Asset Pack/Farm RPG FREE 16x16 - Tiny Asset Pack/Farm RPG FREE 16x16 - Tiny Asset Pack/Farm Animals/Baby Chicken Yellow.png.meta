@@ -1,55 +1,43 @@
 fileFormatVersion: 2
-guid: 0fb75d19c24c3d5428ca3ccb87961e95
+guid: 4d4176bcc03fd274e822c256e8ac78e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7669643529315636520
-    second: Mahogany Tree Animation_0
+      213: -7202626363648530119
+    second: Baby Chicken Yellow_0
   - first:
-      213: -2949446951172698808
-    second: Mahogany Tree Animation_1
+      213: 662478330296687531
+    second: Baby Chicken Yellow_1
   - first:
-      213: 1878783767888541050
-    second: Mahogany Tree Animation_2
+      213: 101150693199084288
+    second: Baby Chicken Yellow_2
   - first:
-      213: 4699916894212621607
-    second: Mahogany Tree Animation_3
+      213: -8714301849626275311
+    second: Baby Chicken Yellow_3
   - first:
-      213: -7043006855757235749
-    second: Mahogany Tree Animation_4
+      213: 4873490279921441024
+    second: Baby Chicken Yellow_4
   - first:
-      213: -8702007799128566522
-    second: Mahogany Tree Animation_5
+      213: 8622362465478819303
+    second: Baby Chicken Yellow_5
   - first:
-      213: -5345055108661657340
-    second: Mahogany Tree Animation_6
+      213: -5905585162106821737
+    second: Baby Chicken Yellow_6
   - first:
-      213: 8114459805872946195
-    second: Mahogany Tree Animation_7
+      213: 5218664118814497114
+    second: Baby Chicken Yellow_7
   - first:
-      213: -7277282708605198642
-    second: Mahogany Tree Animation_8
+      213: 3809271013116874632
+    second: Baby Chicken Yellow_8
   - first:
-      213: -8068938709914477253
-    second: Mahogany Tree Animation_9
+      213: -6871483637903430588
+    second: Baby Chicken Yellow_9
   - first:
-      213: -6042731357474737183
-    second: Mahogany Tree Animation_10
+      213: -5540273393981584980
+    second: Baby Chicken Yellow_10
   - first:
-      213: -6148581234358670266
-    second: Mahogany Tree Animation_11
-  - first:
-      213: 2574514772055256612
-    second: Mahogany Tree Animation_12
-  - first:
-      213: 7413335627192868688
-    second: Mahogany Tree Animation_13
-  - first:
-      213: 2873285647309829150
-    second: Mahogany Tree Animation_14
-  - first:
-      213: -7403262579823332073
-    second: Mahogany Tree Animation_15
+      213: -8110096045272518879
+    second: Baby Chicken Yellow_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -158,13 +146,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mahogany Tree Animation_0
+      name: Baby Chicken Yellow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 241
-        width: 128
-        height: 48
+        x: 2
+        y: 31
+        width: 12
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8daa44978d3ff8590800000000000000
-      internalID: -7669643529315636520
+      spriteID: 939add0cb712b0c90800000000000000
+      internalID: -7202626363648530119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_1
+      name: Baby Chicken Yellow_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 289
-        width: 26
-        height: 34
+        x: 18
+        y: 31
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,151 +183,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84d0e7fef957117d0800000000000000
-      internalID: -2949446951172698808
+      spriteID: bab5abc0888913900800000000000000
+      internalID: 662478330296687531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_2
+      name: Baby Chicken Yellow_2
       rect:
         serializedVersion: 2
         x: 34
-        y: 289
-        width: 28
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a7534c6f1e7c21a10800000000000000
-      internalID: 1878783767888541050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 289
-        width: 36
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72586699385793140800000000000000
-      internalID: 4699916894212621607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_4
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 289
-        width: 28
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd9f2f38496324e90800000000000000
-      internalID: -7043006855757235749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 193
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 605534c03024c3780800000000000000
-      internalID: -8702007799128566522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 145
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 401c55fa2bc82d5b0800000000000000
-      internalID: -5345055108661657340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 97
-        width: 128
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31cfd31833a5c9070800000000000000
-      internalID: 8114459805872946195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_8
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 49
-        width: 16
+        y: 31
+        width: 12
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -349,20 +205,174 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ece9e77eee5e10b90800000000000000
-      internalID: -7277282708605198642
+      spriteID: 00b7ae0050c576100800000000000000
+      internalID: 101150693199084288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_9
+      name: Baby Chicken Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 31
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1121f7b53a4901780800000000000000
+      internalID: -8714301849626275311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 15
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0095907b69d12a340800000000000000
+      internalID: 4873490279921441024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_5
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 15
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7edb687aaf8c8a770800000000000000
+      internalID: 8622362465478819303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_6
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 15
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7932ecd85952b0ea0800000000000000
+      internalID: -5905585162106821737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_7
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 15
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a59d30ccd5b6c6840800000000000000
+      internalID: 5218664118814497114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88f0606ddcf3dd430800000000000000
+      internalID: 3809271013116874632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c6bdab90693a0a0800000000000000
+      internalID: -6871483637903430588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baby Chicken Yellow_10
       rect:
         serializedVersion: 2
         x: 36
-        y: 49
-        width: 25
-        height: 13
+        y: 0
+        width: 9
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,20 +381,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3d16219efe550090800000000000000
-      internalID: -8068938709914477253
+      spriteID: ca90e29a3befc13b0800000000000000
+      internalID: -5540273393981584980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mahogany Tree Animation_10
+      name: Baby Chicken Yellow_11
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1
-        width: 37
-        height: 48
+        x: 51
+        y: 0
+        width: 11
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,118 +403,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e3ba9c98d7e32ca0800000000000000
-      internalID: -6042731357474737183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_11
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 49
-        width: 35
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 64c2b65a1f9dbaaa0800000000000000
-      internalID: -6148581234358670266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_12
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 1
-        width: 33
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42e69597b838ab320800000000000000
-      internalID: 2574514772055256612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_13
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 49
-        width: 24
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05f1493b97571e660800000000000000
-      internalID: 7413335627192868688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_14
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 36
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e14712aa216ffd720800000000000000
-      internalID: 2873285647309829150
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mahogany Tree Animation_15
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 1
-        width: 38
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71530b668e3524990800000000000000
-      internalID: -7403262579823332073
+      spriteID: 12f2b3fad96237f80800000000000000
+      internalID: -8110096045272518879
       vertices: []
       indices: 
       edges: []
@@ -523,22 +423,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mahogany Tree Animation_0: -7669643529315636520
-      Mahogany Tree Animation_1: -2949446951172698808
-      Mahogany Tree Animation_10: -6042731357474737183
-      Mahogany Tree Animation_11: -6148581234358670266
-      Mahogany Tree Animation_12: 2574514772055256612
-      Mahogany Tree Animation_13: 7413335627192868688
-      Mahogany Tree Animation_14: 2873285647309829150
-      Mahogany Tree Animation_15: -7403262579823332073
-      Mahogany Tree Animation_2: 1878783767888541050
-      Mahogany Tree Animation_3: 4699916894212621607
-      Mahogany Tree Animation_4: -7043006855757235749
-      Mahogany Tree Animation_5: -8702007799128566522
-      Mahogany Tree Animation_6: -5345055108661657340
-      Mahogany Tree Animation_7: 8114459805872946195
-      Mahogany Tree Animation_8: -7277282708605198642
-      Mahogany Tree Animation_9: -8068938709914477253
+      Baby Chicken Yellow_0: -7202626363648530119
+      Baby Chicken Yellow_1: 662478330296687531
+      Baby Chicken Yellow_10: -5540273393981584980
+      Baby Chicken Yellow_11: -8110096045272518879
+      Baby Chicken Yellow_2: 101150693199084288
+      Baby Chicken Yellow_3: -8714301849626275311
+      Baby Chicken Yellow_4: 4873490279921441024
+      Baby Chicken Yellow_5: 8622362465478819303
+      Baby Chicken Yellow_6: -5905585162106821737
+      Baby Chicken Yellow_7: 5218664118814497114
+      Baby Chicken Yellow_8: 3809271013116874632
+      Baby Chicken Yellow_9: -6871483637903430588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
