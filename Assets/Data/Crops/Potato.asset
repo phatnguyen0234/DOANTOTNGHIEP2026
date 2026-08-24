@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: Assembly-CSharp::CropData
-  id: 
-  cropName: 
-  seedPrice: 0
-  sellPrice: 0
-  growthTime: 0
-  maxStage: 0
+  id: 1006
+  cropName: Potato
+  seedPrice: 2
+  sellPrice: 5
+  growthTime: 40
+  maxStage: 4
+  stageSprites:
+  - {fileID: -5661783315169486296, guid: 17ac19d3dfbf9f446a6cdefa58d843d0, type: 3}
+  - {fileID: -2491710858056914576, guid: 17ac19d3dfbf9f446a6cdefa58d843d0, type: 3}
+  - {fileID: 8314729164969292333, guid: 17ac19d3dfbf9f446a6cdefa58d843d0, type: 3}
+  - {fileID: 7965074122277501501, guid: 17ac19d3dfbf9f446a6cdefa58d843d0, type: 3}
+  - {fileID: 5536827405519278002, guid: 17ac19d3dfbf9f446a6cdefa58d843d0, type: 3}

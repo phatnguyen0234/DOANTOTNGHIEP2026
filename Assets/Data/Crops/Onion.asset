@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
   m_Name: Onion
   m_EditorClassIdentifier: Assembly-CSharp::CropData
-  id: 
-  cropName: 
-  seedPrice: 0
-  sellPrice: 0
-  growthTime: 0
-  maxStage: 0
+  id: 1004
+  cropName: Onion
+  seedPrice: 2
+  sellPrice: 6
+  growthTime: 50
+  maxStage: 4
+  stageSprites:
+  - {fileID: -3477578526051336873, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: -2332356855530425355, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: 3899546548142004079, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: -9063029999227916591, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: 6542246120824753569, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}

@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
   m_Name: Cabbage
   m_EditorClassIdentifier: Assembly-CSharp::CropData
-  id: 
-  cropName: 
-  seedPrice: 0
-  sellPrice: 0
-  growthTime: 0
-  maxStage: 0
+  id: 1003
+  cropName: Cabbage
+  seedPrice: 5
+  sellPrice: 10
+  growthTime: 60
+  maxStage: 3
+  stageSprites:
+  - {fileID: 159068718711766808, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  - {fileID: -4014818661885561068, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  - {fileID: -2353564247272742209, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  - {fileID: 3803989612537405054, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}

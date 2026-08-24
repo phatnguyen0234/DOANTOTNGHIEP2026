@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
   m_Name: Blueberry
   m_EditorClassIdentifier: Assembly-CSharp::CropData
-  id: 
-  cropName: 
-  seedPrice: 0
-  sellPrice: 0
-  growthTime: 0
-  maxStage: 0
+  id: 1002
+  cropName: Blueberry
+  seedPrice: 10
+  sellPrice: 25
+  growthTime: 60
+  maxStage: 4
+  stageSprites:
+  - {fileID: -2534248692213106135, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -1689513711262940089, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -1474874400585026657, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -6087991206280479571, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -6864887966929563387, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
