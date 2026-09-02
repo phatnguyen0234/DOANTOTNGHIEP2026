@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -464,6 +465,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ce9787e6b2cf4f905ffe70d492b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  player: {fileID: 1202959759}
+  smoothSpeed: 5
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &570429616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2043,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -2308,10 +2324,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
   groundTilemap: {fileID: 2144305081}
-  treePrefab: {fileID: 7708134086299528442, guid: 40f6b36c68131fb4dadd70490494c875, type: 3}
-  rockPrefab: {fileID: 6986173225345523677, guid: 50f2e6b15b518b54e926cd12dfe24d0b, type: 3}
-  treeSpawnChance: 0.1
-  rockSpawnChance: 0.05
+  treeGroups:
+  - groupName: Birch Tree
+    prefabs:
+    - {fileID: 3981535527568315150, guid: 67d950e1e5d2312468f94793e15c46a2, type: 3}
+    - {fileID: 3573385509290323900, guid: a64b10a43f9ecea4ab060c90d41dcba8, type: 3}
+  - groupName: Mahogany Tree
+    prefabs:
+    - {fileID: 6443552483213101581, guid: cbe60754d1648794c93cfa8a390e8578, type: 3}
+    - {fileID: 1777359906241628979, guid: b6275cb65b388ce4e8345957227c8a98, type: 3}
+  - groupName: Maple Tree
+    prefabs:
+    - {fileID: 2344705861945533684, guid: e01b9560f11127c4c93c1cd4abbf0ca9, type: 3}
+    - {fileID: 7893907402206233258, guid: 27fd5e9cb99ee7b4f845a63da4d6d912, type: 3}
+  - groupName: Pine Tree
+    prefabs:
+    - {fileID: 5977823857537621490, guid: 23a96d4348c00c245911be9532c9587d, type: 3}
+    - {fileID: 4580840567149279275, guid: 0a5234969832712488bd7fc617c57bb1, type: 3}
+  rockPrefabs:
+  - {fileID: 9208969923068376547, guid: 8be40a8530ebe61429f81e967539aa5a, type: 3}
+  - {fileID: 1194425525256659516, guid: 7c9509f58351856448e3eabf021966dd, type: 3}
+  - {fileID: 2888407076294357764, guid: 53c411dd06638184f817d9c403c0b2ec, type: 3}
+  - {fileID: 4869275716429208961, guid: 4d43ec34541202c4a9e91e6dbd1be9ba, type: 3}
+  - {fileID: 1208037339296547863, guid: 459c6ef9be8ac2f468270ca43e8977b5, type: 3}
+  - {fileID: 5183711375381136956, guid: dccad68d4bd0bd548b9297a5f422b781, type: 3}
+  - {fileID: 7325473099972534992, guid: 86153a8053e31f0428b570c2f8d1ea76, type: 3}
+  - {fileID: 2365827646414780016, guid: 786dc9a4dc4d3b849b4167a4143b16ef, type: 3}
+  - {fileID: 1222083917306270726, guid: 985c7369a6d386345b958d38f2739709, type: 3}
+  - {fileID: 1914147265184946357, guid: 853bc8b0ca4748a48a8e2fd5570a9b67, type: 3}
+  sparseTreeChance: 0.02
+  sparseRockChance: 0.02
+  noiseScale: 0.15
+  treeClusterThreshold: 0.8
+  rockClusterThreshold: 0.2
+  rockClusterDensity: 0.4
 --- !u!4 &1394173336
 Transform:
   m_ObjectHideFlags: 0
@@ -2819,7 +2865,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85a475ac422ab364ca3761b3188567f3, type: 2}
+  - {fileID: 2100000, guid: 047eddb232fd0f34d8d3a3c0806eacb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
