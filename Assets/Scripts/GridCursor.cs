@@ -3,40 +3,90 @@ using UnityEngine.Tilemaps;
 
 public class GridCursor : MonoBehaviour
 {
-    public Tilemap groundTilemap;
+    [Header("References")]
+    [SerializeField] private Tilemap groundTilemap;
+    [SerializeField] private PlayerMovement player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Interaction")]
+    [SerializeField, Min(0.1f)] private float interactionRangeInCells = 2f;
+
+    private bool interactionEnabled;
+
+    public Vector3Int CurrentCell { get; private set; }
+    public bool HasValidTarget { get; private set; }
+
+    private SpriteRenderer cursorRenderer;
+
+    private void Awake()
     {
-        
+        cursorRenderer = GetComponent<SpriteRenderer>();
+        SetCursorVisible(false);
+        interactionEnabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         UpdateCursor();
     }
 
     private void UpdateCursor()
     {
-        if (groundTilemap == null) return;
-
-        // 1. Get mouse position on screen and convert it to World Space
-        Vector3 mouseScreenPos = Input.mousePosition;
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        mouseWorldPos.z = 0f; // Force Z to 0 for 2D games
-
-        // 2. Convert World Position to Grid Cell Position
-        Vector3Int cellPosition = groundTilemap.WorldToCell(mouseWorldPos);
-
-        // 3. Optional: Only show/move cursor if pointing at a valid ground tile
-        if (groundTilemap.HasTile(cellPosition))
+        HasValidTarget = false;
+        if (!interactionEnabled)
         {
-            // Convert back to World Position to get the exact center of the cell
-            Vector3 cursorWorldPos = groundTilemap.GetCellCenterWorld(cellPosition);
+            SetCursorVisible(false);
+            return;
+        }
 
-            // Move the highlight object to this center position
-            transform.position = cursorWorldPos;
+        if (groundTilemap == null || player == null || Camera.main == null)
+        {
+            SetCursorVisible(false);
+            return;
+        }
+
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0f;
+
+        Vector3Int mouseCell = groundTilemap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTilemap.WorldToCell(player.transform.position);
+
+        Vector3Int delta = mouseCell - playerCell;
+        float distanceSquared = delta.x * delta.x + delta.y * delta.y;
+
+        // Bán kính tròn 2 cell: 2² = 4.
+        bool isInRange = delta != Vector3Int.zero && distanceSquared <= 4f;
+        bool isOnGround = groundTilemap.HasTile(mouseCell);
+
+        if (!isInRange || !isOnGround)
+        {
+            SetCursorVisible(false);
+            return;
+        }
+
+        CurrentCell = mouseCell;
+        HasValidTarget = true;
+
+        transform.position = groundTilemap.GetCellCenterWorld(mouseCell);
+        SetCursorVisible(true);
+
+        // Chỉ khi mouse trong tầm mới làm player quay.
+        player.SetFacingDirection(new Vector2(delta.x, delta.y));
+    }
+
+    private void SetCursorVisible(bool visible)
+    {
+        if (cursorRenderer != null)
+            cursorRenderer.enabled = visible;
+    }
+
+    public void SetInteractionEnabled(bool enabled)
+    {
+        interactionEnabled = enabled;
+
+        if (!interactionEnabled)
+        {
+            HasValidTarget = false;
+            SetCursorVisible(false);
         }
     }
 }

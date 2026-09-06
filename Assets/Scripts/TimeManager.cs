@@ -14,6 +14,8 @@ public class TimeManager : MonoBehaviour
     public Light2D globalLight;
     public Gradient lightColor;
     public AnimationCurve lightIntensity;
+    [Header("Farming")]
+    [SerializeField] private FarmManager farmManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +30,10 @@ public class TimeManager : MonoBehaviour
         if (currentHour >= 24f)
         {
             currentHour = 0f;
+            if (farmManager != null)
+            {
+                farmManager.HandleNewDay();
+            }
             //Them event ngay moi o day
         }
         UpdateClockUI();

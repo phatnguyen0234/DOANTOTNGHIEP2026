@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lastDirection = Vector2.down;
     private Animator anim;
+    public Vector2 LastDirection => lastDirection;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,10 +31,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
      //   Vector3 moveDirection = new Vector3(horizontal, vertical, 0).normalized;
         rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+    }
+
+    public void SetFacingDirection(Vector2 direction)
+    {
+        if (direction == Vector2.zero)
+            return;
+
+        // Game hi?n dùng animation 4 hý?ng, nên chu?t chéo s? ch?n tr?c l?ch nhi?u hõn.
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            lastDirection = direction.x > 0 ? Vector2.right : Vector2.left;
+        else
+            lastDirection = direction.y > 0 ? Vector2.up : Vector2.down;
+
+        // C?p nh?t hý?ng idle ngay, ch? khi player không di chuy?n.
+        if (anim != null && moveInput == Vector2.zero)
+        {
+            anim.SetFloat("MoveX", lastDirection.x);
+            anim.SetFloat("MoveY", lastDirection.y);
+        }
     }
 
     void UpdateAnimator(Animator anim)
