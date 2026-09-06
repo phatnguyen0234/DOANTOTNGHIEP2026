@@ -183,6 +183,13 @@ public class InventoryUI : MonoBehaviour
         if (dragGhostImage != null && slot.ItemData != null)
         {
             dragGhostImage.sprite = slot.ItemData.Icon;
+            dragGhostImage.raycastTarget = false;
+            if (dragGhostCanvasGroup != null)
+            {
+                dragGhostCanvasGroup.blocksRaycasts = false;
+                dragGhostCanvasGroup.interactable = false;
+            }
+
             dragGhostImage.gameObject.SetActive(true);
             dragGhostRect.SetAsLastSibling();
 
@@ -251,10 +258,11 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
+            Camera eventCamera = eventData.pressEventCamera ?? rootCanvas.worldCamera ?? Camera.main;
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 rootCanvas.transform as RectTransform,
                 eventData.position,
-                eventData.pressEventCamera,
+                eventCamera,
                 out Vector2 localPos))
             {
                 dragGhostRect.localPosition = localPos;

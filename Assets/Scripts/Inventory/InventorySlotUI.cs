@@ -64,15 +64,18 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             enabled = true;
         }
 
-        // Đảm bảo có Image trên chính ô Slot để bắt được Raycast
+        // Đảm bảo có Image trên chính ô Slot để bắt được Raycast (tự bổ sung Image trong suốt nếu thiếu)
         slotBackgroundImage = GetComponent<Image>();
-        if (slotBackgroundImage != null)
+        if (slotBackgroundImage == null)
         {
-            if (!slotBackgroundImage.enabled) slotBackgroundImage.enabled = true;
-            slotBackgroundImage.raycastTarget = true;
+            slotBackgroundImage = gameObject.AddComponent<Image>();
+            slotBackgroundImage.color = Color.clear;
         }
+        if (!slotBackgroundImage.enabled) slotBackgroundImage.enabled = true;
+        slotBackgroundImage.raycastTarget = true;
 
-        if (canvasGroup == null)
+        // BẮT BUỘC: canvasGroup phải thuộc chính GameObject của ô Slot này, không trỏ nhầm sang Parent/Panel
+        if (canvasGroup == null || canvasGroup.gameObject != gameObject)
         {
             canvasGroup = GetComponent<CanvasGroup>();
             if (canvasGroup == null)
@@ -88,10 +91,28 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             canvasGroup.interactable = true;
         }
 
+        // Tự động kiểm tra CanvasGroup cha để bỏ chặn Raycast nếu bị tắt nhầm trên Panel
+        CanvasGroup parentCG = GetComponentInParent<CanvasGroup>();
+        if (parentCG != null && parentCG.gameObject != gameObject && !parentCG.blocksRaycasts && !isDragging)
+        {
+            Debug.LogWarning($"[InventorySlotUI] CanvasGroup cha trên '{parentCG.gameObject.name}' đang bị tắt blocksRaycasts! Tự động kích hoạt lại raycast.", this);
+            parentCG.blocksRaycasts = true;
+            parentCG.interactable = true;
+        }
+
+        // Tự động kiểm tra GraphicRaycaster trên Canvas chứa ô slot
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas != null && parentCanvas.GetComponent<GraphicRaycaster>() == null)
+        {
+            Debug.LogWarning($"[InventorySlotUI] Canvas chứa ô slot ({parentCanvas.gameObject.name}) thiếu GraphicRaycaster! Tự động thêm...", this);
+            parentCanvas.gameObject.AddComponent<GraphicRaycaster>();
+        }
+
         if (iconImage != null)
         {
             if (!iconImage.gameObject.activeSelf) iconImage.gameObject.SetActive(true);
             if (!iconImage.enabled) iconImage.enabled = true;
+            // Bật raycastTarget trên iconImage để chuột chạm vào icon luôn phát hiện được sự kiện Raycast & Kéo thả
             iconImage.raycastTarget = true;
             iconImage.color = Color.white;
         }
@@ -216,6 +237,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
         isDragging = true;
 
+        EnsureActive();
+
         if (canvasGroup != null)
         {
             canvasGroup.alpha = 0.5f;
@@ -242,6 +265,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
         isDragging = false;
 
+        EnsureActive();
+
         if (canvasGroup != null)
         {
             canvasGroup.alpha = 1f;
@@ -265,7 +290,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             return;
         }
 
-        InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponent<InventorySlotUI>();
+        InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponentInParent<InventorySlotUI>();
         if (fromSlotUI != null)
         {
             if (enableDebugLogs)
