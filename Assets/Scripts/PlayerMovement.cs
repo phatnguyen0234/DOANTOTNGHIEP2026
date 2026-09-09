@@ -1,32 +1,75 @@
-using UnityEngine;
+using System;
+using Unity.Jobs;
+using UnityEngine;  
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
-    private Vector2 lastDirection = Vector2.down;
-    private Animator anim;
-    public Vector2 LastDirection => lastDirection;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+  //  [SerializeField] private SpriteRenderer spriteRenderer;
+    Vector2 lastDirection = Vector2.down;
+    public Vector2 FacingDirection => lastDirection;
+    public bool isUsingHoe = false;
+    Vector2 moveDirection;
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        if (isUsingHoe) return;
+        Move();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        moveInput = new Vector2(horizontal, vertical).normalized;
-        UpdateAnimator(anim);
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        moveDirection = new Vector2(x, y).normalized;
+     
+        UpdateAnimation();
+    }
+
+    public bool TryUseHoe(Vector2 requestFaceDirection)
+    {
+        if (isUsingHoe) return false;
+        
+        if(requestFaceDirection != Vector2.zero)
+        {
+            lastDirection = requestFaceDirection.normalized;
+        }
+        isUsingHoe = true;
+        moveDirection = Vector2.zero;
+
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0f);
+        anim.SetTrigger("UseHoe");
+        return true;
+    }
+
+    public void OnHoeAnimationComplete()
+    {
+        isUsingHoe = false;
+    }
+
+    private void UpdateAnimation()
+    {
+        if(moveDirection != Vector2.zero)
+        {
+            lastDirection = moveDirection;
+        }
+        
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", moveDirection.magnitude);
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (isUsingHoe) return;
+
+        Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(movePosition);
     }
 
     public void Move()
@@ -40,13 +83,13 @@ public class PlayerMovement : MonoBehaviour
         if (direction == Vector2.zero)
             return;
 
-        // Game hi?n dùng animation 4 hý?ng, nên chu?t chéo s? ch?n tr?c l?ch nhi?u hõn.
+        // Game hi?n dï¿½ng animation 4 hï¿½?ng, nï¿½n chu?t chï¿½o s? ch?n tr?c l?ch nhi?u hï¿½n.
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             lastDirection = direction.x > 0 ? Vector2.right : Vector2.left;
         else
             lastDirection = direction.y > 0 ? Vector2.up : Vector2.down;
 
-        // C?p nh?t hý?ng idle ngay, ch? khi player không di chuy?n.
+        // C?p nh?t hï¿½?ng idle ngay, ch? khi player khï¿½ng di chuy?n.
         if (anim != null && moveInput == Vector2.zero)
         {
             anim.SetFloat("MoveX", lastDirection.x);
