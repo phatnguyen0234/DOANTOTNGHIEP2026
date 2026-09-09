@@ -3,112 +3,114 @@ using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
+
 public class  FarmInputController : MonoBehaviour
 {
     [SerializeField] private Tilemap groundTileMap;
-    [SerializeField] private Tilemap farmSoildTileMap;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Transform player;
+   // [SerializeField] private Tilemap farmSoilTileMap;
+    [SerializeField] private TileBase soilTile;
 
-    [SerializeField] private Transform Player;
-    [SerializeField] private LayerMask obtacleLayer;
-
-    public Vector3Int standCell { get; private set; }
-    public Vector3 standPos { get; private set; }
-    private Vector2 size = new Vector2(0.6f,0.6f);
-    public static readonly Vector3Int[] adjacentCells = new Vector3Int[]
-    {
-        Vector3Int.up,
-        Vector3Int.down,
-        Vector3Int.right,
-        Vector3Int.left
-    };
-
-    public Vector3Int TargetCell { get; private set;  }
-    public bool HasTarget { get; private set;  }
+    private Vector3Int targetCell;
 
     public FarmTool CurrentTool { get; private set; }
 
     private void Update()
     {
-        if (CurrentTool != FarmTool.Hoe) 
-            return;
-        if (!Input.GetMouseButtonDown(0)) 
-            return;
-        if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) 
-            return;
-        Vector3 posWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        posWorld.z = 0;
-        Vector3Int cell = groundTileMap.WorldToCell(posWorld);
-        if(!CanDig(cell)) 
-            return;
-        if(!FindAdjacentCell(cell, out Vector3Int adjacentCell))
-        {
-            Debug.Log("No adjacent cell found");
-            return;
-        }
-        standCell = adjacentCell;
-        standPos = groundTileMap.GetCellCenterWorld(standCell);
-        TargetCell = cell;
-        HasTarget = true;
-        Debug.Log($"Target cell: {TargetCell}, Stand cell: {standCell}");
+        SelectTool();
+        Use();
     }
-
-    public bool FindAdjacentCell(Vector3Int targetCell, out Vector3Int adjacentCell)
-    {
-        adjacentCell = default;
-        bool found = false;
-
-        float nearestDistance = float.MaxValue;
-        Vector3Int playerCell = groundTileMap.WorldToCell(Player.position);
-
-        foreach(Vector3Int offset in adjacentCells)
-        {
-            Vector3Int cell = targetCell + offset;
-
-            Debug.Log($"Checking adjacent cell: {cell}");
-            //if (!CanStand(cell)) 
-            //    return false;
-
-            if (cell == playerCell)
-            {
-                adjacentCell = cell;
-                return true;
-            }
-
-            float distance = Vector3.Distance(groundTileMap.GetCellCenterWorld(cell), Player.position);
-            if(distance < nearestDistance)
-            {
-                adjacentCell = cell;
-                nearestDistance = distance;
-                found = true;
-            }    
-        }
-        return found;
-    }
-
-    //public bool CanStand(Vector3Int cell)
-    //{
-    //    if(!groundTileMap.HasTile(cell)) return false;
-    //    Vector3 posWorld = groundTileMap.GetCellCenterWorld(cell);
-    //    bool hit = Physics2D.OverlapBox(posWorld, size, 0f, obtacleLayer) != null;
-    //    Debug.Log($"CanStand check for cell {cell}: {hit}");
-    //    return hit;
-    //}
-
-    public bool CanDig(Vector3Int cell)
-    {
-        if(!groundTileMap.HasTile(cell)) return false;
-        if(farmSoildTileMap.HasTile(cell)) return false;
-        return true;
-    }
-
+    
     public void SelectTool()
     {
-        CurrentTool = FarmTool.Hoe;
+        if(Input.GetKeyDown(KeyCode.Alpha1)) CurrentTool = FarmTool.Hoe;
+        else if(Input.GetKeyDown(KeyCode.Alpha2)) CurrentTool = FarmTool.Seed;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) CurrentTool = FarmTool.Water;
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) CurrentTool = FarmTool.Harvest;
     }
 
-    public void ClearTool()
+    public void Use()
     {
-        CurrentTool = FarmTool.None;
+        if(!Input.GetMouseButtonDown(0)) return;
+        switch (CurrentTool)
+        {
+            case FarmTool.Hoe:
+                Hoe();
+                break;
+            case FarmTool.Seed:
+                Seed();
+                break;
+            //case FarmTool.Water:
+            //    Water();
+            //    break;
+            //case FarmTool.Harvest:
+            //    Harvest();
+            //    break;
+        }
+    }
+    private void Hoe()
+    {
+        Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        posWorld.z = 0f;
+        Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = posCell - playerCell;
+        Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
+        if (CheckDistance(distance))
+        {
+            targetCell = posCell;
+            playerMovement.TryUseHoe(disWorld);
+        }
+        else
+        {
+            targetCell = playerCell + Offset(playerMovement.FacingDirection);
+            playerMovement.TryUseHoe(playerMovement.FacingDirection);
+        }
+    }
+    private Vector3Int Offset(Vector2 direction)
+    {
+        if(Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+        {
+            if(direction.x > 0)
+            {
+                return Vector3Int.right;
+            }
+            else
+            {
+                return Vector3Int.left;
+            }
+        }
+        else
+        {
+            if(direction.y > 0)
+            {
+                return Vector3Int.up;
+            }
+            else
+            {
+                return Vector3Int.down;
+            }
+        }
+    }
+
+    public void OnHoeAnimationComplete()
+    {
+        groundTileMap.SetTile(targetCell, soilTile);
+    }
+
+    private bool CheckDistance(Vector3Int distance)
+    {
+        if(distance != Vector3Int.zero && Mathf.Abs(distance.x) <= 1 && Mathf.Abs(distance.y) <= 1)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public void Seed()
+    {
+        Debug.Log("Seed");
     }
 }

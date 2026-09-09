@@ -7,12 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
-  //  [SerializeField] private SpriteRenderer spriteRenderer;
     Vector2 lastDirection = Vector2.down;
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
     Vector2 moveDirection;
-  
+    [SerializeField] FarmInputController controller;
 
     // Update is called once per frame
     void Update()
@@ -47,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnHoeAnimationComplete()
     {
         isUsingHoe = false;
+        controller.OnHoeAnimationComplete();
     }
 
     private void UpdateAnimation()
