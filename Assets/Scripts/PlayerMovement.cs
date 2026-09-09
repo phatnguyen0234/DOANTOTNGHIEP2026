@@ -1,73 +1,44 @@
-using UnityEngine;
+using System;
+using UnityEngine;  
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
-    private Vector2 lastDirection = Vector2.down;
-    private Animator anim;
-    public Vector2 LastDirection => lastDirection;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        moveInput = new Vector2(horizontal, vertical).normalized;
-        UpdateAnimator(anim);
-    }
-
-    private void FixedUpdate()
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+  //  [SerializeField] private SpriteRenderer spriteRenderer;
+    Vector2 lastDirection;
+    Vector2 moveDirection;
+    private void Update()
     {
         Move();
     }
 
-    public void Move()
+    private void Move()
     {
-     //   Vector3 moveDirection = new Vector3(horizontal, vertical, 0).normalized;
-        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        moveDirection = new Vector2(x, y).normalized;
+     
+        UpdateAnimation();
     }
 
-    public void SetFacingDirection(Vector2 direction)
+    private void UpdateAnimation()
     {
-        if (direction == Vector2.zero)
-            return;
-
-        // Game hi?n dùng animation 4 hý?ng, nên chu?t chéo s? ch?n tr?c l?ch nhi?u hõn.
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            lastDirection = direction.x > 0 ? Vector2.right : Vector2.left;
-        else
-            lastDirection = direction.y > 0 ? Vector2.up : Vector2.down;
-
-        // C?p nh?t hý?ng idle ngay, ch? khi player không di chuy?n.
-        if (anim != null && moveInput == Vector2.zero)
+        if(moveDirection != Vector2.zero)
         {
-            anim.SetFloat("MoveX", lastDirection.x);
-            anim.SetFloat("MoveY", lastDirection.y);
+            lastDirection = moveDirection;
         }
+        
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", moveDirection.magnitude);
     }
 
-    void UpdateAnimator(Animator anim)
+    private void FixedUpdate()
     {
-        bool isMoving = moveInput != Vector2.zero;
-        anim.SetBool("IsMoving", isMoving);
-        if(isMoving)
-        {
-            lastDirection = moveInput;
-            anim.SetFloat("MoveX", moveInput.x);
-            anim.SetFloat("MoveY", moveInput.y);
-        }
-        else
-        {
-            anim.SetFloat("MoveX", lastDirection.x);
-            anim.SetFloat("MoveY", lastDirection.y);
-        }
+        Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(movePosition);
     }
 }
