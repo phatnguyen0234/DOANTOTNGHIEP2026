@@ -1,75 +1,114 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
-public class FarmInputController : MonoBehaviour
+public class  FarmInputController : MonoBehaviour
 {
-    [SerializeField] private FarmManager farmManager;
-    [SerializeField] private GridCursor gridCursor;
+    [SerializeField] private Tilemap groundTileMap;
+    [SerializeField] private Tilemap farmSoildTileMap;
+    [SerializeField] private Camera mainCamera;
 
-    public FarmTool SelectedTool { get; private set; } = FarmTool.None;
+    [SerializeField] private Transform Player;
+    [SerializeField] private LayerMask obtacleLayer;
+
+    public Vector3Int standCell { get; private set; }
+    public Vector3 standPos { get; private set; }
+    private Vector2 size = new Vector2(0.6f,0.6f);
+    public static readonly Vector3Int[] adjacentCells = new Vector3Int[]
+    {
+        Vector3Int.up,
+        Vector3Int.down,
+        Vector3Int.right,
+        Vector3Int.left
+    };
+
+    public Vector3Int TargetCell { get; private set;  }
+    public bool HasTarget { get; private set;  }
+
+    public FarmTool CurrentTool { get; private set; }
 
     private void Update()
     {
-        HandleToolUse();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (CurrentTool != FarmTool.Hoe) 
+            return;
+        if (!Input.GetMouseButtonDown(0)) 
+            return;
+        if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) 
+            return;
+        Vector3 posWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        posWorld.z = 0;
+        Vector3Int cell = groundTileMap.WorldToCell(posWorld);
+        if(!CanDig(cell)) 
+            return;
+        if(!FindAdjacentCell(cell, out Vector3Int adjacentCell))
         {
-            SelectTool(FarmTool.None);
+            Debug.Log("No adjacent cell found");
+            return;
         }
+        standCell = adjacentCell;
+        standPos = groundTileMap.GetCellCenterWorld(standCell);
+        TargetCell = cell;
+        HasTarget = true;
+        Debug.Log($"Target cell: {TargetCell}, Stand cell: {standCell}");
     }
 
-
-    public void SelectTool(FarmTool tool)
+    public bool FindAdjacentCell(Vector3Int targetCell, out Vector3Int adjacentCell)
     {
-        SelectedTool = tool;
+        adjacentCell = default;
+        bool found = false;
 
-        // Chỉ khi có tool thì mới bật highlight và xoay theo chuột.
-        gridCursor.SetInteractionEnabled(tool != FarmTool.None);
+        float nearestDistance = float.MaxValue;
+        Vector3Int playerCell = groundTileMap.WorldToCell(Player.position);
 
-        Debug.Log("Selected tool: " + SelectedTool);
-    }
-
-    private void HandleToolUse()
-    {
-        if (SelectedTool == FarmTool.None)
-            return;
-
-        if (!Input.GetMouseButtonDown(0))
-            return;
-
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        if (!gridCursor.HasValidTarget)
-            return;
-
-        bool success = false;
-        string message;
-
-        switch (SelectedTool)
+        foreach(Vector3Int offset in adjacentCells)
         {
-            case FarmTool.Hoe:
-                success = farmManager.Hoe(gridCursor.CurrentCell, out message);
-                break;
+            Vector3Int cell = targetCell + offset;
 
-            case FarmTool.Seed:
-                success = farmManager.Plant(gridCursor.CurrentCell, out message);
-                break;
+            Debug.Log($"Checking adjacent cell: {cell}");
+            //if (!CanStand(cell)) 
+            //    return false;
 
-            case FarmTool.Water:
-                success = farmManager.Water(gridCursor.CurrentCell, out message);
-                break;
+            if (cell == playerCell)
+            {
+                adjacentCell = cell;
+                return true;
+            }
 
-            case FarmTool.Harvest:
-                success = farmManager.Harvest(gridCursor.CurrentCell, out message);
-                break;
-
-            default:
-                return;
+            float distance = Vector3.Distance(groundTileMap.GetCellCenterWorld(cell), Player.position);
+            if(distance < nearestDistance)
+            {
+                adjacentCell = cell;
+                nearestDistance = distance;
+                found = true;
+            }    
         }
-
-        Debug.Log(success ? "SUCCESS: " + message : "REJECTED: " + message);
+        return found;
     }
 
+    //public bool CanStand(Vector3Int cell)
+    //{
+    //    if(!groundTileMap.HasTile(cell)) return false;
+    //    Vector3 posWorld = groundTileMap.GetCellCenterWorld(cell);
+    //    bool hit = Physics2D.OverlapBox(posWorld, size, 0f, obtacleLayer) != null;
+    //    Debug.Log($"CanStand check for cell {cell}: {hit}");
+    //    return hit;
+    //}
+
+    public bool CanDig(Vector3Int cell)
+    {
+        if(!groundTileMap.HasTile(cell)) return false;
+        if(farmSoildTileMap.HasTile(cell)) return false;
+        return true;
+    }
+
+    public void SelectTool()
+    {
+        CurrentTool = FarmTool.Hoe;
+    }
+
+    public void ClearTool()
+    {
+        CurrentTool = FarmTool.None;
+    }
 }

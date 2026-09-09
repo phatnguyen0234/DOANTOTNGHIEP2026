@@ -12,15 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
     Vector2 moveDirection;
-    private void Update()
-    {
-        if (isUsingHoe) return;
-        Move();
-    }
+  
 
     // Update is called once per frame
     void Update()
     {
+        if (isUsingHoe) return;
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -70,47 +67,5 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(movePosition);
-    }
-
-    public void Move()
-    {
-     //   Vector3 moveDirection = new Vector3(horizontal, vertical, 0).normalized;
-        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
-    }
-
-    public void SetFacingDirection(Vector2 direction)
-    {
-        if (direction == Vector2.zero)
-            return;
-
-        // Game hi?n d�ng animation 4 h�?ng, n�n chu?t ch�o s? ch?n tr?c l?ch nhi?u h�n.
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            lastDirection = direction.x > 0 ? Vector2.right : Vector2.left;
-        else
-            lastDirection = direction.y > 0 ? Vector2.up : Vector2.down;
-
-        // C?p nh?t h�?ng idle ngay, ch? khi player kh�ng di chuy?n.
-        if (anim != null && moveInput == Vector2.zero)
-        {
-            anim.SetFloat("MoveX", lastDirection.x);
-            anim.SetFloat("MoveY", lastDirection.y);
-        }
-    }
-
-    void UpdateAnimator(Animator anim)
-    {
-        bool isMoving = moveInput != Vector2.zero;
-        anim.SetBool("IsMoving", isMoving);
-        if(isMoving)
-        {
-            lastDirection = moveInput;
-            anim.SetFloat("MoveX", moveInput.x);
-            anim.SetFloat("MoveY", moveInput.y);
-        }
-        else
-        {
-            anim.SetFloat("MoveX", lastDirection.x);
-            anim.SetFloat("MoveY", lastDirection.y);
-        }
     }
 }
