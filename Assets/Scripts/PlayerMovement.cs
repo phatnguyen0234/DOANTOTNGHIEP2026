@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 lastDirection = Vector2.down;
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
+    public bool isUsingWater = false;
     Vector2 moveDirection;
     [SerializeField] FarmInputController controller;
 
@@ -47,6 +48,28 @@ public class PlayerMovement : MonoBehaviour
     {
         isUsingHoe = false;
         controller.OnHoeAnimationComplete();
+    }
+
+    public void UsingWater(Vector2 requestFaceDirection)
+    {
+        if (isUsingWater) return;
+
+        if (requestFaceDirection != Vector2.zero)
+        {
+            lastDirection = requestFaceDirection.normalized;
+        }
+        isUsingWater = true;
+        moveDirection = Vector2.zero;
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0f);
+        anim.SetTrigger("UseWater");
+    }
+
+    public void OnWaterAnimationComplete()
+    {
+        isUsingWater = false;
+        controller.OnWaterAnimationComplete();
     }
 
     private void UpdateAnimation()
