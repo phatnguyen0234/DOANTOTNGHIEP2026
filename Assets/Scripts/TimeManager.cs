@@ -14,13 +14,13 @@
 //    public Light2D globalLight;
 //    public Gradient lightColor;
 //    public AnimationCurve lightIntensity;
-//    [Header("Farming")]
-//    [SerializeField] private FarmManager farmManager;
+//   // [Header("Farming")]
+//  //  [SerializeField] private FarmManager farmManager;
 
 //    // Start is called once before the first execution of Update after the MonoBehaviour is created
 //    void Start()
 //    {
-        
+
 //    }
 
 //    // Update is called once per frame
@@ -42,8 +42,8 @@
 
 //    private void UpdateClockUI()
 //    {
-//        if(clockHandImage == null || clockHandSprites.Length == 0) return;
-        
+//        if (clockHandImage == null || clockHandSprites.Length == 0) return;
+
 //        float dayProgress = currentHour / 24f;
 
 //        int spriteIndex = Mathf.FloorToInt(dayProgress * clockHandSprites.Length);
@@ -53,7 +53,7 @@
 
 //    private void UpdateLighting()
 //    {
-//        if(globalLight == null) return;
+//        if (globalLight == null) return;
 
 //        float dayProgress = currentHour / 24f;
 

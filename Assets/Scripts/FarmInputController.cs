@@ -105,7 +105,7 @@ public class  FarmInputController : MonoBehaviour
         }
         else
         {
-            targetCellHoe = playerCell + Offset(playerMovement.FacingDirection);
+            targetCellHoe = playerCell + Offset(playerMovement.FacingDirection); 
             playerMovement.TryUseHoe(playerMovement.FacingDirection);
         }
     }
@@ -126,21 +126,20 @@ public class  FarmInputController : MonoBehaviour
 
     public void Water()
     {
-        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0f;
-        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        posWorld.z = 0f;
+        Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
-        Vector3Int distance = mouseCell - playerCell;
-        bool isInRange = CheckDistance(distance);
-        bool isSoil = groundTileMap.GetTile(mouseCell) == soilTile;
-        Vector2 direction = (Vector2)(mouseWorld - player.transform.position);
-        if (isInRange)
+        Vector3Int distance = posCell - playerCell;
+        Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
+        bool isSoil = groundTileMap.GetTile(posCell) == soilTile;
+        if (CheckDistance(distance))
         { 
             if (isSoil)
             {
-                targetCellWater = mouseCell;
-                Debug.Log($"Water: mouse target | cell: {targetCellWater} | direction: {direction.normalized}");
-                playerMovement.UsingWater(direction);
+                targetCellWater = posCell;
+               // Debug.Log($"Water: mouse target | cell: {targetCellWater} | direction: {direction.normalized}");
+                playerMovement.UsingWater(disWorld.normalized);
             }
         }
         else
@@ -148,7 +147,7 @@ public class  FarmInputController : MonoBehaviour
             if (isSoil)
             {
                 targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
-                Debug.Log($"Water: facing target | cell: {targetCellWater} | facing direction: {playerMovement.FacingDirection}");
+             //   Debug.Log($"Water: facing target | cell: {targetCellWater} | facing direction: {playerMovement.FacingDirection}");
                 playerMovement.UsingWater(playerMovement.FacingDirection);
             }
         }
