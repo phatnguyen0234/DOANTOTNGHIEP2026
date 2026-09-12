@@ -24,6 +24,8 @@ public class  FarmInputController : MonoBehaviour
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
 
+    public static bool isWater { get; set; }
+
     public FarmTool CurrentTool { get; private set; }
 
     private void Update()
@@ -137,6 +139,7 @@ public class  FarmInputController : MonoBehaviour
         { 
             if (isSoil)
             {
+                isWater = true;
                 targetCellWater = posCell;
                // Debug.Log($"Water: mouse target | cell: {targetCellWater} | direction: {direction.normalized}");
                 playerMovement.UsingWater(disWorld.normalized);
@@ -146,6 +149,7 @@ public class  FarmInputController : MonoBehaviour
         {
             if (isSoil)
             {
+                isWater = true;
                 targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
              //   Debug.Log($"Water: facing target | cell: {targetCellWater} | facing direction: {playerMovement.FacingDirection}");
                 playerMovement.UsingWater(playerMovement.FacingDirection);
