@@ -7,7 +7,9 @@ public class CropTile : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private TileBase driedSoil;
-    private int currentGrowthStage = 0;
+    public int currentGrowthStage = 0;
+    public bool isWatered { get; set; } = false;
+    public bool isHavest { get; set; } = false;
 
     private void Awake()
     {
@@ -26,15 +28,24 @@ public class CropTile : MonoBehaviour
 
     private void OnNewDay()
     {
-        if (currentGrowthStage > cropData.maxStage - 1) return;
-        if (FarmInputController.isWater)
+        if (currentGrowthStage == cropData.maxStage - 1)
+        {
+            isHavest = true;
+            return;
+        }
+        if (isWatered)
         {
             currentGrowthStage++;
-            Debug.Log(currentGrowthStage);
-            spriteRenderer.sprite = cropData.stageSprites[currentGrowthStage];
+            UpdateSprite(currentGrowthStage);
             Vector3Int cell = groundTileMap.WorldToCell(transform.position);
             groundTileMap.SetTile(cell, driedSoil);
-            FarmInputController.isWater = false;
+            isWatered = false;
         }
+    }
+
+    public void UpdateSprite(int step)
+    {
+        Debug.Log(step);
+        spriteRenderer.sprite = cropData.stageSprites[step];
     }
 }

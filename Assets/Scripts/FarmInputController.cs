@@ -18,13 +18,15 @@ public class  FarmInputController : MonoBehaviour
     [SerializeField] private TileBase redTile;
     [SerializeField] private GameObject cropPrefab;
     [SerializeField] private CropData cropData;
+    [SerializeField] private CropTile cropTile;
 
     Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
 
     private Vector3Int targetCellHoe;
+
     private Vector3Int targetCellWater;
 
-    public static bool isWater { get; set; }
+    
 
     public FarmTool CurrentTool { get; private set; }
 
@@ -58,9 +60,9 @@ public class  FarmInputController : MonoBehaviour
             case FarmTool.Water:
                 Water();
                 break;
-                //case FarmTool.Harvest:
-                //    Harvest();
-                //    break;
+            case FarmTool.Harvest:
+                Harvest();
+                break;
         }
     }
 
@@ -134,26 +136,52 @@ public class  FarmInputController : MonoBehaviour
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = posCell - playerCell;
         Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
-        bool isSoil = groundTileMap.GetTile(posCell) == soilTile;
+        
+        Vector3 targetWorldWater;
         if (CheckDistance(distance))
-        { 
-            if (isSoil)
-            {
-                isWater = true;
-                targetCellWater = posCell;
-               // Debug.Log($"Water: mouse target | cell: {targetCellWater} | direction: {direction.normalized}");
-                playerMovement.UsingWater(disWorld.normalized);
-            }
+        {
+            targetCellWater = posCell;
+            targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
         }
         else
         {
-            if (isSoil)
+            targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
+            targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero);
+        bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
+        if (isSoil)
+        {
+             if(hit.collider != null)
+             {
+                 CropTile crop = hit.collider.GetComponent<CropTile>();
+                 crop.isWatered = true;
+                 if(CheckDistance(distance)) playerMovement.UsingWater(disWorld);
+                 else playerMovement.UsingWater(playerMovement.FacingDirection);
+             }
+        }
+    }
+
+    public void Harvest()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0;
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        bool isSoil = groundTileMap.GetTile(mouseCell) == soilTile;
+        if (CheckDistance(distance) && isSoil)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(groundTileMap.GetCellCenterWorld(mouseCell), Vector2.zero);
+            if (hit.collider != null)
             {
-                isWater = true;
-                targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
-             //   Debug.Log($"Water: facing target | cell: {targetCellWater} | facing direction: {playerMovement.FacingDirection}");
-                playerMovement.UsingWater(playerMovement.FacingDirection);
-            }
+                CropTile cropTile = hit.collider.GetComponent<CropTile>();
+                if (cropTile.isHavest)
+                {
+                    cropTile.UpdateSprite(cropTile.currentGrowthStage + 1);
+                    Destroy(hit.collider.gameObject, 0.1f);
+                }
+            } 
         }
     }
 
