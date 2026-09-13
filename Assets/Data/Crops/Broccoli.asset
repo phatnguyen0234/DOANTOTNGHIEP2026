@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
   m_Name: Broccoli
   m_EditorClassIdentifier: Assembly-CSharp::CropData
-  id: 
-  cropName: 
-  seedPrice: 0
-  sellPrice: 0
-  growthTime: 0
-  maxStage: 0
+  id: 003
+  cropName: Broccoli
+  growthTime: 90
+  maxStage: 5
+  stageSprites:
+  - {fileID: -918663293682559355, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: 532733227651321159, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: 6952506519391513210, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: 4882106395590286939, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: -4519086435122091989, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
