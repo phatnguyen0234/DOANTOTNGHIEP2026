@@ -1,4 +1,5 @@
 using System;
+using Unity.Jobs;
 using UnityEngine;  
 
 public class PlayerMovement : MonoBehaviour
@@ -6,22 +7,69 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
-  //  [SerializeField] private SpriteRenderer spriteRenderer;
-    Vector2 lastDirection;
+    Vector2 lastDirection = Vector2.down;
+    public Vector2 FacingDirection => lastDirection;
+    public bool isUsingHoe = false;
+    public bool isUsingWater = false;
     Vector2 moveDirection;
-    private void Update()
-    {
-        Move();
-    }
+    [SerializeField] FarmInputController controller;
 
-    private void Move()
+    // Update is called once per frame
+    void Update()
     {
+        if (isUsingHoe) return;
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(x, y).normalized;
      
         UpdateAnimation();
+    }
+
+    public bool TryUseHoe(Vector2 requestFaceDirection)
+    {
+        if (isUsingHoe) return false;
+        
+        if(requestFaceDirection != Vector2.zero)
+        {
+            lastDirection = requestFaceDirection.normalized;
+        }
+        isUsingHoe = true;
+        moveDirection = Vector2.zero;
+
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0f);
+        anim.SetTrigger("UseHoe");
+        return true;
+    }
+
+    public void OnHoeAnimationComplete()
+    {
+        isUsingHoe = false;
+        controller.OnHoeAnimationComplete();
+    }
+
+    public void UsingWater(Vector2 requestFaceDirection)
+    {
+        if (isUsingWater) return;
+
+        if (requestFaceDirection != Vector2.zero)
+        {
+            lastDirection = requestFaceDirection.normalized;
+        }
+        isUsingWater = true;
+        moveDirection = Vector2.zero;
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0f);
+        anim.SetTrigger("UseWater");
+    }
+
+    public void OnWaterAnimationComplete()
+    {
+        isUsingWater = false;
+        controller.OnWaterAnimationComplete();
     }
 
     private void UpdateAnimation()
@@ -38,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isUsingHoe) return;
+
         Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(movePosition);
     }

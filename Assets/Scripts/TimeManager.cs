@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using System;
+<<<<<<< HEAD
 
 public enum Season
 {
@@ -10,6 +11,8 @@ public enum Season
     Autumn,
     Winter
 }
+=======
+>>>>>>> origin/main
 
 public class TimeManager : MonoBehaviour
 {
@@ -28,13 +31,14 @@ public class TimeManager : MonoBehaviour
     public Light2D globalLight;
     public Gradient lightColor;
     public AnimationCurve lightIntensity;
-    [Header("Farming")]
-    [SerializeField] private FarmManager farmManager;
+    
+    public event Action onNewDay; 
+    public static TimeManager Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -46,6 +50,7 @@ public class TimeManager : MonoBehaviour
             currentHour = 0f;
             HandleNewDay(); // --> chuyen HandleNewDay() cua ae xuong duoi
             //Them event ngay moi o day
+            onNewDay?.Invoke();
         }
         UpdateClockUI();
         UpdateLighting();
@@ -81,8 +86,8 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateClockUI()
     {
-        if(clockHandImage == null || clockHandSprites.Length == 0) return;
-        
+        if (clockHandImage == null || clockHandSprites.Length == 0) return;
+
         float dayProgress = currentHour / 24f;
 
         int spriteIndex = Mathf.FloorToInt(dayProgress * clockHandSprites.Length);
@@ -92,7 +97,7 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateLighting()
     {
-        if(globalLight == null) return;
+        if (globalLight == null) return;
 
         float dayProgress = currentHour / 24f;
 
