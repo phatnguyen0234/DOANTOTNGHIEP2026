@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Spring Waterfall
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: -3158448839633499714, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 4009921310096476544, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -4008867634804540346, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 8049664647735394688, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -3799331635201954954, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 7276633897926659244, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -7665953280232274632, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -3849443030704412983, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -4968522811133451213, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -4361407491973593873, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -878324838, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 308674141, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -321649719, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 1401086731, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: -121666450, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  - {fileID: 1198887128, guid: e09bccba9a0201a4ab7f2184737bf5ee, type: 3}
+  m_MinSpeed: 3
+  m_MaxSpeed: 5
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
+  m_TileAnimationFlags: 0
