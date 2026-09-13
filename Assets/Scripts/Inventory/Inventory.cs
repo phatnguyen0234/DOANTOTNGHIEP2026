@@ -13,6 +13,13 @@ public class Inventory : MonoBehaviour
     [Tooltip("Danh sách các ô chứa trong Inventory.")]
     [SerializeField] private List<InventorySlot> slots = new List<InventorySlot>();
 
+    [Header("Bag UI Settings")]
+    [Tooltip("Phím tắt để bật/tắt hiển thị túi đồ (Mặc định: Escape).")]
+    [SerializeField] private KeyCode toggleBagKey = KeyCode.Escape;
+
+    [Tooltip("Tham chiếu tới UI quản lý túi đồ (tự động tìm kiếm nếu để trống).")]
+    [SerializeField] private InventoryUI inventoryUI;
+
     // Sự kiện được kích hoạt mỗi khi trạng thái kho đồ thay đổi (thêm, xóa, stack, clear item).
     // UI hoặc các hệ thống khác sẽ đăng ký lắng nghe sự kiện này để cập nhật tương ứng.
     public event Action OnInventoryChanged;
@@ -21,6 +28,8 @@ public class Inventory : MonoBehaviour
 
     public int Capacity => capacity;
     public IReadOnlyList<InventorySlot> Slots => slots;
+    public bool IsBagOpen => inventoryUI != null && inventoryUI.IsOpen;
+    public InventoryUI InventoryUI => inventoryUI;
 
     #endregion
 
@@ -29,6 +38,28 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         InitializeSlots();
+        ResolveUI();
+    }
+
+    private void Start()
+    {
+        ResolveUI();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(toggleBagKey))
+        {
+            ToggleBag();
+        }
+    }
+
+    private void ResolveUI()
+    {
+        if (inventoryUI == null)
+        {
+            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        }
     }
 
     private void OnValidate()
@@ -426,6 +457,56 @@ public class Inventory : MonoBehaviour
         slots[indexA].SwapWith(slots[indexB]);
         OnInventoryChanged?.Invoke();
         return true;
+    }
+
+    #endregion
+
+    #region Bag UI Control
+
+    // Bật/tắt hiển thị giao diện túi đồ (UI Inventory Bag)
+    public void ToggleBag()
+    {
+        if (inventoryUI == null)
+        {
+            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        }
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.ToggleBag();
+        }
+        else
+        {
+            Debug.LogWarning("[Inventory] Không tìm thấy Component InventoryUI trong Scene!", this);
+        }
+    }
+
+    // Mở giao diện túi đồ
+    public void OpenBag()
+    {
+        if (inventoryUI == null)
+        {
+            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        }
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.OpenBag();
+        }
+    }
+
+    // Đóng giao diện túi đồ
+    public void CloseBag()
+    {
+        if (inventoryUI == null)
+        {
+            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        }
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.CloseBag();
+        }
     }
 
     #endregion

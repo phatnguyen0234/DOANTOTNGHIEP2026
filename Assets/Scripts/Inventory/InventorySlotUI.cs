@@ -43,6 +43,19 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         EnsureActive();
     }
 
+    private void OnDisable()
+    {
+        if (isDragging)
+        {
+            isDragging = false;
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.blocksRaycasts = true;
+            }
+        }
+    }
+
     // Thiết lập chỉ số slot và tham chiếu tới InventoryUI cha.
     public void Setup(int index, InventoryUI ui = null)
     {

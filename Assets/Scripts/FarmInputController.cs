@@ -29,6 +29,9 @@ public class FarmInputController : MonoBehaviour
     [Tooltip("Tham chiếu tới FarmManager để xử lý logic đất/cây.")]
     [SerializeField] private FarmManager farmManager;
 
+    [Tooltip("Tham chiếu tới UI quản lý túi đồ.")]
+    [SerializeField] private InventoryUI inventoryUI;
+
     [Header("Interaction Settings")]
     [Tooltip("Khoảng cách tối đa (đơn vị world) mà người chơi có thể tương tác với ô đất.")]
     [SerializeField] private float maxInteractDistance = 2.5f;
@@ -96,10 +99,29 @@ public class FarmInputController : MonoBehaviour
         {
             groundTileMap = FindAnyObjectByType<Tilemap>();
         }
+
+        if (inventoryUI == null)
+        {
+            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        }
+    }
+
+    // Kiểm tra trạng thái mở/đóng của túi đồ
+    public bool IsBagOpen()
+    {
+        if (inventoryUI != null && inventoryUI.IsOpen) return true;
+        if (inventory != null && inventory.IsBagOpen) return true;
+        return false;
     }
 
     private void Update()
     {
+        // Nếu túi đồ đang mở, chặn toàn bộ tương tác nông trại
+        if (IsBagOpen())
+        {
+            return;
+        }
+
         // Kiểm tra phím Click chuột phải (RMB - Right Mouse Button)
         if (Input.GetMouseButtonDown(1))
         {
