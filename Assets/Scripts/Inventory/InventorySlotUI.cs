@@ -136,9 +136,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     {
         EnsureActive();
 
-        // ----------------------------------------------------
         // TRƯỜNG HỢP 1: Ô RỖNG (Empty Slot / Không có vật phẩm)
-        // ----------------------------------------------------
         if (slot == null || slot.IsEmpty())
         {
             if (iconImage != null)
@@ -155,9 +153,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             return;
         }
 
-        // ----------------------------------------------------
         // TRƯỜNG HỢP 2: Ô CÓ CHỨA ITEM (Có dữ liệu)
-        // ----------------------------------------------------
         if (iconImage != null)
         {
             iconImage.sprite = slot.ItemData.Icon;

@@ -23,6 +23,16 @@ public class ItemData : ScriptableObject
     [Tooltip("Loại Item (Seed, Crop, Tool, Resource,...).")]
     [SerializeField] private ItemType itemType;
 
+    [Header("Tool & Farming Action Settings")]
+    [Tooltip("Loại công cụ / hành vi tương tác khi sử dụng item này (Cuốc, Xẻng, Búa, Bình tưới, Hạt giống,...).")]
+    [SerializeField] private ToolType toolType = ToolType.None;
+
+    [Tooltip("ID của loại cây trồng tương ứng (dùng khi ItemType là Seed hoặc ToolType là SeedBag).")]
+    [SerializeField] private string cropId = "Carrot";
+
+    [Tooltip("Tên Trigger Animator tùy chỉnh để chạy animation khi sử dụng (để trống sẽ dùng mặc định theo ToolType).")]
+    [SerializeField] private string animationTrigger = "";
+
     [Header("Stack & Economy")]
     [Tooltip("Số lượng tối đa có thể xếp chồng trong một ô (Tối thiểu là 1).")]
     [SerializeField, Min(1)] private int maxStack = 99;
@@ -43,6 +53,9 @@ public class ItemData : ScriptableObject
     public string Description => description;
     public Sprite Icon => icon;
     public ItemType ItemType => itemType;
+    public ToolType ToolType => toolType;
+    public string CropId => cropId;
+    public string AnimationTrigger => animationTrigger;
     public int MaxStack => maxStack;
     public int BuyPrice => buyPrice;
     public int SellPrice => sellPrice;

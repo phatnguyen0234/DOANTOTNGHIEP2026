@@ -14,30 +14,35 @@ public class InventoryTester : MonoBehaviour
     [Header("Item Test Data Assets")]
     [SerializeField] private ItemData dog;
     [SerializeField] private ItemData chicken;
+    [SerializeField] private ItemData hoe;
+    [SerializeField] private ItemData seed;
+    [SerializeField] private ItemData shovel;
+    [SerializeField] private ItemData hammer;
+    [SerializeField] private ItemData wateringCan;
 
     private void Awake()
     {
         // Tự động tìm kiếm nếu chưa gán tham chiếu trong Inspector
         if (inventory == null)
         {
-            inventory = FindFirstObjectByType<Inventory>();
+            inventory = FindAnyObjectByType<Inventory>();
         }
 
         if (hotbarController == null)
         {
-            hotbarController = FindFirstObjectByType<HotbarController>();
+            hotbarController = FindAnyObjectByType<HotbarController>();
         }
     }
 
     private void Update()
     {
-        // Nhấn phím Q: Thêm 10 Dog vào ô đang Active
+        // Nhấn phím Q: Thêm Dog vào ô đang Active
         if (Input.GetKeyDown(KeyCode.Q))
         {
             AddDog();
         }
 
-        // Nhấn phím W: Thêm 5 Chicken vào ô đang Active
+        // Nhấn phím W: Thêm Chicken vào ô đang Active
         if (Input.GetKeyDown(KeyCode.W))
         {
             AddChicken();
@@ -49,18 +54,6 @@ public class InventoryTester : MonoBehaviour
             RemoveFromActiveSlot(5);
         }
 
-        // Nhấn phím T: Thêm 90 Dog vào ô đang Active (Kiểm tra Stack)
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddDog();
-        }
-
-        // Nhấn phím Y: Xóa 25 Item từ ô đang Active
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            RemoveFromActiveSlot(25);
-        }
-
         // Nhấn phím U: Xóa sạch ô đang Active
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -70,35 +63,52 @@ public class InventoryTester : MonoBehaviour
 
     #region Context Menu & Public Test Actions
 
-    [ContextMenu("Q. Add Dog x10 to Active Slot")]
+    [ContextMenu("Q. Add Dog x1 to Active Slot")]
     public void AddDog()
     {
         ExecuteAddItemToActiveSlot(dog, 1);
     }
 
-    [ContextMenu("W. Add Chicken x5 to Active Slot")]
+    [ContextMenu("W. Add Chicken x1 to Active Slot")]
     public void AddChicken()
     {
         ExecuteAddItemToActiveSlot(chicken, 1);
     }
 
+    [ContextMenu("Tools/Add Hoe to Active Slot")]
+    public void AddHoe()
+    {
+        ExecuteAddItemToActiveSlot(hoe, 1);
+    }
+
+    [ContextMenu("Tools/Add Seed x10 to Active Slot")]
+    public void AddSeed()
+    {
+        ExecuteAddItemToActiveSlot(seed, 10);
+    }
+
+    [ContextMenu("Tools/Add Watering Can to Active Slot")]
+    public void AddWateringCan()
+    {
+        ExecuteAddItemToActiveSlot(wateringCan, 1);
+    }
+
+    [ContextMenu("Tools/Add Shovel to Active Slot")]
+    public void AddShovel()
+    {
+        ExecuteAddItemToActiveSlot(shovel, 1);
+    }
+
+    [ContextMenu("Tools/Add Hammer to Active Slot")]
+    public void AddHammer()
+    {
+        ExecuteAddItemToActiveSlot(hammer, 1);
+    }
 
     [ContextMenu("R. Remove 5 Items from Active Slot")]
     public void RemoveDog()
     {
         RemoveFromActiveSlot(5);
-    }
-
-    [ContextMenu("T. Add Dog x1 (Stack Test) to Active Slot")]
-    public void AddLargeDogStack()
-    {
-        ExecuteAddItemToActiveSlot(dog, 1);
-    }
-
-    [ContextMenu("Y. Remove 25 Items from Active Slot")]
-    public void RemoveLargeDog()
-    {
-        RemoveFromActiveSlot(25);
     }
 
     [ContextMenu("U. Clear Active Slot")]

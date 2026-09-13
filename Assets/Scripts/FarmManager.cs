@@ -119,19 +119,68 @@ public class FarmManager : MonoBehaviour
 
     public bool Plant(Vector3Int position, out string message)
     {
+        return Plant(position, defaultCropId, defaultDaysToMature, out message);
+    }
+
+    public bool Plant(Vector3Int position, string cropIdToPlant, out string message)
+    {
+        return Plant(position, cropIdToPlant, defaultDaysToMature, out message);
+    }
+
+    public bool Plant(Vector3Int position, string cropIdToPlant, int daysToMature, out string message)
+    {
         if (!CanPlant(position, out message))
             return false;
 
         FarmCell cell = GetCell(position);
 
+        string chosenCropId = !string.IsNullOrEmpty(cropIdToPlant) ? cropIdToPlant : defaultCropId;
+        int chosenDays = daysToMature > 0 ? daysToMature : defaultDaysToMature;
+
         cell.state = FarmCellState.Seeded;
-        cell.cropId = defaultCropId;
+        cell.cropId = chosenCropId;
         cell.growthDays = 0;
-        cell.daysToMature = defaultDaysToMature;
+        cell.daysToMature = chosenDays;
         cell.wateredToday = false;
         RefreshCellVisual(cell);
 
-        message = "Đã gieo " + defaultCropId + ".";
+        message = "Đã gieo " + chosenCropId + ".";
+        return true;
+    }
+
+    public bool CanRemoveSoil(Vector3Int position, out string message)
+    {
+        if (!IsFarmableGround(position))
+        {
+            message = "Không thể tác động ở đây.";
+            return false;
+        }
+
+        FarmCell cell = GetCell(position);
+        if (cell == null || cell.state == FarmCellState.Empty)
+        {
+            message = "Ô đất này chưa được cuốc.";
+            return false;
+        }
+
+        message = "Có thể san phẳng / dọn đất.";
+        return true;
+    }
+
+    public bool RemoveSoil(Vector3Int position, out string message)
+    {
+        if (!CanRemoveSoil(position, out message))
+            return false;
+
+        FarmCell cell = GetCell(position);
+        cell.state = FarmCellState.Empty;
+        cell.wateredToday = false;
+        cell.growthDays = 0;
+        cell.daysToMature = 0;
+        cell.cropId = string.Empty;
+
+        RefreshCellVisual(cell);
+        message = "Đã dọn dẹp ô đất về trạng thái ban đầu.";
         return true;
     }
 

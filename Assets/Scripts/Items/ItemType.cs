@@ -12,3 +12,16 @@ public enum ItemType
     Material,
     Quest
 }
+
+// Định nghĩa các loại công cụ và hành vi tương tác của vật phẩm trong game Farming.
+public enum ToolType
+{
+    None,
+    Hoe,         // Cuốc đất
+    Shovel,      // Xẻng: đào cây, hoàn trả ô đất
+    Hammer,      // Búa: đập đá, san phẳng ô đất
+    WateringCan, // Bình tưới nước
+    SeedBag,     // Hạt giống / Gieo trồng
+    Harvest      // Thu hoạch
+}
+
