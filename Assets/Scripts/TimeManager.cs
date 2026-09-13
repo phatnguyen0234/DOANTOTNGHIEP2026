@@ -1,12 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using System;
+
+public enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter
+}
 
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
     public float currentHour = 12f;
     public float timeSpeed = 1f;
+    public int currentDay = 1;
+    public int daysPerSeason = 30;
+    public Season currentSeason = Season.Spring;
+
+    public static Action<Season> OnSeasonChanged;
 
     [Header("Sprite and Lighting Settings")]
     public Image clockHandImage;
@@ -30,14 +44,39 @@ public class TimeManager : MonoBehaviour
         if (currentHour >= 24f)
         {
             currentHour = 0f;
-            if (farmManager != null)
-            {
-                farmManager.HandleNewDay();
-            }
+            HandleNewDay(); // --> chuyen HandleNewDay() cua ae xuong duoi
             //Them event ngay moi o day
         }
         UpdateClockUI();
         UpdateLighting();
+    }
+    private void HandleNewDay()
+    {
+        currentDay++;
+        if (currentDay > daysPerSeason)
+        {
+            currentDay = 1;
+            AdvanceToNextSeason();
+        }
+
+        if (farmManager != null)
+        {
+            farmManager.HandleNewDay(); // "chuyen phan goi farmManager.HandleNewDay() o day"
+        }
+    }
+
+    private void AdvanceToNextSeason()
+    {
+        if (currentSeason == Season.Winter)
+        {
+            currentSeason = Season.Spring;
+        }
+        else
+        {
+            currentSeason++;
+        }
+
+        OnSeasonChanged?.Invoke(currentSeason); // thong bao su kien thay doi mua
     }
 
     private void UpdateClockUI()
