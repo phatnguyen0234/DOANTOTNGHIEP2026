@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Hoe
+  m_Name: BubbleBerry
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: hoe
-  itemName: "Cu\u1ED1c (Hoe)"
-  description: "D\xF9ng \u0111\u1EC3 x\u1EDBi \u0111\u1EA5t chu\u1EA9n b\u1ECB gieo tr\u1ED3ng."
-  icon: {fileID: -3190335049457495340, guid: e16a4be7ea443e94c84c09ab41d960af, type: 3}
-  itemType: 5
-  toolType: 1
-  cropId: Carrot
-  cropData: {fileID: 0}
+  itemID: newitemdata
+  itemName: 
+  description: 
+  icon: {fileID: 8849037320410730604, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
+  itemType: 0
+  toolType: 0
+  cropId: Blueberry
+  cropData: {fileID: 11400000, guid: 92c44e8e663ea794a9b093f6ad8f81a4, type: 2}
   animationTrigger: 
-  maxStack: 1
-  buyPrice: 50
-  sellPrice: 20
+  maxStack: 99
+  buyPrice: 0
+  sellPrice: 0
   canSell: 1

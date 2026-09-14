@@ -165428,17 +165428,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmInputController
   groundTileMap: {fileID: 2144305081}
-  mainCamera: {fileID: 519420031}
-  playerMovement: {fileID: 1202959756}
-  player: {fileID: 1202959759}
   highlightTileMap: {fileID: 1604075186}
   soilTile: {fileID: 11400000, guid: 8452640a2c749914d88d6aabb12b3460, type: 2}
   soilWetTile: {fileID: 11400000, guid: 8063f94802bc6084fb9fbc2bb08f2edd, type: 2}
   greenTile: {fileID: 11400000, guid: 5ade1ed00a064e049b0aeac0035bfa11, type: 2}
   redTile: {fileID: 11400000, guid: ca0af4b08b17e6c42b851748ebf90abb, type: 2}
+  mainCamera: {fileID: 519420031}
+  playerMovement: {fileID: 1202959756}
+  player: {fileID: 1202959759}
   cropPrefab: {fileID: 8859241462544003789, guid: e0b1e0dc1f29e364e9f2d49c3796d1ce, type: 3}
   cropData: {fileID: 11400000, guid: 7c1eda7e699d9254e82c447854759091, type: 2}
   cropTile: {fileID: -7729684027834450856, guid: e0b1e0dc1f29e364e9f2d49c3796d1ce, type: 3}
+  inventory: {fileID: 1792196860}
+  hotbarController: {fileID: 1483869549}
 --- !u!4 &746601131
 Transform:
   m_ObjectHideFlags: 0
@@ -173166,10 +173168,10 @@ MonoBehaviour:
   dog: {fileID: 11400000, guid: 86b5e1f16e15c5b4394ada11a467d783, type: 2}
   chicken: {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
   hoe: {fileID: 0}
-  seed: {fileID: 0}
+  seed: {fileID: 11400000, guid: 019eaa7e607a1774c8fc2f14f898e56e, type: 2}
   shovel: {fileID: 0}
   hammer: {fileID: 0}
-  wateringCan: {fileID: 0}
+  wateringCan: {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
 --- !u!4 &1793276145
 Transform:
   m_ObjectHideFlags: 0
@@ -232066,5 +232068,5 @@ SceneRoots:
   - {fileID: 1617515581}
   - {fileID: 746601131}
   - {fileID: 1792196861}
-  - {fileID: 1793276145}
   - {fileID: 968063313}
+  - {fileID: 1793276145}

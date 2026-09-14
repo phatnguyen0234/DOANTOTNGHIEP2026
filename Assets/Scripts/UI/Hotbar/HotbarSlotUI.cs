@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // Quản lý hiển thị trực quan của một ô Hotbar đơn lẻ.
 // Đảm bảo tất cả các GameObject/Component con luôn ở trạng thái Active khi runtime.
 // Riêng ActiveImage chỉ được Active và Enabled khi ô đó đang được chọn (Selected).
-public class HotbarSlotUI : MonoBehaviour
+public class HotbarSlotUI : MonoBehaviour, IPointerClickHandler
 {
     [Header("UI Bindings")]
     [Tooltip("Image hiển thị Icon của Item.")]
@@ -130,6 +131,19 @@ public class HotbarSlotUI : MonoBehaviour
                 activeImage.gameObject.SetActive(selected);
             }
             activeImage.enabled = selected;
+        }
+    }
+
+    // Xử lý khi người chơi click chuột vào ô Hotbar này để chọn
+    public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (slotIndex >= 0)
+        {
+            HotbarController controller = FindAnyObjectByType<HotbarController>();
+            if (controller != null)
+            {
+                controller.SelectSlot(slotIndex);
+            }
         }
     }
 }

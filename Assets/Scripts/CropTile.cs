@@ -11,41 +11,92 @@ public class CropTile : MonoBehaviour
     public bool isWatered { get; set; } = false;
     public bool isHavest { get; set; } = false;
 
+    public CropData CropData => cropData;
+
     private void Awake()
     {
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         GameObject ground = GameObject.FindWithTag("Ground");
-        groundTileMap = ground.GetComponent<Tilemap>();
+        if (ground != null)
+        {
+            groundTileMap = ground.GetComponent<Tilemap>();
+        }
     }
+
+    public void Init(CropData data)
+    {
+        if (data != null)
+        {
+            cropData = data;
+            currentGrowthStage = 0;
+            isWatered = false;
+            isHavest = false;
+            if (spriteRenderer == null)
+            {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            }
+            UpdateSprite(0);
+        }
+    }
+
     private void OnEnable()
     {
-        TimeManager.Instance.onNewDay += OnNewDay;
+        if (TimeManager.Instance != null)
+        {
+            TimeManager.Instance.onNewDay += OnNewDay;
+        }
     }
 
     private void OnDisable()
     {
-        TimeManager.Instance.onNewDay -= OnNewDay;
+        if (TimeManager.Instance != null)
+        {
+            TimeManager.Instance.onNewDay -= OnNewDay;
+        }
     }
 
     private void OnNewDay()
     {
-        if (currentGrowthStage == cropData.maxStage - 1)
+        if (cropData == null) return;
+
+        if (currentGrowthStage >= cropData.maxStage - 1)
         {
             isHavest = true;
             return;
         }
+
         if (isWatered)
         {
             currentGrowthStage++;
             UpdateSprite(currentGrowthStage);
-            Vector3Int cell = groundTileMap.WorldToCell(transform.position);
-            groundTileMap.SetTile(cell, driedSoil);
+
+            if (groundTileMap != null && driedSoil != null)
+            {
+                Vector3Int cell = groundTileMap.WorldToCell(transform.position);
+                groundTileMap.SetTile(cell, driedSoil);
+            }
+
             isWatered = false;
+
+            if (currentGrowthStage >= cropData.maxStage - 1)
+            {
+                isHavest = true;
+            }
         }
     }
 
     public void UpdateSprite(int step)
     {
-        Debug.Log(step);
-        spriteRenderer.sprite = cropData.stageSprites[step];
+        if (cropData == null || cropData.stageSprites == null || cropData.stageSprites.Length == 0) return;
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (step >= 0 && step < cropData.stageSprites.Length)
+        {
+            spriteRenderer.sprite = cropData.stageSprites[step];
+        }
     }
 }

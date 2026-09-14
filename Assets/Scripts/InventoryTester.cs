@@ -32,6 +32,33 @@ public class InventoryTester : MonoBehaviour
         {
             hotbarController = FindAnyObjectByType<HotbarController>();
         }
+
+        ResolveItems();
+    }
+
+    private void Start()
+    {
+        ResolveItems();
+    }
+
+    private void ResolveItems()
+    {
+        if (hoe == null || seed == null || wateringCan == null || dog == null || chicken == null)
+        {
+            ItemData[] allItems = Resources.FindObjectsOfTypeAll<ItemData>();
+            foreach (var item in allItems)
+            {
+                if (item == null) continue;
+                string id = item.ItemID != null ? item.ItemID.ToLower() : "";
+                string name = item.name.ToLower();
+
+                if (hoe == null && (item.ToolType == ToolType.Hoe || id.Contains("hoe") || name.Contains("hoe"))) hoe = item;
+                if (wateringCan == null && (item.ToolType == ToolType.WateringCan || id.Contains("water") || name.Contains("water"))) wateringCan = item;
+                if (seed == null && (item.ItemType == ItemType.Seed || id.Contains("seed") || name.Contains("seed"))) seed = item;
+                if (dog == null && (id.Contains("dog") || name.Contains("dog"))) dog = item;
+                if (chicken == null && (id.Contains("chicken") || name.Contains("chicken"))) chicken = item;
+            }
+        }
     }
 
     private void Update()
@@ -46,6 +73,24 @@ public class InventoryTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             AddChicken();
+        }
+
+        // Nhấn phím E: Thêm Hoe vào ô đang Active
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AddHoe();
+        }
+
+        // Nhấn phím T: Thêm Watering Can vào ô đang Active
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AddWateringCan();
+        }
+
+        // Nhấn phím Y: Thêm 10 Seed vào ô đang Active
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            AddSeed();
         }
 
         // Nhấn phím R: Xóa 5 Item từ ô đang Active

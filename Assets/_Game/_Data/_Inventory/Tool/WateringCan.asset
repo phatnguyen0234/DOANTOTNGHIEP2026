@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Hoe
+  m_Name: WateringCan
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: hoe
-  itemName: "Cu\u1ED1c (Hoe)"
-  description: "D\xF9ng \u0111\u1EC3 x\u1EDBi \u0111\u1EA5t chu\u1EA9n b\u1ECB gieo tr\u1ED3ng."
-  icon: {fileID: -3190335049457495340, guid: e16a4be7ea443e94c84c09ab41d960af, type: 3}
+  itemID: watering_can
+  itemName: "B\xECnh T\u01B0\u1EDBi (Watering Can)"
+  description: "D\xF9ng \u0111\u1EC3 t\u01B0\u1EDBi n\u01B0\u1EDBc cho \u0111\u1EA5t
+    v\xE0 c\xE2y tr\u1ED3ng."
+  icon: {fileID: -720151078975379389, guid: 6e9a12adb808d36489918461a5a2cead, type: 3}
   itemType: 5
-  toolType: 1
-  cropId: Carrot
+  toolType: 4
+  cropId: waterCan
   cropData: {fileID: 0}
   animationTrigger: 
   maxStack: 1
-  buyPrice: 50
-  sellPrice: 20
+  buyPrice: 60
+  sellPrice: 25
   canSell: 1

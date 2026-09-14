@@ -30,6 +30,9 @@ public class ItemData : ScriptableObject
     [Tooltip("ID của loại cây trồng tương ứng (dùng khi ItemType là Seed hoặc ToolType là SeedBag).")]
     [SerializeField] private string cropId = "Carrot";
 
+    [Tooltip("Dữ liệu CropData tương ứng để gieo trồng và phát triển cây.")]
+    [SerializeField] private CropData cropData;
+
     [Tooltip("Tên Trigger Animator tùy chỉnh để chạy animation khi sử dụng (để trống sẽ dùng mặc định theo ToolType).")]
     [SerializeField] private string animationTrigger = "";
 
@@ -55,11 +58,16 @@ public class ItemData : ScriptableObject
     public ItemType ItemType => itemType;
     public ToolType ToolType => toolType;
     public string CropId => cropId;
+    public CropData CropData => cropData;
     public string AnimationTrigger => animationTrigger;
     public int MaxStack => maxStack;
     public int BuyPrice => buyPrice;
     public int SellPrice => sellPrice;
     public bool CanSell => canSell;
+
+    public bool IsTool => itemType == ItemType.Tool;
+    public bool IsSeed => itemType == ItemType.Seed || toolType == ToolType.SeedBag;
+    public bool IsCrop => itemType == ItemType.Crop;
 
     #endregion
 
