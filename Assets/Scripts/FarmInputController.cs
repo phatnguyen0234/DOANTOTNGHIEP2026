@@ -1,354 +1,234 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
-// Quản lý tương tác giữa người chơi và thế giới nông trại (Farm & World Grid).
-// Lắng nghe thao tác Click chuột phải (RMB) để kích hoạt hành vi của Item đang chọn trên Hotbar (1-9).
-public class FarmInputController : MonoBehaviour
+
+public class  FarmInputController : MonoBehaviour
 {
-    [Header("Tilemap References")]
-    [Tooltip("Tilemap nền đất chính.")]
     [SerializeField] private Tilemap groundTileMap;
-
-    [Tooltip("Tilemap hiển thị đất đã cuốc/nông trại.")]
-    [SerializeField] private Tilemap farmSoildTileMap;
-
-    [Header("Core Dependencies")]
-    [Tooltip("Camera chính dùng để tính toán tọa độ chuột sang World.")]
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Transform player;
+    [SerializeField] private Tilemap highlightTileMap;
+    [SerializeField] private TileBase soilTile;
+    [SerializeField] private TileBase soilWetTile;
+    [SerializeField] private TileBase greenTile;
+    [SerializeField] private TileBase redTile;
+    [SerializeField] private GameObject cropPrefab;
+    [SerializeField] private CropData cropData;
+    [SerializeField] private CropTile cropTile;
 
-    [Tooltip("Transform của nhân vật người chơi.")]
-    [SerializeField] private Transform Player;
+    Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
 
-    [Tooltip("Tham chiếu tới hệ thống Inventory.")]
-    [SerializeField] private Inventory inventory;
+    private Vector3Int targetCellHoe;
 
-    [Tooltip("Tham chiếu tới HotbarController để lấy ô đang active.")]
-    [SerializeField] private HotbarController hotbarController;
+    private Vector3Int targetCellWater;
 
-    [Tooltip("Tham chiếu tới FarmManager để xử lý logic đất/cây.")]
-    [SerializeField] private FarmManager farmManager;
+    
 
-    [Tooltip("Tham chiếu tới UI quản lý túi đồ.")]
-    [SerializeField] private InventoryUI inventoryUI;
-
-    [Header("Interaction Settings")]
-    [Tooltip("Khoảng cách tối đa (đơn vị world) mà người chơi có thể tương tác với ô đất.")]
-    [SerializeField] private float maxInteractDistance = 2.5f;
-
-    [Tooltip("Layer cản trở (nếu cần kiểm tra va chạm).")]
-    [SerializeField] private LayerMask obtacleLayer;
-
-    // Backward-compatibility properties
-    public Vector3Int standCell { get; private set; }
-    public Vector3 standPos { get; private set; }
-    public Vector3Int TargetCell { get; private set; }
-    public bool HasTarget { get; private set; }
     public FarmTool CurrentTool { get; private set; }
-
-    public static readonly Vector3Int[] adjacentCells = new Vector3Int[]
-    {
-        Vector3Int.up,
-        Vector3Int.down,
-        Vector3Int.right,
-        Vector3Int.left
-    };
-
-    private void Awake()
-    {
-        ResolveDependencies();
-    }
-
-    private void Start()
-    {
-        ResolveDependencies();
-    }
-
-    private void ResolveDependencies()
-    {
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main;
-        }
-
-        if (Player == null)
-        {
-            PlayerMovement pm = FindAnyObjectByType<PlayerMovement>();
-            if (pm != null)
-            {
-                Player = pm.transform;
-            }
-        }
-
-        if (inventory == null)
-        {
-            inventory = FindAnyObjectByType<Inventory>();
-        }
-
-        if (hotbarController == null)
-        {
-            hotbarController = FindAnyObjectByType<HotbarController>();
-        }
-
-        if (farmManager == null)
-        {
-            farmManager = FindAnyObjectByType<FarmManager>();
-        }
-
-        if (groundTileMap == null)
-        {
-            groundTileMap = FindAnyObjectByType<Tilemap>();
-        }
-
-        if (inventoryUI == null)
-        {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
-        }
-    }
-
-    // Kiểm tra trạng thái mở/đóng của túi đồ
-    public bool IsBagOpen()
-    {
-        if (inventoryUI != null && inventoryUI.IsOpen) return true;
-        if (inventory != null && inventory.IsBagOpen) return true;
-        return false;
-    }
 
     private void Update()
     {
-        // Nếu túi đồ đang mở, chặn toàn bộ tương tác nông trại
-        if (IsBagOpen())
-        {
-            return;
-        }
-
-        // Kiểm tra phím Click chuột phải (RMB - Right Mouse Button)
-        if (Input.GetMouseButtonDown(1))
-        {
-            HandleRightClickInteraction();
-        }
+        SelectTool();
+        if(CurrentTool == FarmTool.Seed) HighLight(); 
+        else highlightTileMap.ClearAllTiles();
+        Use();
     }
-
-    // Xử lý tương tác khi người chơi nhấp chuột phải vào thế giới game
-    private void HandleRightClickInteraction()
-    {
-        // 1. Kiểm tra nếu con trỏ đang nằm trên UI (Inventory, Hotbar, Menu...) thì bỏ qua
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-
-        if (groundTileMap == null)
-        {
-            Debug.LogError("[FarmInputController] Chưa gán groundTileMap!", this);
-            return;
-        }
-
-        // 2. Chuyển đổi vị trí con trỏ chuột sang tọa độ thế giới (World Position)
-        Camera cam = mainCamera != null ? mainCamera : Camera.main;
-        if (cam == null) return;
-
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-
-        Vector3Int targetCell = groundTileMap.WorldToCell(mouseWorldPos);
-        Vector3 cellCenterWorld = groundTileMap.GetCellCenterWorld(targetCell);
-
-        // 3. Kiểm tra cự ly từ Player tới ô đất mục tiêu
-        Vector3 playerPos = Player != null ? Player.position : transform.position;
-        float distance = Vector3.Distance(playerPos, cellCenterWorld);
-        if (distance > maxInteractDistance)
-        {
-            Debug.LogWarning($"<color=orange>[FarmInputController] Quá xa để tương tác! Khoảng cách: {distance:F1}m (Tối đa: {maxInteractDistance}m)</color>");
-            return;
-        }
-
-        // Cập nhật thông tin target cho debug/hệ thống khác
-        TargetCell = targetCell;
-        HasTarget = true;
-
-        // 4. Lấy ô đang được chọn trên Hotbar
-        InventorySlot activeSlot = hotbarController != null ? hotbarController.SelectedSlot : null;
-        ItemData item = (activeSlot != null && !activeSlot.IsEmpty()) ? activeSlot.ItemData : null;
-
-        // 5. Thực thi hành vi tương ứng với Item đang cầm
-        ExecuteInteraction(targetCell, cellCenterWorld, item);
-    }
-
-    // Điều phối và thực thi hành vi tương ứng theo ToolType của item
-    private void ExecuteInteraction(Vector3Int targetCell, Vector3 cellCenterWorld, ItemData item)
-    {
-        if (farmManager == null)
-        {
-            Debug.LogError("[FarmInputController] Chưa gán tham chiếu FarmManager!", this);
-            return;
-        }
-
-        // TRƯỜNG HỢP 1: CẦM ITEM CÓ HÀNH VI CÔNG CỤ
-        if (item != null)
-        {
-            // A. Cuốc đất (Hoe)
-            if (item.ToolType == ToolType.Hoe)
-            {
-                ExecuteHoeAction(targetCell);
-                return;
-            }
-
-            // B. Tưới nước (Watering Can)
-            if (item.ToolType == ToolType.WateringCan)
-            {
-                ExecuteWaterAction(targetCell);
-                return;
-            }
-
-            // C. Búa hoặc Xẻng (Hammer / Shovel) - Phá dỡ/san phẳng ô đất
-            if (item.ToolType == ToolType.Hammer || item.ToolType == ToolType.Shovel)
-            {
-                ExecuteRemoveSoilAction(targetCell);
-                return;
-            }
-
-            // D. Thu hoạch (Harvest)
-            if (item.ToolType == ToolType.Harvest)
-            {
-                ExecuteHarvestAction(targetCell);
-                return;
-            }
-        }
-
-        // TRƯỜNG HỢP 2: TAY TRỐNG HOẶC ITEM KHÔNG PHẢI TOOL NÔNG TRẠI
-        // Tự động kiểm tra nếu ô đất có cây chín thì cho phép thu hoạch
-        if (farmManager.CanHarvest(targetCell, out _))
-        {
-            ExecuteHarvestAction(targetCell);
-            return;
-        }
-
-        string itemName = item != null ? item.ItemName : "Tay không";
-        Debug.Log($"<color=grey>[FarmInputController] Không có hành vi tương tác cho '{itemName}' tại ô {targetCell}.</color>");
-    }
-
-    #region Action Implementations
-
-    // Hành vi cuốc đất
-    private void ExecuteHoeAction(Vector3Int targetCell)
-    {
-        if (farmManager.CanHoe(targetCell, out string message))
-        {
-            if (farmManager.Hoe(targetCell, out message))
-            {
-                Debug.Log($"<color=green>[FarmInputController] Thành công: {message} tại ô {targetCell}</color>");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"<color=yellow>[FarmInputController] {message}</color>");
-        }
-    }
-
-    // Hành vi tưới nước
-    private void ExecuteWaterAction(Vector3Int targetCell)
-    {
-        if (farmManager.CanWater(targetCell, out string message))
-        {
-            if (farmManager.Water(targetCell, out message))
-            {
-                Debug.Log($"<color=green>[FarmInputController] Thành công: {message} tại ô {targetCell}</color>");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"<color=yellow>[FarmInputController] {message}</color>");
-        }
-    }
-
-    // Hành vi san phẳng / dọn đất (Búa / Xẻng)
-    private void ExecuteRemoveSoilAction(Vector3Int targetCell)
-    {
-        if (farmManager.CanRemoveSoil(targetCell, out string message))
-        {
-            if (farmManager.RemoveSoil(targetCell, out message))
-            {
-                Debug.Log($"<color=green>[FarmInputController] Thành công: {message} tại ô {targetCell}</color>");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"<color=yellow>[FarmInputController] {message}</color>");
-        }
-    }
-
-    // Hành vi thu hoạch cây trồng
-    private void ExecuteHarvestAction(Vector3Int targetCell)
-    {
-        if (farmManager.CanHarvest(targetCell, out string message))
-        {
-            FarmCell cell = farmManager.GetCell(targetCell);
-            string cropId = cell != null ? cell.cropId : "Cây trồng";
-
-            if (farmManager.Harvest(targetCell, out message))
-            {
-                Debug.Log($"<color=green>[FarmInputController] Thành công: {message} ({cropId}) tại ô {targetCell}</color>");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"<color=yellow>[FarmInputController] {message}</color>");
-        }
-    }
-
-    #endregion
-
-    #region Backward Compatibility Helpers
-
-    public bool FindAdjacentCell(Vector3Int targetCell, out Vector3Int adjacentCell)
-    {
-        adjacentCell = default;
-        bool found = false;
-
-        float nearestDistance = float.MaxValue;
-        Vector3Int playerCell = groundTileMap != null && Player != null ? groundTileMap.WorldToCell(Player.position) : targetCell;
-
-        foreach (Vector3Int offset in adjacentCells)
-        {
-            Vector3Int cell = targetCell + offset;
-
-            if (cell == playerCell)
-            {
-                adjacentCell = cell;
-                return true;
-            }
-
-            if (groundTileMap != null && Player != null)
-            {
-                float d = Vector3.Distance(groundTileMap.GetCellCenterWorld(cell), Player.position);
-                if (d < nearestDistance)
-                {
-                    adjacentCell = cell;
-                    nearestDistance = d;
-                    found = true;
-                }
-            }
-        }
-        return found;
-    }
-
-    public bool CanDig(Vector3Int cell)
-    {
-        if (groundTileMap == null || !groundTileMap.HasTile(cell)) return false;
-        if (farmSoildTileMap != null && farmSoildTileMap.HasTile(cell)) return false;
-        return true;
-    }
-
+    
     public void SelectTool()
     {
-        CurrentTool = FarmTool.Hoe;
+        if(Input.GetKeyDown(KeyCode.Alpha1)) CurrentTool = FarmTool.Hoe;
+        else if(Input.GetKeyDown(KeyCode.Alpha2)) CurrentTool = FarmTool.Seed;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) CurrentTool = FarmTool.Water;
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) CurrentTool = FarmTool.Harvest;
     }
 
-    public void ClearTool()
+    public void Use()
     {
-        CurrentTool = FarmTool.None;
+        if(!Input.GetMouseButtonDown(0)) return;
+        switch (CurrentTool)
+        {
+            case FarmTool.Hoe:
+                Hoe();
+                break;
+            case FarmTool.Seed:
+                Seed();
+                break;
+            case FarmTool.Water:
+                Water();
+                break;
+            case FarmTool.Harvest:
+                Harvest();
+                break;
+        }
     }
 
-    #endregion
+    
+    public bool CanPlant(Vector3Int cell)
+    {
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = cell - playerCell;
+        bool isSoil = groundTileMap.GetTile(cell) == soilTile;
+        bool isInRange = CheckDistance(distance);
+        bool isPlanted = planted.ContainsKey(cell);
+        if(isInRange && isSoil && !isPlanted)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void HighLight()
+    {
+        Vector3 mouWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouWorld.z = 0f;
+        Vector3Int mouCell = groundTileMap.WorldToCell(mouWorld);
+        highlightTileMap.ClearAllTiles();
+        if(CanPlant(mouCell))
+        {
+            highlightTileMap.SetTile(mouCell, greenTile);
+        }
+        else highlightTileMap.SetTile(mouCell, redTile);
+    }
+
+    private void Hoe()
+    {
+        Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        posWorld.z = 0f;
+        Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = posCell - playerCell;
+        Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
+        if (CheckDistance(distance))
+        {
+            targetCellHoe = posCell;
+            playerMovement.TryUseHoe(disWorld);
+        }
+        else
+        {
+            targetCellHoe = playerCell + Offset(playerMovement.FacingDirection); 
+            playerMovement.TryUseHoe(playerMovement.FacingDirection);
+        }
+    }
+
+    public void Seed()
+    {
+        Vector3 mouWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouWorld.z = 0f;
+        Vector3Int mouCell = groundTileMap.WorldToCell(mouWorld);
+        if (CanPlant(mouCell))
+        {
+            Vector3 mouseCenter = groundTileMap.GetCellCenterWorld(mouCell);
+            GameObject crop = Instantiate(cropPrefab, mouseCenter, Quaternion.identity);
+            crop.GetComponent<SpriteRenderer>().sprite = cropData.stageSprites[0];
+            planted.Add(mouCell, crop);
+        }
+    }
+
+    public void Water()
+    {
+        Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        posWorld.z = 0f;
+        Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = posCell - playerCell;
+        Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
+        
+        Vector3 targetWorldWater;
+        if (CheckDistance(distance))
+        {
+            targetCellWater = posCell;
+            targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
+        }
+        else
+        {
+            targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
+            targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero);
+        bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
+        if (isSoil)
+        {
+             if(hit.collider != null)
+             {
+                 CropTile crop = hit.collider.GetComponent<CropTile>();
+                 crop.isWatered = true;
+                 if(CheckDistance(distance)) playerMovement.UsingWater(disWorld);
+                 else playerMovement.UsingWater(playerMovement.FacingDirection);
+             }
+        }
+    }
+
+    public void Harvest()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0;
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        bool isSoil = groundTileMap.GetTile(mouseCell) == soilTile;
+        if (CheckDistance(distance) && isSoil)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(groundTileMap.GetCellCenterWorld(mouseCell), Vector2.zero);
+            if (hit.collider != null)
+            {
+                CropTile cropTile = hit.collider.GetComponent<CropTile>();
+                if (cropTile.isHavest)
+                {
+                    cropTile.UpdateSprite(cropTile.currentGrowthStage + 1);
+                    Destroy(hit.collider.gameObject, 0.1f);
+                }
+            } 
+        }
+    }
+
+    public void OnWaterAnimationComplete()
+    {
+        groundTileMap.SetTile(targetCellWater, soilWetTile);
+    }
+
+    private Vector3Int Offset(Vector2 direction)
+    {
+        if(Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+        {
+            if(direction.x > 0)
+            {
+                return Vector3Int.right;
+            }
+            else
+            {
+                return Vector3Int.left;
+            }
+        }
+        else
+        {
+            if(direction.y > 0)
+            {
+                return Vector3Int.up;
+            }
+            else
+            {
+                return Vector3Int.down;
+            }
+        }
+    }
+
+    public void OnHoeAnimationComplete()
+    {
+        groundTileMap.SetTile(targetCellHoe, soilTile);
+    }
+
+    private bool CheckDistance(Vector3Int distance)
+    {
+        if(distance != Vector3Int.zero && Mathf.Abs(distance.x) <= 1 && Mathf.Abs(distance.y) <= 1)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
 }

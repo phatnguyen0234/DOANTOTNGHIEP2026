@@ -1,12 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using System;
+<<<<<<< HEAD
+
+public enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter
+}
+=======
+>>>>>>> origin/main
 
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
     public float currentHour = 12f;
     public float timeSpeed = 1f;
+    public int currentDay = 1;
+    public int daysPerSeason = 30;
+    public Season currentSeason = Season.Spring;
+
+    public static Action<Season> OnSeasonChanged;
 
     [Header("Sprite and Lighting Settings")]
     public Image clockHandImage;
@@ -14,13 +31,14 @@ public class TimeManager : MonoBehaviour
     public Light2D globalLight;
     public Gradient lightColor;
     public AnimationCurve lightIntensity;
-    [Header("Farming")]
-    [SerializeField] private FarmManager farmManager;
+    
+    public event Action onNewDay; 
+    public static TimeManager Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -30,20 +48,46 @@ public class TimeManager : MonoBehaviour
         if (currentHour >= 24f)
         {
             currentHour = 0f;
-            if (farmManager != null)
-            {
-                farmManager.HandleNewDay();
-            }
+            HandleNewDay(); // --> chuyen HandleNewDay() cua ae xuong duoi
             //Them event ngay moi o day
+            onNewDay?.Invoke();
         }
         UpdateClockUI();
         UpdateLighting();
     }
+    private void HandleNewDay()
+    {
+        currentDay++;
+        if (currentDay > daysPerSeason)
+        {
+            currentDay = 1;
+            AdvanceToNextSeason();
+        }
+
+        if (farmManager != null)
+        {
+            farmManager.HandleNewDay(); // "chuyen phan goi farmManager.HandleNewDay() o day"
+        }
+    }
+
+    private void AdvanceToNextSeason()
+    {
+        if (currentSeason == Season.Winter)
+        {
+            currentSeason = Season.Spring;
+        }
+        else
+        {
+            currentSeason++;
+        }
+
+        OnSeasonChanged?.Invoke(currentSeason); // thong bao su kien thay doi mua
+    }
 
     private void UpdateClockUI()
     {
-        if(clockHandImage == null || clockHandSprites.Length == 0) return;
-        
+        if (clockHandImage == null || clockHandSprites.Length == 0) return;
+
         float dayProgress = currentHour / 24f;
 
         int spriteIndex = Mathf.FloorToInt(dayProgress * clockHandSprites.Length);
@@ -53,7 +97,7 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateLighting()
     {
-        if(globalLight == null) return;
+        if (globalLight == null) return;
 
         float dayProgress = currentHour / 24f;
 
