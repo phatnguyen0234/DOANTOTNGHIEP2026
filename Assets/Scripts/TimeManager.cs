@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using System;
+
 public enum Season
 {
     Spring,
@@ -59,6 +60,11 @@ public class TimeManager : MonoBehaviour
             currentDay = 1;
             AdvanceToNextSeason();
         }
+
+        //if (farmManager != null)
+        //{
+        //    farmManager.HandleNewDay(); // "chuyen phan goi farmManager.HandleNewDay() o day"
+        //}
     }
 
     private void AdvanceToNextSeason()
