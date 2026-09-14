@@ -332,7 +332,7 @@ public class FarmInputController : MonoBehaviour
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = posCell - playerCell;
         Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
-        
+
         Vector3 targetWorldWater;
         if (CheckDistance(distance))
         {
@@ -344,29 +344,16 @@ public class FarmInputController : MonoBehaviour
             targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
             targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
         }
-
         RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero);
-        TileBase targetTile = groundTileMap.GetTile(targetCellWater);
-        bool isSoil = targetTile == soilTile || targetTile == soilWetTile;
-
+        bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
         if (isSoil)
         {
             if (hit.collider != null)
             {
                 CropTile crop = hit.collider.GetComponent<CropTile>();
-                if (crop != null)
-                {
-                    crop.isWatered = true;
-                }
-            }
-
-            if (CheckDistance(distance))
-            {
-                playerMovement.UsingWater(disWorld);
-            }
-            else
-            {
-                playerMovement.UsingWater(playerMovement.FacingDirection);
+                crop.isWatered = true;
+                if (CheckDistance(distance)) playerMovement.UsingWater(disWorld);
+                else playerMovement.UsingWater(playerMovement.FacingDirection);
             }
         }
     }
