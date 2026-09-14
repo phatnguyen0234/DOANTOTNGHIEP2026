@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: WateringCan
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: watering_can
+  itemName: "B\xECnh T\u01B0\u1EDBi (Watering Can)"
+  description: "D\xF9ng \u0111\u1EC3 t\u01B0\u1EDBi n\u01B0\u1EDBc cho \u0111\u1EA5t
+    v\xE0 c\xE2y tr\u1ED3ng."
+  icon: {fileID: -720151078975379389, guid: 6e9a12adb808d36489918461a5a2cead, type: 3}
+  itemType: 5
+  toolType: 4
+  cropId: waterCan
+  cropData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 60
+  sellPrice: 25
+  canSell: 1
