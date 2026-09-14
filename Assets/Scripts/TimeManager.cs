@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using System;
-<<<<<<< HEAD
 
 public enum Season
 {
@@ -11,8 +10,6 @@ public enum Season
     Autumn,
     Winter
 }
-=======
->>>>>>> origin/main
 
 public class TimeManager : MonoBehaviour
 {
@@ -64,10 +61,10 @@ public class TimeManager : MonoBehaviour
             AdvanceToNextSeason();
         }
 
-        if (farmManager != null)
-        {
-            farmManager.HandleNewDay(); // "chuyen phan goi farmManager.HandleNewDay() o day"
-        }
+        //if (farmManager != null)
+        //{
+        //    farmManager.HandleNewDay(); // "chuyen phan goi farmManager.HandleNewDay() o day"
+        //}
     }
 
     private void AdvanceToNextSeason()
