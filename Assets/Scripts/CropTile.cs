@@ -68,7 +68,7 @@ public class CropTile : MonoBehaviour
             isHavest = true;
             return;
         }
-
+        Debug.Log(isWatered);
         if (isWatered)
         {
             currentGrowthStage++;

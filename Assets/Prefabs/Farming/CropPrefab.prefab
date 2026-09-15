@@ -109,7 +109,8 @@ MonoBehaviour:
   cropData: {fileID: 11400000, guid: 7c1eda7e699d9254e82c447854759091, type: 2}
   spriteRenderer: {fileID: 6211315430304798952}
   groundTileMap: {fileID: 0}
-  driedSoil: {fileID: 11400000, guid: 8452640a2c749914d88d6aabb12b3460, type: 2}
+  driedSoil: {fileID: 11400000, guid: 8f05ba89b99eb004693da473b753acee, type: 2}
+  currentGrowthStage: 0
 --- !u!61 &5676263523929527986
 BoxCollider2D:
   m_ObjectHideFlags: 0
