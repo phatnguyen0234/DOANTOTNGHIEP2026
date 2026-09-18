@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3590584082393895853}
   - component: {fileID: 3798960062814953467}
   - component: {fileID: 3473849228617430311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mahogany Tree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,11 +124,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00320673, y: -1.0991361}
+  m_Offset: {x: 0.007921219, y: -0.028967619}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -138,7 +138,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8527441, y: 0.646945}
+  m_Size: {x: 2.351923, y: 3.0324316}
   m_EdgeRadius: 0
 --- !u!1 &3150576581345730302
 GameObject:
@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5536179301296785806}
   - component: {fileID: 8734035343069840936}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shandow_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

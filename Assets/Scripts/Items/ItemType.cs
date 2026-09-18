@@ -19,7 +19,8 @@ public enum ToolType
     None,
     Hoe,         // Cuốc đất
     Shovel,      // Xẻng: đào cây, hoàn trả ô đất
-    Hammer,      // Búa: đập đá, san phẳng ô đất
+    Axe,         // rìu: chặt cây
+    Pickaxe,     // đập đá
     WateringCan, // Bình tưới nước
     SeedBag,     // Hạt giống / Gieo trồng
     Harvest      // Thu hoạch

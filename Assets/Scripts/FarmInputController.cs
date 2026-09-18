@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Android;
 
 public class FarmInputController : MonoBehaviour
 {
@@ -27,9 +28,14 @@ public class FarmInputController : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private HotbarController hotbarController;
 
+    [SerializeField] private LayerMask cropMask;
+    [SerializeField] private LayerMask treeMask;
+
+
     private readonly Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
+
 
     public FarmTool CurrentTool { get; private set; } = FarmTool.None;
 
@@ -161,6 +167,14 @@ public class FarmInputController : MonoBehaviour
         {
             CurrentTool = FarmTool.Harvest;
         }
+        else if (item.ToolType == ToolType.Axe)
+        {
+            CurrentTool = FarmTool.Axe;
+        }
+        else if (item.ToolType == ToolType.Pickaxe)
+        {
+            CurrentTool = FarmTool.Pickaxe;
+        }
         else
         {
             CurrentTool = FarmTool.None;
@@ -194,6 +208,9 @@ public class FarmInputController : MonoBehaviour
                 break;
             case FarmTool.Harvest:
                 Harvest();
+                break;
+            case FarmTool.Axe:
+                Axe();
                 break;
             case FarmTool.None:
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
@@ -326,6 +343,7 @@ public class FarmInputController : MonoBehaviour
 
     public void Water()
     {
+ 
         Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         posWorld.z = 0f;
         Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
@@ -344,7 +362,7 @@ public class FarmInputController : MonoBehaviour
             targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
             targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
         }
-        RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero, cropMask);
         bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
         if (isSoil)
         {
@@ -409,6 +427,32 @@ public class FarmInputController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void Axe()
+    {
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mousePos);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        bool isRange = CheckDistance(distance);
+        Vector3 targetAxe;
+        if (isRange)
+        {
+            targetAxe = groundTileMap.GetCellCenterWorld(mouseCell);
+        }
+        else
+        {
+            Vector3Int targetAxeCell = playerCell + Offset(playerMovement.FacingDirection);
+            targetAxe = groundTileMap.GetCellCenterWorld(targetAxeCell);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(targetAxe, Vector2.zero, treeMask);
+        if(hit.collider != null)
+        {
+            if (isRange) playerMovement.UsingAxe((Vector2) (targetAxe - player.transform.position));
+        //    else playerMovement.UsingAxe(playerMovement.FacingDirection);
+        }
     }
 
     public void OnWaterAnimationComplete()
