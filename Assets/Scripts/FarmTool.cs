@@ -4,5 +4,7 @@ public enum FarmTool
     Hoe,
     Seed,
     Water,
-    Harvest
+    Harvest,
+    Axe,
+    Pickaxe
 }

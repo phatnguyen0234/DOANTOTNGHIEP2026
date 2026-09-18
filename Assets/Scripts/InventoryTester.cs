@@ -19,6 +19,8 @@ public class InventoryTester : MonoBehaviour
     [SerializeField] private ItemData shovel;
     [SerializeField] private ItemData hammer;
     [SerializeField] private ItemData wateringCan;
+    [SerializeField] private ItemData axe;
+    [SerializeField] private ItemData pickaxe;
 
     private void Awake()
     {
@@ -54,6 +56,8 @@ public class InventoryTester : MonoBehaviour
 
                 if (hoe == null && (item.ToolType == ToolType.Hoe || id.Contains("hoe") || name.Contains("hoe"))) hoe = item;
                 if (wateringCan == null && (item.ToolType == ToolType.WateringCan || id.Contains("water") || name.Contains("water"))) wateringCan = item;
+                if (axe == null && (item.ToolType == ToolType.Axe || id.Contains("axe") || name.Contains("axe"))) axe = item;
+                if (pickaxe == null && (item.ToolType == ToolType.Pickaxe || id.Contains("pickaxe") || name.Contains("pick") || name.Contains("pickaxe"))) pickaxe = item;          
                 if (seed == null && (item.ItemType == ItemType.Seed || id.Contains("seed") || name.Contains("seed"))) seed = item;
                 if (dog == null && (id.Contains("dog") || name.Contains("dog"))) dog = item;
                 if (chicken == null && (id.Contains("chicken") || name.Contains("chicken"))) chicken = item;
@@ -64,22 +68,22 @@ public class InventoryTester : MonoBehaviour
     private void Update()
     {
         // Nhấn phím Q: Thêm Dog vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             AddDog();
         }
 
         // Nhấn phím W: Thêm Chicken vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             AddChicken();
         }
 
         // Nhấn phím E: Thêm Hoe vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AddHoe();
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    AddHoe();
+        //}
 
         // Nhấn phím T: Thêm Watering Can vào ô đang Active
         if (Input.GetKeyDown(KeyCode.T))
@@ -93,17 +97,26 @@ public class InventoryTester : MonoBehaviour
             AddSeed();
         }
 
-        // Nhấn phím R: Xóa 5 Item từ ô đang Active
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RemoveFromActiveSlot(5);
-        }
-
-        // Nhấn phím U: Xóa sạch ô đang Active
         if (Input.GetKeyDown(KeyCode.U))
         {
-            ClearActiveSlot();
+            AddAxe();
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            AddPickaxe();
+        }
+        // Nhấn phím R: Xóa 5 Item từ ô đang Active
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RemoveFromActiveSlot(5);
+        //}
+
+        //// Nhấn phím U: Xóa sạch ô đang Active
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    ClearActiveSlot();
+        //}
     }
 
     #region Context Menu & Public Test Actions
@@ -144,10 +157,16 @@ public class InventoryTester : MonoBehaviour
         ExecuteAddItemToActiveSlot(shovel, 1);
     }
 
-    [ContextMenu("Tools/Add Hammer to Active Slot")]
-    public void AddHammer()
+    [ContextMenu("Tools/Add Axe to Active Slot")]
+    public void AddAxe()
     {
-        ExecuteAddItemToActiveSlot(hammer, 1);
+        ExecuteAddItemToActiveSlot(axe, 1);
+    }
+
+    [ContextMenu("Tools/Add Pickaxe to Active Slot")]
+    public void AddPickaxe()
+    {
+        ExecuteAddItemToActiveSlot(pickaxe, 1);
     }
 
     [ContextMenu("R. Remove 5 Items from Active Slot")]
@@ -186,7 +205,7 @@ public class InventoryTester : MonoBehaviour
     }
 
     #endregion
-
+    
     #region Execution Helpers
 
     public void RemoveFromActiveSlot(int amount)
