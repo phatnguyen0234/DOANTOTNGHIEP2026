@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isUsingWater = false;
     public bool isUsingAxe = false;
     Vector2 moveDirection;
-    [SerializeField] FarmInputController controller;
+    [SerializeField] private FarmInputController controller;
+    [SerializeField] private GameObject particlePrefab;
+    Vector3 currentPostion;
 
     // Update is called once per frame
     void Update()
@@ -72,13 +74,14 @@ public class PlayerMovement : MonoBehaviour
         controller.OnWaterAnimationComplete();
     }
 
-    public void UsingAxe(Vector2 requestFaceDirect)
+    public void UsingAxe(Vector2 requestFaceDirect, Vector3 treePosition)
     {
         if (isUsingAxe) return;
         if(requestFaceDirect != Vector2.zero)
         {
             lastDirection = requestFaceDirect.normalized;
         }
+        currentPostion = treePosition;
         isUsingAxe = true;
         moveDirection = Vector2.zero;
         anim.SetFloat("MoveX", lastDirection.x);
@@ -90,6 +93,14 @@ public class PlayerMovement : MonoBehaviour
     public void OnAxeAnimationComplete()
     {
         isUsingAxe = false;
+    }
+
+    public void LeafEffect()
+    {
+        Debug.Log("LeafEffect event triggered!");
+       // Vector3 pos = currentPostion + new Vector3(0f, 1.5f, 0f);
+        GameObject effect = Instantiate(particlePrefab, currentPostion, Quaternion.identity);
+        Destroy(effect, 2f);
     }
     private void UpdateAnimation()
     {
