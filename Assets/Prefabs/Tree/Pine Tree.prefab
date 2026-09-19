@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7750244631185152652}
   - component: {fileID: 999297011962459666}
   - component: {fileID: 1075285192720518569}
+  - component: {fileID: -7246684313457426422}
   m_Layer: 6
   m_Name: Pine Tree
   m_TagString: Untagged
@@ -140,6 +141,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5702096, y: 2.189988}
   m_EdgeRadius: 0
+--- !u!114 &-7246684313457426422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977823857537621490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35949cb8b10d7246a2852a17eea96b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tree
 --- !u!1 &7459098521285018579
 GameObject:
   m_ObjectHideFlags: 0

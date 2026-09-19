@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 8825347809534381545}
   - component: {fileID: 5433065964954000436}
   - component: {fileID: 3898375175628495805}
+  - component: {fileID: 3647016619740012013}
   m_Layer: 6
   m_Name: Birch Tree
   m_TagString: Untagged
@@ -232,3 +233,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6231575, y: 2.1453478}
   m_EdgeRadius: 0
+--- !u!114 &3647016619740012013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981535527568315150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35949cb8b10d7246a2852a17eea96b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tree

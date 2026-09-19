@@ -450,7 +450,12 @@ public class FarmInputController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(targetAxe, Vector2.zero, treeMask);
         if(hit.collider != null)
         {
-            if (isRange) playerMovement.UsingAxe((Vector2) (targetAxe - player.transform.position));
+            if (isRange)
+            {
+                playerMovement.UsingAxe((Vector2)(targetAxe - player.transform.position), hit.collider.transform.position);
+                Tree tree = hit.collider.GetComponent<Tree>();
+                tree.Hit();
+            }
         //    else playerMovement.UsingAxe(playerMovement.FacingDirection);
         }
     }

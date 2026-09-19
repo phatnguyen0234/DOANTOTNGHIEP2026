@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3590584082393895853}
   - component: {fileID: 3798960062814953467}
   - component: {fileID: 3473849228617430311}
+  - component: {fileID: 3359473685120498065}
   m_Layer: 6
   m_Name: Mahogany Tree 2
   m_TagString: Untagged
@@ -140,6 +141,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.351923, y: 3.0324316}
   m_EdgeRadius: 0
+--- !u!114 &3359473685120498065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777359906241628979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35949cb8b10d7246a2852a17eea96b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tree
 --- !u!1 &3150576581345730302
 GameObject:
   m_ObjectHideFlags: 0
