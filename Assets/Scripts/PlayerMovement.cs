@@ -97,11 +97,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void LeafEffect()
     {
-        Debug.Log("LeafEffect event triggered!");
-       // Vector3 pos = currentPostion + new Vector3(0f, 1.5f, 0f);
         GameObject effect = Instantiate(particlePrefab, currentPostion, Quaternion.identity);
         Destroy(effect, 2f);
     }
+
     private void UpdateAnimation()
     {
         if(moveDirection != Vector2.zero)

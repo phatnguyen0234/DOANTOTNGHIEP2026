@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6135123198284318509}
   - component: {fileID: 6199394091179974565}
   - component: {fileID: 8735866385339796630}
+  - component: {fileID: 942707657002543698}
   m_Layer: 6
   m_Name: Maple Tree
   m_TagString: Untagged
@@ -140,6 +141,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.4264398, y: 2.091963}
   m_EdgeRadius: 0
+--- !u!114 &942707657002543698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344705861945533684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35949cb8b10d7246a2852a17eea96b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tree
 --- !u!1 &8400222442584597470
 GameObject:
   m_ObjectHideFlags: 0

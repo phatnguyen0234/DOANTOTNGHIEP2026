@@ -165430,8 +165430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmInputController
   groundTileMap: {fileID: 2144305081}
   highlightTileMap: {fileID: 1604075186}
-  soilTile: {fileID: 11400000, guid: 8f05ba89b99eb004693da473b753acee, type: 2}
-  soilWetTile: {fileID: 11400000, guid: c76a2f036d27edf45aaf43e7da5f0eb1, type: 2}
+  soilTile: {fileID: 11400000, guid: 8452640a2c749914d88d6aabb12b3460, type: 2}
+  soilWetTile: {fileID: 11400000, guid: 8063f94802bc6084fb9fbc2bb08f2edd, type: 2}
   greenTile: {fileID: 11400000, guid: 5ade1ed00a064e049b0aeac0035bfa11, type: 2}
   redTile: {fileID: 11400000, guid: ca0af4b08b17e6c42b851748ebf90abb, type: 2}
   mainCamera: {fileID: 519420031}
@@ -173256,8 +173256,8 @@ MonoBehaviour:
   shovel: {fileID: 0}
   hammer: {fileID: 0}
   wateringCan: {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
-  axe: {fileID: 11400000, guid: 4367635b629e46d429c8462a34fac0de, type: 2}
-  pickaxe: {fileID: 11400000, guid: d946256cf4d87084eac2d057904d7540, type: 2}
+  axe: {fileID: 0}
+  pickaxe: {fileID: 0}
 --- !u!4 &1793276145
 Transform:
   m_ObjectHideFlags: 0
