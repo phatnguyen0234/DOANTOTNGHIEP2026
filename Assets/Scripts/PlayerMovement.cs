@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public bool isUsingHoe = false;
     public bool isUsingWater = false;
     public bool isUsingAxe = false;
+    public bool isUsingPickaxe = false;
     Vector2 moveDirection;
     [SerializeField] private FarmInputController controller;
-    [SerializeField] private GameObject particlePrefab;
-    Vector3 currentPostion;
+    [SerializeField] private GameObject particleLeafPrefab;
+    [SerializeField] private GameObject particleRockPrefab;
+    Vector3 currentTreePostion;
+    Vector3 currentRockPosition;
 
     // Update is called once per frame
     void Update()
@@ -81,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lastDirection = requestFaceDirect.normalized;
         }
-        currentPostion = treePosition;
+        currentTreePostion = treePosition;
         isUsingAxe = true;
         moveDirection = Vector2.zero;
         anim.SetFloat("MoveX", lastDirection.x);
@@ -95,9 +98,32 @@ public class PlayerMovement : MonoBehaviour
         isUsingAxe = false;
     }
 
+    public void UsingPickaxe(Vector2 requestDirection, Vector3 rockPosition)
+    {
+        if (isUsingPickaxe) return;
+        lastDirection = requestDirection;
+        currentRockPosition = rockPosition;
+        isUsingPickaxe = true;
+        moveDirection = Vector2.zero;
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0);
+        anim.SetTrigger("UsePickaxe");
+    }
+
+    public void OnCompletePickaxe()
+    {
+        isUsingPickaxe = false;
+    }
     public void LeafEffect()
     {
-        GameObject effect = Instantiate(particlePrefab, currentPostion, Quaternion.identity);
+        GameObject effect = Instantiate(particleLeafPrefab, currentTreePostion, Quaternion.identity);
+        Destroy(effect, 2f);
+    }
+
+    public void RockEffect()
+    {
+        GameObject effect = Instantiate(particleRockPrefab, currentRockPosition, Quaternion.identity);
         Destroy(effect, 2f);
     }
 

@@ -30,6 +30,7 @@ public class FarmInputController : MonoBehaviour
 
     [SerializeField] private LayerMask cropMask;
     [SerializeField] private LayerMask treeMask;
+    [SerializeField] private LayerMask rockMask;
 
 
     private readonly Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
@@ -211,6 +212,9 @@ public class FarmInputController : MonoBehaviour
                 break;
             case FarmTool.Axe:
                 Axe();
+                break;
+            case FarmTool.Pickaxe:
+                Pickaxe();
                 break;
             case FarmTool.None:
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
@@ -437,29 +441,37 @@ public class FarmInputController : MonoBehaviour
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = mouseCell - playerCell;
         bool isRange = CheckDistance(distance);
-        Vector3 targetAxe;
+        Vector3 targetAxe = Vector3.zero;
         if (isRange)
         {
             targetAxe = groundTileMap.GetCellCenterWorld(mouseCell);
         }
-        else
-        {
-            Vector3Int targetAxeCell = playerCell + Offset(playerMovement.FacingDirection);
-            targetAxe = groundTileMap.GetCellCenterWorld(targetAxeCell);
-        }
         RaycastHit2D hit = Physics2D.Raycast(targetAxe, Vector2.zero, treeMask);
         if(hit.collider != null)
         {
-            if (isRange)
-            {
                 playerMovement.UsingAxe((Vector2)(targetAxe - player.transform.position), hit.collider.transform.position);
                 Tree tree = hit.collider.GetComponent<Tree>();
                 tree.Hit();
-            }
-        //    else playerMovement.UsingAxe(playerMovement.FacingDirection);
         }
     }
 
+    public void Pickaxe()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        Vector3 targetPickaxe = Vector3.zero;
+        if (CheckDistance(distance))
+        {
+            targetPickaxe = groundTileMap.GetCellCenterWorld(mouseCell);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(targetPickaxe, Vector2.zero, rockMask);
+        if(hit.collider != null)
+        {
+            playerMovement.UsingPickaxe((Vector2)(targetPickaxe - player.transform.position), hit.collider.transform.position);
+        }
+    }
     public void OnWaterAnimationComplete()
     {
         groundTileMap.SetTile(targetCellWater, soilWetTile);
