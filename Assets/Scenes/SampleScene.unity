@@ -172325,7 +172325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1564411686
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -178897,9 +178897,10 @@ MonoBehaviour:
   pickaxe: {fileID: 11400000, guid: d946256cf4d87084eac2d057904d7540, type: 2}
   shovel: {fileID: 0}
   hammer: {fileID: 0}
-  seed: {fileID: 11400000, guid: 019eaa7e607a1774c8fc2f14f898e56e, type: 2}
+  seed: {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
   seedAmount: 10
   autoAddToolsOnStart: 1
+  dropTestKey: 103
 --- !u!4 &1793276145
 Transform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,10 @@ public class InventoryTester : MonoBehaviour
     [Tooltip("Tự động thêm công cụ vào Hotbar khi bắt đầu game.")]
     [SerializeField] private bool autoAddToolsOnStart = true;
 
+    [Header("Item Drop Testing")]
+    [Tooltip("Phím tắt để thử nghiệm rơi vật phẩm tại vị trí người chơi (Mặc định: G).")]
+    [SerializeField] private KeyCode dropTestKey = KeyCode.G;
+
     private void Awake()
     {
         // Tự động tìm kiếm nếu chưa gán tham chiếu trong Inspector
@@ -56,6 +60,8 @@ public class InventoryTester : MonoBehaviour
         {
             AutoAddToolsToHotbar();
         }
+
+        EnsureDropComponentsExist();
     }
 
     private void Update()
@@ -64,6 +70,12 @@ public class InventoryTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             AddSeed();
+        }
+
+        // Nhấn phím G: Thử nghiệm ném rơi vật phẩm tại vị trí người chơi
+        if (Input.GetKeyDown(dropTestKey))
+        {
+            TestSpawnDropAtPlayer();
         }
     }
 
@@ -362,6 +374,47 @@ public class InventoryTester : MonoBehaviour
         {
             int remainingInSlot = slot.IsEmpty() ? 0 : slot.Amount;
             Debug.Log($"<color=cyan>[InventoryTester] Đã trừ {removed}x '{itemName}' khỏi Slot Hotbar [{activeIndex + 1}] (Index {activeIndex}). Còn lại trong ô: {remainingInSlot}.</color>");
+        }
+    }
+
+    #endregion
+
+    #region Drop Testing & Component Setup
+
+    // Tự động đảm bảo scene có sẵn ItemDropSpawner và Player có ItemCollector
+    private void EnsureDropComponentsExist()
+    {
+        if (FindAnyObjectByType<ItemDropSpawner>() == null)
+        {
+            GameObject spawnerObj = new GameObject("[ItemDropSpawner]");
+            spawnerObj.AddComponent<ItemDropSpawner>();
+        }
+
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        if (player != null && player.GetComponent<ItemCollector>() == null)
+        {
+            player.gameObject.AddComponent<ItemCollector>();
+        }
+    }
+
+    // Thử nghiệm sinh vật phẩm rơi văng ra gần người chơi
+    [ContextMenu("Drops/Test Spawn Drop At Player (Key G)")]
+    public void TestSpawnDropAtPlayer()
+    {
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        Vector3 spawnPos = player != null ? player.transform.position : transform.position;
+
+        ItemData testItem = seed != null ? seed : hoe;
+        if (testItem == null)
+        {
+            Debug.LogWarning("[InventoryTester] Không tìm thấy ItemData để test drop!", this);
+            return;
+        }
+
+        if (ItemDropSpawner.Instance != null)
+        {
+            ItemDropSpawner.Instance.SpawnDrop(testItem, 2, spawnPos, 1.2f);
+            Debug.Log($"<color=green>[InventoryTester] Đã spawn rơi vật phẩm '{testItem.ItemName}' tại {spawnPos} (Phím G).</color>");
         }
     }
 

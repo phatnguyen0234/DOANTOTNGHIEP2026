@@ -399,11 +399,30 @@ public class FarmInputController : MonoBehaviour
                 CropTile crop = hit.collider.GetComponent<CropTile>();
                 if (crop != null && crop.isHavest)
                 {
-                    // Thêm vật phẩm nông sản vào Inventory nếu có cấu hình
-                    if (crop.CropData != null && crop.CropData.harvestItem != null)
+                    // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
+                    if (crop.GetDropTable() != null)
+                    {
+                        DropContext context = new DropContext(
+                            source: hit.collider.gameObject,
+                            player: player != null ? player.gameObject : gameObject,
+                            tool: null,
+                            toolLevel: 1,
+                            dropMultiplier: 1f,
+                            luck: 0f
+                        );
+                        DropSystem.TriggerDrop(crop, context);
+                    }
+                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
+                    else if (crop.CropData != null && crop.CropData.harvestItem != null)
                     {
                         int amount = Mathf.Max(1, crop.CropData.harvestAmount);
-                        if (inventory != null)
+                        Vector3 harvestPos = hit.collider.transform.position;
+
+                        if (ItemDropSpawner.Instance != null)
+                        {
+                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos);
+                        }
+                        else if (inventory != null)
                         {
                             bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount);
                             if (!added)
@@ -454,7 +473,10 @@ public class FarmInputController : MonoBehaviour
             {
                 playerMovement.UsingAxe((Vector2)(targetAxe - player.transform.position), hit.collider.transform.position);
                 Tree tree = hit.collider.GetComponent<Tree>();
-                tree.Hit();
+                if (tree != null)
+                {
+                    tree.Hit(player != null ? player.gameObject : gameObject);
+                }
             }
         //    else playerMovement.UsingAxe(playerMovement.FacingDirection);
         }
