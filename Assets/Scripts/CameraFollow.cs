@@ -2,17 +2,34 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;
-    public float smoothSpeed = 5f;
-    public Vector3 offset = new Vector3(0f, 0f, -10f);
+    private Transform target;
+    public Transform clampMin, clampMax;
 
-    // Update is called once per frame
-    void LateUpdate()
+    private Camera cam;
+    private float halfWidth, halfHeight;
+
+    void Start()
     {
-        if (player == null) return;
+        //target = FindAnyObjectByType<PlayerController>().transform;
+        target = PlayerMovement.instance.transform;
 
-        Vector3 target = player.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, target, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPosition;
+        clampMin.SetParent(null);
+        clampMax.SetParent(null);
+
+        cam = GetComponent<Camera>();
+        halfHeight = cam.orthographicSize;
+        halfWidth = cam.orthographicSize * cam.aspect;
+    }
+
+    void Update()
+    {
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+        Vector3 clampedPosition = transform.position;
+
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, clampMin.position.x + halfWidth, clampMax.position.x - halfWidth);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, clampMin.position.y + halfHeight, clampMax.position.y - halfHeight);
+
+        transform.position = clampedPosition;
     }
 }

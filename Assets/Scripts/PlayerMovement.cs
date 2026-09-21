@@ -17,6 +17,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject particlePrefab;
     Vector3 currentPostion;
 
+    public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
