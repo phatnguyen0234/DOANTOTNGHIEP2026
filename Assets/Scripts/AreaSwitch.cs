@@ -3,25 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class AreaSwitch : MonoBehaviour
 {
-    public string sceneToLoad;
+    [SerializeField] private string sceneToLoad;
+    [SerializeField] private Transform startPoint;
 
-    public Transform startPoint;
-    void Start()
+    private void Start()
     {
         PlayerMovement.instance.transform.position = startPoint.position;
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
+        if (!collision.CompareTag("Player")) return;
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
