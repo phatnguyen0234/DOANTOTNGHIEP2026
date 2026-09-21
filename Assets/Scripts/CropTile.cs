@@ -62,13 +62,11 @@ public class CropTile : MonoBehaviour, IDropSource
     private void OnNewDay()
     {
         if (cropData == null) return;
-
         if (currentGrowthStage >= cropData.maxStage - 1)
         {
             isHavest = true;
             return;
         }
-        Debug.Log(isWatered);
         if (isWatered)
         {
             currentGrowthStage++;

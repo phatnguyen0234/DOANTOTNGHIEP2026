@@ -30,11 +30,13 @@ public class FarmInputController : MonoBehaviour
 
     [SerializeField] private LayerMask cropMask;
     [SerializeField] private LayerMask treeMask;
+    [SerializeField] private LayerMask rockMask;
 
 
     private readonly Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
+    public bool isWatering = false;
 
 
     public FarmTool CurrentTool { get; private set; } = FarmTool.None;
@@ -212,6 +214,9 @@ public class FarmInputController : MonoBehaviour
             case FarmTool.Axe:
                 Axe();
                 break;
+            case FarmTool.Pickaxe:
+                Pickaxe();
+                break;
             case FarmTool.None:
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
                 TryHarvestAtMouse();
@@ -343,14 +348,13 @@ public class FarmInputController : MonoBehaviour
 
     public void Water()
     {
- 
+        if (isWatering) return;
         Vector3 posWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         posWorld.z = 0f;
         Vector3Int posCell = groundTileMap.WorldToCell(posWorld);
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = posCell - playerCell;
         Vector2 disWorld = (Vector2)(posWorld - player.transform.position);
-
         Vector3 targetWorldWater;
         if (CheckDistance(distance))
         {
@@ -362,17 +366,29 @@ public class FarmInputController : MonoBehaviour
             targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
             targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
         }
-        RaycastHit2D hit = Physics2D.Raycast(targetWorldWater, Vector2.zero, cropMask);
         bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
         if (isSoil)
         {
-            if (hit.collider != null)
+            Collider2D[] hits = Physics2D.OverlapCircleAll(targetWorldWater, 0.2f, cropMask);
+            CropTile targetCrop = null; ;
+            foreach(var hit in hits)
             {
-                CropTile crop = hit.collider.GetComponent<CropTile>();
-                crop.isWatered = true;
-                if (CheckDistance(distance)) playerMovement.UsingWater(disWorld);
-                else playerMovement.UsingWater(playerMovement.FacingDirection);
+                CropTile crop = hit.GetComponent<CropTile>();
+                Vector3Int cropCell = groundTileMap.WorldToCell(hit.transform.position);
+                if(cropCell == targetCellWater)
+                {
+                    targetCrop = crop;
+                    break;
+                }
+
             }
+            if(targetCrop != null)
+            {
+                targetCrop.isWatered = true;
+            }
+            isWatering = true;
+            if (CheckDistance(distance)) playerMovement.UsingWater(disWorld);
+            else playerMovement.UsingWater(playerMovement.FacingDirection);
         }
     }
 
@@ -456,35 +472,31 @@ public class FarmInputController : MonoBehaviour
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = mouseCell - playerCell;
         bool isRange = CheckDistance(distance);
-        Vector3 targetAxe;
-        if (isRange)
+        Collider2D hit = Physics2D.OverlapPoint(mousePos, treeMask);
+        if(hit != null)
         {
-            targetAxe = groundTileMap.GetCellCenterWorld(mouseCell);
-        }
-        else
-        {
-            Vector3Int targetAxeCell = playerCell + Offset(playerMovement.FacingDirection);
-            targetAxe = groundTileMap.GetCellCenterWorld(targetAxeCell);
-        }
-        RaycastHit2D hit = Physics2D.Raycast(targetAxe, Vector2.zero, treeMask);
-        if(hit.collider != null)
-        {
-            if (isRange)
-            {
-                playerMovement.UsingAxe((Vector2)(targetAxe - player.transform.position), hit.collider.transform.position);
-                Tree tree = hit.collider.GetComponent<Tree>();
-                if (tree != null)
-                {
-                    tree.Hit(player != null ? player.gameObject : gameObject);
-                }
-            }
-        //    else playerMovement.UsingAxe(playerMovement.FacingDirection);
+                playerMovement.UsingAxe((Vector2)(mousePos - player.transform.position), hit.transform.position);
+                Tree tree = hit.GetComponent<Tree>();
+                tree.Hit();
         }
     }
 
+    public void Pickaxe()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorld, rockMask);
+        if(hit != null)
+        {
+            playerMovement.UsingPickaxe((Vector2)(mouseWorld - player.transform.position), hit.transform.position);
+        }
+    }
     public void OnWaterAnimationComplete()
     {
         groundTileMap.SetTile(targetCellWater, soilWetTile);
+        isWatering = false;
     }
 
     public void OnHoeAnimationComplete()
