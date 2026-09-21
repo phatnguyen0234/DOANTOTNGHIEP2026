@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: wood
+  itemName: "G\u1ED7 (Wood)"
+  description: "T\xE0i nguy\xEAn g\u1ED7 c\u01A1 b\u1EA3n thu th\u1EADp \u0111\u01B0\u1EE3c khi ch\u1EB7t c\xE2y."
+  icon: {fileID: -2067898546876541913, guid: 700b0dacfa0ec8041bc839f9fe709c13, type: 3}
+  itemType: 0
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 10
+  sellPrice: 5
+  canSell: 1
