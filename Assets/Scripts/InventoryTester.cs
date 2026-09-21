@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 // Script tiện ích hỗ trợ kiểm thử và demo các tính năng của hệ thống Inventory / Hotbar trong Unity Editor / Runtime.
-// Thao tác trực tiếp vào ô Slot hiện đang ACTIVE (được chọn trên Hotbar).
+// Tự động nạp các công cụ vào Hotbar khi bắt đầu game và hỗ trợ phím tắt Q để thêm hạt giống.
 public class InventoryTester : MonoBehaviour
 {
     [Header("Dependencies")]
@@ -12,15 +16,25 @@ public class InventoryTester : MonoBehaviour
     [SerializeField] private HotbarController hotbarController;
 
     [Header("Item Test Data Assets")]
-    [SerializeField] private ItemData dog;
-    [SerializeField] private ItemData chicken;
+    [FormerlySerializedAs("dog")]
     [SerializeField] private ItemData hoe;
-    [SerializeField] private ItemData seed;
-    [SerializeField] private ItemData shovel;
-    [SerializeField] private ItemData hammer;
     [SerializeField] private ItemData wateringCan;
     [SerializeField] private ItemData axe;
     [SerializeField] private ItemData pickaxe;
+    [SerializeField] private ItemData shovel;
+    [SerializeField] private ItemData hammer;
+    [SerializeField] private ItemData seed;
+
+    [Header("Test Settings")]
+    [Tooltip("Số lượng hạt giống thêm mỗi lần nhấn Q.")]
+    [SerializeField, Min(1)] private int seedAmount = 10;
+
+    [Tooltip("Tự động thêm công cụ vào Hotbar khi bắt đầu game.")]
+    [SerializeField] private bool autoAddToolsOnStart = true;
+
+    [Header("Item Drop Testing")]
+    [Tooltip("Phím tắt để thử nghiệm rơi vật phẩm tại vị trí người chơi (Mặc định: G).")]
+    [SerializeField] private KeyCode dropTestKey = KeyCode.G;
 
     private void Awake()
     {
@@ -41,96 +55,175 @@ public class InventoryTester : MonoBehaviour
     private void Start()
     {
         ResolveItems();
+
+        if (autoAddToolsOnStart)
+        {
+            AutoAddToolsToHotbar();
+        }
+
+        EnsureDropComponentsExist();
     }
+
+    private void Update()
+    {
+        // Nhấn phím Q: Thêm hạt giống vào ô đang chọn (hoặc ô trống kế tiếp nếu ô active không hợp lệ)
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddSeed();
+        }
+
+        // Nhấn phím G: Thử nghiệm ném rơi vật phẩm tại vị trí người chơi
+        if (Input.GetKeyDown(dropTestKey))
+        {
+            TestSpawnDropAtPlayer();
+        }
+    }
+
+    #region Auto Add Tools
+
+    // Tự động thêm lần lượt các công cụ vào các ô hotbar đầu tiên khi vào game.
+    [ContextMenu("Tools/Add All Tools to Hotbar")]
+    public void AutoAddToolsToHotbar()
+    {
+        if (inventory == null)
+        {
+            inventory = FindAnyObjectByType<Inventory>();
+            if (inventory == null)
+            {
+                Debug.LogWarning("[InventoryTester] Không tìm thấy Inventory để thêm công cụ vào Hotbar!", this);
+                return;
+            }
+        }
+
+        // Danh sách công cụ cần thêm vào Hotbar
+        ItemData[] defaultTools = new ItemData[] { hoe, wateringCan, axe, pickaxe, shovel, hammer };
+        int slotIndex = 0;
+
+        foreach (var tool in defaultTools)
+        {
+            if (tool == null) continue;
+
+            // Nếu công cụ này đã có trong Inventory, không thêm lặp lại
+            if (inventory.HasItem(tool, 1))
+            {
+                slotIndex++;
+                continue;
+            }
+
+            // Đặt vào ô slotIndex của Hotbar nếu hợp lệ và đang trống
+            if (slotIndex < inventory.Capacity)
+            {
+                InventorySlot slot = inventory.GetSlot(slotIndex);
+                if (slot != null && slot.IsEmpty())
+                {
+                    inventory.AddItemToSlot(slotIndex, tool, 1);
+                }
+                else
+                {
+                    inventory.TryAddItem(tool, 1);
+                }
+            }
+            else
+            {
+                inventory.TryAddItem(tool, 1);
+            }
+
+            slotIndex++;
+        }
+    }
+
+    #endregion
+
+    #region Item Resolution
 
     private void ResolveItems()
     {
-        if (hoe == null || seed == null || wateringCan == null || dog == null || chicken == null)
+#if UNITY_EDITOR
+        if (hoe == null || seed == null || wateringCan == null || axe == null || pickaxe == null)
+        {
+            string[] guids = AssetDatabase.FindAssets("t:ItemData");
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                ItemData item = AssetDatabase.LoadAssetAtPath<ItemData>(path);
+                if (item == null) continue;
+
+                MatchAndAssignItem(item);
+            }
+        }
+#endif
+
+        if (hoe == null || seed == null || wateringCan == null || axe == null || pickaxe == null)
         {
             ItemData[] allItems = Resources.FindObjectsOfTypeAll<ItemData>();
             foreach (var item in allItems)
             {
                 if (item == null) continue;
-                string id = item.ItemID != null ? item.ItemID.ToLower() : "";
-                string name = item.name.ToLower();
-
-                if (hoe == null && (item.ToolType == ToolType.Hoe || id.Contains("hoe") || name.Contains("hoe"))) hoe = item;
-                if (wateringCan == null && (item.ToolType == ToolType.WateringCan || id.Contains("water") || name.Contains("water"))) wateringCan = item;
-                if (axe == null && (item.ToolType == ToolType.Axe || id.Contains("axe") || name.Contains("axe"))) axe = item;
-                if (pickaxe == null && (item.ToolType == ToolType.Pickaxe || id.Contains("pickaxe") || name.Contains("pick") || name.Contains("pickaxe"))) pickaxe = item;          
-                if (seed == null && (item.ItemType == ItemType.Seed || id.Contains("seed") || name.Contains("seed"))) seed = item;
-                if (dog == null && (id.Contains("dog") || name.Contains("dog"))) dog = item;
-                if (chicken == null && (id.Contains("chicken") || name.Contains("chicken"))) chicken = item;
+                MatchAndAssignItem(item);
             }
         }
     }
 
-    private void Update()
+    private void MatchAndAssignItem(ItemData item)
     {
-        // Nhấn phím Q: Thêm Dog vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AddDog();
-        }
+        if (item == null) return;
+        string id = item.ItemID != null ? item.ItemID.ToLower() : "";
+        string name = item.name.ToLower();
 
-        // Nhấn phím W: Thêm Chicken vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            AddChicken();
-        }
-
-        // Nhấn phím E: Thêm Hoe vào ô đang Active
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    AddHoe();
-        //}
-
-        // Nhấn phím T: Thêm Watering Can vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddWateringCan();
-        }
-
-        // Nhấn phím Y: Thêm 10 Seed vào ô đang Active
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            AddSeed();
-        }
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            AddAxe();
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            AddPickaxe();
-        }
-        // Nhấn phím R: Xóa 5 Item từ ô đang Active
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RemoveFromActiveSlot(5);
-        //}
-
-        //// Nhấn phím U: Xóa sạch ô đang Active
-        //if (Input.GetKeyDown(KeyCode.U))
-        //{
-        //    ClearActiveSlot();
-        //}
+        if (hoe == null && (item.ToolType == ToolType.Hoe || id.Contains("hoe") || name.Contains("hoe"))) hoe = item;
+        if (wateringCan == null && (item.ToolType == ToolType.WateringCan || id.Contains("water") || name.Contains("water"))) wateringCan = item;
+        if (axe == null && (item.ToolType == ToolType.Axe || id.Contains("axe") || name.Contains("axe"))) axe = item;
+        if (pickaxe == null && (item.ToolType == ToolType.Pickaxe || id.Contains("pickaxe") || name.Contains("pick") || name.Contains("pickaxe"))) pickaxe = item;
+        if (shovel == null && (item.ToolType == ToolType.Shovel || id.Contains("shovel") || name.Contains("shovel"))) shovel = item;
+        if (hammer == null && (id.Contains("hammer") || name.Contains("hammer"))) hammer = item;
+        if (seed == null && (item.ItemType == ItemType.Seed || id.Contains("seed") || name.Contains("seed"))) seed = item;
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        ResolveItems();
+    }
+#endif
+
+    #endregion
 
     #region Context Menu & Public Test Actions
 
-    [ContextMenu("Q. Add Dog x1 to Active Slot")]
-    public void AddDog()
+    [ContextMenu("Q. Add Seed to Active Slot")]
+    public void AddSeed()
     {
-        ExecuteAddItemToActiveSlot(dog, 1);
-    }
+        if (seed == null)
+        {
+            Debug.LogError("[InventoryTester] ItemData seed đang bị null!", this);
+            return;
+        }
 
-    [ContextMenu("W. Add Chicken x1 to Active Slot")]
-    public void AddChicken()
-    {
-        ExecuteAddItemToActiveSlot(chicken, 1);
+        int activeIndex = GetActiveSlotIndex();
+        InventorySlot slot = inventory != null ? inventory.GetSlot(activeIndex) : null;
+
+        // Nếu ô đang active trống hoặc cùng loại seed thì thêm thẳng vào ô này
+        if (slot != null && (slot.IsEmpty() || slot.CanStack(seed)))
+        {
+            ExecuteAddItemToActiveSlot(seed, seedAmount);
+        }
+        else
+        {
+            // Nếu ô đang chọn đã bận (ví dụ đang chọn ô chứa công cụ), tìm ô trống đầu tiên để thêm hạt giống
+            if (inventory != null)
+            {
+                int remaining = inventory.AddItem(seed, seedAmount);
+                int added = seedAmount - remaining;
+                if (added > 0)
+                {
+                    Debug.Log($"<color=green>[InventoryTester] Ô đang chọn (Slot {activeIndex + 1}) đã có '{slot?.ItemData?.ItemName}', tự động thêm {added}x '{seed.ItemName}' vào ô trống khả dụng.</color>");
+                }
+                else
+                {
+                    Debug.LogWarning("[InventoryTester] Kho đồ đã đầy, không thể thêm hạt giống!", this);
+                }
+            }
+        }
     }
 
     [ContextMenu("Tools/Add Hoe to Active Slot")]
@@ -139,22 +232,10 @@ public class InventoryTester : MonoBehaviour
         ExecuteAddItemToActiveSlot(hoe, 1);
     }
 
-    [ContextMenu("Tools/Add Seed x10 to Active Slot")]
-    public void AddSeed()
-    {
-        ExecuteAddItemToActiveSlot(seed, 10);
-    }
-
     [ContextMenu("Tools/Add Watering Can to Active Slot")]
     public void AddWateringCan()
     {
         ExecuteAddItemToActiveSlot(wateringCan, 1);
-    }
-
-    [ContextMenu("Tools/Add Shovel to Active Slot")]
-    public void AddShovel()
-    {
-        ExecuteAddItemToActiveSlot(shovel, 1);
     }
 
     [ContextMenu("Tools/Add Axe to Active Slot")]
@@ -169,13 +250,19 @@ public class InventoryTester : MonoBehaviour
         ExecuteAddItemToActiveSlot(pickaxe, 1);
     }
 
-    [ContextMenu("R. Remove 5 Items from Active Slot")]
-    public void RemoveDog()
+    [ContextMenu("Tools/Add Shovel to Active Slot")]
+    public void AddShovel()
     {
-        RemoveFromActiveSlot(5);
+        ExecuteAddItemToActiveSlot(shovel, 1);
     }
 
-    [ContextMenu("U. Clear Active Slot")]
+    [ContextMenu("Remove 5 Items from Active Slot")]
+    public void RemoveFromActiveSlot(int amount = 5)
+    {
+        ExecuteRemoveItemFromActiveSlot(amount);
+    }
+
+    [ContextMenu("Clear Active Slot")]
     public void ClearActiveSlot()
     {
         if (inventory == null) return;
@@ -205,13 +292,8 @@ public class InventoryTester : MonoBehaviour
     }
 
     #endregion
-    
-    #region Execution Helpers
 
-    public void RemoveFromActiveSlot(int amount)
-    {
-        ExecuteRemoveItemFromActiveSlot(amount);
-    }
+    #region Execution Helpers
 
     private int GetActiveSlotIndex()
     {
@@ -292,6 +374,47 @@ public class InventoryTester : MonoBehaviour
         {
             int remainingInSlot = slot.IsEmpty() ? 0 : slot.Amount;
             Debug.Log($"<color=cyan>[InventoryTester] Đã trừ {removed}x '{itemName}' khỏi Slot Hotbar [{activeIndex + 1}] (Index {activeIndex}). Còn lại trong ô: {remainingInSlot}.</color>");
+        }
+    }
+
+    #endregion
+
+    #region Drop Testing & Component Setup
+
+    // Tự động đảm bảo scene có sẵn ItemDropSpawner và Player có ItemCollector
+    private void EnsureDropComponentsExist()
+    {
+        if (FindAnyObjectByType<ItemDropSpawner>() == null)
+        {
+            GameObject spawnerObj = new GameObject("[ItemDropSpawner]");
+            spawnerObj.AddComponent<ItemDropSpawner>();
+        }
+
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        if (player != null && player.GetComponent<ItemCollector>() == null)
+        {
+            player.gameObject.AddComponent<ItemCollector>();
+        }
+    }
+
+    // Thử nghiệm sinh vật phẩm rơi văng ra gần người chơi
+    [ContextMenu("Drops/Test Spawn Drop At Player (Key G)")]
+    public void TestSpawnDropAtPlayer()
+    {
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        Vector3 spawnPos = player != null ? player.transform.position : transform.position;
+
+        ItemData testItem = seed != null ? seed : hoe;
+        if (testItem == null)
+        {
+            Debug.LogWarning("[InventoryTester] Không tìm thấy ItemData để test drop!", this);
+            return;
+        }
+
+        if (ItemDropSpawner.Instance != null)
+        {
+            ItemDropSpawner.Instance.SpawnDrop(testItem, 2, spawnPos, 1.2f);
+            Debug.Log($"<color=green>[InventoryTester] Đã spawn rơi vật phẩm '{testItem.ItemName}' tại {spawnPos} (Phím G).</color>");
         }
     }
 

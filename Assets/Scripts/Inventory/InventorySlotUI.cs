@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     [Header("UI Component Bindings")]
+    [Tooltip("Image nền của ô Slot (Background) - LUÔN LUÔN Active và Enabled.")]
+    [SerializeField] private Image backgroundImage;
+
     [Tooltip("Image hiển thị Icon của Item.")]
     [SerializeField] private Image iconImage;
 
@@ -32,15 +35,59 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     private Image slotBackgroundImage;
 
     public int SlotIndex => slotIndex;
+    public Image BackgroundImage => backgroundImage;
+    public Image IconImage => iconImage;
+    public TextMeshProUGUI AmountText => amountText;
 
     private void Awake()
     {
+        ValidateAndResolveReferences();
         EnsureActive();
     }
 
     private void OnEnable()
     {
         EnsureActive();
+    }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        ValidateAndResolveReferences();
+    }
+#endif
+
+    // Xác thực và tự động liên kết (Auto-resolve) các component con theo Hierarchy
+    public void ValidateAndResolveReferences()
+    {
+        if (backgroundImage == null)
+        {
+            Transform bgTrans = transform.Find("Background");
+            if (bgTrans != null) backgroundImage = bgTrans.GetComponent<Image>();
+        }
+
+        if (iconImage == null)
+        {
+            Transform iconTrans = transform.Find("Icon");
+            if (iconTrans != null) iconImage = iconTrans.GetComponent<Image>();
+        }
+
+        if (amountText == null)
+        {
+            Transform countTrans = transform.Find("AmountText") ?? transform.Find("Count") ?? transform.Find("Text");
+            if (countTrans != null) amountText = countTrans.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (emptyStateVisual == null)
+        {
+            Transform emptyTrans = transform.Find("EmptyVisual") ?? transform.Find("EmptyState");
+            if (emptyTrans != null) emptyStateVisual = emptyTrans.gameObject;
+        }
+
+        if (iconImage != null && backgroundImage != null && iconImage == backgroundImage)
+        {
+            Debug.LogError($"[InventorySlotUI] CẢNH BÁO BINDING: '{gameObject.name}' có iconImage trùng với backgroundImage!", this);
+        }
     }
 
     private void OnDisable()
@@ -61,6 +108,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     {
         slotIndex = index;
         parentUI = ui != null ? ui : GetComponentInParent<InventoryUI>();
+        ValidateAndResolveReferences();
         EnsureActive();
     }
 
@@ -77,15 +125,26 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             enabled = true;
         }
 
+        // Đảm bảo Background luôn Active và Enabled
+        if (backgroundImage != null)
+        {
+            if (!backgroundImage.gameObject.activeSelf) backgroundImage.gameObject.SetActive(true);
+            if (!backgroundImage.enabled) backgroundImage.enabled = true;
+            backgroundImage.raycastTarget = true;
+        }
+
         // Đảm bảo có Image trên chính ô Slot để bắt được Raycast (tự bổ sung Image trong suốt nếu thiếu)
         slotBackgroundImage = GetComponent<Image>();
-        if (slotBackgroundImage == null)
+        if (slotBackgroundImage == null && backgroundImage == null)
         {
             slotBackgroundImage = gameObject.AddComponent<Image>();
             slotBackgroundImage.color = Color.clear;
         }
-        if (!slotBackgroundImage.enabled) slotBackgroundImage.enabled = true;
-        slotBackgroundImage.raycastTarget = true;
+        if (slotBackgroundImage != null)
+        {
+            if (!slotBackgroundImage.enabled) slotBackgroundImage.enabled = true;
+            slotBackgroundImage.raycastTarget = true;
+        }
 
         // BẮT BUỘC: canvasGroup phải thuộc chính GameObject của ô Slot này, không trỏ nhầm sang Parent/Panel
         if (canvasGroup == null || canvasGroup.gameObject != gameObject)
@@ -169,7 +228,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         // TRƯỜNG HỢP 2: Ô CÓ CHỨA ITEM (Có dữ liệu)
         if (iconImage != null)
         {
-            iconImage.sprite = slot.ItemData.Icon;
+            iconImage.sprite = slot.ItemData != null ? slot.ItemData.Icon : null;
             iconImage.color = Color.white;
         }
 

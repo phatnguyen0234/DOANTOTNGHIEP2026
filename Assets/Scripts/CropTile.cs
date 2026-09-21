@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CropTile : MonoBehaviour
+public class CropTile : MonoBehaviour, IDropSource
 {
     [SerializeField] private CropData cropData;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -62,13 +62,11 @@ public class CropTile : MonoBehaviour
     private void OnNewDay()
     {
         if (cropData == null) return;
-
         if (currentGrowthStage >= cropData.maxStage - 1)
         {
             isHavest = true;
             return;
         }
-        Debug.Log(isWatered);
         if (isWatered)
         {
             currentGrowthStage++;
@@ -99,4 +97,23 @@ public class CropTile : MonoBehaviour
             spriteRenderer.sprite = cropData.stageSprites[step];
         }
     }
+
+    #region IDropSource Implementation
+
+    public DropTable GetDropTable()
+    {
+        return cropData != null ? cropData.DropTable : null;
+    }
+
+    public Vector3 GetDropPosition()
+    {
+        return transform.position;
+    }
+
+    public DropContext GetDropContext()
+    {
+        return new DropContext(gameObject, null, null, 1, 1f, 0f);
+    }
+
+    #endregion
 }
