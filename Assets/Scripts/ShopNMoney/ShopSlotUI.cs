@@ -35,7 +35,7 @@ public class ShopSlotUI : MonoBehaviour
         nameText.text = currentShopItem.itemData.ItemName;
         priceText.text = currentShopItem.itemData.BuyPrice.ToString() + " G";
 
-        stockText.text = currentShopItem.stock;
+        stockText.text = "" + currentShopItem.stock;
 
         if (currentShopItem.stock <= 0)
         {
@@ -48,7 +48,7 @@ public class ShopSlotUI : MonoBehaviour
         }
     }
 
-    private void OnBuyClicked()
+    public void OnBuyClicked()
     {
         if (currentShopItem.stock <= 0)
         {
