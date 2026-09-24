@@ -1,0 +1,27 @@
+﻿%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Goby
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: goby
+  itemName: Goby
+  description: 
+  icon: {fileID: -7758358205540790891, guid: abea5eacb9e4d6446a5fe3d733772473, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: Carrot
+  cropData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 60
+  buyPrice: 110
+  sellPrice: 65
+  canSell: 1

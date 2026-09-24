@@ -1,0 +1,27 @@
+﻿%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: BlobFish
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: blobfish
+  itemName: BlobFish
+  description: 
+  icon: {fileID: 8709338430949112980, guid: fc29a6ff3b6d34a458bf1876472d610f, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: Carrot
+  cropData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 60
+  buyPrice: 1000
+  sellPrice: 600
+  canSell: 1
