@@ -25,11 +25,11 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
-        Vector3 clampedPosition = transform.position;
+        //Vector3 clampedPosition = transform.position;
 
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, clampMin.position.x + halfWidth, clampMax.position.x - halfWidth);
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, clampMin.position.y + halfHeight, clampMax.position.y - halfHeight);
+        //clampedPosition.x = Mathf.Clamp(clampedPosition.x, clampMin.position.x + halfWidth, clampMax.position.x - halfWidth);
+        //clampedPosition.y = Mathf.Clamp(clampedPosition.y, clampMin.position.y + halfHeight, clampMax.position.y - halfHeight);
 
-        transform.position = clampedPosition;
+        //transform.position = clampedPosition;
     }
 }
