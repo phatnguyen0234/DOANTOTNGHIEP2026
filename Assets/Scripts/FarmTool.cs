@@ -6,5 +6,6 @@ public enum FarmTool
     Water,
     Harvest,
     Axe,
-    Pickaxe
+    Pickaxe,
+    fishingRod
 }
