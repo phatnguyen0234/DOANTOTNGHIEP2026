@@ -23,6 +23,7 @@ public enum ToolType
     Pickaxe,     // đập đá
     WateringCan, // Bình tưới nước
     SeedBag,     // Hạt giống / Gieo trồng
-    Harvest      // Thu hoạch
+    Harvest,      // Thu hoạch
+    fishingRod   // Cần câu cá
 }
 
