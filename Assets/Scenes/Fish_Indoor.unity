@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &223412077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -950,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaSwitch
   sceneToLoad: Main
+  transitionScene: FishStore
   startPoint: {fileID: 1122531148}
 --- !u!61 &1874637410
 BoxCollider2D:
@@ -2402,7 +2403,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.03434567}
+  m_Offset: {x: 0, y: 0.053865105}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2412,7 +2413,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9.125, y: 1.0686913}
+  m_Size: {x: 9.125, y: 0.8922697}
   m_EdgeRadius: 0
 --- !u!114 &1931578465
 MonoBehaviour:
@@ -2784,7 +2785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456175069641817098, guid: 25faf4c8812cd574bbe3398fe444e40f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

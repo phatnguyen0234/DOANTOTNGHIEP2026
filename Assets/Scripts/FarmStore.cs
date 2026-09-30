@@ -56,6 +56,8 @@ public class FarmStore : MonoBehaviour
         {
             messagePanel.SetActive(false);
             shopUI.SetActive(false);
+            isMessage = false;
+            currentMessage = 0;
         }
     }
 }
