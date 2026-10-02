@@ -73,6 +73,7 @@ public static class MainMapDecorator
                     Vector3 position = center + new Vector3(0f, MainMapGenerator.FaceRows / 2f, 0f);
                     GameObject stairs = CreateFlat("Stairs", stairsPrefab, stairsSprite, position, StairsSortingOrder, root);
                     stairs.GetComponent<SpriteRenderer>().sprite = stairsSprite;
+                    if (stairs.GetComponent<Stairs>() == null) stairs.AddComponent<Stairs>();
                 }
                 else if (c == 'x')
                 {

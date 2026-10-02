@@ -196,7 +196,7 @@ public static class MainMapGenerator
 
     // Tầng k (vùng có độ cao >= k): FaceRows hàng phía Nam của mỗi cột là mặt vách (thân đá + chân),
     // phần còn lại là mặt trên, viền bằng autotile của tileset Cliff.
-    // Mặt vách + viền mặt trên có collider (tilemap CliffCollider), chừa lối ở cột cầu thang.
+    // Mặt vách + viền mặt trên có collider kín (tilemap CliffCollider); lối đi do script Stairs trên cầu thang mở lúc chạy game.
     private static void PaintCliff(int x, int y, Vector3Int cell, Tilemap cliff, Tilemap cliffCollider,
         Dictionary<Vector2Int, Sprite> cliffSprites, Dictionary<int, TileBase> cliffMidTiles, TileBase blockTile)
     {
@@ -210,10 +210,7 @@ public static class MainMapGenerator
             if (mask == FullMask) return;
 
             cliff.SetTile(cell, BlobTile("Cliff", cliffSprites, mask, 0, Tile.ColliderType.None));
-
-            // Viền mặt trên chặn đường, trừ ô ngay trên đầu cầu thang.
-            bool aboveStairs = FaceRow(x, y - 1, level) > 0 && IsStairsColumn(x, y - 1, level);
-            if (!aboveStairs) cliffCollider.SetTile(cell, blockTile);
+            cliffCollider.SetTile(cell, blockTile);
             return;
         }
 
@@ -225,8 +222,7 @@ public static class MainMapGenerator
             ? GetOrCreateTile($"CliffFace_{col}_{CliffFaceRow}", cliffSprites[new Vector2Int(col, CliffFaceRow)], Tile.ColliderType.None)
             : cliffMidTiles[col];
         cliff.SetTile(cell, faceTile);
-
-        if (!IsStairsColumn(x, y, level)) cliffCollider.SetTile(cell, blockTile);
+        cliffCollider.SetTile(cell, blockTile);
     }
 
     // Độ cao của ô theo MainLevels.txt (không có file / ngoài map = 0).
@@ -251,13 +247,6 @@ public static class MainMapGenerator
     private static bool IsWater(int x, int y) => At(x, y) == 'w' || At(x, y) == 'b';
 
     private static bool IsLevelTop(int x, int y, int level) => LevelAt(x, y) >= level && FaceRow(x, y, level) == 0;
-
-    // Cột mặt vách có cầu thang: đi xuống hết phần tầng k thì gặp ô 'S'.
-    private static bool IsStairsColumn(int x, int y, int level)
-    {
-        while (LevelAt(x, y) >= level && y >= 0) y--;
-        return At(x, y) == 'S';
-    }
 
     private static TileBase BlobTile(string prefix, Dictionary<Vector2Int, Sprite> sprites, int mask, int blockRow,
         Tile.ColliderType colliderType, int columnOffset = 0)

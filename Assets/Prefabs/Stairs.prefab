@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8725787625319516620}
   - component: {fileID: 6913285135615804480}
+  - component: {fileID: 3837450674539850664}
   m_Layer: 0
   m_Name: Stairs
   m_TagString: Untagged
@@ -92,3 +93,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &3837450674539850664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499557377506758972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a8062b31f8dad438fa41f6b563e6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stairs
+  cliffCollider: {fileID: 0}
