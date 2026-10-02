@@ -26,4 +26,38 @@ public class FarmCell
     {
         this.position = position;
     }
+
+    public bool Till()
+    {
+        if(state == FarmCellState.Empty)
+        {
+            state = FarmCellState.Tilled;
+            return true;
+        }
+        return false;
+    }
+
+    public bool Plant(string cropId, int daysToMature)
+    {
+        if (state == FarmCellState.Tilled)
+        {
+            state = FarmCellState.Seeded;
+            this.cropId = cropId;
+            this.daysToMature = daysToMature;
+            growthDays = 0;
+            wateredToday = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool Water()
+    {
+        if(state != FarmCellState.Empty)
+        {
+            wateredToday = true;
+            return true;
+        }
+        return false;
+    }
 }

@@ -8,7 +8,7 @@ public class CropTile : MonoBehaviour, IDropSource
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private TileBase driedSoil;
     public int currentGrowthStage = 0;
-    public bool isWatered { get; set; } = false;
+    
     public bool isHavest { get; set; } = false;
 
     public CropData CropData => cropData;
@@ -33,7 +33,6 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             cropData = data;
             currentGrowthStage = 0;
-            isWatered = false;
             isHavest = false;
             if (spriteRenderer == null)
             {
@@ -43,23 +42,9 @@ public class CropTile : MonoBehaviour, IDropSource
         }
     }
 
-    private void OnEnable()
-    {
-        if (TimeManager.Instance != null)
-        {
-            TimeManager.Instance.onNewDay += OnNewDay;
-        }
-    }
+   
 
-    private void OnDisable()
-    {
-        if (TimeManager.Instance != null)
-        {
-            TimeManager.Instance.onNewDay -= OnNewDay;
-        }
-    }
-
-    private void OnNewDay()
+    public void Grow(bool isWatered)
     {
         if (cropData == null) return;
         if (currentGrowthStage >= cropData.maxStage - 1)
@@ -71,12 +56,6 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             currentGrowthStage++;
             UpdateSprite(currentGrowthStage);
-
-            if (groundTileMap != null && driedSoil != null)
-            {
-                Vector3Int cell = groundTileMap.WorldToCell(transform.position);
-                groundTileMap.SetTile(cell, driedSoil);
-            }
 
             isWatered = false;
 
