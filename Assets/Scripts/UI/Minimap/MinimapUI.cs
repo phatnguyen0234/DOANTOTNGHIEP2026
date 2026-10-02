@@ -32,6 +32,13 @@ public class MinimapUI : MonoBehaviour
     [Tooltip("Orthographic Size của camera minimap khi bám theo Player (càng nhỏ càng zoom gần).")]
     [SerializeField, Min(1f)] private float followSize = 15f;
 
+    [Header("World Map (chỉ gán ở minimap góc màn hình)")]
+    [Tooltip("Panel bản đồ toàn màn hình. Để trống nếu đây chính là bản đồ lớn.")]
+    [SerializeField] private GameObject worldMapPanel;
+
+    [Tooltip("Phím mở / đóng bản đồ lớn.")]
+    [SerializeField] private KeyCode worldMapKey = KeyCode.M;
+
     // Các icon theo dõi thêm ngoài Player (NPC, điểm câu cá...).
     private readonly Dictionary<Transform, RectTransform> icons = new Dictionary<Transform, RectTransform>();
     private readonly List<Transform> removeBuffer = new List<Transform>();
@@ -39,9 +46,28 @@ public class MinimapUI : MonoBehaviour
     private Bounds mapBounds;
     private bool hasMapBounds;
 
+    // Camera chỉ render khi UI của nó đang hiển thị (bản đồ lớn đóng thì camera của nó không tốn chi phí render).
+    private void OnEnable()
+    {
+        if (minimapCamera != null) minimapCamera.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        if (minimapCamera != null) minimapCamera.enabled = false;
+    }
+
     private void Start()
     {
         FitCameraToMap();
+    }
+
+    private void Update()
+    {
+        if (worldMapPanel != null && Input.GetKeyDown(worldMapKey))
+        {
+            worldMapPanel.SetActive(!worldMapPanel.activeSelf);
+        }
     }
 
     private void LateUpdate()
