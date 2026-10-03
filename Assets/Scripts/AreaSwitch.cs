@@ -20,6 +20,8 @@ public class AreaSwitch : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
+        SoilManager.Instance.GetFarmDataJson();
+
         currentScene = transitionScene;
 
         SceneManager.LoadScene(sceneToLoad);

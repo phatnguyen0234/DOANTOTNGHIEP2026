@@ -221,7 +221,11 @@ public class FarmInputController : MonoBehaviour
 
     public void Use()
     {
-        if (!Input.GetMouseButtonDown(0)) return;
+        if (!Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("CLick chuột trái không được nhấn");
+            return;
+        }
 
         // Bỏ qua nếu click chuột trên UI (ví dụ ô Hotbar, Túi đồ)
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
@@ -229,6 +233,7 @@ public class FarmInputController : MonoBehaviour
         // Bỏ qua nếu túi đồ đang mở
         if (inventory != null && inventory.IsBagOpen) return;
 
+        Debug.Log(CurrentTool);
         switch (CurrentTool)
         {
             case FarmTool.Hoe:
@@ -260,18 +265,10 @@ public class FarmInputController : MonoBehaviour
     {
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = cell - playerCell;
-        TileBase tile = groundTileMap.GetTile(cell);
-        bool isSoil = tile == soilTile || tile == soilWetTile;
         bool isInRange = CheckDistance(distance);
 
-        // Kiểm tra cây đã trồng, dọn dẹp nếu GameObject cây đã bị xóa
-        if (planted.TryGetValue(cell, out GameObject existingCrop) && existingCrop == null)
-        {
-            planted.Remove(cell);
-        }
-
-        bool isPlanted = planted.ContainsKey(cell);
-        return isInRange && isSoil && !isPlanted;
+        bool isSoil = SoilManager.Instance.IsTilled(cell);
+        return isInRange && isSoil;
     }
 
     public void HighLight()
@@ -336,7 +333,6 @@ public class FarmInputController : MonoBehaviour
             CropData toPlant = seedItem.CropData != null ? seedItem.CropData : cropData;
             if (toPlant == null)
             {
-                Debug.LogWarning($"[FarmInputController] Chưa cấu hình CropData cho hạt giống '{seedItem.ItemName}'!", this);
                 return;
             }
 
@@ -357,8 +353,7 @@ public class FarmInputController : MonoBehaviour
                 }
             }
 
-            planted[mouCell] = crop;
-
+            SoilManager.Instance.PlantCrop(mouCell, toPlant, tile);
             // Trừ 1 hạt giống từ ô Hotbar đang chọn
             if (inventory != null && hotbarController != null)
             {
@@ -398,26 +393,8 @@ public class FarmInputController : MonoBehaviour
             targetCellWater = playerCell + Offset(playerMovement.FacingDirection);
             targetWorldWater = groundTileMap.GetCellCenterWorld(targetCellWater);
         }
-        bool isSoil = groundTileMap.GetTile(targetCellWater) == soilTile;
-        if (isSoil)
+        if (SoilManager.Instance.CanWater(targetCellWater))
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(targetWorldWater, 0.2f, cropMask);
-            CropTile targetCrop = null; ;
-            foreach(var hit in hits)
-            {
-                CropTile crop = hit.GetComponent<CropTile>();
-                Vector3Int cropCell = groundTileMap.WorldToCell(hit.transform.position);
-                if(cropCell == targetCellWater)
-                {
-                    targetCrop = crop;
-                    break;
-                }
-
-            }
-            if(targetCrop != null)
-            {
-                targetCrop.isWatered = true;
-            }
             isWatering = true;
             if (CheckDistance(distance)) playerMovement.UsingWater(disWorld);
             else playerMovement.UsingWater(playerMovement.FacingDirection);
@@ -527,13 +504,13 @@ public class FarmInputController : MonoBehaviour
     }
     public void OnWaterAnimationComplete()
     {
-        groundTileMap.SetTile(targetCellWater, soilWetTile);
+        SoilManager.Instance.WaterSoil(targetCellWater);
         isWatering = false;
     }
 
     public void OnHoeAnimationComplete()
     {
-        groundTileMap.SetTile(targetCellHoe, soilTile);
+        SoilManager.Instance.Tilled(targetCellHoe);
     }
 
     private Vector3Int Offset(Vector2 direction)
