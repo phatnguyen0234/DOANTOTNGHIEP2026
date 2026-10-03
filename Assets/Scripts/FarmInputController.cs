@@ -191,29 +191,26 @@ public class FarmInputController : MonoBehaviour
 
     private void HandleFishingInput(bool isPointerOverUI, bool isBagOpen)
     {
-        if (FishingController.Instance == null) return;
+        if (isPointerOverUI || isBagOpen) return;
 
-        FishingState state = FishingController.Instance.CurrentState;
+        if (!Input.GetMouseButtonDown(0)) return;
 
-        if (state == FishingState.Idle)
+        // 1. Ưu tiên gọi FishingQuickTester nếu có trong Scene
+        if (FishingQuickTester.Instance != null)
         {
-            if (!isPointerOverUI && !isBagOpen && Input.GetMouseButtonDown(0))
+            if (!FishingQuickTester.Instance.IsFishing)
             {
-                FishingController.Instance.StartChargingCast();
+                FishingQuickTester.Instance.StartQuickFishing();
             }
+            return;
         }
-        else if (state == FishingState.Charging)
+
+        // 2. Hoặc gọi FishingController kích hoạt luồng câu nhanh 1 giây
+        if (FishingController.Instance != null)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (FishingController.Instance.CurrentState == FishingState.Idle)
             {
-                FishingController.Instance.ReleaseCast();
-            }
-        }
-        else if (state == FishingState.WaitingForBite || state == FishingState.FishBite)
-        {
-            if (!isPointerOverUI && Input.GetMouseButtonDown(0))
-            {
-                FishingController.Instance.OnInteractAction();
+                FishingController.Instance.TriggerQuickFishingTest();
             }
         }
     }

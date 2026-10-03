@@ -317,8 +317,21 @@ public class FishingController : MonoBehaviour
         StartCoroutine(StartMinigameRoutine());
     }
 
+    // Phương thức kiểm thử nhanh: Kích hoạt câu cá đợi 1 giây câu lên
+    public void TriggerQuickFishingTest()
+    {
+        if (CurrentState != FishingState.Idle) return;
+
+        StateMachine.ChangeState(FishingState.Casting);
+        StartCoroutine(StartMinigameRoutine());
+    }
+
     private IEnumerator StartMinigameRoutine()
     {
+        // =========================================================================
+        // [PHASE HIỆN TẠI]: Tạm thời comment lại chức năng hiển thị Minigame để test nhanh
+        // =========================================================================
+        /*
         yield return new WaitForSeconds(0.25f);
 
         StateMachine.ChangeState(FishingState.Reeling);
@@ -326,12 +339,29 @@ public class FishingController : MonoBehaviour
         if (minigame != null && targetFish != null)
         {
             minigame.StartMinigame(targetFish, activeRodData);
+            yield break;
         }
-        else
+        */
+
+        // Thay thế bằng luồng câu cá đợi 1 giây để câu cá lên:
+        Debug.Log("<color=#00D2FF>[FishingController] Đang quăng cần... Đợi 1 giây để câu cá lên...</color>");
+        yield return new WaitForSeconds(1.0f);
+
+        if (targetFish == null && fishSpawner != null)
         {
-            // Fallback nếu không có minigame
-            HandleMinigameFinished(new FishingResult(targetFish, true, true, 20, targetFish?.RewardItemData, 1));
+            targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
         }
+
+        FishingResult quickResult = new FishingResult(
+            targetFish,
+            true,
+            true,
+            targetFish != null ? targetFish.ExpReward : 25,
+            targetFish != null ? targetFish.RewardItemData : null,
+            1
+        );
+
+        HandleMinigameFinished(quickResult);
     }
 
     private void HandleMinigameFinished(FishingResult result)

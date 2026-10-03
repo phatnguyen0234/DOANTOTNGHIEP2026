@@ -11,15 +11,34 @@ public class FishBiteIndicatorUI : MonoBehaviour
     [Tooltip("Animation curve scale nảy của dấu chấm than.")]
     [SerializeField] private AnimationCurve popCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    private Canvas parentCanvas;
+    private Camera mainCam;
+
     private void Awake()
     {
+        parentCanvas = GetComponentInParent<Canvas>();
+        mainCam = Camera.main;
         gameObject.SetActive(false);
     }
 
     public void Show(Vector3 worldPosition)
     {
         gameObject.SetActive(true);
-        transform.position = worldPosition + offset;
+
+        Vector3 targetWorld = worldPosition + offset;
+        if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+        {
+            if (mainCam == null) mainCam = Camera.main;
+            if (mainCam != null)
+            {
+                transform.position = mainCam.WorldToScreenPoint(targetWorld);
+            }
+        }
+        else
+        {
+            transform.position = targetWorld;
+        }
+
         StopAllCoroutines();
         StartCoroutine(PopRoutine());
     }

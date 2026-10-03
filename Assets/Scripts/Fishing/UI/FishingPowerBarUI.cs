@@ -15,9 +15,13 @@ public class FishingPowerBarUI : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(0, 1.2f, 0);
 
     private Transform targetFollow;
+    private Canvas parentCanvas;
+    private Camera mainCam;
 
     private void Awake()
     {
+        parentCanvas = GetComponentInParent<Canvas>();
+        mainCam = Camera.main;
         Hide();
     }
 
@@ -25,7 +29,19 @@ public class FishingPowerBarUI : MonoBehaviour
     {
         if (targetFollow != null && gameObject.activeSelf)
         {
-            transform.position = targetFollow.position + offset;
+            Vector3 worldPos = targetFollow.position + offset;
+            if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                if (mainCam == null) mainCam = Camera.main;
+                if (mainCam != null)
+                {
+                    transform.position = mainCam.WorldToScreenPoint(worldPos);
+                }
+            }
+            else
+            {
+                transform.position = worldPos;
+            }
         }
     }
 

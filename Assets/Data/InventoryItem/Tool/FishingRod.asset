@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
   m_Name: FishingRod
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: 
-  itemName: 
+  itemID: fishingrod
+  itemName: Bamboo Fishing Rod
   description: 
-  icon: {fileID: 0}
-  itemType: 0
-  toolType: 0
-  cropId: Carrot
+  icon: {fileID: -2858176563081021727, guid: a278bb310afba8c4f9fc77b57934ff46, type: 3}
+  itemType: 5
+  toolType: 8
+  cropId: 
   cropData: {fileID: 0}
   animationTrigger: 
-  maxStack: 99
+  maxStack: 1
   buyPrice: 0
   sellPrice: 0
   canSell: 1
