@@ -2,20 +2,26 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.IO;
 
 public class SoilManager : MonoBehaviour
 {
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private TileBase soilTile;
     [SerializeField] private TileBase soilWetTile;
+    [SerializeField] private List<CropData> cropDataList;
+    [SerializeField] private CropTile cropTilePrefab;
     public static SoilManager Instance;
     
     public FarmData currentFarmData;
     public Dictionary<Vector3Int, CropTile> farmCells = new Dictionary<Vector3Int, CropTile>();
 
+    
+
     private void Awake()
     {
         Instance = this;
+        LoadFarmDataJson();
     }
 
     private void Start()
@@ -24,7 +30,9 @@ public class SoilManager : MonoBehaviour
         {
             TimeManager.Instance.onNewDay += HandleNewDay;
         }
+        ReBuildFarm();
     }
+
 
     private void OnDisable()
     {
@@ -108,31 +116,78 @@ public class SoilManager : MonoBehaviour
     public void GetFarmDataJson()
     {
         string json = JsonUtility.ToJson(currentFarmData, true);
-        PlayerPrefs.SetString("FarmData", json);
-        PlayerPrefs.Save();
+        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
+        File.WriteAllText(filepath, json);
     }
 
     public void LoadFarmDataJson()
     {
-        string json = PlayerPrefs.GetString("FarmData");
+        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
+        if(!File.Exists(filepath))
+        {
+            return;
+        }
+        string json = File.ReadAllText(filepath);
         currentFarmData = JsonUtility.FromJson<FarmData>(json);
-
-        ClearMap();
     }
 
-    [ContextMenu("Clear Map")]
-    private void ClearMap()
+    private void ReBuildFarm()
     {
-        foreach(CropTile pos in farmCells.Values)
+        ClearFarm();
+        foreach(FarmCell cell in currentFarmData.cells)
         {
-            if (pos != null)
+            if (cell.wateredToday)
             {
-                Destroy(pos.gameObject);
+                groundTileMap.SetTile(cell.position, soilWetTile);
+
+            }
+            else if(cell.state != FarmCellState.Empty)
+            {
+                groundTileMap.SetTile(cell.position, soilTile);
+            }
+
+            if (!string.IsNullOrEmpty(cell.cropId))
+            {
+                CropData cropData = GetCropData(cell.cropId);
+                Vector3 position = groundTileMap.GetCellCenterWorld(cell.position);
+                CropTile cropTile = Instantiate(cropTilePrefab, position, Quaternion.identity, transform);
+                cropTile.Init(cropData, cell.growthDays);
+                farmCells[cell.position] = cropTile;
+            }
+        }
+    }
+
+    private void ClearFarm()
+    {
+        foreach(CropTile crop in farmCells.Values)
+        {
+            if (crop != null)
+            {
+                Destroy(crop.gameObject);
             }
         }
         farmCells.Clear();
-        groundTileMap.ClearAllTiles();
     }
 
+    public CropData GetCropData(string cropId)
+    {
+        foreach(CropData cropData in cropDataList)
+        {
+            if (cropData.id == cropId)
+            {
+                return cropData;
+            }
+        }
+        return null;
+    }
 
+    [ContextMenu("Open json")]
+    public void OpenJson()
+    {
+        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
+        if (File.Exists(filepath))
+        {
+            Application.OpenURL(filepath);
+        }
+    }
 }

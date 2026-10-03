@@ -189,7 +189,11 @@ public class FarmInputController : MonoBehaviour
 
     public void Use()
     {
-        if (!Input.GetMouseButtonDown(0)) return;
+        if (!Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("CLick chuột trái không được nhấn");
+            return;
+        }
 
         // Bỏ qua nếu click chuột trên UI (ví dụ ô Hotbar, Túi đồ)
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
@@ -197,6 +201,7 @@ public class FarmInputController : MonoBehaviour
         // Bỏ qua nếu túi đồ đang mở
         if (inventory != null && inventory.IsBagOpen) return;
 
+        Debug.Log(CurrentTool);
         switch (CurrentTool)
         {
             case FarmTool.Hoe:

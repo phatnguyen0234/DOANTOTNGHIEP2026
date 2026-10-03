@@ -29,20 +29,23 @@ public class CropTile : MonoBehaviour, IDropSource
 
     public void Init(CropData data)
     {
+        Init(data,0);
+    }
+
+    public void Init(CropData data, int growthStage)
+    {
         if (data != null)
         {
             cropData = data;
-            currentGrowthStage = 0;
-            isHavest = false;
+            currentGrowthStage = growthStage;
+            isHavest = currentGrowthStage >= cropData.maxStage - 1;
             if (spriteRenderer == null)
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
             }
-            UpdateSprite(0);
+            UpdateSprite(currentGrowthStage);
         }
     }
-
-   
 
     public void Grow(bool isWatered)
     {
