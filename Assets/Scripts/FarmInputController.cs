@@ -195,22 +195,35 @@ public class FarmInputController : MonoBehaviour
 
         if (!Input.GetMouseButtonDown(0)) return;
 
-        // 1. Ưu tiên gọi FishingQuickTester nếu có trong Scene
-        if (FishingQuickTester.Instance != null)
+        FishingController fc = FishingController.Instance;
+        if (fc == null) return;
+
+        // [Click Lần 2]: Đang nạp lực trên đầu -> Nhấn tiếp để chốt lực, quăng phao và ẩn thanh lực!
+        if (fc.CurrentState == FishingState.Charging)
         {
-            if (!FishingQuickTester.Instance.IsFishing)
-            {
-                FishingQuickTester.Instance.StartQuickFishing();
-            }
+            fc.ReleaseCast();
             return;
         }
 
-        // 2. Hoặc gọi FishingController kích hoạt luồng câu nhanh 1 giây
-        if (FishingController.Instance != null)
+        // Đang trong quá trình chờ 1s hoặc đang hiện popup kết quả -> Không nhận click mới
+        if (fc.IsFishing)
         {
-            if (FishingController.Instance.CurrentState == FishingState.Idle)
+            return;
+        }
+
+        // [Click Lần 1]: Đang ở trạng thái Idle và người chơi click vào mặt nước
+        if (fc.CurrentState == FishingState.Idle)
+        {
+            Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorld.z = 0f;
+
+            InventorySlot activeSlot = hotbarController != null ? hotbarController.SelectedSlot : null;
+            FishingRodData rodData = activeSlot != null && activeSlot.ItemData != null ? activeSlot.ItemData.RodData : null;
+
+            bool started = fc.TryStartFishingAtWater((Vector2)mouseWorld, rodData);
+            if (!started)
             {
-                FishingController.Instance.TriggerQuickFishingTest();
+                Debug.Log("[FarmInputController] Hãy click vào mặt nước hợp lệ để bắt đầu nạp lực câu cá!");
             }
         }
     }

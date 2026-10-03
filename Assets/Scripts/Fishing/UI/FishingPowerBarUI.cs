@@ -22,6 +22,20 @@ public class FishingPowerBarUI : MonoBehaviour
     {
         parentCanvas = GetComponentInParent<Canvas>();
         mainCam = Camera.main;
+
+        if (powerGradient == null || powerGradient.colorKeys == null || powerGradient.colorKeys.Length == 0)
+        {
+            powerGradient = new Gradient();
+            GradientColorKey[] colorKeys = new GradientColorKey[3];
+            colorKeys[0] = new GradientColorKey(new Color(0.2f, 0.85f, 0.3f), 0.0f); // Xanh lá
+            colorKeys[1] = new GradientColorKey(new Color(1.0f, 0.85f, 0.1f), 0.5f); // Vàng
+            colorKeys[2] = new GradientColorKey(new Color(1.0f, 0.25f, 0.2f), 1.0f); // Đỏ cam
+            GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
+            alphaKeys[0] = new GradientAlphaKey(1.0f, 0.0f);
+            alphaKeys[1] = new GradientAlphaKey(1.0f, 1.0f);
+            powerGradient.SetKeys(colorKeys, alphaKeys);
+        }
+
         Hide();
     }
 

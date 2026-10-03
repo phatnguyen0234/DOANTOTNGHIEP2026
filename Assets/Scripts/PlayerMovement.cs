@@ -151,6 +151,20 @@ public class PlayerMovement : MonoBehaviour
         Destroy(effect, 2f);
     }
 
+    public void SetFacingDirection(Vector2 direction)
+    {
+        if (direction != Vector2.zero)
+        {
+            lastDirection = direction.normalized;
+            if (anim != null)
+            {
+                anim.SetFloat("MoveX", lastDirection.x);
+                anim.SetFloat("MoveY", lastDirection.y);
+                anim.SetFloat("Speed", 0f);
+            }
+        }
+    }
+
     private void UpdateAnimation()
     {
         if(moveDirection != Vector2.zero)

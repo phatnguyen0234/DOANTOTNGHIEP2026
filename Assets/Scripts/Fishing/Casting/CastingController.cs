@@ -44,9 +44,12 @@ public class CastingController : MonoBehaviour
         }
     }
 
-    public void StartCharging(FishingRodData rodData)
+    private Vector2? targetWaterPoint = null;
+
+    public void StartCharging(FishingRodData rodData, Vector2? targetPoint = null)
     {
         currentRodData = rodData;
+        targetWaterPoint = targetPoint;
         CurrentPower = 0f;
         IsCharging = true;
         chargeIncreasing = true;
@@ -88,8 +91,17 @@ public class CastingController : MonoBehaviour
         float minDist = currentRodData != null ? currentRodData.MinCastDistance : defaultMinDistance;
         float maxDist = currentRodData != null ? currentRodData.MaxCastDistance : defaultMaxDistance;
 
-        float castDistance = Mathf.Lerp(minDist, maxDist, CurrentPower);
-        Vector2 targetPosition = playerPosition + facingDirection.normalized * castDistance;
+        Vector2 targetPosition;
+        if (targetWaterPoint.HasValue)
+        {
+            // Ném tới đúng vị trí nước mục tiêu mà người chơi đã click
+            targetPosition = targetWaterPoint.Value;
+        }
+        else
+        {
+            float castDistance = Mathf.Lerp(minDist, maxDist, CurrentPower);
+            targetPosition = playerPosition + facingDirection.normalized * castDistance;
+        }
 
         Vector2 startPos = rodTip != null ? (Vector2)rodTip.position : playerPosition;
 

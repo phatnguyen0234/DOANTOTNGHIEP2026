@@ -41,14 +41,17 @@ public class FishingResultUI : MonoBehaviour
         if (resultPanel != null) resultPanel.SetActive(true);
         gameObject.SetActive(true);
 
-        if (result.IsSuccess && result.CaughtFish != null)
+        if (result.IsSuccess && (result.CaughtFish != null || result.RewardItem != null))
         {
+            string name = result.CaughtFish != null ? result.CaughtFish.FishName : (result.RewardItem != null ? result.RewardItem.ItemName : "Cá");
+            Sprite icon = result.CaughtFish != null ? result.CaughtFish.Icon : (result.RewardItem != null ? result.RewardItem.Icon : null);
+
             if (titleText != null) titleText.text = "CÂU ĐƯỢC CÁ!";
-            if (fishNameText != null) fishNameText.text = result.CaughtFish.FishName;
+            if (fishNameText != null) fishNameText.text = name;
             if (fishIconImage != null)
             {
-                fishIconImage.gameObject.SetActive(true);
-                fishIconImage.sprite = result.CaughtFish.Icon;
+                fishIconImage.gameObject.SetActive(icon != null);
+                fishIconImage.sprite = icon;
             }
             if (perfectBadge != null) perfectBadge.SetActive(result.IsPerfect);
             if (expText != null) expText.text = $"+{result.EarnedExp} EXP";

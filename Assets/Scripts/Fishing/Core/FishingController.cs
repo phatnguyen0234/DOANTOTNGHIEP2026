@@ -24,6 +24,9 @@ public class FishingController : MonoBehaviour
     [Tooltip("Tham chiếu tới ItemDropSpawner (tùy chọn).")]
     [SerializeField] private ItemDropSpawner itemDropSpawner;
 
+    [Tooltip("Tham chiếu tới WaterDetector.")]
+    [SerializeField] private WaterDetector waterDetector;
+
     [Header("UI Dependencies")]
     [SerializeField] private FishingPowerBarUI powerBarUI;
     [SerializeField] private FishBiteIndicatorUI biteIndicatorUI;
@@ -80,6 +83,8 @@ public class FishingController : MonoBehaviour
     {
         if (playerMovement == null) playerMovement = FindAnyObjectByType<PlayerMovement>();
         if (castingController == null) castingController = GetComponentInChildren<CastingController>();
+        if (waterDetector == null) waterDetector = GetComponentInChildren<WaterDetector>();
+        if (waterDetector == null) waterDetector = FindAnyObjectByType<WaterDetector>();
         if (fishSpawner == null) fishSpawner = GetComponentInChildren<FishSpawner>();
         if (minigame == null) minigame = GetComponentInChildren<FishingMinigame>();
         if (inventory == null) inventory = FindAnyObjectByType<Inventory>();
@@ -142,9 +147,55 @@ public class FishingController : MonoBehaviour
         }
     }
 
-    #region Input Actions from FarmInputController or UI
+    #region Input Actions & Water Click Flow
 
-    // Người chơi bắt đầu nhấn giữ chuột khi cầm cần câu
+    // Kiểm tra xem vị trí có phải là mặt nước hợp lệ để câu không
+    public bool IsWaterAtPosition(Vector2 worldPosition, out FishingSpotData spotData)
+    {
+        spotData = null;
+        if (waterDetector != null)
+        {
+            return waterDetector.IsInWater(worldPosition, out spotData);
+        }
+        return true; // Fallback nếu chưa cấu hình detector
+    }
+
+    // [Click lần 1]: Người chơi chọn cần câu và click vào mặt nước -> Bắt đầu hiện thanh lực trên đầu
+    public bool TryStartFishingAtWater(Vector2 targetWaterPos, FishingRodData rodData = null)
+    {
+        if (CurrentState != FishingState.Idle) return false;
+
+        if (!IsWaterAtPosition(targetWaterPos, out currentSpotData))
+        {
+            return false;
+        }
+
+        activeRodData = rodData != null ? rodData : defaultRodData;
+
+        // Xoay hướng nhân vật về điểm click nước
+        if (playerMovement != null)
+        {
+            Vector2 playerPos = playerMovement.transform.position;
+            Vector2 dir = (targetWaterPos - playerPos).normalized;
+            playerMovement.SetFacingDirection(dir);
+        }
+
+        StateMachine.ChangeState(FishingState.Charging);
+
+        if (castingController != null)
+        {
+            castingController.StartCharging(activeRodData, targetWaterPos);
+        }
+
+        if (powerBarUI != null && playerMovement != null)
+        {
+            powerBarUI.Show(playerMovement.transform);
+        }
+
+        return true;
+    }
+
+    // Bắt đầu nạp lực câu cá chuẩn
     public bool StartChargingCast(FishingRodData rodData = null)
     {
         if (CurrentState != FishingState.Idle) return false;
@@ -166,7 +217,7 @@ public class FishingController : MonoBehaviour
         return true;
     }
 
-    // Người chơi thả nút chuột để ném cần
+    // [Click lần 2]: Người chơi click lần nữa để chốt lực -> Quăng cần và ẩn thanh lực đi
     public void ReleaseCast()
     {
         if (CurrentState != FishingState.Charging) return;
@@ -192,12 +243,10 @@ public class FishingController : MonoBehaviour
     {
         if (CurrentState == FishingState.FishBite)
         {
-            // Người chơi phản xạ bấm kịp lúc!
             HookFish();
         }
         else if (CurrentState == FishingState.WaitingForBite)
         {
-            // Thu cần sớm khi cá chưa cắn
             CancelFishing("Thu cần sớm.");
         }
     }
@@ -242,22 +291,44 @@ public class FishingController : MonoBehaviour
         {
             Debug.Log("[FishingController] Phao rơi ngoài vùng nước!");
             StateMachine.ChangeState(FishingState.Failed);
+            if (castingController != null) castingController.RetrieveBobber();
             return;
         }
 
         currentSpotData = spotData;
 
-        // Chọn cá cho lượt câu này
+        // Chọn loài cá cho lượt câu này
         if (fishSpawner != null)
         {
             targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
         }
 
-        float minWait = activeRodData != null ? activeRodData.MinBiteWaitTime : 2.0f;
-        float maxWait = activeRodData != null ? activeRodData.MaxBiteWaitTime : 5.0f;
-        biteTimer = UnityEngine.Random.Range(minWait, maxWait);
+        // Chuyển sang trạng thái câu cá và chờ đúng 1 giây để lên cá!
+        StateMachine.ChangeState(FishingState.Reeling);
+        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
+    }
 
-        StateMachine.ChangeState(FishingState.WaitingForBite);
+    // Luồng câu cá: Đợi 1 giây rồi giật lên cá
+    private IEnumerator CatchFishAfterDelayRoutine(float delay)
+    {
+        Debug.Log("<color=#00D2FF>[FishingController] Đang quăng cần vào mặt nước... Đợi 1s để kéo cá lên!</color>");
+        yield return new WaitForSeconds(delay);
+
+        if (targetFish == null && fishSpawner != null)
+        {
+            targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
+        }
+
+        FishingResult result = new FishingResult(
+            targetFish,
+            true,
+            true,
+            targetFish != null ? targetFish.ExpReward : 25,
+            targetFish != null ? targetFish.RewardItemData : null,
+            1
+        );
+
+        HandleMinigameFinished(result);
     }
 
     private void UpdateWaitingForBite()
@@ -275,7 +346,6 @@ public class FishingController : MonoBehaviour
 
         reactionTimer = activeRodData != null ? activeRodData.HookReactionWindow : 1.2f;
 
-        // Hiệu ứng phao nhấp nhô & bong bóng "!"
         FishingBobber bobber = castingController != null ? castingController.GetBobber() : null;
         if (bobber != null)
         {
@@ -296,7 +366,6 @@ public class FishingController : MonoBehaviour
         reactionTimer -= Time.deltaTime;
         if (reactionTimer <= 0f)
         {
-            // Quá thời gian phản xạ, cá đã thoát!
             if (biteIndicatorUI != null) biteIndicatorUI.Hide();
             StateMachine.ChangeState(FishingState.Failed);
 
@@ -310,58 +379,16 @@ public class FishingController : MonoBehaviour
     private void HookFish()
     {
         if (biteIndicatorUI != null) biteIndicatorUI.Hide();
-
         StateMachine.ChangeState(FishingState.Hooked);
-
-        // Chuyển tiếp vào Minigame Reeling
-        StartCoroutine(StartMinigameRoutine());
+        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
     }
 
-    // Phương thức kiểm thử nhanh: Kích hoạt câu cá đợi 1 giây câu lên
+    // Phương thức kiểm thử nhanh
     public void TriggerQuickFishingTest()
     {
         if (CurrentState != FishingState.Idle) return;
-
         StateMachine.ChangeState(FishingState.Casting);
-        StartCoroutine(StartMinigameRoutine());
-    }
-
-    private IEnumerator StartMinigameRoutine()
-    {
-        // =========================================================================
-        // [PHASE HIỆN TẠI]: Tạm thời comment lại chức năng hiển thị Minigame để test nhanh
-        // =========================================================================
-        /*
-        yield return new WaitForSeconds(0.25f);
-
-        StateMachine.ChangeState(FishingState.Reeling);
-
-        if (minigame != null && targetFish != null)
-        {
-            minigame.StartMinigame(targetFish, activeRodData);
-            yield break;
-        }
-        */
-
-        // Thay thế bằng luồng câu cá đợi 1 giây để câu cá lên:
-        Debug.Log("<color=#00D2FF>[FishingController] Đang quăng cần... Đợi 1 giây để câu cá lên...</color>");
-        yield return new WaitForSeconds(1.0f);
-
-        if (targetFish == null && fishSpawner != null)
-        {
-            targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
-        }
-
-        FishingResult quickResult = new FishingResult(
-            targetFish,
-            true,
-            true,
-            targetFish != null ? targetFish.ExpReward : 25,
-            targetFish != null ? targetFish.RewardItemData : null,
-            1
-        );
-
-        HandleMinigameFinished(quickResult);
+        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
     }
 
     private void HandleMinigameFinished(FishingResult result)
