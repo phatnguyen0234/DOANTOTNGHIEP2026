@@ -91,12 +91,14 @@ public class FarmInputController : MonoBehaviour
         {
             HighLight();
         }
+        if (CurrentTool == FarmTool.fishingRod || (FishingController.Instance != null && FishingController.Instance.IsFishing))
+        {
+            HandleFishingInput(isPointerOverUI, isBagOpen);
+        }
         else
         {
-            highlightTileMap.ClearAllTiles();
+            Use();
         }
-
-        Use();
     }
 
     #endregion
@@ -177,9 +179,42 @@ public class FarmInputController : MonoBehaviour
         {
             CurrentTool = FarmTool.Pickaxe;
         }
+        else if (item.ToolType == ToolType.fishingRod)
+        {
+            CurrentTool = FarmTool.fishingRod;
+        }
         else
         {
             CurrentTool = FarmTool.None;
+        }
+    }
+
+    private void HandleFishingInput(bool isPointerOverUI, bool isBagOpen)
+    {
+        if (FishingController.Instance == null) return;
+
+        FishingState state = FishingController.Instance.CurrentState;
+
+        if (state == FishingState.Idle)
+        {
+            if (!isPointerOverUI && !isBagOpen && Input.GetMouseButtonDown(0))
+            {
+                FishingController.Instance.StartChargingCast();
+            }
+        }
+        else if (state == FishingState.Charging)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                FishingController.Instance.ReleaseCast();
+            }
+        }
+        else if (state == FishingState.WaitingForBite || state == FishingState.FishBite)
+        {
+            if (!isPointerOverUI && Input.GetMouseButtonDown(0))
+            {
+                FishingController.Instance.OnInteractAction();
+            }
         }
     }
 

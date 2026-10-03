@@ -38,7 +38,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isUsingHoe) return;
+        if (isUsingHoe || (FishingController.Instance != null && FishingController.Instance.IsFishing))
+        {
+            moveDirection = Vector2.zero;
+            anim.SetFloat("Speed", 0f);
+            return;
+        }
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -156,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isUsingHoe) return;
+        if (isUsingHoe || (FishingController.Instance != null && FishingController.Instance.IsFishing)) return;
 
         Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(movePosition);
