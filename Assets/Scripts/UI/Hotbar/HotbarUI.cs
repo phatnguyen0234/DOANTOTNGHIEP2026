@@ -26,6 +26,11 @@ public class HotbarUI : MonoBehaviour
 
     #region Unity Lifecycle
 
+    private void Awake()
+    {
+        ResolveDependencies();
+    }
+
     private void Start()
     {
         Initialize();
@@ -33,6 +38,7 @@ public class HotbarUI : MonoBehaviour
 
     private void OnEnable()
     {
+        ResolveDependencies();
         SubscribeEvents();
 
         if (isInitialized)
@@ -50,19 +56,36 @@ public class HotbarUI : MonoBehaviour
         UnsubscribeEvents();
     }
 
+    private void ResolveDependencies()
+    {
+        if (inventory == null)
+        {
+            inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        if (hotbarController == null)
+        {
+            hotbarController = FindAnyObjectByType<HotbarController>(FindObjectsInactive.Include);
+        }
+    }
+
     #endregion
 
     #region Event Subscription
 
     private void SubscribeEvents()
     {
+        ResolveDependencies();
+
         if (inventory != null)
         {
+            inventory.OnInventoryChanged -= RefreshAllSlots;
             inventory.OnInventoryChanged += RefreshAllSlots;
         }
 
         if (hotbarController != null)
         {
+            hotbarController.OnSelectedSlotChanged -= RefreshSelection;
             hotbarController.OnSelectedSlotChanged += RefreshSelection;
         }
     }
@@ -89,15 +112,17 @@ public class HotbarUI : MonoBehaviour
     {
         if (isInitialized) return;
 
+        ResolveDependencies();
+
         if (inventory == null)
         {
-            Debug.LogError("[HotbarUI] Chưa gán tham chiếu Inventory vào Inspector!", this);
+            Debug.LogWarning("[HotbarUI] Đang chờ Inventory được khởi tạo...", this);
             return;
         }
 
         if (hotbarController == null)
         {
-            Debug.LogError("[HotbarUI] Chưa gán tham chiếu HotbarController vào Inspector!", this);
+            Debug.LogWarning("[HotbarUI] Đang chờ HotbarController được khởi tạo...", this);
             return;
         }
 
@@ -110,6 +135,7 @@ public class HotbarUI : MonoBehaviour
         CreateSlots();
         isInitialized = true;
 
+        SubscribeEvents();
         RefreshAllSlots();
         RefreshSelection(hotbarController.SelectedSlotIndex);
     }

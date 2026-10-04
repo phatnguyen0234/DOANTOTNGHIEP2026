@@ -27,6 +27,13 @@ public class FishingController : MonoBehaviour
     [Tooltip("Tham chiếu tới WaterDetector.")]
     [SerializeField] private WaterDetector waterDetector;
 
+    [Header("Fallback Rewards Config")]
+    [Tooltip("Dữ liệu loài cá mặc định nếu chưa cấu hình FishSpawner hoặc không tìm thấy cá.")]
+    [SerializeField] private FishData fallbackFishData;
+
+    [Tooltip("Vật phẩm ItemData cá nhận được nếu FishData chưa có RewardItemData.")]
+    [SerializeField] private ItemData fallbackFishItem;
+
     [Header("UI Dependencies")]
     [SerializeField] private FishingPowerBarUI powerBarUI;
     [SerializeField] private FishBiteIndicatorUI biteIndicatorUI;
@@ -71,6 +78,7 @@ public class FishingController : MonoBehaviour
 
     private void Start()
     {
+        ResolveDependencies();
         BindEvents();
     }
 
@@ -84,11 +92,12 @@ public class FishingController : MonoBehaviour
         if (playerMovement == null) playerMovement = FindAnyObjectByType<PlayerMovement>();
         if (castingController == null) castingController = GetComponentInChildren<CastingController>();
         if (waterDetector == null) waterDetector = GetComponentInChildren<WaterDetector>();
-        if (waterDetector == null) waterDetector = FindAnyObjectByType<WaterDetector>();
+        if (waterDetector == null) waterDetector = FindAnyObjectByType<WaterDetector>(FindObjectsInactive.Include);
         if (fishSpawner == null) fishSpawner = GetComponentInChildren<FishSpawner>();
+        if (fishSpawner == null) fishSpawner = FindAnyObjectByType<FishSpawner>(FindObjectsInactive.Include);
         if (minigame == null) minigame = GetComponentInChildren<FishingMinigame>();
-        if (inventory == null) inventory = FindAnyObjectByType<Inventory>();
-        if (itemDropSpawner == null) itemDropSpawner = FindAnyObjectByType<ItemDropSpawner>();
+        if (inventory == null) inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        if (itemDropSpawner == null) itemDropSpawner = FindAnyObjectByType<ItemDropSpawner>(FindObjectsInactive.Include);
 
         if (powerBarUI == null) powerBarUI = FindAnyObjectByType<FishingPowerBarUI>(FindObjectsInactive.Include);
         if (biteIndicatorUI == null) biteIndicatorUI = FindAnyObjectByType<FishBiteIndicatorUI>(FindObjectsInactive.Include);
@@ -165,6 +174,8 @@ public class FishingController : MonoBehaviour
     {
         if (CurrentState != FishingState.Idle) return false;
 
+        ResolveDependencies();
+
         if (!IsWaterAtPosition(targetWaterPos, out currentSpotData))
         {
             return false;
@@ -199,6 +210,8 @@ public class FishingController : MonoBehaviour
     public bool StartChargingCast(FishingRodData rodData = null)
     {
         if (CurrentState != FishingState.Idle) return false;
+
+        ResolveDependencies();
 
         activeRodData = rodData != null ? rodData : defaultRodData;
 
@@ -302,6 +315,10 @@ public class FishingController : MonoBehaviour
         {
             targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
         }
+        if (targetFish == null)
+        {
+            targetFish = fallbackFishData;
+        }
 
         // Chuyển sang trạng thái câu cá và chờ đúng 1 giây để lên cá!
         StateMachine.ChangeState(FishingState.Reeling);
@@ -318,13 +335,26 @@ public class FishingController : MonoBehaviour
         {
             targetFish = fishSpawner.SpawnFish(currentSpotData, activeRodData);
         }
+        if (targetFish == null)
+        {
+            targetFish = fallbackFishData;
+        }
+
+        // Xác định ItemData phần thưởng
+        ItemData rewardItem = targetFish != null ? targetFish.RewardItemData : null;
+        if (rewardItem == null)
+        {
+            rewardItem = fallbackFishItem;
+        }
+
+        int exp = targetFish != null ? targetFish.ExpReward : 25;
 
         FishingResult result = new FishingResult(
             targetFish,
             true,
             true,
-            targetFish != null ? targetFish.ExpReward : 25,
-            targetFish != null ? targetFish.RewardItemData : null,
+            exp,
+            rewardItem,
             1
         );
 
@@ -393,6 +423,8 @@ public class FishingController : MonoBehaviour
 
     private void HandleMinigameFinished(FishingResult result)
     {
+        if (castingController != null) castingController.RetrieveBobber();
+
         if (result.IsSuccess)
         {
             StateMachine.ChangeState(FishingState.Success);
@@ -415,18 +447,35 @@ public class FishingController : MonoBehaviour
     {
         if (result == null || !result.IsSuccess) return;
 
-        // 1. Thêm vật phẩm vào Inventory
+        if (inventory == null)
+        {
+            inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        // 1. Thêm vật phẩm vào Inventory / Hotbar
         if (result.RewardItem != null && inventory != null)
         {
             bool added = inventory.TryAddItem(result.RewardItem, result.Quantity);
-            if (!added && itemDropSpawner != null && playerMovement != null)
+            if (added)
             {
-                // Nếu túi đầy, drop cá ra đất cạnh player
-                itemDropSpawner.SpawnDrop(result.RewardItem, result.Quantity, playerMovement.transform.position);
+                Debug.Log($"<color=#00FF66>[FishingController] Đã thêm {result.Quantity}x {result.RewardItem.ItemName} vào Inventory / Hotbar thành công!</color>");
+            }
+            else
+            {
+                Debug.LogWarning($"[FishingController] Túi đồ đã đầy! Đang drop {result.RewardItem.ItemName} ra đất cạnh nhân vật.");
+                if (itemDropSpawner != null && playerMovement != null)
+                {
+                    itemDropSpawner.SpawnDrop(result.RewardItem, result.Quantity, playerMovement.transform.position);
+                }
             }
         }
+        else
+        {
+            Debug.LogWarning($"[FishingController] Không thể thêm cá vào Inventory (RewardItem={(result.RewardItem != null ? result.RewardItem.ItemName : "NULL")}, Inventory={(inventory != null)}). Hãy gán RewardItemData vào FishData hoặc Inspector.");
+        }
 
-        Debug.Log($"[FishingController] Câu thành công {result.CaughtFish?.FishName}! Nhận {result.EarnedExp} EXP. Perfect: {result.IsPerfect}");
+        string fishName = result.CaughtFish != null ? result.CaughtFish.FishName : (result.RewardItem != null ? result.RewardItem.ItemName : "Cá");
+        Debug.Log($"[FishingController] Câu thành công {fishName}! Nhận {result.EarnedExp} EXP. Perfect: {result.IsPerfect}");
     }
 
     private void HandleResultUIClosed()

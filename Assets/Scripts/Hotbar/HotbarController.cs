@@ -47,6 +47,11 @@ public class HotbarController : MonoBehaviour
     {
         if (inventory == null)
         {
+            inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        if (inventory == null)
+        {
             Debug.LogError("[HotbarController] Chưa gán tham chiếu Inventory vào Inspector!", this);
             return;
         }

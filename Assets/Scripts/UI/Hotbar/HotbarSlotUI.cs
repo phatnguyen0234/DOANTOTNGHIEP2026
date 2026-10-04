@@ -144,12 +144,10 @@ public class HotbarSlotUI : MonoBehaviour, IPointerClickHandler
             if (!backgroundImage.enabled) backgroundImage.enabled = true;
         }
 
-        // 2. Icon: GameObject LUÔN Active, Image.enabled LUÔN = true
+        // 2. Icon: GameObject LUÔN Active
         if (iconImage != null)
         {
             if (!iconImage.gameObject.activeSelf) iconImage.gameObject.SetActive(true);
-            if (!iconImage.enabled) iconImage.enabled = true;
-            iconImage.color = Color.white;
         }
 
         // 3. AmountText / Count: GameObject LUÔN Active, TextMeshProUGUI LUÔN Enabled
@@ -177,12 +175,13 @@ public class HotbarSlotUI : MonoBehaviour, IPointerClickHandler
         EnsureActive();
 
         // TRƯỜNG HỢP 1: Ô RỖNG (Empty Slot / Không có vật phẩm)
-        if (slot == null || slot.IsEmpty())
+        if (slot == null || slot.IsEmpty() || slot.ItemData == null)
         {
             if (iconImage != null)
             {
                 iconImage.sprite = null;
-                iconImage.color = Color.white;
+                iconImage.color = Color.clear;
+                iconImage.enabled = false;
             }
 
             if (amountText != null)
@@ -196,8 +195,10 @@ public class HotbarSlotUI : MonoBehaviour, IPointerClickHandler
         // TRƯỜNG HỢP 2: Ô CÓ CHỨA ITEM (Có dữ liệu)
         if (iconImage != null)
         {
-            iconImage.sprite = slot.ItemData != null ? slot.ItemData.Icon : null;
-            iconImage.color = Color.white;
+            Sprite iconSprite = slot.ItemData.Icon;
+            iconImage.sprite = iconSprite;
+            iconImage.color = iconSprite != null ? Color.white : Color.clear;
+            iconImage.enabled = iconSprite != null;
         }
 
         if (amountText != null)
