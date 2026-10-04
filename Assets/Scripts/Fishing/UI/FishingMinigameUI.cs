@@ -90,6 +90,27 @@ public class FishingMinigameUI : MonoBehaviour
         }
     }
 
+    // Chuyển đổi vị trí con trỏ chuột sang tỉ lệ normalized Y [0, 1] trên khung track
+    public bool TryGetMouseNormalizedY(out float normalizedY)
+    {
+        normalizedY = 0.5f;
+        if (trackArea == null) return false;
+
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        Camera eventCam = (parentCanvas != null && parentCanvas.renderMode != RenderMode.ScreenSpaceOverlay) ? parentCanvas.worldCamera : null;
+
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(trackArea, Input.mousePosition, eventCam, out Vector2 localPoint))
+        {
+            float height = trackArea.rect.height;
+            if (height > 0.001f)
+            {
+                normalizedY = Mathf.Clamp01((localPoint.y / height) + 0.5f);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void Show()
     {
         gameObject.SetActive(true);

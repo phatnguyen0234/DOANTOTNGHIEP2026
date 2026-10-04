@@ -169,7 +169,7 @@ public class FishingController : MonoBehaviour
         return true; // Fallback nếu chưa cấu hình detector
     }
 
-    // [Click lần 1]: Người chơi chọn cần câu và click vào mặt nước -> Bắt đầu hiện thanh lực trên đầu
+    // [Click lần 1]: Người chơi chọn cần câu và click vào mặt nước -> Bắt đầu hiện thanh lực trên đầu (Charging)
     public bool TryStartFishingAtWater(Vector2 targetWaterPos, FishingRodData rodData = null)
     {
         if (CurrentState != FishingState.Idle) return false;
@@ -191,6 +191,7 @@ public class FishingController : MonoBehaviour
             playerMovement.SetFacingDirection(dir);
         }
 
+        // Chuyển trạng thái sang tích lực (Charging)
         StateMachine.ChangeState(FishingState.Charging);
 
         if (castingController != null)
@@ -230,7 +231,7 @@ public class FishingController : MonoBehaviour
         return true;
     }
 
-    // [Click lần 2]: Người chơi click lần nữa để chốt lực -> Quăng cần và ẩn thanh lực đi
+    // [Click lần 2]: Người chơi click lần nữa để chốt lực -> Quăng cần và ẩn thanh lực đi, đợi 1s mở Minigame
     public void ReleaseCast()
     {
         if (CurrentState != FishingState.Charging) return;
@@ -248,6 +249,10 @@ public class FishingController : MonoBehaviour
         if (castingController != null)
         {
             castingController.ReleaseCast(playerPos, facingDir);
+        }
+        else
+        {
+            HandleCastCompleted(true, currentSpotData);
         }
     }
 
@@ -320,15 +325,14 @@ public class FishingController : MonoBehaviour
             targetFish = fallbackFishData;
         }
 
-        // Chuyển sang trạng thái câu cá và chờ đúng 1 giây để lên cá!
-        StateMachine.ChangeState(FishingState.Reeling);
-        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
+        // Đợi 1 giây rồi mở bảng Minigame câu cá!
+        StartCoroutine(StartMinigameAfterDelayRoutine(1.0f));
     }
 
-    // Luồng câu cá: Đợi 1 giây rồi giật lên cá
-    private IEnumerator CatchFishAfterDelayRoutine(float delay)
+    // Luồng: Đợi 1 giây rồi khởi động Minigame câu cá
+    private IEnumerator StartMinigameAfterDelayRoutine(float delay)
     {
-        Debug.Log("<color=#00D2FF>[FishingController] Đang quăng cần vào mặt nước... Đợi 1s để kéo cá lên!</color>");
+        Debug.Log($"<color=#00D2FF>[FishingController] Quăng cần vào mặt nước... Đợi {delay}s để mở Minigame!</color>");
         yield return new WaitForSeconds(delay);
 
         if (targetFish == null && fishSpawner != null)
@@ -340,25 +344,27 @@ public class FishingController : MonoBehaviour
             targetFish = fallbackFishData;
         }
 
-        // Xác định ItemData phần thưởng
-        ItemData rewardItem = targetFish != null ? targetFish.RewardItemData : null;
-        if (rewardItem == null)
+        if (minigame == null)
         {
-            rewardItem = fallbackFishItem;
+            minigame = GetComponentInChildren<FishingMinigame>(true);
+            if (minigame == null) minigame = FindAnyObjectByType<FishingMinigame>(FindObjectsInactive.Include);
         }
 
-        int exp = targetFish != null ? targetFish.ExpReward : 25;
-
-        FishingResult result = new FishingResult(
-            targetFish,
-            true,
-            true,
-            exp,
-            rewardItem,
-            1
-        );
-
-        HandleMinigameFinished(result);
+        if (minigame != null)
+        {
+            minigame.OnMinigameFinished -= HandleMinigameFinished;
+            minigame.OnMinigameFinished += HandleMinigameFinished;
+            StateMachine.ChangeState(FishingState.Reeling);
+            minigame.StartMinigame(targetFish, activeRodData);
+        }
+        else
+        {
+            Debug.LogWarning("[FishingController] Không tìm thấy FishingMinigame component! Tự động bắt cá fallback.");
+            ItemData rewardItem = targetFish != null ? targetFish.RewardItemData : fallbackFishItem;
+            int exp = targetFish != null ? targetFish.ExpReward : 25;
+            FishingResult fallbackResult = new FishingResult(targetFish, true, true, exp, rewardItem, 1);
+            HandleMinigameFinished(fallbackResult);
+        }
     }
 
     private void UpdateWaitingForBite()
@@ -410,7 +416,7 @@ public class FishingController : MonoBehaviour
     {
         if (biteIndicatorUI != null) biteIndicatorUI.Hide();
         StateMachine.ChangeState(FishingState.Hooked);
-        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
+        StartCoroutine(StartMinigameAfterDelayRoutine(1.0f));
     }
 
     // Phương thức kiểm thử nhanh
@@ -418,7 +424,7 @@ public class FishingController : MonoBehaviour
     {
         if (CurrentState != FishingState.Idle) return;
         StateMachine.ChangeState(FishingState.Casting);
-        StartCoroutine(CatchFishAfterDelayRoutine(1.0f));
+        StartCoroutine(StartMinigameAfterDelayRoutine(1.0f));
     }
 
     private void HandleMinigameFinished(FishingResult result)
@@ -452,29 +458,39 @@ public class FishingController : MonoBehaviour
             inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
         }
 
-        // 1. Thêm vật phẩm vào Inventory / Hotbar
-        if (result.RewardItem != null && inventory != null)
+        ItemData itemToGive = result.RewardItem;
+        if (itemToGive == null && result.CaughtFish != null)
         {
-            bool added = inventory.TryAddItem(result.RewardItem, result.Quantity);
+            itemToGive = result.CaughtFish.RewardItemData;
+        }
+        if (itemToGive == null)
+        {
+            itemToGive = fallbackFishItem;
+        }
+
+        // 1. Thêm vật phẩm vào Inventory / Hotbar
+        if (itemToGive != null && inventory != null)
+        {
+            bool added = inventory.TryAddItem(itemToGive, result.Quantity);
             if (added)
             {
-                Debug.Log($"<color=#00FF66>[FishingController] Đã thêm {result.Quantity}x {result.RewardItem.ItemName} vào Inventory / Hotbar thành công!</color>");
+                Debug.Log($"<color=#00FF66>[FishingController] Đã thêm {result.Quantity}x {itemToGive.ItemName} vào Inventory / Hotbar thành công!</color>");
             }
             else
             {
-                Debug.LogWarning($"[FishingController] Túi đồ đã đầy! Đang drop {result.RewardItem.ItemName} ra đất cạnh nhân vật.");
+                Debug.LogWarning($"[FishingController] Túi đồ đã đầy! Đang drop {itemToGive.ItemName} ra đất cạnh nhân vật.");
                 if (itemDropSpawner != null && playerMovement != null)
                 {
-                    itemDropSpawner.SpawnDrop(result.RewardItem, result.Quantity, playerMovement.transform.position);
+                    itemDropSpawner.SpawnDrop(itemToGive, result.Quantity, playerMovement.transform.position);
                 }
             }
         }
         else
         {
-            Debug.LogWarning($"[FishingController] Không thể thêm cá vào Inventory (RewardItem={(result.RewardItem != null ? result.RewardItem.ItemName : "NULL")}, Inventory={(inventory != null)}). Hãy gán RewardItemData vào FishData hoặc Inspector.");
+            Debug.LogWarning($"[FishingController] Không thể thêm cá vào Inventory (ItemToGive={(itemToGive != null ? itemToGive.ItemName : "NULL")}, Inventory={(inventory != null)}).");
         }
 
-        string fishName = result.CaughtFish != null ? result.CaughtFish.FishName : (result.RewardItem != null ? result.RewardItem.ItemName : "Cá");
+        string fishName = result.CaughtFish != null ? result.CaughtFish.FishName : (itemToGive != null ? itemToGive.ItemName : "Cá");
         Debug.Log($"[FishingController] Câu thành công {fishName}! Nhận {result.EarnedExp} EXP. Perfect: {result.IsPerfect}");
     }
 

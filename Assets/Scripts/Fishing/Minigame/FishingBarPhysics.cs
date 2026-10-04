@@ -1,82 +1,59 @@
 using UnityEngine;
 
-// Xử lý chuyển động vật lý mượt mà của thanh đỡ màu xanh (Player Reel Bar)
+// Điều khiển chuyển động thanh đỡ màu xanh (Player Bar) di chuyển trực tiếp theo chuột (loại bỏ lực/trọng lực)
 public class FishingBarPhysics : MonoBehaviour
 {
-    [Header("Physics Parameters")]
-    [Tooltip("Gia tốc đẩy thanh đi lên khi người chơi giữ nút.")]
-    [SerializeField] private float acceleration = 6.0f;
+    [Header("Mouse Follow Settings")]
+    [Tooltip("Tốc độ bám theo chuột (giá trị càng cao bám càng nhạy).")]
+    [SerializeField] private float followSpeed = 35f;
 
-    [Tooltip("Trọng lực kéo thanh rơi xuống khi thả nút.")]
-    [SerializeField] private float gravity = 4.5f;
-
-    [Tooltip("Tốc độ bay lên tối đa.")]
-    [SerializeField] private float maxRiseSpeed = 3.0f;
-
-    [Tooltip("Tốc độ rơi xuống tối đa.")]
-    [SerializeField] private float maxFallSpeed = 3.5f;
-
-    [Tooltip("Hệ số nảy khi thanh chạm đáy (Bounce Damping).")]
-    [Range(0f, 0.6f)]
-    [SerializeField] private float bounceDamping = 0.25f;
+    [Tooltip("Có làm mượt chuyển động chuột không (false = bám dính tức thì theo chuột).")]
+    [SerializeField] private bool smoothMovement = true;
 
     [Header("Bar Geometry (Normalized [0, 1])")]
     [Tooltip("Kích thước chiều cao chuẩn của thanh đỡ (theo tỉ lệ normalized).")]
     [Range(0.1f, 0.5f)]
     [SerializeField] private float baseBarHeight = 0.2f;
 
-    public float Position { get; private set; } = 0.1f; // Vị trí tâm của thanh [0, 1]
+    public float Position { get; private set; } = 0.5f; // Vị trí tâm của thanh [0, 1]
     public float Velocity { get; private set; } = 0f;
     public float BarHeight { get; private set; } = 0.2f;
 
     public void Initialize(float barSizeMultiplier = 1.0f)
     {
         BarHeight = Mathf.Clamp(baseBarHeight * barSizeMultiplier, 0.08f, 0.6f);
-        Position = BarHeight / 2f;
+        Position = 0.5f;
         Velocity = 0f;
     }
 
-    public void UpdatePhysics(bool isHolding, float deltaTime)
+    // Cập nhật vị trí thanh đỡ theo vị trí chuột [0..1]
+    public void UpdateMousePosition(float targetNormalizedY, float deltaTime)
     {
-        // 1. Cập nhật vận tốc dựa theo thao tác người chơi
-        if (isHolding)
-        {
-            Velocity += acceleration * deltaTime;
-        }
-        else
-        {
-            Velocity -= gravity * deltaTime;
-        }
-
-        // 2. Giới hạn vận tốc
-        Velocity = Mathf.Clamp(Velocity, -maxFallSpeed, maxRiseSpeed);
-
-        // 3. Cập nhật vị trí
-        Position += Velocity * deltaTime;
-
-        // 4. Xử lý va chạm biên đáy và biên đỉnh (Clamping & Bouncing)
         float halfHeight = BarHeight / 2f;
         float minPos = halfHeight;
         float maxPos = 1f - halfHeight;
 
-        if (Position <= minPos)
+        float targetPos = Mathf.Clamp(targetNormalizedY, minPos, maxPos);
+
+        if (smoothMovement && followSpeed > 0f)
         {
-            Position = minPos;
-            if (Velocity < 0)
-            {
-                // Nảy ngược nhẹ từ đáy lên
-                Velocity = -Velocity * bounceDamping;
-            }
+            float previousPos = Position;
+            Position = Mathf.Lerp(Position, targetPos, 1f - Mathf.Exp(-followSpeed * deltaTime));
+            Velocity = (Position - previousPos) / Mathf.Max(deltaTime, 0.001f);
         }
-        else if (Position >= maxPos)
+        else
         {
-            Position = maxPos;
-            if (Velocity > 0)
-            {
-                // Nảy ngược nhẹ từ đỉnh xuống
-                Velocity = -Velocity * bounceDamping;
-            }
+            Position = targetPos;
+            Velocity = 0f;
         }
+
+        Position = Mathf.Clamp(Position, minPos, maxPos);
+    }
+
+    // Tương thích ngược: UpdatePhysics sẽ gọi UpdateMousePosition nếu không truyền vị trí
+    public void UpdatePhysics(bool isHolding, float deltaTime)
+    {
+        // Không dùng lực vật lý
     }
 
     // Kiểm tra xem vị trí cá (fishPos [0, 1]) có nằm trong vùng bao phủ của thanh không

@@ -223,7 +223,7 @@ public class FarmInputController : MonoBehaviour
             bool started = fc.TryStartFishingAtWater((Vector2)mouseWorld, rodData);
             if (!started)
             {
-                Debug.Log("[FarmInputController] Hãy click vào mặt nước hợp lệ để bắt đầu nạp lực câu cá!");
+                Debug.Log("[FarmInputController] Hãy click vào mặt nước hợp lệ để bắt đầu câu cá!");
             }
         }
     }

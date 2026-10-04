@@ -114,8 +114,29 @@ public class CastingController : MonoBehaviour
         }
         else
         {
-            // Nếu chưa gán Bobber, kích hoạt kiểm tra ngay
             HandleBobberLanded(targetPosition);
+        }
+    }
+
+    // Ném thẳng phao tới vị trí nước mục tiêu được click
+    public void CastDirectlyTo(Vector2 playerPosition, Vector2 targetWaterPosition, FishingRodData rodData = null)
+    {
+        currentRodData = rodData;
+        IsCharging = false;
+        CurrentPower = 1f;
+
+        Vector2 startPos = rodTip != null ? (Vector2)rodTip.position : playerPosition;
+
+        if (bobber != null)
+        {
+            bobber.Launch(rodTip, startPos, targetWaterPosition, () =>
+            {
+                HandleBobberLanded(targetWaterPosition);
+            });
+        }
+        else
+        {
+            HandleBobberLanded(targetWaterPosition);
         }
     }
 

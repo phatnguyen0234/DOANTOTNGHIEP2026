@@ -27,17 +27,22 @@ public class FishingMinigame : MonoBehaviour
 
     private void Awake()
     {
-        if (barPhysics == null) barPhysics = GetComponentInChildren<FishingBarPhysics>();
-        if (fishMovement == null) fishMovement = GetComponentInChildren<FishMovementController>();
-        if (progress == null) progress = GetComponentInChildren<FishingProgress>();
-        if (minigameUI == null) minigameUI = GetComponentInChildren<FishingMinigameUI>();
+        ResolveDependencies();
+        gameObject.SetActive(false);
+    }
+
+    private void ResolveDependencies()
+    {
+        if (barPhysics == null) barPhysics = GetComponentInChildren<FishingBarPhysics>(true);
+        if (fishMovement == null) fishMovement = GetComponentInChildren<FishMovementController>(true);
+        if (progress == null) progress = GetComponentInChildren<FishingProgress>(true);
+        if (minigameUI == null) minigameUI = GetComponentInChildren<FishingMinigameUI>(true);
 
         if (progress != null)
         {
+            progress.OnCompleted -= HandleProgressCompleted;
             progress.OnCompleted += HandleProgressCompleted;
         }
-
-        gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -51,6 +56,8 @@ public class FishingMinigame : MonoBehaviour
     // Bắt đầu một ván Minigame với loài cá và cần câu chỉ định
     public void StartMinigame(FishData fish, FishingRodData rod)
     {
+        ResolveDependencies();
+
         CurrentFish = fish;
         currentRod = rod;
         IsActive = true;
@@ -68,7 +75,8 @@ public class FishingMinigame : MonoBehaviour
         if (minigameUI != null)
         {
             minigameUI.Show();
-            minigameUI.Setup(fish, barPhysics.BarHeight);
+            float barHeight = barPhysics != null ? barPhysics.BarHeight : 0.2f;
+            minigameUI.Setup(fish, barHeight);
         }
     }
 
@@ -76,15 +84,20 @@ public class FishingMinigame : MonoBehaviour
     {
         if (!IsActive) return;
 
-        // Nhận input từ chuột trái hoặc phím Space/E/C
-        bool isHolding = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C);
-
         float dt = Time.deltaTime;
 
-        // 1. Cập nhật vật lý thanh đỡ
+        // 1. Cập nhật vị trí thanh đỡ theo chuyển động chuột (loại bỏ lực quán tính/trọng lực)
         if (barPhysics != null)
         {
-            barPhysics.UpdatePhysics(isHolding, dt);
+            if (minigameUI != null && minigameUI.TryGetMouseNormalizedY(out float mouseNormY))
+            {
+                barPhysics.UpdateMousePosition(mouseNormY, dt);
+            }
+            else
+            {
+                float screenNormY = Mathf.Clamp01(Input.mousePosition.y / Mathf.Max(Screen.height, 1));
+                barPhysics.UpdateMousePosition(screenNormY, dt);
+            }
         }
 
         // 2. Cập nhật AI của cá
@@ -127,14 +140,17 @@ public class FishingMinigame : MonoBehaviour
         gameObject.SetActive(false);
 
         FishingResult result;
-        if (isSuccess && CurrentFish != null)
+        if (isSuccess)
         {
+            ItemData rewardItem = CurrentFish != null ? CurrentFish.RewardItemData : null;
+            int exp = CurrentFish != null ? CurrentFish.ExpReward : 25;
+
             result = new FishingResult(
                 CurrentFish,
                 true,
                 isPerfect,
-                CurrentFish.ExpReward,
-                CurrentFish.RewardItemData,
+                exp,
+                rewardItem,
                 1
             );
         }
