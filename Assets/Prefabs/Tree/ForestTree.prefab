@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7640621105746883665}
   - component: {fileID: 3981687445292407810}
   - component: {fileID: 1904874460712141210}
+  - component: {fileID: 570707652463093719}
   m_Layer: 0
   m_Name: ForestTree
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.611565, y: -36.41875, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -202,3 +203,24 @@ MonoBehaviour:
   treeRenderer: {fileID: 0}
   fadedAlpha: 0.45
   fadeDuration: 0.2
+--- !u!114 &570707652463093719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634860949032754350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5b7876ce7309a4ab931d9fb9b6dd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeasonalSprite
+  target: {fileID: 2759814981800333649}
+  spring:
+  - {fileID: -1566730818833404899, guid: 4004285e9eea4ea4e86a4101f61cb00c, type: 3}
+  summer:
+  - {fileID: -7301469273254094464, guid: 4004285e9eea4ea4e86a4101f61cb00c, type: 3}
+  autumn:
+  - {fileID: 122658613021007611, guid: 4004285e9eea4ea4e86a4101f61cb00c, type: 3}
+  winter:
+  - {fileID: 8041207151843567810, guid: 4004285e9eea4ea4e86a4101f61cb00c, type: 3}

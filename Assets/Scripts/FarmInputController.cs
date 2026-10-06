@@ -91,12 +91,14 @@ public class FarmInputController : MonoBehaviour
         {
             HighLight();
         }
+        if (CurrentTool == FarmTool.fishingRod || (FishingController.Instance != null && FishingController.Instance.IsFishing))
+        {
+            HandleFishingInput(isPointerOverUI, isBagOpen);
+        }
         else
         {
-            highlightTileMap.ClearAllTiles();
+            Use();
         }
-
-        Use();
     }
 
     #endregion
@@ -177,9 +179,52 @@ public class FarmInputController : MonoBehaviour
         {
             CurrentTool = FarmTool.Pickaxe;
         }
+        else if (item.ToolType == ToolType.fishingRod)
+        {
+            CurrentTool = FarmTool.fishingRod;
+        }
         else
         {
             CurrentTool = FarmTool.None;
+        }
+    }
+
+    private void HandleFishingInput(bool isPointerOverUI, bool isBagOpen)
+    {
+        if (isPointerOverUI || isBagOpen) return;
+
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        FishingController fc = FishingController.Instance;
+        if (fc == null) return;
+
+        // [Click Lần 2]: Đang nạp lực trên đầu -> Nhấn tiếp để chốt lực, quăng phao và ẩn thanh lực!
+        if (fc.CurrentState == FishingState.Charging)
+        {
+            fc.ReleaseCast();
+            return;
+        }
+
+        // Đang trong quá trình chờ 1s hoặc đang hiện popup kết quả -> Không nhận click mới
+        if (fc.IsFishing)
+        {
+            return;
+        }
+
+        // [Click Lần 1]: Đang ở trạng thái Idle và người chơi click vào mặt nước
+        if (fc.CurrentState == FishingState.Idle)
+        {
+            Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorld.z = 0f;
+
+            InventorySlot activeSlot = hotbarController != null ? hotbarController.SelectedSlot : null;
+            FishingRodData rodData = activeSlot != null && activeSlot.ItemData != null ? activeSlot.ItemData.RodData : null;
+
+            bool started = fc.TryStartFishingAtWater((Vector2)mouseWorld, rodData);
+            if (!started)
+            {
+                Debug.Log("[FarmInputController] Hãy click vào mặt nước hợp lệ để bắt đầu câu cá!");
+            }
         }
     }
 

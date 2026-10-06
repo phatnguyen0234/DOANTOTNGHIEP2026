@@ -33,10 +33,22 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
+    public static Inventory Instance { get; private set; }
+
     #region Unity Lifecycle & Initialization
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         InitializeSlots();
         ResolveUI();
     }

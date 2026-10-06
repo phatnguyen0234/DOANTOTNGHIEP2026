@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 3647016619740012013}
   - component: {fileID: 3591749344679057392}
   - component: {fileID: 1607669942929015812}
+  - component: {fileID: 2512047417396997962}
   m_Layer: 6
   m_Name: Birch Tree
   m_TagString: Untagged
@@ -123,7 +124,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1689036036319129397}
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5761423966467757716, guid: c77a53adf3acec943852ecc6c58c3264, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5417766c4331854d8cfe7c7f4f26d08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -226,8 +227,8 @@ BoxCollider2D:
   m_Offset: {x: -0.030266955, y: -0.80558956}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.625, y: 2.125}
+    pivot: {x: 0.5, y: 0.33333334}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 0.26, y: 0.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -304,8 +305,8 @@ BoxCollider2D:
   m_Offset: {x: -0.018236995, y: 0.1604858}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.625, y: 2.125}
+    pivot: {x: 0.5, y: 0.33333334}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 0.26, y: 0.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -313,3 +314,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.325913, y: 1.5414156}
   m_EdgeRadius: 0
+--- !u!114 &2512047417396997962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981535527568315150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5b7876ce7309a4ab931d9fb9b6dd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeasonalSprite
+  target: {fileID: 5433065964954000436}
+  spring:
+  - {fileID: 21300000, guid: c5417766c4331854d8cfe7c7f4f26d08, type: 3}
+  summer:
+  - {fileID: 21300000, guid: ab4c3fc069571de409eaf28b80017cea, type: 3}
+  autumn:
+  - {fileID: 21300000, guid: e3165279a6f68b64badb6db7425a0de9, type: 3}
+  winter:
+  - {fileID: 21300000, guid: 52299a5edf47b6d4389764897d01140e, type: 3}
