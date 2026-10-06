@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class TreeCell 
 {
     public Vector3Int position;

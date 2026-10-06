@@ -183,7 +183,7 @@ public class SoilManager : MonoBehaviour
     public void ReBuildTree()
     {
         RegisterTree();
-        foreach(TreeCell cell in currentFarmData.treeCells)
+        foreach (TreeCell cell in currentFarmData.treeCells)
         {
             if(treeCells.TryGetValue(cell.position, out Tree tree) && tree != null)
             {
@@ -226,5 +226,10 @@ public class SoilManager : MonoBehaviour
         {
             Application.OpenURL(filepath);
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        GetFarmDataJson();
     }
 }

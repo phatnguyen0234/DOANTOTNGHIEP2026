@@ -1,6 +1,7 @@
 using System;
 using Unity.Jobs;
-using UnityEngine;  
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,6 +44,21 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        controller = FindAnyObjectByType<FarmInputController>(FindObjectsInactive.Exclude);
     }
 
     // Update is called once per frame
