@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2792610751900909919}
   - component: {fileID: 4155046714567334610}
   - component: {fileID: 3519746957794536111}
+  - component: {fileID: 220214880867362674}
   m_Layer: 0
   m_Name: Bush 1
   m_TagString: Untagged
@@ -155,3 +156,56 @@ MonoBehaviour:
   treeRenderer: {fileID: 0}
   fadedAlpha: 0.45
   fadeDuration: 0.2
+--- !u!114 &220214880867362674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966689007996883256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5b7876ce7309a4ab931d9fb9b6dd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeasonalSprite
+  target: {fileID: 2792610751900909919}
+  spring:
+  - {fileID: -1796197571, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -569825208, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: 1382157664, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -377428130, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -2068543497, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1091197205, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -494887274, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1803702960, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -116308879, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  summer:
+  - {fileID: 1852554618, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1472737538, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: 919647646, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1311689922, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1366677981984774684, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: 1852554618, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1472737538, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: 919647646, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1311689922, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  autumn:
+  - {fileID: -1817818620, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -238824945, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1817818620, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -238824945, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1817818620, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -238824945, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1817818620, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -238824945, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1817818620, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  winter:
+  - {fileID: -1957096466, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1284101611, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1313249329, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1179276791, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1957096466, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1284101611, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1313249329, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1179276791, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}
+  - {fileID: -1957096466, guid: c937b593006b7f34ba23de3c93d8338d, type: 3}

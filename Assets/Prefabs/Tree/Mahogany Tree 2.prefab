@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3359473685120498065}
   - component: {fileID: 651694780871671549}
   - component: {fileID: 8512170935670643060}
+  - component: {fileID: 2358311020272415785}
   m_Layer: 6
   m_Name: Mahogany Tree 2
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.69981, y: -0.66853344, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5536179301296785806}
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7669643529315636520, guid: 0fb75d19c24c3d5428ca3ccb87961e95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bae4e26fd6bdf24cad3c73dcf92a893, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +135,7 @@ BoxCollider2D:
   m_Offset: {x: 0.03041029, y: -1.2096124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.453125, y: 0.5}
     oldSize: {x: 2, y: 3}
     newSize: {x: 0.26, y: 0.34}
     adaptiveTilingThreshold: 0.5
@@ -210,7 +211,7 @@ BoxCollider2D:
   m_Offset: {x: -0.011244297, y: 0.10682067}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.453125, y: 0.5}
     oldSize: {x: 2, y: 3}
     newSize: {x: 0.26, y: 0.34}
     adaptiveTilingThreshold: 0.5
@@ -219,6 +220,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8650694, y: 2.134193}
   m_EdgeRadius: 0
+--- !u!114 &2358311020272415785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777359906241628979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5b7876ce7309a4ab931d9fb9b6dd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeasonalSprite
+  target: {fileID: 3798960062814953467}
+  spring:
+  - {fileID: 21300000, guid: 1bae4e26fd6bdf24cad3c73dcf92a893, type: 3}
+  summer:
+  - {fileID: 21300000, guid: 59f7099457acb1b409382acf74323e8b, type: 3}
+  autumn:
+  - {fileID: 21300000, guid: 6a1e38e51db937f4185206237e05f01e, type: 3}
+  winter:
+  - {fileID: 21300000, guid: f71d16061cddf804aa25cd97984302f6, type: 3}
 --- !u!1 &3150576581345730302
 GameObject:
   m_ObjectHideFlags: 0
