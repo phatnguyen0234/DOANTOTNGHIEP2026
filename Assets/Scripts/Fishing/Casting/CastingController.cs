@@ -44,16 +44,23 @@ public class CastingController : MonoBehaviour
         }
     }
 
-    private Vector2? targetWaterPoint = null;
+    private Vector2 currentCastDirection = Vector2.down;
 
-    public void StartCharging(FishingRodData rodData, Vector2? targetPoint = null)
+    // Bắt đầu tích lực kèm hướng ném (hướng click chuột từ phía người chơi)
+    public void StartCharging(FishingRodData rodData, Vector2 direction)
     {
         currentRodData = rodData;
-        targetWaterPoint = targetPoint;
+        currentCastDirection = direction.sqrMagnitude > 0.0001f ? direction.normalized : Vector2.down;
         CurrentPower = 0f;
         IsCharging = true;
         chargeIncreasing = true;
         OnPowerChanged?.Invoke(CurrentPower);
+    }
+
+    // Fallback nếu không truyền hướng
+    public void StartCharging(FishingRodData rodData)
+    {
+        StartCharging(rodData, currentCastDirection);
     }
 
     private void UpdateCharging()
@@ -82,26 +89,29 @@ public class CastingController : MonoBehaviour
         OnPowerChanged?.Invoke(CurrentPower);
     }
 
-    // Kết thúc tích lực và quăng phao
+    // Kết thúc tích lực và quăng phao dựa vào lực của người chơi & giới hạn cần câu
     public void ReleaseCast(Vector2 playerPosition, Vector2 facingDirection)
     {
         if (!IsCharging) return;
         IsCharging = false;
 
-        float minDist = currentRodData != null ? currentRodData.MinCastDistance : defaultMinDistance;
-        float maxDist = currentRodData != null ? currentRodData.MaxCastDistance : defaultMaxDistance;
+        // Ưu tiên hướng đã ngắm lúc click; fallback theo hướng mặt nhân vật
+        Vector2 dir = currentCastDirection.sqrMagnitude > 0.0001f ? currentCastDirection : facingDirection.normalized;
+        if (dir.sqrMagnitude < 0.0001f)
+        {
+            dir = Vector2.down;
+        }
 
-        Vector2 targetPosition;
-        if (targetWaterPoint.HasValue)
-        {
-            // Ném tới đúng vị trí nước mục tiêu mà người chơi đã click
-            targetPosition = targetWaterPoint.Value;
-        }
-        else
-        {
-            float castDistance = Mathf.Lerp(minDist, maxDist, CurrentPower);
-            targetPosition = playerPosition + facingDirection.normalized * castDistance;
-        }
+        // Lấy giới hạn min / max khoảng cách từ FishingRodData
+        float minDist = (currentRodData != null && currentRodData.MinCastDistance > 0f) ? currentRodData.MinCastDistance : defaultMinDistance;
+        float maxDist = (currentRodData != null && currentRodData.MaxCastDistance > 0f) ? currentRodData.MaxCastDistance : defaultMaxDistance;
+        if (maxDist < minDist) maxDist = minDist + 1f;
+
+        // Tính cự ly ném thực tế dựa trên lực tích lũy (CurrentPower: 0 -> 1)
+        float castDistance = Mathf.Lerp(minDist, maxDist, CurrentPower);
+        Vector2 targetPosition = playerPosition + dir * castDistance;
+
+        Debug.Log($"<color=#00E5FF>[CastingController] Quăng cần! Lực: {CurrentPower * 100f:F0}%, Cự ly: {castDistance:F2}m (Giới hạn: {minDist:F1}m - {maxDist:F1}m) -> Tọa độ rơi: {targetPosition}</color>");
 
         Vector2 startPos = rodTip != null ? (Vector2)rodTip.position : playerPosition;
 

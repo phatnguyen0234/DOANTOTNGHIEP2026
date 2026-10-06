@@ -193,10 +193,17 @@ public class FarmInputController : MonoBehaviour
     {
         if (isPointerOverUI || isBagOpen) return;
 
-        if (!Input.GetMouseButtonDown(0)) return;
-
         FishingController fc = FishingController.Instance;
         if (fc == null) return;
+
+        // [Hủy nạp lực]: Cho phép click chuột phải để hủy tích lực nếu không muốn câu nữa
+        if (fc.CurrentState == FishingState.Charging && Input.GetMouseButtonDown(1))
+        {
+            fc.CancelFishing("Người chơi hủy nạp lực câu.");
+            return;
+        }
+
+        if (!Input.GetMouseButtonDown(0)) return;
 
         // [Click Lần 2]: Đang nạp lực trên đầu -> Nhấn tiếp để chốt lực, quăng phao và ẩn thanh lực!
         if (fc.CurrentState == FishingState.Charging)
@@ -211,7 +218,7 @@ public class FarmInputController : MonoBehaviour
             return;
         }
 
-        // [Click Lần 1]: Đang ở trạng thái Idle và người chơi click vào mặt nước
+        // [Click Lần 1]: Đang ở trạng thái Idle và người chơi click chuột theo hướng muốn câu
         if (fc.CurrentState == FishingState.Idle)
         {
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -220,10 +227,10 @@ public class FarmInputController : MonoBehaviour
             InventorySlot activeSlot = hotbarController != null ? hotbarController.SelectedSlot : null;
             FishingRodData rodData = activeSlot != null && activeSlot.ItemData != null ? activeSlot.ItemData.RodData : null;
 
-            bool started = fc.TryStartFishingAtWater((Vector2)mouseWorld, rodData);
+            bool started = fc.StartFishingTowards((Vector2)mouseWorld, rodData);
             if (!started)
             {
-                Debug.Log("[FarmInputController] Hãy click vào mặt nước hợp lệ để bắt đầu câu cá!");
+                Debug.Log("[FarmInputController] Không thể bắt đầu nạp lực câu cá!");
             }
         }
     }

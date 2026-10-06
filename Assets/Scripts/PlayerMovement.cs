@@ -167,7 +167,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction != Vector2.zero)
         {
-            lastDirection = direction.normalized;
+            if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+            {
+                lastDirection = new Vector2(Mathf.Sign(direction.x), 0f);
+            }
+            else
+            {
+                lastDirection = new Vector2(0f, Mathf.Sign(direction.y));
+            }
+
             if (anim != null)
             {
                 anim.SetFloat("MoveX", lastDirection.x);

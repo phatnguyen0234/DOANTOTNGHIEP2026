@@ -169,25 +169,35 @@ public class FishingController : MonoBehaviour
         return true; // Fallback nếu chưa cấu hình detector
     }
 
-    // [Click lần 1]: Người chơi chọn cần câu và click vào mặt nước -> Bắt đầu hiện thanh lực trên đầu (Charging)
+    // [Click lần 1]: Người chơi chọn cần câu và click theo hướng muốn câu -> Quay mặt nhân vật và nạp lực (Charging)
     public bool TryStartFishingAtWater(Vector2 targetWaterPos, FishingRodData rodData = null)
+    {
+        return StartFishingTowards(targetWaterPos, rodData);
+    }
+
+    // Bắt đầu nạp lực câu cá hướng về vị trí click chuột
+    public bool StartFishingTowards(Vector2 targetWorldPos, FishingRodData rodData = null)
     {
         if (CurrentState != FishingState.Idle) return false;
 
         ResolveDependencies();
 
-        if (!IsWaterAtPosition(targetWaterPos, out currentSpotData))
-        {
-            return false;
-        }
-
         activeRodData = rodData != null ? rodData : defaultRodData;
 
-        // Xoay hướng nhân vật về điểm click nước
+        Vector2 playerPos = playerMovement != null ? (Vector2)playerMovement.transform.position : (Vector2)transform.position;
+        Vector2 dir = targetWorldPos - playerPos;
+        if (dir.sqrMagnitude < 0.0001f)
+        {
+            dir = playerMovement != null ? playerMovement.FacingDirection : Vector2.down;
+        }
+        else
+        {
+            dir = dir.normalized;
+        }
+
+        // Xoay hướng nhân vật về phía điểm click
         if (playerMovement != null)
         {
-            Vector2 playerPos = playerMovement.transform.position;
-            Vector2 dir = (targetWaterPos - playerPos).normalized;
             playerMovement.SetFacingDirection(dir);
         }
 
@@ -196,7 +206,7 @@ public class FishingController : MonoBehaviour
 
         if (castingController != null)
         {
-            castingController.StartCharging(activeRodData, targetWaterPos);
+            castingController.StartCharging(activeRodData, dir);
         }
 
         if (powerBarUI != null && playerMovement != null)
@@ -207,7 +217,7 @@ public class FishingController : MonoBehaviour
         return true;
     }
 
-    // Bắt đầu nạp lực câu cá chuẩn
+    // Bắt đầu nạp lực câu cá chuẩn (fallback theo hướng mặt hiện tại)
     public bool StartChargingCast(FishingRodData rodData = null)
     {
         if (CurrentState != FishingState.Idle) return false;
@@ -215,12 +225,13 @@ public class FishingController : MonoBehaviour
         ResolveDependencies();
 
         activeRodData = rodData != null ? rodData : defaultRodData;
+        Vector2 facingDir = playerMovement != null ? playerMovement.FacingDirection : Vector2.down;
 
         StateMachine.ChangeState(FishingState.Charging);
 
         if (castingController != null)
         {
-            castingController.StartCharging(activeRodData);
+            castingController.StartCharging(activeRodData, facingDir);
         }
 
         if (powerBarUI != null && playerMovement != null)
