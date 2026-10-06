@@ -480,9 +480,12 @@ public static class MainMapGenerator
     }
 
     // Ô thân vách: lấy 12 hàng trên của ô mặt vách rồi lặp lại 4 hàng đầu để nối dọc liền mạch.
-    private static Sprite CliffMidSprite(int column)
+    // sheetSeason là chữ mùa trong tên file tileset Cliff (Spring / Summer / Fall / Winter).
+    public static Sprite CliffMidSprite(int column, string sheetSeason = "Spring")
     {
-        return GeneratedSprite($"CliffMid_{column}", 16, 16, CliffTexture, (source, x, yTop) =>
+        string name = sheetSeason == "Spring" ? $"CliffMid_{column}" : $"CliffMid_{sheetSeason}_{column}";
+        string texture = TilesetFolder + $"Tileset Grass Cliff Tileset {sheetSeason}.png";
+        return GeneratedSprite(name, 16, 16, texture, (source, x, yTop) =>
         {
             int sy = yTop < 12 ? yTop : yTop - 12;
             return GetPixelTopDown(source, column * 16 + x, CliffFaceRow * 16 + sy);
