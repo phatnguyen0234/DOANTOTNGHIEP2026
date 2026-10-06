@@ -15,13 +15,24 @@ public class Tree : MonoBehaviour, IDropSource
 
     [Tooltip("Hiệu ứng hạt lá rụng khi bị chặt (tùy chọn).")]
     [SerializeField] private ParticleSystem leafParticles;
+    public string treeId;
 
-    private int currentHits = 0;
+    public int currentHits = 0;
     private bool isFelled = false;
     private Coroutine shakeCoroutine;
 
     public int RemainingHits => Mathf.Max(0, maxHits - currentHits);
     public bool IsFelled => isFelled;
+
+    public void Init(int hits, bool isFelled)
+    {
+        currentHits = hits;
+        this.isFelled = isFelled;
+        if (isFelled)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Xử lý khi cây nhận một nhát chém từ Rìu
     public void Hit(GameObject player = null)

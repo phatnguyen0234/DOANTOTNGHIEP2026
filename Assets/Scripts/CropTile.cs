@@ -39,10 +39,6 @@ public class CropTile : MonoBehaviour, IDropSource
             cropData = data;
             currentGrowthStage = growthStage;
             isHavest = currentGrowthStage >= cropData.maxStage - 1;
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = GetComponent<SpriteRenderer>();
-            }
             UpdateSprite(currentGrowthStage);
         }
     }
@@ -71,8 +67,6 @@ public class CropTile : MonoBehaviour, IDropSource
 
     public void UpdateSprite(int step)
     {
-        if (cropData == null || cropData.stageSprites == null || cropData.stageSprites.Length == 0) return;
-        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (step >= 0 && step < cropData.stageSprites.Length)
         {

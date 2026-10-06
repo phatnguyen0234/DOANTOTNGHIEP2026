@@ -454,7 +454,9 @@ public class FarmInputController : MonoBehaviour
         {
                 playerMovement.UsingAxe((Vector2)(mousePos - player.transform.position), hit.transform.position);
                 Tree tree = hit.GetComponent<Tree>();
+                if(tree == null) return;
                 tree.Hit();
+                SoilManager.Instance.OnHit(mouseCell, tree);
         }
     }
 
