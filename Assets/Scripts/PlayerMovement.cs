@@ -22,6 +22,16 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement instance;
 
+    // Hướng tự đi do MapNavigator (tìm đường A*) đặt mỗi bước vật lý; phím bấm luôn được ưu tiên hơn.
+    private Vector2 autoMoveDirection;
+    public bool HasManualInput { get; private set; }
+    public float MoveSpeed => moveSpeed;
+
+    public void SetAutoMoveDirection(Vector2 direction)
+    {
+        autoMoveDirection = Vector2.ClampMagnitude(direction, 1f);
+    }
+
     private void Awake()
     {
         if(instance == null)
@@ -52,7 +62,9 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(x, y).normalized;
-     
+        HasManualInput = moveDirection != Vector2.zero;
+        if (!HasManualInput) moveDirection = autoMoveDirection;
+
         UpdateAnimation();
     }
 
@@ -184,7 +196,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (isUsingHoe || isFishing) return;
 
-        Vector2 movePosition = rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
+        Vector2 direction = HasManualInput ? moveDirection : autoMoveDirection;
+        Vector2 movePosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(movePosition);
     }
 }

@@ -117,6 +117,42 @@ public class WalkableGrid : MonoBehaviour
 
     public bool IsWalkable(Vector3 worldPosition) => IsWalkable(WorldToCell(worldPosition));
 
+    // Tìm ô đi được gần nhất quanh một ô (ví dụ click trúng thân cây / nhà -> lấy ô trống sát bên).
+    // Quét theo từng vòng vuông nở dần, trong mỗi vòng chọn ô gần nhất theo khoảng cách thật.
+    public bool TryGetNearestWalkable(Vector3Int cell, int maxRadius, out Vector3Int result)
+    {
+        result = cell;
+        if (IsWalkable(cell)) return true;
+
+        for (int radius = 1; radius <= maxRadius; radius++)
+        {
+            float bestDistance = float.MaxValue;
+            bool found = false;
+
+            for (int y = -radius; y <= radius; y++)
+            {
+                for (int x = -radius; x <= radius; x++)
+                {
+                    if (Mathf.Abs(x) != radius && Mathf.Abs(y) != radius) continue;   // chỉ xét viền của vòng
+
+                    Vector3Int candidate = new Vector3Int(cell.x + x, cell.y + y, 0);
+                    if (!IsWalkable(candidate)) continue;
+
+                    float distance = x * x + y * y;
+                    if (distance < bestDistance)
+                    {
+                        bestDistance = distance;
+                        result = candidate;
+                        found = true;
+                    }
+                }
+            }
+
+            if (found) return true;
+        }
+        return false;
+    }
+
     public Vector3Int WorldToCell(Vector3 worldPosition)
     {
         return groundTilemap.WorldToCell(new Vector3(worldPosition.x, worldPosition.y, 0f));
