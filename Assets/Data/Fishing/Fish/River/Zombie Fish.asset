@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Zombie Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Th\xE2y Ma"
+  description: "Sinh v\u1EADt k\u1EF3 d\u1ECB tr\u1ED7i d\u1EADy t\u1EEB \u0111\xE1y
+    n\u01B0\u1EDBc \xF4 u\u1EBF, di chuy\u1EC3n gi\u1EADt c\u1EE5c v\xE0 dai d\u1EB3ng
+    kh\xF4ng ng\u1EDD."
+  icon: {fileID: -2999217322072912757, guid: 50581d5c29088dd4c9ccb2faba6eb626, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 2fb14b47d7dd4045b4565aca7303a21b, type: 2}
+  difficulty: 85
+  movementType: 4
+  movementSpeed: 1.78
+  acceleration: 2.86
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 14
+  expReward: 43

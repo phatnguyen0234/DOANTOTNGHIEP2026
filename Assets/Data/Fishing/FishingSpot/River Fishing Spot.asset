@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06ee36e5479f284cb8fca67da6ee7d2, type: 3}
+  m_Name: River Fishing Spot
+  m_EditorClassIdentifier: Assembly-CSharp::FishingSpotData
+  spotName: "S\xF4ng N\u01B0\u1EDBc Ng\u1ECDt"
+  availableFishes:
+  - fishData: {fileID: 11400000, guid: 08f7ea83e5244cfdafcad3444fbfcaf2, type: 2}
+    weight: 15
+  - fishData: {fileID: 11400000, guid: f6845e5e6ef54ca1bb9c26d47f9af41b, type: 2}
+    weight: 60
+  - fishData: {fileID: 11400000, guid: 1e4f51016dd74be8b244948b3aa1e20d, type: 2}
+    weight: 85
+  - fishData: {fileID: 11400000, guid: b5642619a80f40288e7947915c89c318, type: 2}
+    weight: 90
+  - fishData: {fileID: 11400000, guid: e353efb981464c03850624d319761647, type: 2}
+    weight: 25
+  - fishData: {fileID: 11400000, guid: f39a99874b0945c3bbcfd786bf2c7787, type: 2}
+    weight: 12
+  - fishData: {fileID: 11400000, guid: f0ce31532d9a470ea03efc2ca1adfa1e, type: 2}
+    weight: 20
+  - fishData: {fileID: 11400000, guid: 73d79ea14790426dbb108f4093d15c20, type: 2}
+    weight: 30
+  - fishData: {fileID: 11400000, guid: 0cc42bd92d36bd14291b5cbf75154e8b, type: 2}
+    weight: 8
+  - fishData: {fileID: 11400000, guid: 631ce4adb40d4f6081e48aad812d7246, type: 2}
+    weight: 45
+  - fishData: {fileID: 11400000, guid: 2a709ea51afd404aba7ed5d2baad69c1, type: 2}
+    weight: 75
+  - fishData: {fileID: 11400000, guid: f3f4c2f584804d629a4b277a2c48739c, type: 2}
+    weight: 35
+  - fishData: {fileID: 11400000, guid: bd66ddb38982487ea494ca819cb1dca6, type: 2}
+    weight: 80
+  - fishData: {fileID: 11400000, guid: 55d47d838ef747eaa74e19e9e522c752, type: 2}
+    weight: 22
+  - fishData: {fileID: 11400000, guid: a674ffcbc41109a43b8ccca23e03ef5b, type: 2}
+    weight: 85
+  - fishData: {fileID: 11400000, guid: bc2f4b2e171d4c9490e1f8fe54ee183f, type: 2}
+    weight: 28
+  - fishData: {fileID: 11400000, guid: 521f660dbb0c4619b19ca9fd8062c700, type: 2}
+    weight: 55
+  - fishData: {fileID: 11400000, guid: e228cacf139d4f39a5986a809067cc20, type: 2}
+    weight: 14
+  - fishData: {fileID: 11400000, guid: 26620d86e0034113a5a32fabd7e22b0a, type: 2}
+    weight: 75
+  - fishData: {fileID: 11400000, guid: 993326f3692c4a83bfc673bf48acecc1, type: 2}
+    weight: 80
+  fallbackFish: {fileID: 11400000, guid: 1e4f51016dd74be8b244948b3aa1e20d, type: 2}

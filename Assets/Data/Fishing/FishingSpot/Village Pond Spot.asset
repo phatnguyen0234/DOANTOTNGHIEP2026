@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06ee36e5479f284cb8fca67da6ee7d2, type: 3}
+  m_Name: Village Pond Spot
+  m_EditorClassIdentifier: Assembly-CSharp::FishingSpotData
+  spotName: "Ao L\xE0ng"
+  availableFishes:
+  - fishData: {fileID: 11400000, guid: f6845e5e6ef54ca1bb9c26d47f9af41b, type: 2}
+    weight: 60
+  - fishData: {fileID: 11400000, guid: 1e4f51016dd74be8b244948b3aa1e20d, type: 2}
+    weight: 85
+  - fishData: {fileID: 11400000, guid: b5642619a80f40288e7947915c89c318, type: 2}
+    weight: 90
+  - fishData: {fileID: 11400000, guid: 2a709ea51afd404aba7ed5d2baad69c1, type: 2}
+    weight: 75
+  - fishData: {fileID: 11400000, guid: bd66ddb38982487ea494ca819cb1dca6, type: 2}
+    weight: 80
+  - fishData: {fileID: 11400000, guid: a674ffcbc41109a43b8ccca23e03ef5b, type: 2}
+    weight: 85
+  - fishData: {fileID: 11400000, guid: 521f660dbb0c4619b19ca9fd8062c700, type: 2}
+    weight: 55
+  - fishData: {fileID: 11400000, guid: 26620d86e0034113a5a32fabd7e22b0a, type: 2}
+    weight: 75
+  - fishData: {fileID: 11400000, guid: 993326f3692c4a83bfc673bf48acecc1, type: 2}
+    weight: 80
+  fallbackFish: {fileID: 11400000, guid: 1e4f51016dd74be8b244948b3aa1e20d, type: 2}

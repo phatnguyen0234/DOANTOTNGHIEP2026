@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Regal Blue Tang
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 \u0110u\xF4i Gai Xanh"
+  description: "M\xE0u xanh coban r\u1EF1c r\u1EE1 v\u1EDBi v\u1EC7t v\xE0ng \u1EDF
+    \u0111u\xF4i, b\u01A1i tung t\u0103ng quanh r\u1EA1n \u0111\xE1 ng\u1EA7m."
+  icon: {fileID: -5918765431692056084, guid: 66d9b3b6009cef145bcd2d4c5fd714ac, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 3c5a84af5863416aa726afb8b3e5b809, type: 2}
+  difficulty: 35
+  movementType: 0
+  movementSpeed: 1.02
+  acceleration: 1.7
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 68
+  expReward: 21

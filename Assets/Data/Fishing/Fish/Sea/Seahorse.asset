@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Seahorse
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Ng\u1EF1a"
+  description: "D\xE1ng b\u01A1i th\u1EB3ng \u0111\u1EE9ng \u0111\u1ED9c \u0111\xE1o,
+    b\xE1m \u0111u\xF4i v\xE0o nh\u1EEFng nh\xE1nh c\u1ECF bi\u1EC3n r\u1EADp r\u1EDDn."
+  icon: {fileID: 3152794796827760949, guid: 3580b89e8909d8448a378f1e24d908ea, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 4ac0d5f2331248bba226b17c831808c3, type: 2}
+  difficulty: 34
+  movementType: 2
+  movementSpeed: 1.01
+  acceleration: 1.68
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 62
+  expReward: 20

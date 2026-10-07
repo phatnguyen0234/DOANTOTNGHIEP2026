@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Wooden Fishing Rod
+  m_Name: Crimson Fishing Rod
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: fishingrod
-  itemName: Wooden Fishing Rod
-  description: "Cần câu cơ bản làm từ gỗ mộc tre."
-  icon: {fileID: -2858176563081021727, guid: a278bb310afba8c4f9fc77b57934ff46, type: 3}
+  itemID: fishingrod_crimson
+  itemName: Crimson Fishing Rod
+  description: "C\u1EA7n c\xE2u r\u1EF1c l\u1EEDa t\u1EEB qu\u1EB7ng huy\u1EBFt th\u1EA1ch
+    ma thu\u1EADt."
+  icon: {fileID: -2858176563081021727, guid: da8a70f9640efd44b86ac4a844f491dd, type: 3}
   itemType: 5
   toolType: 8
   cropId: 
   cropData: {fileID: 0}
-  rodData: {fileID: 11400000, guid: 9b59e8321dfa4d14a96a4c0b04efa540, type: 2}
+  rodData: {fileID: 11400000, guid: 62547e6cbd0c41368b43711d375cda89, type: 2}
   animationTrigger: 
   maxStack: 1
-  buyPrice: 500
-  sellPrice: 200
+  buyPrice: 25000
+  sellPrice: 10000
   canSell: 1

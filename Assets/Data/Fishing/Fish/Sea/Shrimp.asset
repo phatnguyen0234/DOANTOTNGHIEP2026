@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Shrimp
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "T\xF4m Bi\u1EC3n"
+  description: "Ch\xFA t\xF4m bi\u1EC3n b\xFAng tanh t\xE1ch tho\u0103n tho\u1EAFt
+    trong c\xE1c b\u1EE5i rong."
+  icon: {fileID: 2575967741570312058, guid: 843eee328c17ebe478e1948fc6a61482, type: 3}
+  rewardItemData: {fileID: 11400000, guid: ec68d5bbf9b14702879101a48d04c459, type: 2}
+  difficulty: 22
+  movementType: 1
+  movementSpeed: 0.83
+  acceleration: 1.41
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 82
+  expReward: 15

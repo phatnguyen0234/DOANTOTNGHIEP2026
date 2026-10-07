@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Flounder
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 B\u01A1n"
+  description: "B\u1EADc th\u1EA7y ng\u1EE5y trang n\u1EB1m d\u1EB9p m\xECnh d\u01B0\u1EDBi
+    \u0111\xE1y c\xE1t b\u1EDD bi\u1EC3n."
+  icon: {fileID: -3012258434644921785, guid: 8e4504c7cb62a384dbb10c0e6a8c996f, type: 3}
+  rewardItemData: {fileID: 11400000, guid: f5bd03cac1c145c7b594f79dad575c02, type: 2}
+  difficulty: 35
+  movementType: 2
+  movementSpeed: 1.02
+  acceleration: 1.7
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 65
+  expReward: 21

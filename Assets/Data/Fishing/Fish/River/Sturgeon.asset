@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Sturgeon
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 T\u1EA7m"
+  description: "Lo\xE0i c\xE1 c\u1ED5 \u0111\u1EA1i kh\u1ED5ng l\u1ED3 s\u1ED1ng
+    \u1EDF t\u1EA7ng \u0111\xE1y s\xE2u, ngu\u1ED3n cung c\u1EA5p tr\u1EE9ng c\xE1
+    mu\u1ED1i \u0111\u1EAFt gi\xE1."
+  icon: {fileID: -8415866889696780291, guid: 1ee501021a7a745439278bf5fc8627b2, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 55be372090d94646a5ed3b3b92d8d03b, type: 2}
+  difficulty: 72
+  movementType: 3
+  movementSpeed: 1.58
+  acceleration: 2.56
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 22
+  expReward: 37

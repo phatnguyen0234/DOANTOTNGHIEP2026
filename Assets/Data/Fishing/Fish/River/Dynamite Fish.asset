@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Dynamite Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Thu\u1ED1c N\u1ED5"
+  description: "Lo\xE0i c\xE1 nguy hi\u1EC3m mang t\xEDnh kh\xED th\u1EA5t th\u01B0\u1EDDng,
+    c\u01A1 th\u1EC3 n\xF3ng r\u1EF1c ph\xE1t s\xE1ng khi k\xEDch \u0111\u1ED9ng."
+  icon: {fileID: 8792407986804083304, guid: cd281e5e1d16e674d95c76137bb07ecc, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 86d06c9d1e8a41dea74863f4c1d3de36, type: 2}
+  difficulty: 88
+  movementType: 4
+  movementSpeed: 1.82
+  acceleration: 2.92
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 12
+  expReward: 45

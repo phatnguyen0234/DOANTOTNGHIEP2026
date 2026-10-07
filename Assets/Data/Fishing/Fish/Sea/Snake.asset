@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Snake
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "R\u1EAFn Bi\u1EC3n"
+  description: "R\u1EAFn bi\u1EC3n u\u1ED1n m\xECnh nh\u1ECBp nh\xE0ng trong l\xE0n
+    n\u01B0\u1EDBc xanh bi\u1EBFc."
+  icon: {fileID: 4149926256698089342, guid: 14d4f8c69b18cee478e897db43ca1397, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 83de9d42634c4db7aad2273e62493f0a, type: 2}
+  difficulty: 60
+  movementType: 1
+  movementSpeed: 1.4
+  acceleration: 2.28
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 35
+  expReward: 32

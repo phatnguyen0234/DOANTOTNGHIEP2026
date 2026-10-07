@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Smallmouth Bass
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 V\u01B0\u1EE3c Mi\u1EC7ng Nh\u1ECF"
+  description: "R\u1EA5t linh ho\u1EA1t, hay nh\u1EA3y v\u1ECDt kh\u1ECFi m\u1EB7t
+    n\u01B0\u1EDBc \u0111\u1EC3 t\xECm c\xE1ch g\u1EE1 l\u01B0\u1EE1i c\xE2u."
+  icon: {fileID: -3031165052977643357, guid: 4fbf1fa4b4abc2b4abdebe373d65a0c7, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 604e26ce718f4eae9181429e155fa199, type: 2}
+  difficulty: 52
+  movementType: 1
+  movementSpeed: 1.28
+  acceleration: 2.1
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 50
+  expReward: 28

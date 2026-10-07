@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8fdc641264b67d44963cc62d0b58e5a, type: 3}
-  m_Name: RodFishing
+  m_Name: Copper Fishing Rod
   m_EditorClassIdentifier: Assembly-CSharp::FishingRodData
-  rodName: "C\u1EA7n C\xE2u G\u1ED7"
-  itemData: {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
-  minCastDistance: 1.5
-  maxCastDistance: 5
-  chargeSpeed: 1
-  minBiteWaitTime: 3
-  maxBiteWaitTime: 7
-  hookReactionWindow: 1.2
-  barSizeMultiplier: 1
-  progressGainMultiplier: 1
-  progressLossReduction: 1
+  rodName: "C\u1EA7n C\xE2u \u0110\u1ED3ng"
+  itemData: {fileID: 11400000, guid: 4bd54ac37ce342c6bf59b7bb21335daa, type: 2}
+  minCastDistance: 1.7
+  maxCastDistance: 5.8
+  chargeSpeed: 1.15
+  minBiteWaitTime: 2.7
+  maxBiteWaitTime: 6.4
+  hookReactionWindow: 1.3
+  barSizeMultiplier: 1.08
+  progressGainMultiplier: 1.12
+  progressLossReduction: 1.06

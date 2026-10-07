@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Carp
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Ch\xE9p"
+  description: "Lo\xE0i c\xE1 n\u01B0\u1EDBc ng\u1ECDt ph\u1ED5 bi\u1EBFn, b\u01A1i
+    \u0111i\u1EC1m t\u0129nh v\xE0 b\u1EC1n b\u1EC9. Bi\u1EC3u t\u01B0\u1EE3ng c\u1EE7a
+    s\u1EF1 ki\xEAn tr\xEC."
+  icon: {fileID: 4933832015515428345, guid: 6e61a401c59106a4d88e1e5077a6828d, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 4724f4837152d594cbf327f96887f834, type: 2}
+  difficulty: 22
+  movementType: 0
+  movementSpeed: 0.83
+  acceleration: 1.41
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 85
+  expReward: 15

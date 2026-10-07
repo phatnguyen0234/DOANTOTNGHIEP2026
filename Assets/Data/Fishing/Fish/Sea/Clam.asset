@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
-  m_Name: Sunfish
+  m_Name: Clam
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: "Cá Mặt Trời"
-  description: "Thân dẹp tròn ngộ nghĩnh, thích sưởi ấm ở tầng nước nông dưới ánh nắng ban ngày."
-  icon: {fileID: -3781348510843459316, guid: 14a0e67bc63ee404eab32508d3acd304, type: 3}
-  rewardItemData: {fileID: 11400000, guid: f7ed7de874824103806b4d56d0663cfc, type: 2}
+  fishName: "Ngao Bi\u1EC3n"
+  description: "Con ngao ng\u1EADm ch\u1EB7t v\u1ECF c\u1EE9ng, n\u1EB1m y\xEAn t\u0129nh
+    d\u01B0\u1EDBi \u0111\xE1y c\xE1t."
+  icon: {fileID: 1549034116965846230, guid: 2f0f0dc5ffdb6f94f986eefa6d218783, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 1b5ad729ed5e441d8d08c78163a1f21c, type: 2}
   difficulty: 20
-  movementType: 2
+  movementType: 3
   movementSpeed: 0.8
   acceleration: 1.36
   changeTargetInterval: {x: 1.2, y: 2.6}
-  spawnWeight: 85
+  spawnWeight: 75
   expReward: 14

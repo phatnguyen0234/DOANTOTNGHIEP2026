@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Albacore
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Ng\u1EEB V\xE2y D\xE0i"
+  description: "Chi\u1EBFn binh bi\u1EC3n c\u1EA3 v\u1EDBi c\u1EB7p v\xE2y ng\u1EF1c
+    d\xE0i \u0111\u1EB7c tr\u01B0ng, t\u1ED1c \u0111\u1ED9 b\u01A1i v\u01B0\u1EE3t
+    tr\u1ED9i."
+  icon: {fileID: -1534198741530444459, guid: a6705b1fc90a6e64fa2b0bf0fdd0c63a, type: 3}
+  rewardItemData: {fileID: 11400000, guid: c440100254b54768a0408cedf72d88f8, type: 2}
+  difficulty: 62
+  movementType: 1
+  movementSpeed: 1.43
+  acceleration: 2.33
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 40
+  expReward: 33

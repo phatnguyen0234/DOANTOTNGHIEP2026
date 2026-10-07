@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Tiger Trout
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 H\u1ED3i H\u1ED5"
+  description: "Con lai hi\u1EBFm gi\u1EEFa c\xE1 h\u1ED3i su\u1ED1i v\xE0 n\xE2u,
+    hoa v\u0103n v\u1EB1n v\u1EC7n v\xE0 b\u01A1i c\u1EF1c k\u1EF3 hung h\xE3n."
+  icon: {fileID: 1751203549307130859, guid: a813c65b5fa1746418a3ca706a59677e, type: 3}
+  rewardItemData: {fileID: 11400000, guid: a743af4eb8224821ba0d24df5620e37c, type: 2}
+  difficulty: 70
+  movementType: 1
+  movementSpeed: 1.55
+  acceleration: 2.51
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 28
+  expReward: 36
