@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Lion Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "Ca\u0301 S\u01B0 t\u01B0\u0309"
+  description: "M\u1ED9t lo\xE0i c\xE1 n\u01B0\u1EDBc ng\u1ECDt ph\u1ED5 bi\u1EBFn."
+  icon: {fileID: -6730320637373223454, guid: 2895f2178933be84c8227724a98223eb, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 21835409cf8d41e9a489234853623d9d, type: 2}
+  difficulty: 30
+  movementType: 0
+  movementSpeed: 0.8
+  acceleration: 1.5
+  changeTargetInterval: {x: 1, y: 2.5}
+  spawnWeight: 50
+  expReward: 15
+  baseSellPrice: 50
