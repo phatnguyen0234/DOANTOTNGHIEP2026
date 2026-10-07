@@ -15,8 +15,7 @@ public class SoilManager : MonoBehaviour
     
     public FarmData currentFarmData;
     public Dictionary<Vector3Int, CropTile> farmCells = new Dictionary<Vector3Int, CropTile>();
-
-    
+    public Dictionary<Vector3Int, Tree> treeCells = new Dictionary<Vector3Int, Tree>();
 
     private void Awake()
     {
@@ -31,6 +30,7 @@ public class SoilManager : MonoBehaviour
             TimeManager.Instance.onNewDay += HandleNewDay;
         }
         ReBuildFarm();
+        ReBuildTree();
     }
 
 
@@ -84,6 +84,17 @@ public class SoilManager : MonoBehaviour
         {
             groundTileMap.SetTile(pos, soilWetTile);
         }
+    }
+
+    public void OnHit(Vector3Int pos, Tree tree)
+    {
+        TreeCell cell = currentFarmData.GetTreeCell(pos);
+        if(cell == null)
+        {
+            cell = currentFarmData.SetTreeCell(pos, tree.treeId);
+        }
+        cell.currentHits = tree.currentHits;
+        cell.isFelled = tree.IsFelled;
     }
 
     public void HandleNewDay()
@@ -169,6 +180,32 @@ public class SoilManager : MonoBehaviour
         farmCells.Clear();
     }
 
+    public void ReBuildTree()
+    {
+        RegisterTree();
+        foreach (TreeCell cell in currentFarmData.treeCells)
+        {
+            if(treeCells.TryGetValue(cell.position, out Tree tree) && tree != null)
+            {
+                tree.Init(cell.currentHits, cell.isFelled);
+                if(cell.isFelled)
+                {
+                    treeCells.Remove(cell.position);
+                }
+            }
+        }
+    }
+
+    public void RegisterTree()
+    {
+        treeCells.Clear();
+        Tree[] trees = UnityEngine.Object.FindObjectsByType<Tree>();
+        foreach(Tree t in trees)
+        {
+            Vector3Int pos = groundTileMap.WorldToCell(t.transform.position);
+            treeCells[pos] = t;
+        }
+    }
     public CropData GetCropData(string cropId)
     {
         foreach(CropData cropData in cropDataList)
@@ -189,5 +226,10 @@ public class SoilManager : MonoBehaviour
         {
             Application.OpenURL(filepath);
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        GetFarmDataJson();
     }
 }

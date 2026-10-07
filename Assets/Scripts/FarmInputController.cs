@@ -52,6 +52,13 @@ public class FarmInputController : MonoBehaviour
     {
         ResolveDependencies();
         UpdateCurrentTool();
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            playerMovement = playerObj.GetComponent<PlayerMovement>();
+        }
     }
 
     private void OnEnable()
@@ -506,7 +513,10 @@ public class FarmInputController : MonoBehaviour
         {
                 playerMovement.UsingAxe((Vector2)(mousePos - player.transform.position), hit.transform.position);
                 Tree tree = hit.GetComponent<Tree>();
+                if(tree == null) return;
                 tree.Hit();
+                Vector3Int treecell = groundTileMap.WorldToCell(tree.transform.position);
+                SoilManager.Instance.OnHit(treecell, tree);
         }
     }
 
