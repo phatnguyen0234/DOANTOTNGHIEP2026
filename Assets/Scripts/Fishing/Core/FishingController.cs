@@ -326,15 +326,6 @@ public class FishingController : MonoBehaviour
 
         currentSpotData = spotData;
 
-        if (currentSpotData != null)
-        {
-            Debug.Log($"<color=#00FF7F>[FishingController] Phao đã đáp trúng FishingSpot: <b>{currentSpotData.SpotName}</b> (Asset: {currentSpotData.name})</color>");
-        }
-        else
-        {
-            Debug.Log("<color=#FFA500>[FishingController] Phao rơi vào vùng nước tự do (Không có FishingSpotData riêng, dùng cá mặc định)</color>");
-        }
-
         // Chọn loài cá cho lượt câu này
         if (fishSpawner != null)
         {
@@ -343,11 +334,6 @@ public class FishingController : MonoBehaviour
         if (targetFish == null)
         {
             targetFish = fallbackFishData;
-        }
-
-        if (targetFish != null)
-        {
-            Debug.Log($"<color=#00FF7F>[FishingController] Cá được chọn cho lượt câu: <b>{targetFish.FishName}</b> (Độ khó: {targetFish.Difficulty}, Tốc độ: {targetFish.MovementSpeed})</color>");
         }
 
         // Đợi 1 giây rồi mở bảng Minigame câu cá!

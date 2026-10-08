@@ -165,28 +165,6 @@ public class CastingController : MonoBehaviour
             inWater = true;
         }
 
-        // Đồng bộ spot với Bobber nếu Bobber đã tự quét được hoặc WaterDetector phát hiện được
-        if (bobber != null)
-        {
-            if (spotData != null)
-            {
-                bobber.SetSpotData(spotData);
-            }
-            else if (bobber.CurrentSpotData != null)
-            {
-                spotData = bobber.CurrentSpotData;
-            }
-        }
-
-        if (spotData != null)
-        {
-            Debug.Log($"<color=#00E5FF>[CastingController] Phao đáp nước thành công! Bắt được FishingSpot: <b>{spotData.SpotName}</b> ({spotData.name}) tại {targetPosition}</color>");
-        }
-        else
-        {
-            Debug.Log($"<color=#00E5FF>[CastingController] Phao đáp nước tại {targetPosition} (InWater: {inWater}, FishingSpot: null)</color>");
-        }
-
         OnCastCompleted?.Invoke(inWater, spotData);
     }
 
