@@ -33,6 +33,14 @@ public class FishingBobber : MonoBehaviour
     [Tooltip("Hiệu ứng gợn sóng quanh phao (tùy chọn).")]
     [SerializeField] private GameObject rippleVfxPrefab;
 
+    [Header("Spot Detection & Debug")]
+    [Tooltip("Dữ liệu điểm câu hiện tại phao đang nằm trong.")]
+    [SerializeField] private FishingSpotData currentSpotData;
+    [Tooltip("Bán kính quét tìm FishingSpotZone quanh điểm phao rơi.")]
+    [SerializeField] private float spotDetectionRadius = 0.5f;
+
+    public FishingSpotData CurrentSpotData => currentSpotData;
+
     private Transform rodTipTransform;
     private Vector2 targetLandingPosition;
     private bool isFlying = false;
@@ -107,6 +115,9 @@ public class FishingBobber : MonoBehaviour
         SpawnSplashEffect();
         SpawnRippleEffect();
 
+        // Kiểm tra và debug FishingSpot tại vị trí phao đáp xuống
+        DetectSpotAtPosition(targetPos);
+
         OnLanded?.Invoke();
     }
 
@@ -164,12 +175,60 @@ public class FishingBobber : MonoBehaviour
         }
     }
 
+    // Phát hiện và debug FishingSpot tại vị trí phao rơi
+    public FishingSpotData DetectSpotAtPosition(Vector2 pos)
+    {
+        currentSpotData = null;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, spotDetectionRadius);
+        foreach (var col in colliders)
+        {
+            FishingSpotZone zone = col.GetComponent<FishingSpotZone>() ?? col.GetComponentInParent<FishingSpotZone>();
+            if (zone != null && zone.SpotData != null)
+            {
+                currentSpotData = zone.SpotData;
+                break;
+            }
+        }
+
+        if (currentSpotData != null)
+        {
+            Debug.Log($"<color=#00FF7F>[FishingBobber] Phao đã bắt được FishingSpot: <b>{currentSpotData.SpotName}</b> (Asset: {currentSpotData.name}) tại tọa độ {pos}</color>", this);
+        }
+        else
+        {
+            Debug.Log($"<color=#FFA500>[FishingBobber] Phao rơi tại tọa độ {pos} - Không bắt được FishingSpotZone nào (null / Vùng nước tự do)</color>", this);
+        }
+
+        return currentSpotData;
+    }
+
+    // Cập nhật spot từ nguồn bên ngoài (ví dụ CastingController / WaterDetector)
+    public void SetSpotData(FishingSpotData spotData)
+    {
+        currentSpotData = spotData;
+        if (currentSpotData != null)
+        {
+            Debug.Log($"<color=#00FF7F>[FishingBobber] Đồng bộ FishingSpot: <b>{currentSpotData.SpotName}</b> (Asset: {currentSpotData.name})</color>", this);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        FishingSpotZone zone = other.GetComponent<FishingSpotZone>() ?? other.GetComponentInParent<FishingSpotZone>();
+        if (zone != null && zone.SpotData != null)
+        {
+            currentSpotData = zone.SpotData;
+            Debug.Log($"<color=#00FF7F>[FishingBobber] OnTriggerEnter2D chạm FishingSpot: <b>{currentSpotData.SpotName}</b> (Asset: {currentSpotData.name})</color>", this);
+        }
+    }
+
     // Thu hồi phao và ẩn đi
     public void Retrieve()
     {
         StopAllCoroutines();
         isFlying = false;
         isFloating = false;
+        currentSpotData = null;
 
         if (spawnedRippleInstance != null)
         {

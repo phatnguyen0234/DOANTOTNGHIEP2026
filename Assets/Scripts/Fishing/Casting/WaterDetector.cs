@@ -28,26 +28,36 @@ public class WaterDetector : MonoBehaviour
             Collider2D hitCollider = Physics2D.OverlapCircle(worldPosition, checkRadius, waterLayer);
             if (hitCollider != null)
             {
-                FishingSpotZone spotZone = hitCollider.GetComponent<FishingSpotZone>();
+                FishingSpotZone spotZone = hitCollider.GetComponent<FishingSpotZone>() ?? hitCollider.GetComponentInParent<FishingSpotZone>();
                 if (spotZone != null)
                 {
                     detectedSpot = spotZone.SpotData;
+                    if (detectedSpot != null)
+                    {
+                        Debug.Log($"<color=#00E5FF>[WaterDetector] Bắt được FishingSpot (Layer): <b>{detectedSpot.SpotName}</b> ({detectedSpot.name})</color>");
+                    }
                 }
                 return true;
             }
         }
 
-        // 2. Kiểm tra qua Tag "Water" hoặc tên Object chứa "Water"
+        // 2. Kiểm tra qua Tag "Water", tên Object chứa "Water" hoặc có FishingSpotZone
         Collider2D[] allHits = Physics2D.OverlapCircleAll(worldPosition, checkRadius);
         foreach (var col in allHits)
         {
+            FishingSpotZone spotZone = col.GetComponent<FishingSpotZone>() ?? col.GetComponentInParent<FishingSpotZone>();
+            if (spotZone != null)
+            {
+                detectedSpot = spotZone.SpotData;
+                if (detectedSpot != null)
+                {
+                    Debug.Log($"<color=#00E5FF>[WaterDetector] Bắt được FishingSpotZone: <b>{detectedSpot.SpotName}</b> ({detectedSpot.name}) trên GameObject '{col.gameObject.name}'</color>");
+                }
+                return true;
+            }
+
             if (col.CompareTag("Water") || col.gameObject.name.ToLower().Contains("water"))
             {
-                FishingSpotZone spotZone = col.GetComponent<FishingSpotZone>();
-                if (spotZone != null)
-                {
-                    detectedSpot = spotZone.SpotData;
-                }
                 return true;
             }
         }

@@ -34,6 +34,10 @@ public class FishingSpotData : ScriptableObject
     {
         if (availableFishes == null || availableFishes.Count == 0)
         {
+            if (fallbackFish != null)
+            {
+                Debug.Log($"<color=#FFA500>[FishingSpotData] Spot '{spotName}' không có danh sách cá, chọn cá fallback: <b>{fallbackFish.FishName}</b></color>");
+            }
             return fallbackFish;
         }
 
@@ -46,7 +50,14 @@ public class FishingSpotData : ScriptableObject
             }
         }
 
-        if (totalWeight <= 0) return fallbackFish;
+        if (totalWeight <= 0)
+        {
+            if (fallbackFish != null)
+            {
+                Debug.Log($"<color=#FFA500>[FishingSpotData] Spot '{spotName}' tổng trọng số <= 0, chọn cá fallback: <b>{fallbackFish.FishName}</b></color>");
+            }
+            return fallbackFish;
+        }
 
         int randomVal = UnityEngine.Random.Range(0, totalWeight);
         int currentSum = 0;
@@ -59,10 +70,21 @@ public class FishingSpotData : ScriptableObject
             currentSum += Mathf.Max(1, entry.weight);
             if (randomVal < currentSum)
             {
+                Debug.Log($"<color=#00FF7F>[FishingSpotData] Spot '<b>{spotName}</b>' bốc trúng cá: <b>{entry.fishData.FishName}</b> (Tỉ lệ: {entry.weight}/{totalWeight})</color>");
                 return entry.fishData;
             }
         }
 
-        return fallbackFish ?? availableFishes[0].fishData;
+        FishData fallbackResult = fallbackFish ?? availableFishes[0].fishData;
+        if (fallbackResult != null)
+        {
+            Debug.Log($"<color=#FFA500>[FishingSpotData] Spot '<b>{spotName}</b>' chọn cá fallback cuối: <b>{fallbackResult.FishName}</b></color>");
+        }
+        return fallbackResult;
+    }
+
+    public override string ToString()
+    {
+        return $"{spotName} ({name})";
     }
 }

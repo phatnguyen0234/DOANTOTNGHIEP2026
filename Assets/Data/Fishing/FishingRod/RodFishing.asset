@@ -15,11 +15,11 @@ MonoBehaviour:
   rodName: "C\u1EA7n C\xE2u G\u1ED7"
   itemData: {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
   minCastDistance: 1.5
-  maxCastDistance: 5
+  maxCastDistance: 20
   chargeSpeed: 1
   minBiteWaitTime: 3
   maxBiteWaitTime: 7
   hookReactionWindow: 1.2
-  barSizeMultiplier: 1
-  progressGainMultiplier: 1
-  progressLossReduction: 1
+  barSizeMultiplier: 2
+  progressGainMultiplier: 1.579
+  progressLossReduction: 1.573
