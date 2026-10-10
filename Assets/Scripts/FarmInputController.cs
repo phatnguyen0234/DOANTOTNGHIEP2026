@@ -509,7 +509,7 @@ public class FarmInputController : MonoBehaviour
         Vector3Int distance = mouseCell - playerCell;
         bool isRange = CheckDistance(distance);
         Collider2D hit = Physics2D.OverlapPoint(mousePos, treeMask);
-        if(hit != null)
+        if(isRange && hit != null)
         {
                 playerMovement.UsingAxe((Vector2)(mousePos - player.transform.position), hit.transform.position);
                 Tree tree = hit.GetComponent<Tree>();
@@ -526,8 +526,9 @@ public class FarmInputController : MonoBehaviour
         Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = mouseCell - playerCell;
+        bool isRange = CheckDistance(distance);
         Collider2D hit = Physics2D.OverlapPoint(mouseWorld, rockMask);
-        if(hit != null)
+        if(isRange && hit != null)
         {
             playerMovement.UsingPickaxe((Vector2)(mouseWorld - player.transform.position), hit.transform.position);
         }
