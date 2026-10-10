@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Octupus
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "B\u1EA1ch Tu\u1ED9c"
+  description: "B\u1EADc th\u1EA7y tr\xED tu\u1EC7 v\xE0 ng\u1EE5y trang d\u01B0\u1EDBi
+    bi\u1EC3n s\xE2u v\u1EDBi t\xE1m x\xFAc tu linh ho\u1EA1t."
+  icon: {fileID: -1164249542687137941, guid: 3389147bc6888364b93954bc9b48281e, type: 3}
+  rewardItemData: {fileID: 11400000, guid: db75ca106c30413d9057abf05868374a, type: 2}
+  difficulty: 68
+  movementType: 1
+  movementSpeed: 1.52
+  acceleration: 2.46
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 30
+  expReward: 36

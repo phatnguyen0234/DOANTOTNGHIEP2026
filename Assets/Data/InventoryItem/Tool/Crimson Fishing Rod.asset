@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Crimson Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: fishingrod_crimson
+  itemName: Crimson Fishing Rod
+  description: "C\u1EA7n c\xE2u r\u1EF1c l\u1EEDa t\u1EEB qu\u1EB7ng huy\u1EBFt th\u1EA1ch
+    ma thu\u1EADt."
+  icon: {fileID: -2858176563081021727, guid: da8a70f9640efd44b86ac4a844f491dd, type: 3}
+  itemType: 5
+  toolType: 8
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 11400000, guid: 62547e6cbd0c41368b43711d375cda89, type: 2}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 25000
+  sellPrice: 10000
+  canSell: 1

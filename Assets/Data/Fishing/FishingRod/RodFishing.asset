@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fdc641264b67d44963cc62d0b58e5a, type: 3}
   m_Name: RodFishing
   m_EditorClassIdentifier: Assembly-CSharp::FishingRodData
-  rodName: Can cau tre
+  rodName: "C\u1EA7n C\xE2u G\u1ED7"
   itemData: {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
   minCastDistance: 1.5
-  maxCastDistance: 6
+  maxCastDistance: 20
   chargeSpeed: 1
-  minBiteWaitTime: 2
-  maxBiteWaitTime: 6
+  minBiteWaitTime: 3
+  maxBiteWaitTime: 7
   hookReactionWindow: 1.2
-  barSizeMultiplier: 1
-  progressGainMultiplier: 1
-  progressLossReduction: 1
+  barSizeMultiplier: 2
+  progressGainMultiplier: 1.579
+  progressLossReduction: 1.573

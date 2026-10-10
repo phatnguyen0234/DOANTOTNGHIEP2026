@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Pike Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Ch\xF3 S\xF4ng"
+  description: "S\xE1t th\u1EE7 mai ph\u1EE5c v\xF9ng n\u01B0\u1EDBc ng\u1ECDt v\u1EDBi
+    th\xE2n d\xE0i thon nh\u1ECDn v\xE0 h\xE0m r\u0103ng s\u1EAFc b\xE9n."
+  icon: {fileID: 8764572841426263107, guid: e566bfcacb16d084983729f5811dc331, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 3d2551d2c2054b50a5c2cdc183ea7d07, type: 2}
+  difficulty: 68
+  movementType: 1
+  movementSpeed: 1.52
+  acceleration: 2.46
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 35
+  expReward: 36

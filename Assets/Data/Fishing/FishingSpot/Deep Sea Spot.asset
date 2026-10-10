@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06ee36e5479f284cb8fca67da6ee7d2, type: 3}
+  m_Name: Deep Sea Spot
+  m_EditorClassIdentifier: Assembly-CSharp::FishingSpotData
+  spotName: "V\u1EF1c Bi\u1EC3n S\xE2u"
+  availableFishes:
+  - fishData: {fileID: 11400000, guid: e40a620f54c34c8b91cc31b6934f2018, type: 2}
+    weight: 40
+  - fishData: {fileID: 11400000, guid: d596be10c21f41a79c1e900a7030d373, type: 2}
+    weight: 15
+  - fishData: {fileID: 11400000, guid: 7bac1f5f37a940849309c8a444b26071, type: 2}
+    weight: 20
+  - fishData: {fileID: 11400000, guid: 7c76d854bc604ac891856f8399b63082, type: 2}
+    weight: 50
+  - fishData: {fileID: 11400000, guid: 5e8f08f2dd914dbcb0088925bae9bdb5, type: 2}
+    weight: 10
+  - fishData: {fileID: 11400000, guid: 24531caf283742c3b1264b223ebd6a9c, type: 2}
+    weight: 18
+  - fishData: {fileID: 11400000, guid: 36bf04f5ba0d414fa87589120c1cf0e7, type: 2}
+    weight: 8
+  - fishData: {fileID: 11400000, guid: d410d885186141a79e8e68e762297c96, type: 2}
+    weight: 35
+  - fishData: {fileID: 11400000, guid: 7757ffbd534a47f481d2dbb4fffda8da, type: 2}
+    weight: 42
+  - fishData: {fileID: 11400000, guid: 1aff1c80081d1de4683f93c8dbe40e37, type: 2}
+    weight: 55
+  - fishData: {fileID: 11400000, guid: 00dd988062a04148b85bdf15dbef0594, type: 2}
+    weight: 32
+  - fishData: {fileID: 11400000, guid: 5aefe0d5a8f44ecc86c4e22499765c03, type: 2}
+    weight: 48
+  - fishData: {fileID: 11400000, guid: c94c54494b5d46628cec07de15ede9bf, type: 2}
+    weight: 45
+  - fishData: {fileID: 11400000, guid: 63f87e1afeac4d7f9f71337c2358a4c4, type: 2}
+    weight: 50
+  - fishData: {fileID: 11400000, guid: 744ec7ce8e37476981cd007f1fe4ade8, type: 2}
+    weight: 20
+  - fishData: {fileID: 11400000, guid: 4195d08be7a24f23aa62c97184b59f84, type: 2}
+    weight: 50
+  - fishData: {fileID: 11400000, guid: 9f18042ddc1d401f9fb48a53e00f6e9a, type: 2}
+    weight: 55
+  - fishData: {fileID: 11400000, guid: 1e1f557a70dc4920b4bf86f7ad81ce21, type: 2}
+    weight: 30
+  - fishData: {fileID: 11400000, guid: e3b875d1799b4801b9beebe09f3e80d3, type: 2}
+    weight: 22
+  - fishData: {fileID: 11400000, guid: 67aca6fd9a6643108084632c2ace6f48, type: 2}
+    weight: 30
+  - fishData: {fileID: 11400000, guid: 3d4515cce1d04cd2b8c9ba804d04b659, type: 2}
+    weight: 35
+  - fishData: {fileID: 11400000, guid: 65b450f0a85e40149e464e960e5effab, type: 2}
+    weight: 45
+  - fishData: {fileID: 11400000, guid: 12448d4d786c4032b614222527280537, type: 2}
+    weight: 25
+  fallbackFish: {fileID: 11400000, guid: 744ec7ce8e37476981cd007f1fe4ade8, type: 2}

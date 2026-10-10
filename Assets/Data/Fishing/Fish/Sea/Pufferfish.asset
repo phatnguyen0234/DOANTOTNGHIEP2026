@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Pufferfish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 N\xF3c Bi\u1EC3n"
+  description: "T\u1EF1 ph\u1ED3ng to nh\u01B0 qu\u1EA3 b\xF3ng gai khi g\u1EB7p
+    nguy hi\u1EC3m, l\u01A1 l\u1EEDng l\u01B0ng ch\u1EEBng n\u01B0\u1EDBc."
+  icon: {fileID: 8803265962223346870, guid: 2c0b514e7ecb7c740b26db2d3f2207cc, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 62cee6f880b84b43bd449952874ab710, type: 2}
+  difficulty: 66
+  movementType: 2
+  movementSpeed: 1.49
+  acceleration: 2.42
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 32
+  expReward: 35

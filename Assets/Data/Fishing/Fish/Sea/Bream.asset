@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Bream
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Tr\xE1p Bi\u1EC3n"
+  description: "Lo\xE0i c\xE1 bi\u1EC3n ngon th\u1ECBt v\u1EDBi l\u1EDBp v\u1EA3y
+    \xF3ng \xE1nh, b\u01A1i \u0111i\u1EC1m \u0111\u1EA1m quanh r\u1EA1n san h\xF4."
+  icon: {fileID: 2097968499887910379, guid: 2b6e0bca17572c047ae518aa346a9ca5, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 969c5819fd20423886cf29055e942a07, type: 2}
+  difficulty: 30
+  movementType: 0
+  movementSpeed: 0.95
+  acceleration: 1.59
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 70
+  expReward: 18

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Squid
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "M\u1EF1c \u1ED0ng"
+  description: "L\u01B0\u1EDBt nh\u01B0 t\xEAn b\u1EAFn b\u1EB1ng ph\u1EA3n l\u1EF1c
+    ph\u1EE5t n\u01B0\u1EDBc, s\u1EB5n s\xE0ng phun m\u1EF1c m\xF9 m\u1ECBt."
+  icon: {fileID: 5058714754200643498, guid: 02bed5e5b6560024a94e20fcb5fc6b41, type: 3}
+  rewardItemData: {fileID: 11400000, guid: ce2fef33d1694053af282a0e60fe933b, type: 2}
+  difficulty: 56
+  movementType: 1
+  movementSpeed: 1.34
+  acceleration: 2.19
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 45
+  expReward: 30

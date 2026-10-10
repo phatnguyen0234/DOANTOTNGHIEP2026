@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Goby
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 B\u1ED1ng Bi\u1EC3n"
+  description: "Ch\xFA c\xE1 nh\u1ECF nh\u1EAFn b\u01A1i l\u01B0\u1EDBt tho\u0103n
+    tho\u1EAFt tr\xEAn n\u1EC1n \u0111\xE1 san h\xF4."
+  icon: {fileID: -7758358205540790891, guid: abea5eacb9e4d6446a5fe3d733772473, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 865a24f9d36040608d5a19aaf8f079e9, type: 2}
+  difficulty: 20
+  movementType: 0
+  movementSpeed: 0.8
+  acceleration: 1.36
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 85
+  expReward: 14

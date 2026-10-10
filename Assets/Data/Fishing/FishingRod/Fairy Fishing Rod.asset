@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fdc641264b67d44963cc62d0b58e5a, type: 3}
+  m_Name: Fairy Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::FishingRodData
+  rodName: "C\u1EA7n C\xE2u Th\u1EA7n Ti\xEAn"
+  itemData: {fileID: 11400000, guid: f294fae0fb244e8dbb1f34d782edc367, type: 2}
+  minCastDistance: 3.1
+  maxCastDistance: 10.4
+  chargeSpeed: 2.2
+  minBiteWaitTime: 1
+  maxBiteWaitTime: 3
+  hookReactionWindow: 2
+  barSizeMultiplier: 1.75
+  progressGainMultiplier: 2.2
+  progressLossReduction: 1.65

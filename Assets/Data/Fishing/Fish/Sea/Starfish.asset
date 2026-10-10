@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Starfish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "Sao Bi\u1EC3n"
+  description: "Ng\xF4i sao n\u0103m c\xE1nh b\xECnh y\xEAn n\u1EB1m ph\u01A1i m\xECnh
+    d\u01B0\u1EDBi \u0111\xE1y v\u1ECBnh c\u1EA1n."
+  icon: {fileID: 4198055377472481164, guid: 8a40547d381d07845a657c5a3354889a, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 1434b9d65887482f8e31431d734de990, type: 2}
+  difficulty: 20
+  movementType: 3
+  movementSpeed: 0.8
+  acceleration: 1.36
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 75
+  expReward: 14

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Sardine
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 M\xF2i Bi\u1EC3n"
+  description: "C\xE1 m\xF2i b\u1EA1c b\u01A1i \u0111\xE0n, r\u1EA5t d\u1EC5 c\xE2u
+    \u1EDF m\u1ECDi v\xF9ng b\u1EDD bi\u1EC3n."
+  icon: {fileID: 1147340477069145383, guid: 17624217c1d39804ea2c02aa0c33a5fc, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 37463fa5bcc74e25b8704f330f53f4bc, type: 2}
+  difficulty: 16
+  movementType: 0
+  movementSpeed: 0.74
+  acceleration: 1.27
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 92
+  expReward: 12

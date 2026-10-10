@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Anglerfish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 L\u1ED3ng \u0110\xE8n"
+  description: "Qu\xE1i v\u1EADt bi\u1EC3n s\xE2u v\u1EDBi chi\u1EBFc c\u1EA7n ph\xE1t
+    s\xE1ng thu h\xFAt con m\u1ED3i trong b\xF3ng t\u1ED1i v\u0129nh c\u1EEDu."
+  icon: {fileID: 1728275083561325949, guid: 03760b31a79fc8b4380ec3756f312201, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 550373849d4d47668c10a539df06917b, type: 2}
+  difficulty: 86
+  movementType: 4
+  movementSpeed: 1.79
+  acceleration: 2.88
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 15
+  expReward: 44

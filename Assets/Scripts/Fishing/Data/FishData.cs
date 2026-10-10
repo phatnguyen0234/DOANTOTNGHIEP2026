@@ -45,9 +45,6 @@ public class FishData : ScriptableObject
     [Tooltip("Điểm kinh nghiệm nhận được khi câu thành công.")]
     [SerializeField] private int expReward = 15;
 
-    [Tooltip("Giá bán cơ bản.")]
-    [SerializeField] private int baseSellPrice = 50;
-
     #region Public Properties (Encapsulation)
 
     public string FishName => fishName;
@@ -61,7 +58,6 @@ public class FishData : ScriptableObject
     public Vector2 ChangeTargetInterval => changeTargetInterval;
     public int SpawnWeight => spawnWeight;
     public int ExpReward => expReward;
-    public int BaseSellPrice => baseSellPrice;
 
     #endregion
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Frost Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: fishingrod_frost
+  itemName: Frost Fishing Rod
+  description: "C\u1EA7n c\xE2u h\xE0n b\u0103ng l\xE0m d\u1ECBu c\u01A1n ho\u1EA3ng
+    lo\u1EA1n c\u1EE7a c\xE1 m\u1EAFc c\xE2u."
+  icon: {fileID: -2858176563081021727, guid: a87a8bd091443234cbb00f05eb20c383, type: 3}
+  itemType: 5
+  toolType: 8
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 11400000, guid: 880b677197b04e77a2e9436fb7486345, type: 2}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 40000
+  sellPrice: 16000
+  canSell: 1

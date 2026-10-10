@@ -17,21 +17,37 @@ public class WaterDetector : MonoBehaviour
     [Tooltip("Nếu chưa cài đặt LayerMask hoặc Tilemap nước trong Editor, tự động cho phép mọi vị trí (tiện lợi cho test).")]
     [SerializeField] private bool fallbackIfNoConfig = true;
 
+    [Tooltip("In ra Console vùng câu (Biển / Sông / Ao hồ) mỗi khi phao rơi xuống nước.")]
+    [SerializeField] private bool logDetectedSpot = true;
+
     // Kiểm tra xem vị trí worldPosition có nằm trong vùng nước câu được không
     public bool IsInWater(Vector2 worldPosition, out FishingSpotData detectedSpot)
     {
         detectedSpot = null;
 
-        // 1. Kiểm tra qua Collider2D với waterLayer (nếu có cài đặt layer)
+        // 1. Kiểm tra qua Collider2D với waterLayer (nếu có cài đặt layer).
+        // Một điểm có thể trúng nhiều collider nước (tilemap Water chặn đường + vùng câu Biển / Sông / Ao hồ)
+        // -> ưu tiên collider có FishingSpotZone để lấy đúng loại cá của vùng.
         if (waterLayer.value != 0)
         {
-            Collider2D hitCollider = Physics2D.OverlapCircle(worldPosition, checkRadius, waterLayer);
-            if (hitCollider != null)
+            Collider2D[] waterHits = Physics2D.OverlapCircleAll(worldPosition, checkRadius, waterLayer);
+            if (waterHits.Length > 0)
             {
-                FishingSpotZone spotZone = hitCollider.GetComponent<FishingSpotZone>();
-                if (spotZone != null)
+                foreach (Collider2D hit in waterHits)
                 {
-                    detectedSpot = spotZone.SpotData;
+                    FishingSpotZone spotZone = hit.GetComponent<FishingSpotZone>();
+                    if (spotZone != null && spotZone.SpotData != null)
+                    {
+                        detectedSpot = spotZone.SpotData;
+                        break;
+                    }
+                }
+
+                if (logDetectedSpot)
+                {
+                    Debug.Log(detectedSpot != null
+                        ? $"[WaterDetector] Phao rơi vào vùng: {detectedSpot.SpotName} ({detectedSpot.name})"
+                        : "[WaterDetector] Phao rơi vào nước không thuộc vùng câu nào -> dùng bảng cá mặc định");
                 }
                 return true;
             }

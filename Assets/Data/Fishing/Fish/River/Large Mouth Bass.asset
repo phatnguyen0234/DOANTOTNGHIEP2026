@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Large Mouth Bass
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 V\u01B0\u1EE3c Mi\u1EC7ng R\u1ED9ng"
+  description: "Lo\xE0i c\xE1 th\u1EC3 thao n\u1ED5i ti\u1EBFng v\u1EDBi nh\u1EEFng
+    c\xFA t\xE1p m\u1ED3i quy\u1EBFt li\u1EC7t v\xE0 s\u1EE9c gi\u1EB1ng dai d\u1EB3ng."
+  icon: {fileID: 6404490617807691118, guid: dd4cf42586ac7ca468592b4802e4ea32, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 9733dafb8d4644ca8e192dce1562b86b, type: 2}
+  difficulty: 55
+  movementType: 1
+  movementSpeed: 1.32
+  acceleration: 2.16
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 45
+  expReward: 30

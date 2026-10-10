@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fdc641264b67d44963cc62d0b58e5a, type: 3}
+  m_Name: Golden Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::FishingRodData
+  rodName: "C\u1EA7n C\xE2u V\xE0ng"
+  itemData: {fileID: 11400000, guid: ca0995c364b14baeb277bb1c9ac2d4ba, type: 2}
+  minCastDistance: 2.1
+  maxCastDistance: 7.2
+  chargeSpeed: 1.45
+  minBiteWaitTime: 2.1
+  maxBiteWaitTime: 5.2
+  hookReactionWindow: 1.5
+  barSizeMultiplier: 1.25
+  progressGainMultiplier: 1.4
+  progressLossReduction: 1.2

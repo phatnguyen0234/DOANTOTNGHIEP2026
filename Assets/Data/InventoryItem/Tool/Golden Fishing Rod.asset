@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Golden Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: fishingrod_gold
+  itemName: Golden Fishing Rod
+  description: "C\u1EA7n c\xE2u m\u1EA1 v\xE0ng l\u1EA5p l\xE1nh thu h\xFAt c\xE1c
+    lo\xE0i c\xE1 hi\u1EBFm."
+  icon: {fileID: -2858176563081021727, guid: 9dbe85ef24c3ae54092bb175870c2b68, type: 3}
+  itemType: 5
+  toolType: 8
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 11400000, guid: f613af79c0614430af6c0cbac242bfc2, type: 2}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 8000
+  sellPrice: 3500
+  canSell: 1

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Iron Fishing Rod
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: fishingrod_iron
+  itemName: Iron Fishing Rod
+  description: "C\u1EA7n c\xE2u r\xE8n t\u1EEB thanh s\u1EAFt d\u1EBBo dai, ch\u1ECBu
+    l\u1EF1c k\xE9o l\u1EDBn."
+  icon: {fileID: -2858176563081021727, guid: 0762f02b42804874ab7f15d5de2aafba, type: 3}
+  itemType: 5
+  toolType: 8
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 11400000, guid: b4189d7464204b5a9a07216205fe244d, type: 2}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 3500
+  sellPrice: 1500
+  canSell: 1

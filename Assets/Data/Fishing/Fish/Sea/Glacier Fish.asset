@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Glacier Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 B\u0103ng Gi\xE1"
+  description: "Lo\xE0i c\xE1 huy\u1EC1n b\xED \u0111\u1EBFn t\u1EEB v\xF9ng bi\u1EC3n
+    b\u0103ng l\u1EA1nh gi\xE1 ng\xE0n n\u0103m."
+  icon: {fileID: -8463741727209820239, guid: ecb7135267eebda4ea0b01444195302e, type: 3}
+  rewardItemData: {fileID: 11400000, guid: d8c917f66ac741a8a08415e8aab9e7cf, type: 2}
+  difficulty: 94
+  movementType: 4
+  movementSpeed: 1.91
+  acceleration: 3.06
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 8
+  expReward: 47

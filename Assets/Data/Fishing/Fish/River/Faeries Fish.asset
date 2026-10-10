@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Faeries Fish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Ti\xEAn N\u01B0\u1EDBc Ng\u1ECDt"
+  description: "Lo\xE0i c\xE1 huy\u1EC1n \u1EA3o l\u1EA5p l\xE1nh nh\u01B0 b\u1EE5i
+    ti\xEAn, ch\u1EC9 xu\u1EA5t hi\u1EC7n \u1EDF nh\u1EEFng kh\xFAc s\xF4ng thanh
+    t\u1ECBnh."
+  icon: {fileID: -6557786748153201219, guid: 483f5c918d3420f408e1b558c9ba60f2, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 22169a50eea64ab3b26228320e208945, type: 2}
+  difficulty: 78
+  movementType: 2
+  movementSpeed: 1.67
+  acceleration: 2.69
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 20
+  expReward: 40

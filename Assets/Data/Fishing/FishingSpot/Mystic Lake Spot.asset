@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06ee36e5479f284cb8fca67da6ee7d2, type: 3}
+  m_Name: Mystic Lake Spot
+  m_EditorClassIdentifier: Assembly-CSharp::FishingSpotData
+  spotName: "H\u1ED3 N\u01B0\u1EDBc Huy\u1EC1n B\xED"
+  availableFishes:
+  - fishData: {fileID: 11400000, guid: 08f7ea83e5244cfdafcad3444fbfcaf2, type: 2}
+    weight: 15
+  - fishData: {fileID: 11400000, guid: e353efb981464c03850624d319761647, type: 2}
+    weight: 25
+  - fishData: {fileID: 11400000, guid: f39a99874b0945c3bbcfd786bf2c7787, type: 2}
+    weight: 12
+  - fishData: {fileID: 11400000, guid: f0ce31532d9a470ea03efc2ca1adfa1e, type: 2}
+    weight: 20
+  - fishData: {fileID: 11400000, guid: 0cc42bd92d36bd14291b5cbf75154e8b, type: 2}
+    weight: 8
+  - fishData: {fileID: 11400000, guid: e228cacf139d4f39a5986a809067cc20, type: 2}
+    weight: 14
+  - fishData: {fileID: 11400000, guid: d596be10c21f41a79c1e900a7030d373, type: 2}
+    weight: 15
+  - fishData: {fileID: 11400000, guid: 5e8f08f2dd914dbcb0088925bae9bdb5, type: 2}
+    weight: 10
+  - fishData: {fileID: 11400000, guid: 24531caf283742c3b1264b223ebd6a9c, type: 2}
+    weight: 18
+  - fishData: {fileID: 11400000, guid: 36bf04f5ba0d414fa87589120c1cf0e7, type: 2}
+    weight: 8
+  - fishData: {fileID: 11400000, guid: 744ec7ce8e37476981cd007f1fe4ade8, type: 2}
+    weight: 20
+  fallbackFish: {fileID: 11400000, guid: 0cc42bd92d36bd14291b5cbf75154e8b, type: 2}

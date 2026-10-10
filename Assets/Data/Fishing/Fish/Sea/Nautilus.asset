@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Nautilus
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "\u1ED0c Anh V\u0169"
+  description: "H\xF3a th\u1EA1ch s\u1ED1ng c\u1EE7a \u0111\u1EA1i d\u01B0\u01A1ng
+    v\u1EDBi l\u1EDBp v\u1ECF xo\u1EAFn \u1ED1c tuy\u1EC7t m\u1EF9 theo t\u1EF7 l\u1EC7
+    v\xE0ng."
+  icon: {fileID: 3962751088465379277, guid: 83436844141010a47a67d40d4aeef76e, type: 3}
+  rewardItemData: {fileID: 11400000, guid: da65a4ec4eae4d5383ba3a9eb9eccfd5, type: 2}
+  difficulty: 72
+  movementType: 3
+  movementSpeed: 1.58
+  acceleration: 2.56
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 22
+  expReward: 37

@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
-  m_Name: Goden Fish
+  m_Name: Golden Fish
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: Golden Fish
-  description: "M\u1ED9t lo\xE0i c\xE1 n\u01B0\u1EDBc ng\u1ECDt ph\u1ED5 bi\u1EBFn."
-  icon: {fileID: 2671634083017187060, guid: 9ac7d17c33ef7bb409cb88dd4ee7c6c1, type: 3}
+  fishName: "Cá Vàng Hoàng Kim"
+  description: "Loài cá truyền thuyết tỏa ánh hoàng kim rực rỡ, đem lại may mắn tột bậc cho người câu được."
+  icon: {fileID: -1020575448916443435, guid: 9ac7d17c33ef7bb409cb88dd4ee7c6c1, type: 3}
   rewardItemData: {fileID: 11400000, guid: 7febea6386d54890a24aecd622615595, type: 2}
-  difficulty: 30
-  movementType: 0
-  movementSpeed: 0.8
-  acceleration: 1.5
-  changeTargetInterval: {x: 1, y: 2.5}
-  spawnWeight: 50
-  expReward: 15
-  baseSellPrice: 50
+  difficulty: 92
+  movementType: 4
+  movementSpeed: 1.88
+  acceleration: 3.02
+  changeTargetInterval: {x: 0.6, y: 1.4}
+  spawnWeight: 8
+  expReward: 46

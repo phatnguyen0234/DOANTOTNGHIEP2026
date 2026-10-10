@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
+  m_Name: Sea bullhead
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: "C\xE1 Tr\xEA Bi\u1EC3n"
+  description: "Lo\xE0i tr\xEA bi\u1EC3n gai nh\u1ECDn, b\u01A1i \xE1p s\xE1t \u0111\xE1y
+    b\xF9n c\xE1t ven b\u1EDD."
+  icon: {fileID: -2691184628033369836, guid: 22911540301cc8a4f957762542569d14, type: 3}
+  rewardItemData: {fileID: 11400000, guid: 7936ec7d6dfe4eaba0f6a8dc9f962cf4, type: 2}
+  difficulty: 36
+  movementType: 3
+  movementSpeed: 1.04
+  acceleration: 1.73
+  changeTargetInterval: {x: 1.2, y: 2.6}
+  spawnWeight: 62
+  expReward: 21
