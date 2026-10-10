@@ -21,7 +21,6 @@ public class SoilManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        LoadFarmDataJson();
     }
 
     private void Start()
@@ -135,26 +134,8 @@ public class SoilManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Get Farm Data JSON")]
-    public void GetFarmDataJson()
-    {
-        string json = JsonUtility.ToJson(currentFarmData, true);
-        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
-        File.WriteAllText(filepath, json);
-    }
 
-    public void LoadFarmDataJson()
-    {
-        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
-        if(!File.Exists(filepath))
-        {
-            return;
-        }
-        string json = File.ReadAllText(filepath);
-        currentFarmData = JsonUtility.FromJson<FarmData>(json);
-    }
-
-    private void ReBuildFarm()
+    public void ReBuildFarm()
     {
         ClearFarm();
         foreach(FarmCell cell in currentFarmData.cells)
@@ -258,18 +239,5 @@ public class SoilManager : MonoBehaviour
         return null;
     }
 
-    [ContextMenu("Open json")]
-    public void OpenJson()
-    {
-        string filepath = Path.Combine(Application.persistentDataPath, "FarmData.json");
-        if (File.Exists(filepath))
-        {
-            Application.OpenURL(filepath);
-        }
-    }
 
-    private void OnApplicationQuit()
-    {
-        GetFarmDataJson();
-    }
 }
