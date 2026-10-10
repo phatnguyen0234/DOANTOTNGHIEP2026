@@ -16,6 +16,7 @@ public class SoilManager : MonoBehaviour
     public FarmData currentFarmData;
     public Dictionary<Vector3Int, CropTile> farmCells = new Dictionary<Vector3Int, CropTile>();
     public Dictionary<Vector3Int, Tree> treeCells = new Dictionary<Vector3Int, Tree>();
+    public Dictionary<Vector3Int, Rock> rockCells = new Dictionary<Vector3Int, Rock>();
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class SoilManager : MonoBehaviour
         }
         ReBuildFarm();
         ReBuildTree();
+        ReBuildRock();
     }
 
 
@@ -95,6 +97,16 @@ public class SoilManager : MonoBehaviour
         }
         cell.currentHits = tree.currentHits;
         cell.isFelled = tree.IsFelled;
+    }
+
+    public void OnHitRock(Vector3Int pos)
+    {
+        RockCell cell = currentFarmData.GetRockCell(pos);
+        if (cell == null)
+        {
+            cell = currentFarmData.SetRockCell(pos);
+        }
+        cell.isDestroyed = true;
     }
 
     public void HandleNewDay()
@@ -206,6 +218,34 @@ public class SoilManager : MonoBehaviour
             treeCells[pos] = t;
         }
     }
+
+    public void ReBuildRock()
+    {
+        RegisterRock();
+        foreach (RockCell cell in currentFarmData.rockCells)
+        {
+            if (rockCells.TryGetValue(cell.position, out Rock rock) && rock != null)
+            {
+                if (cell.isDestroyed)
+                {
+                    rock.Hit();
+                    rockCells.Remove(cell.position);
+                }
+            }
+        }
+    }
+
+    private void RegisterRock()
+    {
+        rockCells.Clear();
+        Rock[] rocks = UnityEngine.Object.FindObjectsByType<Rock>();
+        foreach (Rock r in rocks)
+        {
+            Vector3Int pos = groundTileMap.WorldToCell(r.transform.position);
+            rockCells[pos] = r;
+        }
+    }
+
     public CropData GetCropData(string cropId)
     {
         foreach(CropData cropData in cropDataList)

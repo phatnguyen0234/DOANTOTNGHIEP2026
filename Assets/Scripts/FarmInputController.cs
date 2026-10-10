@@ -9,8 +9,6 @@ public class FarmInputController : MonoBehaviour
     [Header("Tilemaps & Grid")]
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private Tilemap highlightTileMap;
-    [SerializeField] private TileBase soilTile;
-    [SerializeField] private TileBase soilWetTile;
     [SerializeField] private TileBase greenTile;
     [SerializeField] private TileBase redTile;
 
@@ -27,13 +25,8 @@ public class FarmInputController : MonoBehaviour
     [Header("Inventory & Hotbar")]
     [SerializeField] private Inventory inventory;
     [SerializeField] private HotbarController hotbarController;
-
-    [SerializeField] private LayerMask cropMask;
     [SerializeField] private LayerMask treeMask;
-    [SerializeField] private LayerMask rockMask;
 
-
-    private readonly Dictionary<Vector3Int, GameObject> planted = new Dictionary<Vector3Int, GameObject>();
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
     public bool isWatering = false;
@@ -440,22 +433,20 @@ public class FarmInputController : MonoBehaviour
         Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = mouseCell - playerCell;
-        TileBase tile = groundTileMap.GetTile(mouseCell);
-        bool isSoil = tile == soilTile || tile == soilWetTile;
-
-        if (CheckDistance(distance) && isSoil)
+        if(!CheckDistance(distance))
         {
-            RaycastHit2D hit = Physics2D.Raycast(groundTileMap.GetCellCenterWorld(mouseCell), Vector2.zero);
-            if (hit.collider != null)
+            return false;
+        }
+        FarmCell cell = SoilManager.Instance.currentFarmData.GetCell(mouseCell);
+        if (cell != null && cell.state == FarmCellState.ReadyToHarvest)
+        {
+            if (SoilManager.Instance.farmCells.TryGetValue(mouseCell, out CropTile crop) && crop != null)
             {
-                CropTile crop = hit.collider.GetComponent<CropTile>();
-                if (crop != null && crop.isHavest)
-                {
                     // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     if (crop.GetDropTable() != null)
                     {
                         DropContext context = new DropContext(
-                            source: hit.collider.gameObject,
+                            source: crop.gameObject,
                             player: player != null ? player.gameObject : gameObject,
                             tool: null,
                             toolLevel: 1,
@@ -468,7 +459,7 @@ public class FarmInputController : MonoBehaviour
                     else if (crop.CropData != null && crop.CropData.harvestItem != null)
                     {
                         int amount = Mathf.Max(1, crop.CropData.harvestAmount);
-                        Vector3 harvestPos = hit.collider.transform.position;
+                        Vector3 harvestPos = crop.transform.position;
 
                         if (ItemDropSpawner.Instance != null)
                         {
@@ -485,20 +476,19 @@ public class FarmInputController : MonoBehaviour
                         }
                     }
 
-                    // Xóa khỏi từ điển theo dõi planted
-                    Vector3Int cropCell = groundTileMap.WorldToCell(hit.collider.transform.position);
-                    planted.Remove(cropCell);
-                    planted.Remove(mouseCell);
+                    SoilManager.Instance.farmCells.Remove(mouseCell);
+                    cell.state = FarmCellState.Tilled;
+                    cell.cropId = null;
+                    cell.growthDays = 0;
+                    
+                    Destroy(crop.gameObject);
 
-                    crop.UpdateSprite(crop.currentGrowthStage + 1);
-                    Destroy(hit.collider.gameObject, 0.1f);
-                    return true;
-                }
-            } 
-        }
-
+                return true;
+            }
+        } 
         return false;
     }
+
 
     public void Axe()
     {
@@ -527,12 +517,18 @@ public class FarmInputController : MonoBehaviour
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
         Vector3Int distance = mouseCell - playerCell;
         bool isRange = CheckDistance(distance);
-        Collider2D hit = Physics2D.OverlapPoint(mouseWorld, rockMask);
-        if(isRange && hit != null)
+        if(isRange)
         {
-            playerMovement.UsingPickaxe((Vector2)(mouseWorld - player.transform.position), hit.transform.position);
+            if(SoilManager.Instance.rockCells.TryGetValue(mouseCell, out Rock rock))
+            {
+                playerMovement.UsingPickaxe((Vector2)(mouseWorld - player.transform.position), rock.transform.position);
+                rock.Hit();
+                Vector3Int rockcell = groundTileMap.WorldToCell(rock.transform.position);
+                SoilManager.Instance.OnHitRock(rockcell);
+            }
         }
     }
+
     public void OnWaterAnimationComplete()
     {
         SoilManager.Instance.WaterSoil(targetCellWater);

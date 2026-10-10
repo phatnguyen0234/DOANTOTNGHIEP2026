@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7076762933592625044}
   - component: {fileID: 6372644723095873940}
   - component: {fileID: 6300602675348811676}
+  - component: {fileID: -5361062382726373695}
   m_Layer: 7
   m_Name: Ground stones_13
   m_TagString: Untagged
@@ -139,3 +140,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7707926, y: 0.4639436}
   m_EdgeRadius: 0
+--- !u!114 &-5361062382726373695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365827646414780016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d787360ff6ca5594b8ecc70858721ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rock
+  rockId: 

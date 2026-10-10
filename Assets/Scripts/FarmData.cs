@@ -11,6 +11,7 @@ public class FarmData
     // List để sau này dễ save/load JSON.
     public List<FarmCell> cells = new List<FarmCell>();
     public List<TreeCell> treeCells = new List<TreeCell>();
+    public List<RockCell> rockCells = new List<RockCell>();
 
     public FarmCell GetCell(Vector3Int pos)
     {
@@ -47,6 +48,25 @@ public class FarmData
     {
         TreeCell cell = new TreeCell(pos, treeId);
         treeCells.Add(cell);
+        return cell;
+    }
+
+    public RockCell GetRockCell(Vector3Int pos)
+    {
+        foreach (RockCell cell in rockCells)
+        {
+            if (cell.position == pos)
+            {
+                return cell;
+            }
+        }
+        return null;
+    }
+
+    public RockCell SetRockCell(Vector3Int pos)
+    {
+        RockCell cell = new RockCell(pos);
+        rockCells.Add(cell);
         return cell;
     }
 }

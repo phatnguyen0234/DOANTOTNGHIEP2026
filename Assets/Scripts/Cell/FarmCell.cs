@@ -2,10 +2,8 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class FarmCell
+public class FarmCell : CellData
 {
-    // Tọa độ cell trên Grid/Tilemap.
-    public Vector3Int position;
 
     // Trạng thái hiện tại của ô.
     public FarmCellState state = FarmCellState.Empty;
@@ -22,9 +20,8 @@ public class FarmCell
     // Tạm dùng string; sau này có thể thay bằng CropDefinition.
     public string cropId;
 
-    public FarmCell(Vector3Int position)
+    public FarmCell(Vector3Int position) : base(position)
     {
-        this.position = position;
     }
 
     public bool Till()
