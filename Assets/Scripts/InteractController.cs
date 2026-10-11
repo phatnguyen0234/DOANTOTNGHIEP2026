@@ -21,7 +21,6 @@ public class InteractController : MonoBehaviour
 
     private void Update()
     {
-        // Right click to interact
         if (Input.GetMouseButtonDown(1))
         {
             TryInteract();
@@ -37,6 +36,7 @@ public class InteractController : MonoBehaviour
 
         if (hit.collider != null)
         {
+            // 1. Check for Trade Receivers (Shipping Bin, Merchant NPC)
             ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
 
             if (receiver != null)
@@ -47,6 +47,18 @@ public class InteractController : MonoBehaviour
                 {
                     receiver.ProcessTransaction(activeSlot.ItemData, 1, inventory, playerMoney);
                 }
+                return; // Stop interaction flow here
+            }
+
+
+            //Logic tuong tac crafting table
+            // 2. Check for Crafting Table
+            CraftingTable craftingTable = hit.collider.GetComponent<CraftingTable>();
+
+            if (craftingTable != null)
+            {
+                craftingTable.OpenCraftingTable();
+                return; // Stop interaction flow here
             }
         }
     }
