@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
   m_Name: Golden Fish
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: "Cá Vàng Hoàng Kim"
-  description: "Loài cá truyền thuyết tỏa ánh hoàng kim rực rỡ, đem lại may mắn tột bậc cho người câu được."
+  fishName: "C\xE1 V\xE0ng Ho\xE0ng Kim"
+  description: "Lo\xE0i c\xE1 truy\u1EC1n thuy\u1EBFt t\u1ECFa \xE1nh ho\xE0ng kim
+    r\u1EF1c r\u1EE1, \u0111em l\u1EA1i may m\u1EAFn t\u1ED9t b\u1EADc cho ng\u01B0\u1EDDi
+    c\xE2u \u0111\u01B0\u1EE3c."
   icon: {fileID: -1020575448916443435, guid: 9ac7d17c33ef7bb409cb88dd4ee7c6c1, type: 3}
   rewardItemData: {fileID: 11400000, guid: 7febea6386d54890a24aecd622615595, type: 2}
   difficulty: 92
