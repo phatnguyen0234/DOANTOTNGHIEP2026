@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMoney : MonoBehaviour
 {
     [Header("Money Settings")]
-    [SerializeField] private int currentMoney = 500; 
+    [SerializeField] private int currentMoney = 500;
 
     public event Action<int> OnMoneyChanged;
 

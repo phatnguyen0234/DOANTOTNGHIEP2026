@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b486165f3fa1204c8e8577db67fe197, type: 3}
   m_Name: LionFish
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: "Cá Sư Tử"
-  description: "Loài cá lộng lẫy với các gai vây xòe rộng kiêu hãnh, bơi từ tốn nhưng nguy hiểm."
+  fishName: "C\xE1 S\u01B0 T\u1EED"
+  description: "Lo\xE0i c\xE1 l\u1ED9ng l\u1EABy v\u1EDBi c\xE1c gai v\xE2y x\xF2e
+    r\u1ED9ng ki\xEAu h\xE3nh, b\u01A1i t\u1EEB t\u1ED1n nh\u01B0ng nguy hi\u1EC3m."
   icon: {fileID: 7455426935083698247, guid: 2895f2178933be84c8227724a98223eb, type: 3}
   rewardItemData: {fileID: 11400000, guid: 21835409cf8d41e9a489234853623d9d, type: 2}
   difficulty: 42
