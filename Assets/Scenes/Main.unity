@@ -490000,7 +490000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aeab36d3664b334a9732385a6cd4ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  savepath: 
   saveData:
     playerData:
       position: {x: 0, y: 0, z: 0}
@@ -683508,7 +683507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   currentHour: 12
-  timeSpeed: 20
+  timeSpeed: 10
   currentDay: 1
   daysPerSeason: 5
   currentSeason: 0
