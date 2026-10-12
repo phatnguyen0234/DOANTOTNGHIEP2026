@@ -347,41 +347,107 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         }
     }
 
+    //Logic cu
+
+    //public void OnDrop(PointerEventData eventData)
+    //{
+    //    if (eventData.pointerDrag == null)
+    //    {
+    //        if (enableDebugLogs)
+    //        {
+    //            Debug.LogWarning($"[InventorySlotUI] [OnDrop] Slot {slotIndex} nhận OnDrop nhưng pointerDrag bị null!", this);
+    //        }
+    //        return;
+    //    }
+
+    //    InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponentInParent<InventorySlotUI>();
+    //    if (fromSlotUI != null)
+    //    {
+    //        if (enableDebugLogs)
+    //        {
+    //            Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ Slot {fromSlotUI.SlotIndex} -> Slot {this.SlotIndex}</color>", this);
+    //        }
+
+    //        if (fromSlotUI != this)
+    //        {
+    //            if (parentUI == null)
+    //            {
+    //                parentUI = GetComponentInParent<InventoryUI>();
+    //            }
+
+    //            if (parentUI != null)
+    //            {
+    //                parentUI.HandleDrop(fromSlotUI.SlotIndex, this.SlotIndex);
+    //            }
+    //        }
+    //    }
+    //    else if (enableDebugLogs)
+    //    {
+    //        Debug.LogWarning($"[InventorySlotUI] [OnDrop] Object kéo '{eventData.pointerDrag.name}' không chứa InventorySlotUI!", this);
+    //    }
+    //}
+
+
+    //Doan chinh sua de lam crafting table
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null)
-        {
-            if (enableDebugLogs)
-            {
-                Debug.LogWarning($"[InventorySlotUI] [OnDrop] Slot {slotIndex} nhận OnDrop nhưng pointerDrag bị null!", this);
-            }
-            return;
-        }
+        if (eventData.pointerDrag == null) return;
 
         InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponentInParent<InventorySlotUI>();
-        if (fromSlotUI != null)
+
+        if (fromSlotUI != null && fromSlotUI != this)
         {
-            if (enableDebugLogs)
-            {
-                Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ Slot {fromSlotUI.SlotIndex} -> Slot {this.SlotIndex}</color>", this);
-            }
+            InventoryUI fromUI = fromSlotUI.GetComponentInParent<InventoryUI>();
+            InventoryUI toUI = this.GetComponentInParent<InventoryUI>();
 
-            if (fromSlotUI != this)
+            if (fromUI != null && toUI != null)
             {
-                if (parentUI == null)
+                if (fromUI == toUI)
                 {
-                    parentUI = GetComponentInParent<InventoryUI>();
+                    toUI.HandleDrop(fromSlotUI.SlotIndex, this.SlotIndex);
                 }
-
-                if (parentUI != null)
+                else
                 {
-                    parentUI.HandleDrop(fromSlotUI.SlotIndex, this.SlotIndex);
+                    HandleCrossInventoryTransfer(fromUI.Inventory, fromSlotUI.SlotIndex, toUI.Inventory, this.SlotIndex);
                 }
             }
         }
-        else if (enableDebugLogs)
+    }
+
+    private void HandleCrossInventoryTransfer(Inventory fromInv, int fromIdx, Inventory toInv, int toIdx)
+    {
+        InventorySlot fromSlot = fromInv.GetSlot(fromIdx);
+        InventorySlot toSlot = toInv.GetSlot(toIdx);
+
+        if (fromSlot.IsEmpty()) return;
+
+        ItemData itemA = fromSlot.ItemData;
+        int amountA = fromSlot.Amount;
+
+        ItemData itemB = toSlot.ItemData;
+        int amountB = toSlot.Amount;
+
+        if (toSlot.IsEmpty() || (toSlot.ItemData.ItemID != itemA.ItemID))
         {
-            Debug.LogWarning($"[InventorySlotUI] [OnDrop] Object kéo '{eventData.pointerDrag.name}' không chứa InventorySlotUI!", this);
+            fromInv.ClearSlot(fromIdx);
+            toInv.ClearSlot(toIdx);
+
+            if (itemA != null) toInv.AddItemToSlot(toIdx, itemA, amountA);
+            if (itemB != null) fromInv.AddItemToSlot(fromIdx, itemB, amountB);
+        }
+        else if (toSlot.CanStack(itemA))
+        {
+            int remaining = toInv.AddItemToSlot(toIdx, itemA, amountA);
+
+            if (remaining <= 0)
+            {
+                fromInv.ClearSlot(fromIdx);
+            }
+            else
+            {
+                fromInv.ClearSlot(fromIdx);
+                fromInv.AddItemToSlot(fromIdx, itemA, remaining);
+            }
         }
     }
 
