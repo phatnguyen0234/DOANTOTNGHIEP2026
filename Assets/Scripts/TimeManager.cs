@@ -69,6 +69,7 @@ public class TimeManager : MonoBehaviour
 
     private void AdvanceToNextSeason()
     {
+        Debug.Log(currentSeason);
         if (currentSeason == Season.Winter)
         {
             currentSeason = Season.Spring;

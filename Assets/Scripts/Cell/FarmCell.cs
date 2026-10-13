@@ -20,6 +20,9 @@ public class FarmCell : CellData
     // Tạm dùng string; sau này có thể thay bằng CropDefinition.
     public string cropId;
 
+    public int UnwateredDay;
+    public bool isWithered;
+
     public FarmCell(Vector3Int position) : base(position)
     {
     }

@@ -5,10 +5,10 @@ public class CropTile : MonoBehaviour, IDropSource
 {
     [SerializeField] private CropData cropData;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Tilemap groundTileMap;
-    [SerializeField] private TileBase driedSoil;
+
     public int currentGrowthStage = 0;
-    
+    public bool isWithered;
+    public int unWateredDay = 0;
     public bool isHavest { get; set; } = false;
 
     public CropData CropData => cropData;
@@ -19,20 +19,14 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
-        GameObject ground = GameObject.FindWithTag("Ground");
-        if (ground != null)
-        {
-            groundTileMap = ground.GetComponent<Tilemap>();
-        }
     }
 
     public void Init(CropData data)
     {
-        Init(data,0);
+        Init(data,0,false);
     }
 
-    public void Init(CropData data, int growthStage)
+    public void Init(CropData data, int growthStage, bool isWithered)
     {
         if (data != null)
         {
@@ -40,6 +34,7 @@ public class CropTile : MonoBehaviour, IDropSource
             currentGrowthStage = growthStage;
             isHavest = currentGrowthStage >= cropData.maxStage - 1;
             UpdateSprite(currentGrowthStage);
+            if (isWithered) SetSprite();
         }
     }
 
@@ -56,12 +51,36 @@ public class CropTile : MonoBehaviour, IDropSource
             currentGrowthStage++;
             UpdateSprite(currentGrowthStage);
 
-            isWatered = false;
 
             if (currentGrowthStage >= cropData.maxStage - 1)
             {
                 isHavest = true;
             }
+        }
+    }
+
+    public void Check(bool isWatered)
+    {
+        if (isHavest) return;
+        if (!cropData.allowedSeason.Contains(TimeManager.Instance.currentSeason))
+        {
+            SetSprite();
+            isWithered = true;
+            return;
+        }
+        if (!isWatered)
+        {
+            unWateredDay++;
+            if(unWateredDay > cropData.maxUnwateredDays)
+            {
+                SetSprite();
+                isWithered = true;
+                return;
+            }
+        }
+        else
+        {
+            unWateredDay = 0;
         }
     }
 
@@ -72,6 +91,11 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             spriteRenderer.sprite = cropData.stageSprites[step];
         }
+    }
+
+    public void SetSprite()
+    {
+        spriteRenderer.color = new Color(0.5f, 0.4f, 0.3f, 1f);
     }
 
     #region IDropSource Implementation

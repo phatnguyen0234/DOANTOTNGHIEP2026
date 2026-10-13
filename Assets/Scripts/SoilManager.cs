@@ -112,8 +112,22 @@ public class SoilManager : MonoBehaviour
     {
         foreach(FarmCell cell in currentFarmData.cells)
         {
+            if (cell.isWithered)
+            {
+                groundTileMap.SetTile(cell.position, soilTile);
+                cell.wateredToday = false;
+                continue;
+            }
             if(farmCells.TryGetValue(cell.position, out CropTile croptile) && croptile != null)
             {
+                croptile.Check(cell.wateredToday);
+                if (croptile.isWithered)
+                {
+                    groundTileMap.SetTile(cell.position, soilTile);
+                    cell.isWithered = croptile.isWithered;
+                    cell.wateredToday = false;
+                    continue;
+                }
                 croptile.Grow(cell.wateredToday);
                 cell.growthDays = croptile.currentGrowthStage;
                 if (croptile.isHavest)
@@ -155,7 +169,7 @@ public class SoilManager : MonoBehaviour
                 CropData cropData = GetCropData(cell.cropId);
                 Vector3 position = groundTileMap.GetCellCenterWorld(cell.position);
                 CropTile cropTile = Instantiate(cropTilePrefab, position, Quaternion.identity, transform);
-                cropTile.Init(cropData, cell.growthDays);
+                cropTile.Init(cropData, cell.growthDays, cell.isWithered);
                 farmCells[cell.position] = cropTile;
             }
         }

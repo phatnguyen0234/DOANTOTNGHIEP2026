@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "New Crop", menuName = "Farm/Crop Data")]
 public class CropData : ScriptableObject
@@ -22,5 +24,8 @@ public class CropData : ScriptableObject
     [Tooltip("Số lượng vật phẩm thu hoạch được.")]
     public int harvestAmount = 1;
 
+    public List<Season> allowedSeason;
+    public int maxUnwateredDays = 2;
+    public Sprite witheredSprite;
     public DropTable DropTable => dropTable;
 }
