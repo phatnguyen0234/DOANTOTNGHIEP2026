@@ -705886,6 +705886,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryTester
   inventory: {fileID: 1792196860}
   hotbarController: {fileID: 1483869549}
+  toolList:
+  - {fileID: 11400000, guid: 86b5e1f16e15c5b4394ada11a467d783, type: 2}
+  - {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
+  - {fileID: 11400000, guid: 4367635b629e46d429c8462a34fac0de, type: 2}
+  - {fileID: 11400000, guid: d946256cf4d87084eac2d057904d7540, type: 2}
+  - {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
+  stackableItemList:
+  - {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
+  blueberrySeed: {fileID: 11400000, guid: 019eaa7e607a1774c8fc2f14f898e56e, type: 2}
+  stackableItemAmount: 10
+  autoAddTestDataOnStart: 1
+  autoAddStackableItemsOnStart: 1
+  placeStackablesInBagFirst: 0
+  dropTestKey: 103
   hoe: {fileID: 11400000, guid: 86b5e1f16e15c5b4394ada11a467d783, type: 2}
   wateringCan: {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
   axe: {fileID: 11400000, guid: 4367635b629e46d429c8462a34fac0de, type: 2}
@@ -705893,9 +705907,6 @@ MonoBehaviour:
   shovel: {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
   hammer: {fileID: 0}
   seed: {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
-  seedAmount: 10
-  autoAddToolsOnStart: 1
-  dropTestKey: 103
 --- !u!4 &1793276145
 Transform:
   m_ObjectHideFlags: 0
@@ -752780,6 +752791,8 @@ MonoBehaviour:
     cells: []
     treeCells: []
     rockCells: []
+  maxunTillDays: 3
+  seasonTileSet: {fileID: 11400000, guid: 8a74013b431d14d409cec7f5841744a2, type: 2}
 --- !u!4 &2059435524
 Transform:
   m_ObjectHideFlags: 0

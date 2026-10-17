@@ -23,6 +23,9 @@ public class InventoryTester : MonoBehaviour
     [Tooltip("Danh sách các vật phẩm test có thể stack được (Hạt giống, Nông sản, Tài nguyên, Gỗ, Đá,...).")]
     [SerializeField] private List<ItemData> stackableItemList = new List<ItemData>();
 
+    [Tooltip("Hạt giống Blueberry / BubbleBerry dùng để test bấm phím B (tự tìm nếu để trống).")]
+    [SerializeField] private ItemData blueberrySeed;
+
     [Header("Test Settings")]
     [Tooltip("Số lượng vật phẩm stack thêm mỗi lần nhấn Q hoặc nạp test ban đầu.")]
     [FormerlySerializedAs("seedAmount")]
@@ -80,10 +83,16 @@ public class InventoryTester : MonoBehaviour
 
     private void Update()
     {
-        // Nhấn phím Q: Thêm vật phẩm stackable (hoặc hạt giống) vào ô đang chọn hoặc ô trống kế tiếp
+        // Nhấn phím Q: Thêm hạt giống Carrot (hoặc vật phẩm stackable đầu tiên)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             AddSeed();
+        }
+
+        // Nhấn phím B: Thêm hạt giống Blueberry (BubbleBerry)
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            AddBlueberrySeed();
         }
 
         // Nhấn phím G: Thử nghiệm ném rơi vật phẩm tại vị trí người chơi
@@ -404,6 +413,86 @@ public class InventoryTester : MonoBehaviour
                 else
                 {
                     Debug.LogWarning($"[InventoryTester] Kho đồ đã đầy, không thể thêm '{itemToAdd.ItemName}'!", this);
+                }
+            }
+        }
+    }
+
+    // Lấy ItemData của Blueberry / BubbleBerry (nếu chưa gán sẽ tự động tìm kiếm)
+    private ItemData GetBlueberryItem()
+    {
+        if (blueberrySeed != null) return blueberrySeed;
+
+        if (stackableItemList != null)
+        {
+            var found = stackableItemList.Find(x => x != null && (
+                (!string.IsNullOrEmpty(x.CropId) && x.CropId.ToLower().Contains("berry")) ||
+                x.name.ToLower().Contains("berry") ||
+                (!string.IsNullOrEmpty(x.ItemID) && x.ItemID.ToLower().Contains("berry")) ||
+                (x.CropData != null && !string.IsNullOrEmpty(x.CropData.cropName) && x.CropData.cropName.ToLower().Contains("berry"))
+            ));
+            if (found != null)
+            {
+                blueberrySeed = found;
+                return blueberrySeed;
+            }
+        }
+
+#if UNITY_EDITOR
+        string[] guids = AssetDatabase.FindAssets("t:ItemData");
+        foreach (string guid in guids)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            ItemData item = AssetDatabase.LoadAssetAtPath<ItemData>(path);
+            if (item != null && (
+                item.name.ToLower().Contains("bubbleberry") ||
+                item.name.ToLower().Contains("blueberry") ||
+                (!string.IsNullOrEmpty(item.CropId) && item.CropId.ToLower().Contains("blueberry"))
+            ))
+            {
+                blueberrySeed = item;
+                return blueberrySeed;
+            }
+        }
+#endif
+
+        return null;
+    }
+
+    [ContextMenu("B. Add Blueberry Seed to Active Slot")]
+    public void AddBlueberrySeed()
+    {
+        ItemData itemToAdd = GetBlueberryItem();
+        if (itemToAdd == null)
+        {
+            Debug.LogError("[InventoryTester] Không tìm thấy ItemData của Blueberry / BubbleBerry! Hãy gán vào trường 'Blueberry Seed' trong Inspector.", this);
+            return;
+        }
+
+        int activeIndex = GetActiveSlotIndex();
+        InventorySlot slot = inventory != null ? inventory.GetSlot(activeIndex) : null;
+
+        // Nếu ô đang active trống hoặc cùng loại thì thêm thẳng vào ô này
+        if (slot != null && (slot.IsEmpty() || slot.CanStack(itemToAdd)))
+        {
+            ExecuteAddItemToActiveSlot(itemToAdd, stackableItemAmount);
+        }
+        else
+        {
+            // Nếu ô đang chọn đã bận, tự động thêm vào ô trống đầu tiên
+            if (inventory != null)
+            {
+                int remaining = inventory.AddItem(itemToAdd, stackableItemAmount);
+                int added = stackableItemAmount - remaining;
+                if (added > 0)
+                {
+                    string itemName = !string.IsNullOrEmpty(itemToAdd.ItemName) ? itemToAdd.ItemName : itemToAdd.name;
+                    Debug.Log($"<color=green>[InventoryTester] Ô đang chọn (Slot {activeIndex + 1}) đã có '{slot?.ItemData?.ItemName}', tự động thêm {added}x '{itemName}' vào ô trống khả dụng.</color>");
+                }
+                else
+                {
+                    string itemName = !string.IsNullOrEmpty(itemToAdd.ItemName) ? itemToAdd.ItemName : itemToAdd.name;
+                    Debug.LogWarning($"[InventoryTester] Kho đồ đã đầy, không thể thêm '{itemName}'!", this);
                 }
             }
         }

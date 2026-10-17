@@ -59,7 +59,20 @@ public class CropTile : MonoBehaviour, IDropSource
         }
     }
 
-    public void Check(bool isWatered)
+    public bool Harvest()
+    {
+        if (!isHavest) return false;
+        if(cropData != null && cropData.isReharvest)
+        {
+            currentGrowthStage = cropData.regrowStage;
+            isHavest = false;
+            UpdateSprite(currentGrowthStage);
+            return true;
+        }
+        return false;
+    }
+
+    public void Check(bool isWatered, FarmCellState state)
     {
         if (isHavest) return;
         if (!cropData.allowedSeason.Contains(TimeManager.Instance.currentSeason))
@@ -70,12 +83,15 @@ public class CropTile : MonoBehaviour, IDropSource
         }
         if (!isWatered)
         {
-            unWateredDay++;
-            if(unWateredDay > cropData.maxUnwateredDays)
+            if(state != FarmCellState.Empty && state != FarmCellState.Tilled)
             {
-                SetSprite();
-                isWithered = true;
-                return;
+                unWateredDay++;
+                if (unWateredDay > cropData.maxUnwateredDays)
+                {
+                    SetSprite();
+                    isWithered = true;
+                    return;
+                }
             }
         }
         else

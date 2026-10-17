@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [Serializable]
 public class FarmCell : CellData
@@ -20,8 +21,11 @@ public class FarmCell : CellData
     // Tạm dùng string; sau này có thể thay bằng CropDefinition.
     public string cropId;
 
-    public int UnwateredDay;
     public bool isWithered;
+
+    public int untillDays = 0;
+    public string originTileName;
+    [NonSerialized] public TileBase originTile;
 
     public FarmCell(Vector3Int position) : base(position)
     {

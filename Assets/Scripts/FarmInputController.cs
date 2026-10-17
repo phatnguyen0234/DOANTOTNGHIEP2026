@@ -476,14 +476,21 @@ public class FarmInputController : MonoBehaviour
                         }
                     }
 
-                    SoilManager.Instance.farmCells.Remove(mouseCell);
-                    cell.state = FarmCellState.Tilled;
-                    cell.cropId = null;
-                    cell.growthDays = 0;
-                    
-                    Destroy(crop.gameObject);
+                    if (crop.Harvest())
+                    {
+                        cell.state = FarmCellState.Growing;
+                    }
+                    else
+                    {
+                        SoilManager.Instance.farmCells.Remove(mouseCell);
+                        cell.state = FarmCellState.Tilled;
+                        cell.cropId = null;
+                        cell.growthDays = 0;
 
-                return true;
+                        Destroy(crop.gameObject);
+                    }
+
+                    return true;
             }
         } 
         return false;

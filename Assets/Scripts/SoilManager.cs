@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.IO;
+using Unity.VisualScripting;
 
 public class SoilManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class SoilManager : MonoBehaviour
     public Dictionary<Vector3Int, CropTile> farmCells = new Dictionary<Vector3Int, CropTile>();
     public Dictionary<Vector3Int, Tree> treeCells = new Dictionary<Vector3Int, Tree>();
     public Dictionary<Vector3Int, Rock> rockCells = new Dictionary<Vector3Int, Rock>();
+    public Dictionary<string, TileBase> dict = new Dictionary<string, TileBase>();
+    public int maxunTillDays = 3;
+    public SeasonTileSet seasonTileSet;
+
 
     private void Awake()
     {
@@ -32,6 +37,7 @@ public class SoilManager : MonoBehaviour
         ReBuildFarm();
         ReBuildTree();
         ReBuildRock();
+        BuildTile();
     }
 
 
@@ -58,13 +64,19 @@ public class SoilManager : MonoBehaviour
     public void Tilled(Vector3Int pos)
     {
         FarmCell cell = currentFarmData.GetCell(pos);
+        TileBase tile = groundTileMap.GetTile(pos);
         if(cell == null)
         {
             cell = currentFarmData.SetCell(pos);
         }
         if(cell.Till())
-        {
+        { 
             groundTileMap.SetTile(pos, soilTile);
+        }
+        if(tile != soilTile)
+        {
+            cell.originTile = tile;
+            cell.originTileName = tile.name;
         }
     }
 
@@ -108,10 +120,72 @@ public class SoilManager : MonoBehaviour
         cell.isDestroyed = true;
     }
 
+    public void BuildTile()
+    {
+        BoundsInt bound = groundTileMap.cellBounds;
+        TileBase[] tiles = groundTileMap.GetTilesBlock(bound);
+        foreach(TileBase tile in tiles)
+        {
+            if (tile != null && !dict.ContainsKey(tile.name))
+            {
+                dict[tile.name] = tile;
+            }
+        }
+
+        if(seasonTileSet != null)
+        {
+            foreach (SeasonTileSet.Entry entry in seasonTileSet.entries)
+            {
+                if (entry.spring != null && !dict.ContainsKey(entry.spring.name)) dict[entry.spring.name] = entry.spring;
+                if (entry.summer != null && !dict.ContainsKey(entry.summer.name)) dict[entry.summer.name] = entry.summer;
+                if (entry.autumn != null && !dict.ContainsKey(entry.autumn.name)) dict[entry.autumn.name] = entry.autumn;
+                if (entry.winter != null && !dict.ContainsKey(entry.winter.name)) dict[entry.winter.name] = entry.winter;
+            }
+        }
+    }
+
+    public TileBase GetTile(string name)
+    {
+        if(dict.TryGetValue(name, out TileBase tile) && tile != null)
+        {
+            return tile;
+        }
+        return null;
+    }
+
     public void HandleNewDay()
     {
         foreach(FarmCell cell in currentFarmData.cells)
         {
+            if(cell.state == FarmCellState.Tilled && string.IsNullOrEmpty(cell.cropId))
+            {
+                cell.untillDays++;
+                if(cell.untillDays >= maxunTillDays)
+                {
+                    TileBase tile = cell.originTile;
+                    if(tile == null)
+                    {
+                        tile = GetTile(cell.originTileName);
+                    }
+
+                    TileBase tileSeason = tile;
+                    if(tile != null)
+                    {
+                        tile = seasonTileSet.GetSeasonTile(tile, TimeManager.Instance.currentSeason);
+                    }
+                    groundTileMap.SetTile(cell.position, tile);
+                    cell.state = FarmCellState.Empty;
+                    cell.wateredToday = false;
+                    cell.originTile = null;
+                    cell.originTileName = null;
+                    cell.untillDays = 0;
+                    continue;
+                }
+            }
+            else
+            {
+                cell.untillDays = 0;
+            }
             if (cell.isWithered)
             {
                 groundTileMap.SetTile(cell.position, soilTile);
@@ -120,7 +194,7 @@ public class SoilManager : MonoBehaviour
             }
             if(farmCells.TryGetValue(cell.position, out CropTile croptile) && croptile != null)
             {
-                croptile.Check(cell.wateredToday);
+                croptile.Check(cell.wateredToday, cell.state);
                 if (croptile.isWithered)
                 {
                     groundTileMap.SetTile(cell.position, soilTile);

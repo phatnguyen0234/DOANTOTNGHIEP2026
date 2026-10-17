@@ -26,6 +26,7 @@ public class CropData : ScriptableObject
 
     public List<Season> allowedSeason;
     public int maxUnwateredDays = 2;
-    public Sprite witheredSprite;
+    public bool isReharvest;
+    public int regrowStage;
     public DropTable DropTable => dropTable;
 }
