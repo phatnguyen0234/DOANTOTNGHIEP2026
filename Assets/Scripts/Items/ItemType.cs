@@ -24,6 +24,7 @@ public enum ToolType
     WateringCan, // Bình tưới nước
     SeedBag,     // Hạt giống / Gieo trồng
     Harvest,      // Thu hoạch
-    fishingRod   // Cần câu cá
+    fishingRod,   // Cần câu cá
+    sickle        // liềm
 }
 
