@@ -36,6 +36,14 @@ public class InteractController : MonoBehaviour
 
         if (hit.collider != null)
         {
+            // 0. Check for Generic Interactables (Chest, Doors, etc.)
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null && interactable.CanInteract(gameObject))
+            {
+                interactable.Interact(gameObject);
+                return;
+            }
+
             // 1. Check for Trade Receivers (Shipping Bin, Merchant NPC)
             ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
 

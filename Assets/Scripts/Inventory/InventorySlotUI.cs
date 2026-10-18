@@ -31,6 +31,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
     private int slotIndex = -1;
     private InventoryUI parentUI;
+    private Inventory assignedInventory;
     private bool isDragging = false;
     private Image slotBackgroundImage;
 
@@ -38,6 +39,17 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     public Image BackgroundImage => backgroundImage;
     public Image IconImage => iconImage;
     public TextMeshProUGUI AmountText => amountText;
+
+    public Inventory AssignedInventory
+    {
+        get
+        {
+            if (assignedInventory != null) return assignedInventory;
+            if (parentUI != null && parentUI.Inventory != null) return parentUI.Inventory;
+            parentUI = GetComponentInParent<InventoryUI>();
+            return parentUI != null ? parentUI.Inventory : Inventory.Instance;
+        }
+    }
 
     private void Awake()
     {
@@ -107,6 +119,17 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     public void Setup(int index, InventoryUI ui = null)
     {
         slotIndex = index;
+        parentUI = ui != null ? ui : GetComponentInParent<InventoryUI>();
+        assignedInventory = parentUI != null ? parentUI.Inventory : null;
+        ValidateAndResolveReferences();
+        EnsureActive();
+    }
+
+    // Thiết lập chỉ số slot và gắn kết trực tiếp với Inventory (dùng cho ChestUI hoặc các container khác).
+    public void Setup(int index, Inventory inventory, InventoryUI ui = null)
+    {
+        slotIndex = index;
+        assignedInventory = inventory;
         parentUI = ui != null ? ui : GetComponentInParent<InventoryUI>();
         ValidateAndResolveReferences();
         EnsureActive();
@@ -257,6 +280,16 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            bool isShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            if (isShiftHeld && ChestUI.Instance != null && ChestUI.Instance.IsOpen)
+            {
+                ChestUI.Instance.HandleQuickTransfer(this);
+                return;
+            }
+        }
+
         if (enableDebugLogs)
         {
             Debug.Log($"<color=lime>[InventorySlotUI] [OnPointerClick] Slot Index: {slotIndex}</color>", this);
@@ -285,19 +318,16 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (parentUI == null)
-        {
-            parentUI = GetComponentInParent<InventoryUI>();
-        }
+        Inventory inv = AssignedInventory;
+        bool hasItem = inv != null && inv.IsValidIndex(slotIndex) && !inv.GetSlot(slotIndex).IsEmpty();
 
-        bool hasItem = parentUI != null && parentUI.HasItemInSlot(slotIndex);
         if (enableDebugLogs)
         {
-            Debug.Log($"<color=yellow>[InventorySlotUI] [OnBeginDrag] Bắt đầu kéo Slot Index: {slotIndex} | HasItem: {hasItem} | ParentUI: {(parentUI != null ? "OK" : "NULL")}</color>", this);
+            Debug.Log($"<color=yellow>[InventorySlotUI] [OnBeginDrag] Bắt đầu kéo Slot Index: {slotIndex} | HasItem: {hasItem} | Inventory: {(inv != null ? inv.name : "NULL")}</color>", this);
         }
 
-        // Không cho phép kéo nếu ô đang rỗng hoặc không có parentUI
-        if (!hasItem || parentUI == null)
+        // Không cho phép kéo nếu ô đang rỗng hoặc không có Inventory
+        if (!hasItem)
         {
             eventData.pointerDrag = null;
             return;
@@ -313,14 +343,32 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             canvasGroup.blocksRaycasts = false;
         }
 
-        parentUI.StartDragging(slotIndex, eventData);
+        InventorySlot slot = inv.GetSlot(slotIndex);
+        if (slot != null && slot.ItemData != null)
+        {
+            if (InventoryUI.Instance != null)
+            {
+                InventoryUI.Instance.StartDragging(slot.ItemData.Icon, eventData);
+            }
+            else if (parentUI != null)
+            {
+                parentUI.StartDragging(slot.ItemData.Icon, eventData);
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isDragging || parentUI == null) return;
+        if (!isDragging) return;
 
-        parentUI.OnDragging(eventData);
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.OnDragging(eventData);
+        }
+        else if (parentUI != null)
+        {
+            parentUI.OnDragging(eventData);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -341,54 +389,26 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             canvasGroup.blocksRaycasts = true;
         }
 
-        if (parentUI != null)
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.EndDragging();
+        }
+        else if (parentUI != null)
         {
             parentUI.EndDragging();
         }
+
+        if (parentUI != null)
+        {
+            parentUI.RefreshAllSlots();
+        }
+        if (ChestUI.Instance != null && ChestUI.Instance.IsOpen)
+        {
+            ChestUI.Instance.RefreshSlots();
+        }
     }
 
-    //Logic cu
-
-    //public void OnDrop(PointerEventData eventData)
-    //{
-    //    if (eventData.pointerDrag == null)
-    //    {
-    //        if (enableDebugLogs)
-    //        {
-    //            Debug.LogWarning($"[InventorySlotUI] [OnDrop] Slot {slotIndex} nhận OnDrop nhưng pointerDrag bị null!", this);
-    //        }
-    //        return;
-    //    }
-
-    //    InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponentInParent<InventorySlotUI>();
-    //    if (fromSlotUI != null)
-    //    {
-    //        if (enableDebugLogs)
-    //        {
-    //            Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ Slot {fromSlotUI.SlotIndex} -> Slot {this.SlotIndex}</color>", this);
-    //        }
-
-    //        if (fromSlotUI != this)
-    //        {
-    //            if (parentUI == null)
-    //            {
-    //                parentUI = GetComponentInParent<InventoryUI>();
-    //            }
-
-    //            if (parentUI != null)
-    //            {
-    //                parentUI.HandleDrop(fromSlotUI.SlotIndex, this.SlotIndex);
-    //            }
-    //        }
-    //    }
-    //    else if (enableDebugLogs)
-    //    {
-    //        Debug.LogWarning($"[InventorySlotUI] [OnDrop] Object kéo '{eventData.pointerDrag.name}' không chứa InventorySlotUI!", this);
-    //    }
-    //}
-
-
-    //Doan chinh sua de lam crafting table
+    // Xử lý sự kiện thả vật phẩm (OnDrop) hỗ trợ cả nội bộ kho lẫn chuyển giao liên kho (Túi đồ <-> Rương)
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
@@ -397,56 +417,17 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
         if (fromSlotUI != null && fromSlotUI != this)
         {
-            InventoryUI fromUI = fromSlotUI.GetComponentInParent<InventoryUI>();
-            InventoryUI toUI = this.GetComponentInParent<InventoryUI>();
+            Inventory fromInv = fromSlotUI.AssignedInventory;
+            Inventory toInv = this.AssignedInventory;
 
-            if (fromUI != null && toUI != null)
+            if (fromInv != null && toInv != null)
             {
-                if (fromUI == toUI)
+                if (enableDebugLogs)
                 {
-                    toUI.HandleDrop(fromSlotUI.SlotIndex, this.SlotIndex);
+                    Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ {fromInv.name} [Slot {fromSlotUI.SlotIndex}] -> {toInv.name} [Slot {this.SlotIndex}]</color>", this);
                 }
-                else
-                {
-                    HandleCrossInventoryTransfer(fromUI.Inventory, fromSlotUI.SlotIndex, toUI.Inventory, this.SlotIndex);
-                }
-            }
-        }
-    }
 
-    private void HandleCrossInventoryTransfer(Inventory fromInv, int fromIdx, Inventory toInv, int toIdx)
-    {
-        InventorySlot fromSlot = fromInv.GetSlot(fromIdx);
-        InventorySlot toSlot = toInv.GetSlot(toIdx);
-
-        if (fromSlot.IsEmpty()) return;
-
-        ItemData itemA = fromSlot.ItemData;
-        int amountA = fromSlot.Amount;
-
-        ItemData itemB = toSlot.ItemData;
-        int amountB = toSlot.Amount;
-
-        if (toSlot.IsEmpty() || (toSlot.ItemData.ItemID != itemA.ItemID))
-        {
-            fromInv.ClearSlot(fromIdx);
-            toInv.ClearSlot(toIdx);
-
-            if (itemA != null) toInv.AddItemToSlot(toIdx, itemA, amountA);
-            if (itemB != null) fromInv.AddItemToSlot(fromIdx, itemB, amountB);
-        }
-        else if (toSlot.CanStack(itemA))
-        {
-            int remaining = toInv.AddItemToSlot(toIdx, itemA, amountA);
-
-            if (remaining <= 0)
-            {
-                fromInv.ClearSlot(fromIdx);
-            }
-            else
-            {
-                fromInv.ClearSlot(fromIdx);
-                fromInv.AddItemToSlot(fromIdx, itemA, remaining);
+                InventoryTransferHelper.TransferBetweenSlots(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
             }
         }
     }

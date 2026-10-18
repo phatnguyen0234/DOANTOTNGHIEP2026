@@ -353,17 +353,15 @@ public class InventoryUI : MonoBehaviour
         return slot != null && !slot.IsEmpty();
     }
 
-    // Bắt đầu thao tác kéo: Khởi tạo và hiển thị Drag Ghost icon theo con trỏ chuột.
-    public void StartDragging(int slotIndex, PointerEventData eventData)
+    // Bắt đầu thao tác kéo: Khởi tạo và hiển thị Drag Ghost icon theo con trỏ chuột từ Sprite icon trực tiếp.
+    public void StartDragging(Sprite icon, PointerEventData eventData)
     {
-        if (!HasItemInSlot(slotIndex)) return;
-
-        InventorySlot slot = inventory.GetSlot(slotIndex);
+        if (icon == null) return;
         EnsureDragGhost();
 
-        if (dragGhostImage != null && slot.ItemData != null)
+        if (dragGhostImage != null)
         {
-            dragGhostImage.sprite = slot.ItemData.Icon;
+            dragGhostImage.sprite = icon;
             dragGhostImage.raycastTarget = false;
             if (dragGhostCanvasGroup != null)
             {
@@ -375,6 +373,18 @@ public class InventoryUI : MonoBehaviour
             dragGhostRect.SetAsLastSibling();
 
             UpdateDragPosition(eventData);
+        }
+    }
+
+    // Bắt đầu thao tác kéo theo chỉ số slot của Inventory chính (tương thích ngược).
+    public void StartDragging(int slotIndex, PointerEventData eventData)
+    {
+        if (!HasItemInSlot(slotIndex)) return;
+
+        InventorySlot slot = inventory.GetSlot(slotIndex);
+        if (slot != null && slot.ItemData != null)
+        {
+            StartDragging(slot.ItemData.Icon, eventData);
         }
     }
 
