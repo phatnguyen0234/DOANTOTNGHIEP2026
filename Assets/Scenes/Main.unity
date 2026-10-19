@@ -483263,11 +483263,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1429491238958571444, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.23
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 1429491238958571444, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.73
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 1538033623276820054, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_Name
@@ -483279,7 +483279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3334715464019901694, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.65
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 3334715464019901694, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -483312,6 +483312,22 @@ PrefabInstance:
     - target: {fileID: 3334715464019901694, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030707013729936673, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3979101
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030707013729936673, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8795185
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030707013729936673, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.5526347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030707013729936673, guid: 71b37576d2699f24799627dc90111e4a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.060240746
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -507180,6 +507196,7 @@ MonoBehaviour:
   isUsingWater: 0
   isUsingAxe: 0
   isUsingPickaxe: 0
+  isSleeping: 0
   controller: {fileID: 746601130}
   particleLeafPrefab: {fileID: 3979579837839126627, guid: bbd56517e0c645044bccc8df12d5270b, type: 3}
   particleRockPrefab: {fileID: 8992599010326221315, guid: 2b799b2fdf65e9a44b761dedf5898ca4, type: 3}
@@ -686737,6 +686754,7 @@ MonoBehaviour:
   currentDay: 1
   daysPerSeason: 5
   currentSeason: 0
+  wakeUpHour: 6
   clockHandImage: {fileID: 0}
   clockHandSprites: []
   globalLight: {fileID: 0}
