@@ -51,8 +51,14 @@ public class ItemDropSpawner : MonoBehaviour
     }
 #endif
 
-    // Sinh một loại vật phẩm tại vị trí origin với bán kính văng ngẫu nhiên
+    // 1. Hàm gốc (dành cho code cũ hoặc DropTable khi rơi đồ không có phẩm chất)
     public WorldItem SpawnDrop(ItemData item, int amount, Vector3 origin, float spreadRadius = -1f)
+    {
+        return SpawnDrop(item, amount, origin, CropQuality.Normal, spreadRadius);
+    }
+
+    // 2. Hàm mở rộng (dành riêng khi muốn truyền CropQuality như thu hoạch nông sản)
+    public WorldItem SpawnDrop(ItemData item, int amount, Vector3 origin, CropQuality quality, float spreadRadius = -1f)
     {
         if (item == null || amount <= 0)
             return null;
@@ -62,15 +68,15 @@ public class ItemDropSpawner : MonoBehaviour
             spreadRadius = defaultSpreadRadius;
         }
 
-        // Tính toán điểm tiếp đất ngẫu nhiên trong vòng tròn bán kính spreadRadius
         Vector2 randomOffset = Random.insideUnitCircle * spreadRadius;
         Vector3 landingPos = origin + new Vector3(randomOffset.x, randomOffset.y, 0f);
 
         WorldItem worldItemInstance = CreateWorldItemInstance(origin);
-        worldItemInstance.Initialize(item, amount, landingPos);
+        worldItemInstance.Initialize(item, amount, landingPos, quality);
 
         return worldItemInstance;
     }
+
 
     // Sinh danh sách nhiều loại vật phẩm rơi từ bảng kết quả DropGenerator
     public void SpawnDrops(IEnumerable<ItemDropResult> drops, Vector3 origin, float spreadRadius = -1f)

@@ -25,6 +25,7 @@ public class FarmCell : CellData
 
     public int untillDays = 0;
     public string originTileName;
+    public FertilizerType fertilizer = FertilizerType.None;
     [NonSerialized] public TileBase originTile;
 
     public FarmCell(Vector3Int position) : base(position)

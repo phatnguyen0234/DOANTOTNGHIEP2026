@@ -38,7 +38,7 @@ public class CropTile : MonoBehaviour, IDropSource
         }
     }
 
-    public void Grow(bool isWatered)
+    public void Grow(bool isWatered, FertilizerType fertilizer)
     {
         if (cropData == null) return;
         if (currentGrowthStage >= cropData.maxStage - 1)
@@ -48,7 +48,12 @@ public class CropTile : MonoBehaviour, IDropSource
         }
         if (isWatered)
         {
-            currentGrowthStage++;
+            int step = 1;
+            float bonus = FertilizerManager.GetSpeedBonus(fertilizer);
+            float random = Random.value;
+            if (random <= bonus) step++;
+            currentGrowthStage += step;
+            if (currentGrowthStage > cropData.maxStage - 1) currentGrowthStage = Mathf.Min(currentGrowthStage, cropData.maxStage - 1);
             UpdateSprite(currentGrowthStage);
 
 

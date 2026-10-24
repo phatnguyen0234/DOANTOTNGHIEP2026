@@ -8,8 +8,12 @@ using Unity.VisualScripting;
 public class SoilManager : MonoBehaviour
 {
     [SerializeField] private Tilemap groundTileMap;
+    [SerializeField] private Tilemap fertilizerTileMap;
     [SerializeField] private TileBase soilTile;
     [SerializeField] private TileBase soilWetTile;
+    [SerializeField] private TileBase speedGroTile;
+    [SerializeField] private TileBase retainingSoilTile;
+    [SerializeField] private TileBase qualityFertilizer;
     [SerializeField] private List<CropData> cropDataList;
     [SerializeField] private CropTile cropTilePrefab;
     public static SoilManager Instance;
@@ -153,6 +157,32 @@ public class SoilManager : MonoBehaviour
         return null;
     }
 
+    public bool ApplyFertilizer(Vector3Int cellPos, FertilizerType fertilizerType)
+    {
+        FarmCell cell = currentFarmData.GetCell(cellPos);
+        if(cell == null)
+        {
+            cell = currentFarmData.SetCell(cellPos);
+        }
+        if(cell.state == FarmCellState.Tilled && cell.fertilizer == FertilizerType.None)
+        {
+            Debug.Log("Doi tile phan bon");
+            cell.fertilizer = fertilizerType;
+            TileBase tile = GetFertilizeTile(fertilizerType);
+            fertilizerTileMap.SetTile(cellPos, tile);
+            return true;
+        }
+        return false;
+    }
+
+    private TileBase GetFertilizeTile(FertilizerType type) => type switch
+    {
+        FertilizerType.SpeedGro or FertilizerType.DeluxeSpeedGro or FertilizerType.HyperSpeedGro => speedGroTile,
+        FertilizerType.BasicFertilizer or FertilizerType.QualityFertilizer or FertilizerType.DeluxeFertilizer => qualityFertilizer,
+        FertilizerType.BasicRetainingSoil or FertilizerType.QualityRetainingSoil or FertilizerType.DeluxeRetainingSoil => retainingSoilTile,
+        _ => null
+    };
+
     public void HandleNewDay()
     {
         foreach(FarmCell cell in currentFarmData.cells)
@@ -174,6 +204,8 @@ public class SoilManager : MonoBehaviour
                         tile = seasonTileSet.GetSeasonTile(tile, TimeManager.Instance.currentSeason);
                     }
                     groundTileMap.SetTile(cell.position, tile);
+                    fertilizerTileMap.SetTile(cell.position, null);
+                    cell.fertilizer = FertilizerType.None;
                     cell.state = FarmCellState.Empty;
                     cell.wateredToday = false;
                     cell.originTile = null;
@@ -189,6 +221,8 @@ public class SoilManager : MonoBehaviour
             if (cell.isWithered)
             {
                 groundTileMap.SetTile(cell.position, soilTile);
+                fertilizerTileMap.SetTile(cell.position, null);
+                cell.fertilizer = FertilizerType.None;
                 cell.wateredToday = false;
                 continue;
             }
@@ -198,11 +232,13 @@ public class SoilManager : MonoBehaviour
                 if (croptile.isWithered)
                 {
                     groundTileMap.SetTile(cell.position, soilTile);
+                    fertilizerTileMap.SetTile(cell.position, null);
+                    cell.fertilizer = FertilizerType.None;
                     cell.isWithered = croptile.isWithered;
                     cell.wateredToday = false;
                     continue;
                 }
-                croptile.Grow(cell.wateredToday);
+                croptile.Grow(cell.wateredToday, cell.fertilizer);
                 cell.growthDays = croptile.currentGrowthStage;
                 if (croptile.isHavest)
                 {
@@ -216,8 +252,12 @@ public class SoilManager : MonoBehaviour
 
             if (cell.wateredToday)
             {
-                groundTileMap.SetTile(cell.position, soilTile);
-                cell.wateredToday = false;
+                bool retainWater = FertilizerManager.ShouldRetainWater(cell.fertilizer);
+                if (!retainWater)
+                {
+                    groundTileMap.SetTile(cell.position, soilTile);
+                    cell.wateredToday = false;
+                }
             }
         }
     }

@@ -35,6 +35,11 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     private bool isDragging = false;
     private Image slotBackgroundImage;
 
+    [SerializeField] private Image qualityStarImage;
+    [SerializeField] private Sprite silverStarSprite;
+    [SerializeField] private Sprite goldStarSprite;
+    [SerializeField] private Sprite iridiumStarSprite;
+
     public int SlotIndex => slotIndex;
     public Image BackgroundImage => backgroundImage;
     public Image IconImage => iconImage;
@@ -99,6 +104,12 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         if (iconImage != null && backgroundImage != null && iconImage == backgroundImage)
         {
             Debug.LogError($"[InventorySlotUI] CẢNH BÁO BINDING: '{gameObject.name}' có iconImage trùng với backgroundImage!", this);
+        }
+
+        if(qualityStarImage == null)
+        {
+            Transform startTrans = transform.Find("CropQuality");
+            if (startTrans != null) qualityStarImage = startTrans.GetComponent<Image>();
         }
     }
 
@@ -245,6 +256,10 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
                 amountText.text = string.Empty;
             }
 
+            if(qualityStarImage != null)
+            {
+                qualityStarImage.gameObject.SetActive(false);
+            }
             return;
         }
 
@@ -258,6 +273,22 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         if (amountText != null)
         {
             amountText.text = slot.Amount > 1 ? slot.Amount.ToString() : string.Empty;
+        }
+
+        if(qualityStarImage != null)
+        {
+            if (slot.Quality == CropQuality.Normal) qualityStarImage.gameObject.SetActive(false);
+            else
+            {
+                qualityStarImage.gameObject.SetActive(true);
+                qualityStarImage.color = slot.Quality switch
+                {
+                    CropQuality.Silver => new Color(0.75f, 0.82f, 0.90f),
+                    CropQuality.Gold => new Color(1.00f, 0.84f, 0.00f),
+                    CropQuality.Iridium => new Color(0.78f, 0.35f, 1.00f),
+                    _ => Color.white
+                };
+            }
         }
     }
 

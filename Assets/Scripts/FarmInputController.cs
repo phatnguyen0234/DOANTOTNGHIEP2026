@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Android;
+using System;
 
 public class FarmInputController : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class FarmInputController : MonoBehaviour
 
 
     public FarmTool CurrentTool { get; private set; } = FarmTool.None;
+    private bool isFertilizeMode = false;
+    private FertilizerType fertilizer = FertilizerType.DeluxeRetainingSoil;
 
     #region Unity Lifecycle
 
@@ -99,7 +102,14 @@ public class FarmInputController : MonoBehaviour
         {
             Use();
         }
+        if (Input.GetKeyDown(KeyCode.H)) isFertilizeMode = true;
+        if (Input.GetKeyDown(KeyCode.G)) isFertilizeMode = false;
+        if(isFertilizeMode && Input.GetMouseButtonDown(0))
+        {
+            TryApplyFertilize();
+        }
     }
+
 
     #endregion
 
@@ -442,6 +452,42 @@ public class FarmInputController : MonoBehaviour
         {
             if (SoilManager.Instance.farmCells.TryGetValue(mouseCell, out CropTile crop) && crop != null)
             {
+                    CropQuality harvestQuality = QualityCalculator.DetermineQuality();
+                    Debug.Log("CropQuality " + harvestQuality);
+                    //// 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
+                    //if (crop.GetDropTable() != null)
+                    //{
+                    //    DropContext context = new DropContext(
+                    //        source: crop.gameObject,
+                    //        player: player != null ? player.gameObject : gameObject,
+                    //        tool: null,
+                    //        toolLevel: 1,
+                    //        dropMultiplier: 1f,
+                    //        luck: 0f
+                    //    );
+                    //    DropSystem.TriggerDrop(crop, context);
+                    //}
+                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
+                    if (crop.CropData != null && crop.CropData.harvestItem != null)
+                    {
+                        int amount = Mathf.Max(1, crop.CropData.harvestAmount);
+                        Vector3 harvestPos = crop.transform.position;
+
+                        if (ItemDropSpawner.Instance != null)
+                        {
+                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos, harvestQuality);
+                        }
+                        else if (inventory != null)
+                        {
+                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount, harvestQuality);
+                            if (!added)
+                            {
+                                Debug.LogWarning($"[FarmInputController] Túi đồ đã đầy! Không thể thu hoạch {crop.CropData.harvestItem.ItemName}.");
+                                return false;
+                            }
+                        }
+                    }
+
                     // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     if (crop.GetDropTable() != null)
                     {
@@ -452,28 +498,8 @@ public class FarmInputController : MonoBehaviour
                             toolLevel: 1,
                             dropMultiplier: 1f,
                             luck: 0f
-                        );
-                        DropSystem.TriggerDrop(crop, context);
-                    }
-                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
-                    else if (crop.CropData != null && crop.CropData.harvestItem != null)
-                    {
-                        int amount = Mathf.Max(1, crop.CropData.harvestAmount);
-                        Vector3 harvestPos = crop.transform.position;
-
-                        if (ItemDropSpawner.Instance != null)
-                        {
-                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos);
-                        }
-                        else if (inventory != null)
-                        {
-                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount);
-                            if (!added)
-                            {
-                                Debug.LogWarning($"[FarmInputController] Túi đồ đã đầy! Không thể thu hoạch {crop.CropData.harvestItem.ItemName}.");
-                                return false;
-                            }
-                        }
+                    );
+                    DropSystem.TriggerDrop(crop, context);
                     }
 
                     if (crop.Harvest())
@@ -496,6 +522,16 @@ public class FarmInputController : MonoBehaviour
         return false;
     }
 
+    private void TryApplyFertilize()
+    {
+        Debug.Log("phan bon");
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
+        Vector3Int distance = mouseCell - playerCell;
+        if (!CheckDistance(distance)) return;
+        SoilManager.Instance.ApplyFertilizer(mouseCell, fertilizer);
+    }
 
     public void Axe()
     {

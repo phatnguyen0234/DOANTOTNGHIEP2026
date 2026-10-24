@@ -225,7 +225,7 @@ public class Inventory : MonoBehaviour
     // ItemData cần thêm.
     // Số lượng cần thêm.
     // True nếu đã thêm thành công toàn bộ số lượng yêu cầu mà không bị dư.
-    public bool TryAddItem(ItemData item, int amount)
+    public bool TryAddItem(ItemData item, int amount, CropQuality quality = CropQuality.Normal)
     {
         if (item == null || amount <= 0)
         {
@@ -239,7 +239,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             InventorySlot slot = slots[i];
-            if (slot.CanStack(item))
+            if (slot.CanStack(item, quality))
             {
                 remainingAmount = slot.AddAmount(remainingAmount);
                 if (remainingAmount <= 0)
@@ -256,9 +256,8 @@ public class Inventory : MonoBehaviour
                 if (slot.IsEmpty())
                 {
                     int amountToAddInNewSlot = Mathf.Min(remainingAmount, item.MaxStack);
-                    slot.SetItem(item, amountToAddInNewSlot);
+                    slot.SetItem(item, amountToAddInNewSlot, quality);
                     remainingAmount -= amountToAddInNewSlot;
-
                     if (remainingAmount <= 0)
                         break;
                 }
@@ -280,7 +279,7 @@ public class Inventory : MonoBehaviour
     // ItemData cần thêm.
     // Số lượng cần thêm.
     // Số lượng còn dư (0 nếu thêm thành công toàn bộ).
-    public int AddItem(ItemData item, int amount)
+    public int AddItem(ItemData item, int amount, CropQuality quality = CropQuality.Normal)
     {
         if (item == null || amount <= 0) return amount;
 
@@ -289,7 +288,7 @@ public class Inventory : MonoBehaviour
         // 1. Stack vào ô cũ
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].CanStack(item))
+            if (slots[i].CanStack(item,quality))
             {
                 remainingAmount = slots[i].AddAmount(remainingAmount);
                 if (remainingAmount <= 0) break;
@@ -304,7 +303,7 @@ public class Inventory : MonoBehaviour
                 if (slots[i].IsEmpty())
                 {
                     int addCount = Mathf.Min(remainingAmount, item.MaxStack);
-                    slots[i].SetItem(item, addCount);
+                    slots[i].SetItem(item, addCount, quality);
                     remainingAmount -= addCount;
                     if (remainingAmount <= 0) break;
                 }

@@ -39,6 +39,8 @@ public class WorldItem : MonoBehaviour
     private Transform magnetTarget;
     private float currentMagnetSpeed;
     private Coroutine tossCoroutine;
+    private CropQuality quality = CropQuality.Normal;
+    public CropQuality Quality => quality;
 
     #region Properties
 
@@ -84,10 +86,11 @@ public class WorldItem : MonoBehaviour
     }
 
     // Khởi tạo thông tin vật phẩm và kích hoạt hiệu ứng rơi văng nảy
-    public void Initialize(ItemData itemData, int itemAmount, Vector3? landingPosition = null)
+    public void Initialize(ItemData itemData, int itemAmount, Vector3? landingPosition = null, CropQuality itemQuality = CropQuality.Normal)
     {
         item = itemData;
         amount = itemAmount;
+        quality = itemQuality;
         isCollected = false;
         magnetTarget = null;
         currentMagnetSpeed = baseMagnetSpeed;
@@ -193,7 +196,7 @@ public class WorldItem : MonoBehaviour
         if (!canPickup || !other.canPickup)
             return false;
 
-        if (item == null || other.Item == null || item.ItemID != other.Item.ItemID)
+        if (item == null || other.Item == null || item.ItemID != other.Item.ItemID || quality != other.quality)
             return false;
 
         return (amount + other.Amount) <= item.MaxStack;
