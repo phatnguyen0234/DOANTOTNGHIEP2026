@@ -243,7 +243,7 @@ public class FarmInputController : MonoBehaviour
     {
         if (!Input.GetMouseButtonDown(0))
         {
-            Debug.Log("CLick chuột trái không được nhấn");
+            //Debug.Log("CLick chuột trái không được nhấn");
             return;
         }
 
