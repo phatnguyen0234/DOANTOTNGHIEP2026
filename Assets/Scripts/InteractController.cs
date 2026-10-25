@@ -36,29 +36,34 @@ public class InteractController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // 1. Check for Trade Receivers (Shipping Bin, Merchant NPC)
-            ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
+            Debug.Log("Hit interactable object: " + hit.collider.gameObject.name);
 
+            // 1. Check for Trade Receivers
+            ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
             if (receiver != null)
             {
-                InventorySlot activeSlot = hotbarController.SelectedSlot;
+                Debug.Log("Found ITradeReceiver on: " + hit.collider.gameObject.name);
 
+                InventorySlot activeSlot = hotbarController.SelectedSlot;
                 if (activeSlot != null && !activeSlot.IsEmpty())
                 {
+                    Debug.Log("Attempting to transaction with item: " + activeSlot.ItemData.ItemName);
                     receiver.ProcessTransaction(activeSlot.ItemData, 1, inventory, playerMoney);
                 }
-                return; // Stop interaction flow here
+                else
+                {
+                    Debug.LogWarning("Cannot transact: Active hotbar slot is empty.");
+                }
+                return;
             }
 
-
-            //Logic tuong tac crafting table
             // 2. Check for Crafting Table
             CraftingTable craftingTable = hit.collider.GetComponent<CraftingTable>();
-
             if (craftingTable != null)
             {
+                Debug.Log("Opening Crafting Table.");
                 craftingTable.OpenCraftingTable();
-                return; // Stop interaction flow here
+                return;
             }
         }
     }
