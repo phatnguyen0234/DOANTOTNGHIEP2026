@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Garnet
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: garnet
+  itemName: "Ngọc Hồng Lựu (Garnet)"
+  description: "Viên ngọc đỏ đậm như hạt lựu chín mọng."
+  icon: {fileID: -7365279715538518030, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
+  itemType: 2
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 280
+  sellPrice: 165
+  canSell: 1

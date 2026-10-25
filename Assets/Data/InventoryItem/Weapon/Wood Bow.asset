@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Wood Bow
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: wood_bow
+  itemName: "Cung Gỗ (Wood Bow)"
+  description: "Cây cung Gỗ tầm xa uy lực giúp tấn công từ cự ly an toàn."
+  icon: {fileID: -7856493677412862020, guid: 8d06e8d2e4df10c4a8e491275ab19dba, type: 3}
+  itemType: 8
+  toolType: 11
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 100
+  sellPrice: 40
+  canSell: 1

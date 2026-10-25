@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
   m_Name: Sickle
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: 
-  itemName: 
-  description: 
-  icon: {fileID: 0}
-  itemType: 0
-  toolType: 0
-  cropId: Carrot
+  itemID: sickle
+  itemName: "Li\u1EC1m (Sickle)"
+  description: "D\xF9ng \u0111\u1EC3 g\u1EB7t l\xFAa, c\u1EAFt c\u1ECF d\u1EA1i v\xE0 thu ho\u1EA1ch n\xF4ng s\u1EA3n."
+  icon: {fileID: -1700892053915081011, guid: c002c17196a6e0249a7b00d587ee836f, type: 3}
+  itemType: 5
+  toolType: 9
+  cropId: 
   cropData: {fileID: 0}
   rodData: {fileID: 0}
   animationTrigger: 
-  maxStack: 99
-  buyPrice: 0
-  sellPrice: 0
+  maxStack: 1
+  buyPrice: 600
+  sellPrice: 250
   canSell: 1

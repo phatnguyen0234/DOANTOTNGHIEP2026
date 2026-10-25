@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Crimson Bow
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: crimson_bow
+  itemName: "Cung Huyết Nguyệt (Crimson Bow)"
+  description: "Cây cung Huyết Nguyệt tầm xa uy lực giúp tấn công từ cự ly an toàn."
+  icon: {fileID: -7856493677412862020, guid: bc52efe3296ca3d46877e041e3411f58, type: 3}
+  itemType: 8
+  toolType: 11
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 5500
+  sellPrice: 2400
+  canSell: 1

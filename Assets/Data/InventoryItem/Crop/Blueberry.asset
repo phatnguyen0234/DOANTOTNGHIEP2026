@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Blueberry
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: blueberry
+  itemName: "Việt Quất (Blueberry)"
+  description: "Quả việt quất nhỏ xinh mọng nước, giàu chất chống oxy hóa."
+  icon: {fileID: -2534248692213106135, guid: 7e93005f008ad4a45942cf760576827c, type: 3}
+  itemType: 1
+  toolType: 0
+  cropId: Blueberry
+  cropData: {fileID: 11400000, guid: 92c44e8e663ea794a9b093f6ad8f81a4, type: 2}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 110
+  sellPrice: 75
+  canSell: 1

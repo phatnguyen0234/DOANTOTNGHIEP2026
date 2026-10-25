@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Aloe
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 013
+  cropName: Aloe
+  growthTime: 80
+  maxStage: 7
+  stageSprites:
+  - {fileID: -2817107685474369666, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: -2290638743845882974, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: 5628350080157563026, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: -8636481832652692260, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: 470621242737815008, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: -2600400073476253552, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  - {fileID: -1873535136603939203, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: 4b52e7588c1f3fd9dce141391bf1d017, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Hunter Quiver
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: hunter_quiver
+  itemName: "Ống Đựng Tên (Hunter Quiver)"
+  description: "Ống da đeo lưng tiện lợi chứa các mũi tên đi săn."
+  icon: {fileID: -1225711145029171742, guid: ee376f124f8846d4c94a2b6bf35b6558, type: 3}
+  itemType: 9
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 300
+  sellPrice: 140
+  canSell: 1

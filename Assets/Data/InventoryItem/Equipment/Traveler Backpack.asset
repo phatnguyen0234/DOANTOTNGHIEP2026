@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Traveler Backpack
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: traveler_backpack
+  itemName: "Ba Lô Du Lịch (Traveler Backpack)"
+  description: "Chiếc ba lô tiện dụng cho những chuyến thám hiểm dài ngày."
+  icon: {fileID: -987158244320924088, guid: 25bc7733de11b5d41b531d8f0c141826, type: 3}
+  itemType: 9
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 450
+  sellPrice: 200
+  canSell: 1

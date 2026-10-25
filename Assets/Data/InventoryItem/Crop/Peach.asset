@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Peach
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: peach
+  itemName: "Đào (Peach)"
+  description: "Trái đào tiên ửng hồng thơm ngát, thịt quả ngọt mềm mọng nước."
+  icon: {fileID: -6182139567355005811, guid: 1332872bac35f3d4dadb06b22847d628, type: 3}
+  itemType: 1
+  toolType: 0
+  cropId: Peach
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 200
+  sellPrice: 130
+  canSell: 1

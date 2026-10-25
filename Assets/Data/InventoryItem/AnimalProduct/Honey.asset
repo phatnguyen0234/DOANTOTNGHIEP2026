@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Honey
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: honey
+  itemName: "Hũ Mật Ong (Honey)"
+  description: "Hũ mật ong hoa rừng nguyên chất thơm lừng ngọt lịm."
+  icon: {fileID: -3403754614272994563, guid: a814bcc7a5fb2994793c84f770fd700a, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 100
+  sellPrice: 65
+  canSell: 1

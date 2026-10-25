@@ -72,6 +72,8 @@ public class ItemData : ScriptableObject
     public bool IsTool => itemType == ItemType.Tool;
     public bool IsSeed => itemType == ItemType.Seed || toolType == ToolType.SeedBag;
     public bool IsCrop => itemType == ItemType.Crop;
+    public bool IsWeapon => itemType == ItemType.Weapon;
+    public bool IsEquipment => itemType == ItemType.Equipment;
 
     #endregion
 
