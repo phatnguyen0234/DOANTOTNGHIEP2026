@@ -13,6 +13,10 @@ public class Inventory : MonoBehaviour
     [Tooltip("Danh sách các ô chứa trong Inventory.")]
     [SerializeField] private List<InventorySlot> slots = new List<InventorySlot>();
 
+    [Header("Inventory Mode")]
+    [Tooltip("Tích chọn nếu đây là Inventory chính của Player.")]
+    [SerializeField] private bool isPlayerInventory = true;
+
     [Header("Bag UI Settings")]
     [Tooltip("Phím tắt để bật/tắt hiển thị túi đồ (Mặc định: Escape).")]
     [SerializeField] private KeyCode toggleBagKey = KeyCode.Escape;
@@ -30,37 +34,58 @@ public class Inventory : MonoBehaviour
     public IReadOnlyList<InventorySlot> Slots => slots;
     public bool IsBagOpen => inventoryUI != null && inventoryUI.IsOpen;
     public InventoryUI InventoryUI => inventoryUI;
+    public bool IsPlayerInventory => isPlayerInventory;
 
     #endregion
 
     public static Inventory Instance { get; private set; }
 
+    public void SetAsPlayerInventory(bool value)
+    {
+        isPlayerInventory = value;
+    }
+
     #region Unity Lifecycle & Initialization
 
     private void Awake()
     {
-        if (Instance == null)
+        // Tự động nhận diện nếu GameObject này có gắn component Chest hoặc container khác
+        if (TryGetComponent<Chest>(out _))
         {
-            Instance = this;
+            isPlayerInventory = false;
         }
-        else if (Instance != this)
+
+        if (isPlayerInventory)
         {
-            Destroy(gameObject);
-            return;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
 
         InitializeSlots();
-        ResolveUI();
+        if (isPlayerInventory)
+        {
+            ResolveUI();
+        }
     }
 
     private void Start()
     {
-        ResolveUI();
+        if (isPlayerInventory)
+        {
+            ResolveUI();
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(toggleBagKey))
+        if (isPlayerInventory && Input.GetKeyDown(toggleBagKey))
         {
             ToggleBag();
         }
@@ -200,7 +225,7 @@ public class Inventory : MonoBehaviour
     // ItemData cần thêm.
     // Số lượng cần thêm.
     // True nếu đã thêm thành công toàn bộ số lượng yêu cầu mà không bị dư.
-    public bool TryAddItem(ItemData item, int amount)
+    public bool TryAddItem(ItemData item, int amount, CropQuality quality = CropQuality.Normal)
     {
         if (item == null || amount <= 0)
         {
@@ -214,7 +239,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             InventorySlot slot = slots[i];
-            if (slot.CanStack(item))
+            if (slot.CanStack(item, quality))
             {
                 remainingAmount = slot.AddAmount(remainingAmount);
                 if (remainingAmount <= 0)
@@ -231,9 +256,8 @@ public class Inventory : MonoBehaviour
                 if (slot.IsEmpty())
                 {
                     int amountToAddInNewSlot = Mathf.Min(remainingAmount, item.MaxStack);
-                    slot.SetItem(item, amountToAddInNewSlot);
+                    slot.SetItem(item, amountToAddInNewSlot, quality);
                     remainingAmount -= amountToAddInNewSlot;
-
                     if (remainingAmount <= 0)
                         break;
                 }
@@ -255,7 +279,7 @@ public class Inventory : MonoBehaviour
     // ItemData cần thêm.
     // Số lượng cần thêm.
     // Số lượng còn dư (0 nếu thêm thành công toàn bộ).
-    public int AddItem(ItemData item, int amount)
+    public int AddItem(ItemData item, int amount, CropQuality quality = CropQuality.Normal)
     {
         if (item == null || amount <= 0) return amount;
 
@@ -264,7 +288,7 @@ public class Inventory : MonoBehaviour
         // 1. Stack vào ô cũ
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].CanStack(item))
+            if (slots[i].CanStack(item,quality))
             {
                 remainingAmount = slots[i].AddAmount(remainingAmount);
                 if (remainingAmount <= 0) break;
@@ -279,7 +303,7 @@ public class Inventory : MonoBehaviour
                 if (slots[i].IsEmpty())
                 {
                     int addCount = Mathf.Min(remainingAmount, item.MaxStack);
-                    slots[i].SetItem(item, addCount);
+                    slots[i].SetItem(item, addCount, quality);
                     remainingAmount -= addCount;
                     if (remainingAmount <= 0) break;
                 }

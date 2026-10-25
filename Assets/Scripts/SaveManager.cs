@@ -6,13 +6,12 @@ using System.Collections.Generic;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
-    public string savepath;
+    private string savepath => Path.Combine(Application.persistentDataPath, "save.json");
     public SaveData saveData;
     public List<ItemData> itemDatabase = new List<ItemData>();
     void Awake()
     {
         Instance = this;
-        savepath = Path.Combine(Application.persistentDataPath, "save.json");
     }
 
     private void Start()

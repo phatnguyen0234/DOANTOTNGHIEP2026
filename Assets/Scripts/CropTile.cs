@@ -5,10 +5,10 @@ public class CropTile : MonoBehaviour, IDropSource
 {
     [SerializeField] private CropData cropData;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Tilemap groundTileMap;
-    [SerializeField] private TileBase driedSoil;
+
     public int currentGrowthStage = 0;
-    
+    public bool isWithered;
+    public int unWateredDay = 0;
     public bool isHavest { get; set; } = false;
 
     public CropData CropData => cropData;
@@ -19,20 +19,14 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
-        GameObject ground = GameObject.FindWithTag("Ground");
-        if (ground != null)
-        {
-            groundTileMap = ground.GetComponent<Tilemap>();
-        }
     }
 
     public void Init(CropData data)
     {
-        Init(data,0);
+        Init(data,0,false);
     }
 
-    public void Init(CropData data, int growthStage)
+    public void Init(CropData data, int growthStage, bool isWithered)
     {
         if (data != null)
         {
@@ -40,10 +34,11 @@ public class CropTile : MonoBehaviour, IDropSource
             currentGrowthStage = growthStage;
             isHavest = currentGrowthStage >= cropData.maxStage - 1;
             UpdateSprite(currentGrowthStage);
+            if (isWithered) SetSprite();
         }
     }
 
-    public void Grow(bool isWatered)
+    public void Grow(bool isWatered, FertilizerType fertilizer)
     {
         if (cropData == null) return;
         if (currentGrowthStage >= cropData.maxStage - 1)
@@ -53,15 +48,60 @@ public class CropTile : MonoBehaviour, IDropSource
         }
         if (isWatered)
         {
-            currentGrowthStage++;
+            int step = 1;
+            float bonus = FertilizerManager.GetSpeedBonus(fertilizer);
+            float random = Random.value;
+            if (random <= bonus) step++;
+            currentGrowthStage += step;
+            if (currentGrowthStage > cropData.maxStage - 1) currentGrowthStage = Mathf.Min(currentGrowthStage, cropData.maxStage - 1);
             UpdateSprite(currentGrowthStage);
 
-            isWatered = false;
 
             if (currentGrowthStage >= cropData.maxStage - 1)
             {
                 isHavest = true;
             }
+        }
+    }
+
+    public bool Harvest()
+    {
+        if (!isHavest) return false;
+        if(cropData != null && cropData.isReharvest)
+        {
+            currentGrowthStage = cropData.regrowStage;
+            isHavest = false;
+            UpdateSprite(currentGrowthStage);
+            return true;
+        }
+        return false;
+    }
+
+    public void Check(bool isWatered, FarmCellState state)
+    {
+        if (isHavest) return;
+        if (!cropData.allowedSeason.Contains(TimeManager.Instance.currentSeason))
+        {
+            SetSprite();
+            isWithered = true;
+            return;
+        }
+        if (!isWatered)
+        {
+            if(state != FarmCellState.Empty && state != FarmCellState.Tilled)
+            {
+                unWateredDay++;
+                if (unWateredDay > cropData.maxUnwateredDays)
+                {
+                    SetSprite();
+                    isWithered = true;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            unWateredDay = 0;
         }
     }
 
@@ -72,6 +112,11 @@ public class CropTile : MonoBehaviour, IDropSource
         {
             spriteRenderer.sprite = cropData.stageSprites[step];
         }
+    }
+
+    public void SetSprite()
+    {
+        spriteRenderer.color = new Color(0.5f, 0.4f, 0.3f, 1f);
     }
 
     #region IDropSource Implementation

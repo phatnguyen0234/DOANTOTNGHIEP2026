@@ -47,4 +47,14 @@ public class SeasonTileSet : ScriptableObject
         }
         return lookup;
     }
+
+    public TileBase GetSeasonTile(TileBase tile, Season target)
+    {
+        Dictionary<TileBase, TileBase> lookup = BuildLookup(target);
+        if(lookup.TryGetValue(tile, out TileBase tileTarget))
+        {
+            return tileTarget;
+        }
+        return tile;
+    }
 }

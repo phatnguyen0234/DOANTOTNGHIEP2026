@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Duck Feather
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: duck_feather
+  itemName: "Lông Vịt (Duck Feather)"
+  description: "Chiếc lông vịt không thấm nước mượt mà."
+  icon: {fileID: -7022518735844702893, guid: a8476de85cd7ccd488a303a1d31955c7, type: 3}
+  itemType: 6
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 25
+  sellPrice: 12
+  canSell: 1

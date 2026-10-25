@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Bag Bomb
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: bag_bomb
+  itemName: "Túi Bom (Bag Bomb)"
+  description: "Quả bom nhỏ dùng phá đá và dọn sạch chướng ngại vật trong mỏ."
+  icon: {fileID: -4725872483281334863, guid: 9710d4542b2962b4aa97cb1109a8083e, type: 3}
+  itemType: 5
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 20
+  buyPrice: 120
+  sellPrice: 50
+  canSell: 1

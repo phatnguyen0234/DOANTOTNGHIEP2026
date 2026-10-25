@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Nutmeg
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: nutmeg
+  itemName: "Nutmeg"
+  description: "Món ăn / thức uống Nutmeg thơm ngon bổ dưỡng phục hồi năng lượng."
+  icon: {fileID: 3834139652088243601, guid: 22c03caafa11b0942ad2dcfc2784b449, type: 3}
+  itemType: 4
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 30
+  sellPrice: 15
+  canSell: 1

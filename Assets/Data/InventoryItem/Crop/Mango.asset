@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Mango
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: mango
+  itemName: "Xoài (Mango)"
+  description: "Quả xoài chín vàng óng thơm phức, ngọt đậm đà."
+  icon: {fileID: -3968840770022985357, guid: 831dc4f0108c72a40a94a4ee363032f6, type: 3}
+  itemType: 1
+  toolType: 0
+  cropId: Mango
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 240
+  sellPrice: 155
+  canSell: 1

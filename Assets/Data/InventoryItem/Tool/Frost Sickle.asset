@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Frost Sickle
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: frost_sickle
+  itemName: "Liềm Băng Tuyết (Frost Sickle)"
+  description: "Liềm Băng Tuyết bén ngót dùng để gặt lúa và cắt cỏ dại."
+  icon: {fileID: -1700892053915081011, guid: 7e85efab7d78b9747a09d08febf423b1, type: 3}
+  itemType: 5
+  toolType: 9
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 9000
+  sellPrice: 4000
+  canSell: 1
