@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Vine Rope
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: vine_rope
+  itemName: "Dây Thừng Dây Leo (Vine Rope)"
+  description: "Dây thừng dẻo dai bện từ các sợi dây leo rừng."
+  icon: {fileID: 4981753759901348400, guid: ab58152fa36c1184cb0cf545a75b9300, type: 3}
+  itemType: 6
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 20
+  sellPrice: 10
+  canSell: 1

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Leather
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: leather
+  itemName: "Da Thú (Leather)"
+  description: "Tấm da thú thuộc dẻo dai nguyên liệu may mặc và chế giáp."
+  icon: {fileID: -6306190053144719101, guid: e2a498211c4abf0489279677a5244342, type: 3}
+  itemType: 6
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 50
+  sellPrice: 25
+  canSell: 1

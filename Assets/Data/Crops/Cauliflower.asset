@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Cauliflower
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 009
+  cropName: Cauliflower
+  growthTime: 100
+  maxStage: 9
+  stageSprites:
+  - {fileID: -2529115437362917722, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: 6967328054326527893, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -848977968202134195, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -5546111833030725891, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -1750057942230490314, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -8882988438947728723, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -2577713280699693877, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: 873911952288553262, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  - {fileID: -7188661993703794494, guid: c0f9c942f88133e4fa4b6e1f3ea7ac8c, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: cdd5d46589aa2d180868486cafe54163, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}

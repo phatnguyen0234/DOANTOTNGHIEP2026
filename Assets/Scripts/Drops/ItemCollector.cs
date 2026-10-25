@@ -102,7 +102,7 @@ public class ItemCollector : MonoBehaviour
         }
 
         // Gọi AddItem: trả về số lượng còn dư không thể chứa hết trong kho
-        int remaining = inventory.AddItem(worldItem.Item, worldItem.Amount);
+        int remaining = inventory.AddItem(worldItem.Item, worldItem.Amount, worldItem.Quality);
 
         if (remaining <= 0)
         {

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Beetroot
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 014
+  cropName: Beetroot
+  growthTime: 80
+  maxStage: 7
+  stageSprites:
+  - {fileID: -2122261477782967425, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: 758563250068289762, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: 7804225656587267082, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: 2022447033300906978, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: -6847975798899432476, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: -8693008634253531721, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  - {fileID: 1703535211376263217, guid: fd0c28995f04f2843a4ead9357631344, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: c8653e3234e1a3a7a68f20c3fe21724b, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}

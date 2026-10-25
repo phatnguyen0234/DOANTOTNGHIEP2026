@@ -22,3 +22,10 @@ MonoBehaviour:
   - {fileID: 1942767228105140428, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
   - {fileID: 8523965287709476415, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
   - {fileID: 8849037320410730604, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: f99175758e53ae64339088be9b788a1e, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  isReharvest: 1
+  regrowStage: 2

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Brown Chicken Egg
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: brown_chicken_egg
+  itemName: "Trứng Gà Nâu (Brown Chicken Egg)"
+  description: "Trứng gà vỏ nâu tươi mới từ chuồng trại."
+  icon: {fileID: 3794804376279209433, guid: 422ae64ff83832f46a46271611ed5fdc, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 35
+  sellPrice: 22
+  canSell: 1

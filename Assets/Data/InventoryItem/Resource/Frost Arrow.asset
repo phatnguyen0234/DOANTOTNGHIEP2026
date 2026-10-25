@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Frost Arrow
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: frost_arrow
+  itemName: "Mũi Tên Băng Tuyết (Frost Arrow)"
+  description: "Mũi tên Băng Tuyết dùng làm đạn bắn cho cung."
+  icon: {fileID: -4346244404228752641, guid: d378a73ac6910f8428bb4d2f2c1277e4, type: 3}
+  itemType: 6
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 100
+  sellPrice: 45
+  canSell: 1

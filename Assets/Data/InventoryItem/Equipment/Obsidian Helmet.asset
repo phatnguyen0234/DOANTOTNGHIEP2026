@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Obsidian Helmet
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: obsidian_helmet
+  itemName: "Mũ Giáp Hắc Diệu Thạch (Obsidian Helmet)"
+  description: "Mũ bảo hộ Hắc Diệu Thạch gia tăng phòng thủ cho đầu."
+  icon: {fileID: 309628545801974608, guid: c90450c228e917b4f9074dca4fcccf4a, type: 3}
+  itemType: 9
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 32000
+  sellPrice: 15000
+  canSell: 1

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Cucumber Seed
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: cucumber_seed
+  itemName: "Hạt Dưa Leo (Cucumber Seed)"
+  description: "Túi hạt giống hạt dưa leo, có thể gieo trồng trên ô đất đã cuốc."
+  icon: {fileID: 8849037320410730604, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
+  itemType: 0
+  toolType: 6
+  cropId: Cucumber
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 12
+  sellPrice: 6
+  canSell: 1

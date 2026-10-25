@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Yogurt
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: yogurt
+  itemName: "Yogurt"
+  description: "Món ăn / thức uống Yogurt thơm ngon bổ dưỡng phục hồi năng lượng."
+  icon: {fileID: 2990146154647488063, guid: 2ab4ea50271ee5245b22d5f03a521d12, type: 3}
+  itemType: 4
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 180
+  sellPrice: 110
+  canSell: 1

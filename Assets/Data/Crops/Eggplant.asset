@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Eggplant
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 016
+  cropName: Eggplant
+  growthTime: 90
+  maxStage: 7
+  stageSprites:
+  - {fileID: -6905139553319271647, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: 660843597062781518, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: 8761193796750372442, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: 6760512655499572333, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: -1414401220342530014, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: 5265256098166310276, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  - {fileID: 8696727781784020766, guid: bbfbe85d16f3de9418554084835202be, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: 3f41b9dd7e22c18b668d4fd958ace199, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}

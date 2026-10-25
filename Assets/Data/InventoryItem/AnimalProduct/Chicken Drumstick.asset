@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Chicken Drumstick
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: chicken_drumstick
+  itemName: "Đùi Gà (Chicken Drumstick)"
+  description: "Đùi gà tươi ngon chắc thịt, chiên rán tuyệt vời."
+  icon: {fileID: -4153061670540807157, guid: 2cb218a018cb49141bd29668f6190553, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 60
+  sellPrice: 35
+  canSell: 1

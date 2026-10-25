@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Large Goat Milk
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: large_goat_milk
+  itemName: "Sữa Dê Lớn (Large Goat Milk)"
+  description: "Bình sữa dê tươi hảo hạng dồi dào dinh dưỡng."
+  icon: {fileID: 1652565662325315748, guid: a1ae0de5d8869654494e6fc03cafb968, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 110
+  sellPrice: 70
+  canSell: 1

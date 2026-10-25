@@ -36,34 +36,37 @@ public class InteractController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Hit interactable object: " + hit.collider.gameObject.name);
-
-            // 1. Check for Trade Receivers
-            ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
-            if (receiver != null)
+            // 0. Check for Generic Interactables (Chest, Doors, etc.)
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null && interactable.CanInteract(gameObject))
             {
-                Debug.Log("Found ITradeReceiver on: " + hit.collider.gameObject.name);
-
-                InventorySlot activeSlot = hotbarController.SelectedSlot;
-                if (activeSlot != null && !activeSlot.IsEmpty())
-                {
-                    Debug.Log("Attempting to transaction with item: " + activeSlot.ItemData.ItemName);
-                    receiver.ProcessTransaction(activeSlot.ItemData, 1, inventory, playerMoney);
-                }
-                else
-                {
-                    Debug.LogWarning("Cannot transact: Active hotbar slot is empty.");
-                }
+                interactable.Interact(gameObject);
                 return;
             }
 
+            // 1. Check for Trade Receivers (Shipping Bin, Merchant NPC)
+            ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
+
+            if (receiver != null)
+            {
+                InventorySlot activeSlot = hotbarController.SelectedSlot;
+
+                if (activeSlot != null && !activeSlot.IsEmpty())
+                {
+                    receiver.ProcessTransaction(activeSlot.ItemData, 1, inventory, playerMoney);
+                }
+                return; // Stop interaction flow here
+            }
+
+
+            //Logic tuong tac crafting table
             // 2. Check for Crafting Table
             CraftingTable craftingTable = hit.collider.GetComponent<CraftingTable>();
+
             if (craftingTable != null)
             {
-                Debug.Log("Opening Crafting Table.");
                 craftingTable.OpenCraftingTable();
-                return;
+                return; // Stop interaction flow here
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -31,10 +32,17 @@ public class SeasonMapManager : MonoBehaviour
         TimeManager.OnSeasonChanged -= ApplySeason;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         TimeManager timeManager = FindAnyObjectByType<TimeManager>();
         ApplySeason(timeManager != null ? timeManager.currentSeason : Season.Spring);
+
+        // SaveManager có thể load mùa từ file save sau Start này (thứ tự Start không cố định) -> kiểm tra lại sau 1 frame.
+        yield return null;
+        if (timeManager != null && timeManager.currentSeason != CurrentMapSeason)
+        {
+            ApplySeason(timeManager.currentSeason);
+        }
     }
 
     private void Update()
