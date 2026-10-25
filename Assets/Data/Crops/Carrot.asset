@@ -26,6 +26,7 @@ MonoBehaviour:
   dropTable: {fileID: 11400000, guid: 5c8a1b3d4e7f9a2b6c0d8e4f1a5b3c7d, type: 2}
   harvestItem: {fileID: 11400000, guid: 9e1c2d3a4b5f6a7b8c9d0e1f2a3b4c5d, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 00000000010000000200000003000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 0
+  regrowStage: 0
