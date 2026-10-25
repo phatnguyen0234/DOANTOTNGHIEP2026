@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Platinum Arrow
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: platinum_arrow
+  itemName: "Mũi Tên Bạch Kim (Platinum Arrow)"
+  description: "Mũi tên Bạch Kim dùng làm đạn bắn cho cung."
+  icon: {fileID: -4346244404228752641, guid: dd4ddf432968eef4d819cc2ab44be62a, type: 3}
+  itemType: 6
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 45
+  sellPrice: 20
+  canSell: 1

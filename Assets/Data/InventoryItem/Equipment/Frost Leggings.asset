@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Frost Leggings
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: frost_leggings
+  itemName: "Quần Giáp Băng Tuyết (Frost Leggings)"
+  description: "Quần giáp Băng Tuyết linh hoạt tăng sức bền khi di chuyển."
+  icon: {fileID: 4300218101569691350, guid: 9a6cd8cdd66c900499feea90001a9f61, type: 3}
+  itemType: 9
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 1
+  buyPrice: 9000
+  sellPrice: 4000
+  canSell: 1

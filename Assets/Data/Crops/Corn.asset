@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Corn
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 015
+  cropName: Corn
+  growthTime: 110
+  maxStage: 9
+  stageSprites:
+  - {fileID: -7944502702452990849, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 554072705901678547, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 5064783790253195744, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: -3087045125437836632, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 5226851643350095291, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 737859076552439139, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 6655563414141888852, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 4524962444904441565, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  - {fileID: 4995187758772666000, guid: 6810d0c6e22a6f64fbd371957d350156, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: 6f50ac9450ebe298eb1f46f517d40ff8, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}

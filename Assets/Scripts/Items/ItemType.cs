@@ -10,7 +10,9 @@ public enum ItemType
     Food,
     Tool,
     Material,
-    Quest
+    Quest,
+    Weapon,
+    Equipment
 }
 
 // Định nghĩa các loại công cụ và hành vi tương tác của vật phẩm trong game Farming.
@@ -25,6 +27,9 @@ public enum ToolType
     SeedBag,     // Hạt giống / Gieo trồng
     Harvest,      // Thu hoạch
     fishingRod,   // Cần câu cá
-    sickle        // liềm
+    sickle,       // liềm
+    Sword,        // Kiếm
+    Bow,          // Cung
+    Staff         // Gậy phép
 }
 

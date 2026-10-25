@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Parsnip
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 010
+  cropName: Parsnip
+  growthTime: 70
+  maxStage: 6
+  stageSprites:
+  - {fileID: -7453499716436744527, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  - {fileID: -2490190892207631820, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  - {fileID: 8219185318215575226, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  - {fileID: -9116501774543871290, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  - {fileID: 5463517639953521936, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  - {fileID: -3335810105526556924, guid: 8e11a5b19f930d4438ee3e7f97c1a709, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: 413c9a49b7c1db0611ac6e6cfe26d22a, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0000000001000000
+  maxUnwateredDays: 2
+  witheredSprite: {fileID: 0}
