@@ -82265,6 +82265,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5234969832712488bd7fc617c57bb1, type: 3}
+--- !u!1 &544619936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544619938}
+  - component: {fileID: 544619937}
+  m_Layer: 0
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &544619937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544619936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ee57393f2b34a47b4b511f5ee10cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaUI
+  energyImage: {fileID: 0}
+  text: {fileID: 0}
+  slide: 5
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.9433962, g: 0.07564971, b: 0.07564971, a: 1}
+    key1: {r: 0.9056604, g: 0.79924536, b: 0.06407974, a: 1}
+    key2: {r: 0.031772893, g: 0.9622642, b: 0.03641525, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+--- !u!4 &544619938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544619936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.47182, y: -13.99293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &544686536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5313888069810804308, guid: cbe60754d1648794c93cfa8a390e8578, type: 3}
@@ -507346,6 +507423,7 @@ GameObject:
   - component: {fileID: 1202959762}
   - component: {fileID: 1202959763}
   - component: {fileID: 1202959764}
+  - component: {fileID: 1202959765}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -507365,7 +507443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545c2fc3188bc9e40a2b19ee014610cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 8
+  baseSpeed: 0
   rb: {fileID: 1202959761}
   anim: {fileID: 1202959760}
   isUsingHoe: 0
@@ -507376,6 +507454,8 @@ MonoBehaviour:
   controller: {fileID: 746601130}
   particleLeafPrefab: {fileID: 3979579837839126627, guid: bbd56517e0c645044bccc8df12d5270b, type: 3}
   particleRockPrefab: {fileID: 8992599010326221315, guid: 2b799b2fdf65e9a44b761dedf5898ca4, type: 3}
+  moveSpeed: 8
+  multipleIndex: 0
 --- !u!212 &1202959758
 SpriteRenderer:
   serializedVersion: 3
@@ -507579,6 +507659,19 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1202959765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202959755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72138fcb223d944a8847f5337fc3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
+  max: 270
 --- !u!1001 &1202963791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757128,7 +757221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoilManager
   groundTileMap: {fileID: 2144305081}
-  fertilizerTileMap: {fileID: 0}
+  fertilizerTileMap: {fileID: 1718047271}
   soilTile: {fileID: 11400000, guid: 8f05ba89b99eb004693da473b753acee, type: 2}
   soilWetTile: {fileID: 11400000, guid: c76a2f036d27edf45aaf43e7da5f0eb1, type: 2}
   speedGroTile: {fileID: 11400000, guid: 5ade1ed00a064e049b0aeac0035bfa11, type: 2}
@@ -1027561,3 +1027654,4 @@ SceneRoots:
   - {fileID: 1977381139}
   - {fileID: 1992429459}
   - {fileID: 8654724513891047225}
+  - {fileID: 544619938}

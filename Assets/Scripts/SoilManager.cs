@@ -166,7 +166,6 @@ public class SoilManager : MonoBehaviour
         }
         if(cell.state == FarmCellState.Tilled && cell.fertilizer == FertilizerType.None)
         {
-            Debug.Log("Doi tile phan bon");
             cell.fertilizer = fertilizerType;
             TileBase tile = GetFertilizeTile(fertilizerType);
             fertilizerTileMap.SetTile(cellPos, tile);
@@ -228,6 +227,7 @@ public class SoilManager : MonoBehaviour
             }
             if(farmCells.TryGetValue(cell.position, out CropTile croptile) && croptile != null)
             {
+                Debug.Log("Trang thai " + cell.state);
                 croptile.Check(cell.wateredToday, cell.state);
                 if (croptile.isWithered)
                 {
