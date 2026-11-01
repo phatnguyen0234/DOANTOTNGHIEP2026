@@ -39,6 +39,7 @@ public class TimeManager : MonoBehaviour
     
     public event Action onNewDay; 
     public static TimeManager Instance { get; private set; }
+    private bool hasPassedOutToday = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -57,6 +58,11 @@ public class TimeManager : MonoBehaviour
         }
 
         currentHour += Time.deltaTime * timeSpeed;
+        if (currentHour >= 2f && currentHour < wakeUpHour && !hasPassedOutToday)
+        {
+            hasPassedOutToday = true;
+            PlayerStamina.Instance.TriggerPassoutState();
+        }
         if (currentHour >= 24f)
         {
             currentHour = 0f;
@@ -106,6 +112,7 @@ public class TimeManager : MonoBehaviour
             onNewDay?.Invoke();
         }
         currentHour = wakeUpHour;
+        hasPassedOutToday = false;
 
         if (SaveManager.Instance != null)
         {

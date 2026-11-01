@@ -22,6 +22,13 @@ public class StaminaUI : MonoBehaviour
         PlayerStamina.onStaminaChanged -= HandleStaminaChange;
     }
 
+    private void Start()
+    {
+        float current = PlayerStamina.Instance.CurrentStamina;
+        float max = PlayerStamina.Instance.Max;
+        HandleStaminaChange(current, max);
+        energyImage.fillAmount = Mathf.Clamp01(current / max);
+    }
     private void Update()
     {
         energyImage.fillAmount = Mathf.MoveTowards(energyImage.fillAmount, targetFillAmount, slide * Time.deltaTime);

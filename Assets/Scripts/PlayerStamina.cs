@@ -17,31 +17,37 @@ public class PlayerStamina : MonoBehaviour
     public static event Action<float, float> onStaminaChanged;
     public static event Action<state> onStateStaminaChanged;
 
+    public float Max => max;
+    public float CurrentStamina => currentStamina;
+    public state StatePlayer => statePlayer;
+
     private void Awake()
     {
         Instance = this;
         currentStamina = max;
+        statePlayer = state.normal;
+    }
+
+    public void LoadStamina(float current, float max)
+    {
+        this.max = max;
+        currentStamina = current;
         onStaminaChanged?.Invoke(currentStamina, max);
-    }
-
-    private void Start()
-    {
-        TimeManager.Instance.onNewDay += NewDay;
-    }
-
-    private void OnDisable()
-    {
-        TimeManager.Instance.onNewDay -= NewDay;
     }
 
     public void ConsumeStamina(float amount)
     {
+        //  Debug.Log(amount);
+        if (statePlayer == state.passout || (PlayerMovement.instance != null && PlayerMovement.instance.isSleeping))
+        {
+            return;
+        }
         currentStamina -= amount;
         onStaminaChanged?.Invoke(currentStamina, max);
         if(currentStamina <= -15f)
         {
             statePlayer = state.passout;
-            TimeManager.GoToSleep();
+            UIManager.Instance.TriggerPassOutSleep();
         }
         else if(currentStamina <= 0f)
         {
@@ -50,12 +56,22 @@ public class PlayerStamina : MonoBehaviour
         }
     }
 
-    public void NewDay()
+    public void ResetStamina()
     {
         if (statePlayer == state.passout) currentStamina = max * 0.5f;
         else currentStamina = max;
+        Debug.Log(statePlayer);
+        Debug.Log(currentStamina);
+        onStaminaChanged?.Invoke(currentStamina, max);
         statePlayer = state.normal;
         onStateStaminaChanged?.Invoke(statePlayer);
-        onStaminaChanged?.Invoke(currentStamina, max);
+      //  onStaminaChanged?.Invoke(currentStamina, max);
+    }
+
+    public void TriggerPassoutState()
+    {
+        statePlayer = state.passout;
+        onStateStaminaChanged?.Invoke(statePlayer);
+        UIManager.Instance.TriggerPassOutSleep();
     }
 }

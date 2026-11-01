@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
-    Vector2 lastDirection = Vector2.down;
+    public Vector2 lastDirection = Vector2.down;
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
     public bool isUsingWater = false;
@@ -119,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHoeAnimationComplete()
     {
+        if (!isUsingHoe) return;
         isUsingHoe = false;
         controller.OnHoeAnimationComplete();
         PlayerStamina.Instance.ConsumeStamina(2f);
@@ -225,7 +226,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(moveDirection != Vector2.zero)
         {
-            lastDirection = moveDirection;
+            if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
+            {
+                lastDirection = new Vector2(Mathf.Sign(moveDirection.x), 0f);
+            }
+            else lastDirection = new Vector2(0f, Mathf.Sign(moveDirection.y));
         }
         
         anim.SetFloat("MoveX", lastDirection.x);
