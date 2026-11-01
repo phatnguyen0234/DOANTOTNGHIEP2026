@@ -524,7 +524,6 @@ public class FarmInputController : MonoBehaviour
 
     private void TryApplyFertilize()
     {
-        Debug.Log("phan bon");
         Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);

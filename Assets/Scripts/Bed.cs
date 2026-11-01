@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class Bed : MonoBehaviour
     private GameObject dialog;
     private CanvasGroup screenFade;
     private TMP_Text screenText;
+    
 
     // Lúc gắn script: collider (tự thêm, vừa khít hình giường) chuyển thành vùng trigger.
     private void Reset()
@@ -81,6 +83,7 @@ public class Bed : MonoBehaviour
         yield return Fade(0f, 1f);
         yield return new WaitForSecondsRealtime(blackScreenDuration);
 
+    //    PlayerStamina.Instance.ResetStamina();
         TimeManager.GoToSleep();
         if (player != null && wakeUpPoint != null) player.transform.position = wakeUpPoint.position;
 

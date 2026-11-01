@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float baseSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
-    Vector2 lastDirection = Vector2.down;
+    public Vector2 lastDirection = Vector2.down;
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
     public bool isUsingWater = false;
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     // Hướng tự đi do MapNavigator (tìm đường A*) đặt mỗi bước vật lý; phím bấm luôn được ưu tiên hơn.
     private Vector2 autoMoveDirection;
     public bool HasManualInput { get; private set; }
+    private float moveSpeed;
+    private float multipleIndex;
     public float MoveSpeed => moveSpeed;
 
     public void SetAutoMoveDirection(Vector2 direction)
@@ -45,16 +47,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        moveSpeed = baseSpeed;
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        PlayerStamina.onStateStaminaChanged += HandleStateChanged;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        PlayerStamina.onStateStaminaChanged -= HandleStateChanged;
+    }
+
+    private void HandleStateChanged(PlayerStamina.state state)
+    {
+        if (state == PlayerStamina.state.exhausted)
+        {
+            multipleIndex = 0.5f;
+        }
+        else multipleIndex = 1f;
+        moveSpeed = baseSpeed * multipleIndex;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -104,8 +119,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHoeAnimationComplete()
     {
+        if (!isUsingHoe) return;
         isUsingHoe = false;
         controller.OnHoeAnimationComplete();
+        PlayerStamina.Instance.ConsumeStamina(2f);
     }
 
     public void UsingWater(Vector2 requestFaceDirection)
@@ -128,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isUsingWater = false;
         controller.OnWaterAnimationComplete();
+        PlayerStamina.Instance.ConsumeStamina(2f);
     }
 
     public void UsingAxe(Vector2 requestFaceDirect, Vector3 treePosition)
@@ -149,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnAxeAnimationComplete()
     {
         isUsingAxe = false;
+        PlayerStamina.Instance.ConsumeStamina(4f);
     }
 
     public void UsingPickaxe(Vector2 requestDirection, Vector3 rockPosition)
@@ -167,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnCompletePickaxe()
     {
         isUsingPickaxe = false;
+        PlayerStamina.Instance.ConsumeStamina(4f);
     }
     public void LeafEffect()
     {
@@ -206,7 +226,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(moveDirection != Vector2.zero)
         {
-            lastDirection = moveDirection;
+            if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
+            {
+                lastDirection = new Vector2(Mathf.Sign(moveDirection.x), 0f);
+            }
+            else lastDirection = new Vector2(0f, Mathf.Sign(moveDirection.y));
         }
         
         anim.SetFloat("MoveX", lastDirection.x);
