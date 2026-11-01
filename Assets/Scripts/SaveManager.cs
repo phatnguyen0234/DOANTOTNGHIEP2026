@@ -26,8 +26,8 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        saveData.playerData = new PlayerData(player.transform.position);
+      //  GameObject player = GameObject.FindWithTag("Player");
+        saveData.playerData = new PlayerData(PlayerMovement.instance.transform.position, PlayerMovement.instance.lastDirection, PlayerStamina.Instance.CurrentStamina, PlayerStamina.Instance.Max);
 
         if(Inventory.Instance != null)
         {
@@ -69,6 +69,8 @@ public class SaveManager : MonoBehaviour
 
         GameObject player = GameObject.FindWithTag("Player");
         player.transform.position = saveData.playerData.position;
+        PlayerMovement.instance.lastDirection = saveData.playerData.lastDirection;
+        PlayerStamina.Instance.LoadStamina(saveData.playerData.currentStamina, saveData.playerData.maxStamina);
 
         if (Inventory.Instance != null)
         {
