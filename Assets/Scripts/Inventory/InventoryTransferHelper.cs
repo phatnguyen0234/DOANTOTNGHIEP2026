@@ -67,6 +67,68 @@ public static class InventoryTransferHelper
         return true;
     }
 
+    public static bool TransferHalf(Inventory fromInv, int fromIndex, Inventory toInv, int toIndex)
+    {
+        if (fromInv == null || toInv == null) return false;
+
+        InventorySlot fromSlot = fromInv.GetSlot(fromIndex);
+        InventorySlot toSlot = toInv.GetSlot(toIndex);
+
+        if (fromSlot == null || fromSlot.IsEmpty()) return false;
+
+        int amountToMove = Mathf.Max(1, fromSlot.Amount / 2);
+        ItemData itemA = fromSlot.ItemData;
+
+        if (toSlot == null || toSlot.IsEmpty())
+        {
+            toInv.AddItemToSlot(toIndex, itemA, amountToMove);
+            fromInv.RemoveItemFromSlot(fromIndex, amountToMove);
+            return true;
+        }
+
+        if (toSlot.CanStack(itemA))
+        {
+            int remaining = toInv.AddItemToSlot(toIndex, itemA, amountToMove);
+            int moved = amountToMove - remaining;
+            if (moved > 0)
+            {
+                fromInv.RemoveItemFromSlot(fromIndex, moved);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool TransferOne(Inventory fromInv, int fromIndex, Inventory toInv, int toIndex)
+    {
+        if (fromInv == null || toInv == null) return false;
+
+        InventorySlot fromSlot = fromInv.GetSlot(fromIndex);
+        InventorySlot toSlot = toInv.GetSlot(toIndex);
+
+        if (fromSlot == null || fromSlot.IsEmpty()) return false;
+
+        ItemData itemA = fromSlot.ItemData;
+
+        if (toSlot == null || toSlot.IsEmpty())
+        {
+            toInv.AddItemToSlot(toIndex, itemA, 1);
+            fromInv.RemoveItemFromSlot(fromIndex, 1);
+            return true;
+        }
+
+        if (toSlot.CanStack(itemA))
+        {
+            int remaining = toInv.AddItemToSlot(toIndex, itemA, 1);
+            if (remaining == 0)
+            {
+                fromInv.RemoveItemFromSlot(fromIndex, 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Chuyển nhanh 1 vật phẩm từ một slot nguồn sang kho đích (dùng cho Shift + Click).
     // Tự động tìm slot cùng loại để stack trước, sau đó tìm slot trống mới.
     // Trả về số lượng vật phẩm thực tế đã chuyển thành công.

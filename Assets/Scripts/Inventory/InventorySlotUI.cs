@@ -347,17 +347,105 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
     #region Drag & Drop Handlers
 
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    Inventory inv = AssignedInventory;
+    //    bool hasItem = inv != null && inv.IsValidIndex(slotIndex) && !inv.GetSlot(slotIndex).IsEmpty();
+
+    //    if (enableDebugLogs)
+    //    {
+    //        Debug.Log($"<color=yellow>[InventorySlotUI] [OnBeginDrag] Bắt đầu kéo Slot Index: {slotIndex} | HasItem: {hasItem} | Inventory: {(inv != null ? inv.name : "NULL")}</color>", this);
+    //    }
+
+    //    // Không cho phép kéo nếu ô đang rỗng hoặc không có Inventory
+    //    if (!hasItem)
+    //    {
+    //        eventData.pointerDrag = null;
+    //        return;
+    //    }
+
+    //    isDragging = true;
+
+    //    EnsureActive();
+
+    //    if (canvasGroup != null)
+    //    {
+    //        canvasGroup.alpha = 0.5f;
+    //        canvasGroup.blocksRaycasts = false;
+    //    }
+
+    //    InventorySlot slot = inv.GetSlot(slotIndex);
+    //    if (slot != null && slot.ItemData != null)
+    //    {
+    //        if (InventoryUI.Instance != null)
+    //        {
+    //            InventoryUI.Instance.StartDragging(slot.ItemData.Icon, eventData);
+    //        }
+    //        else if (parentUI != null)
+    //        {
+    //            parentUI.StartDragging(slot.ItemData.Icon, eventData);
+    //        }
+    //    }
+    //}
+
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    if (!isDragging) return;
+
+    //    if (InventoryUI.Instance != null)
+    //    {
+    //        InventoryUI.Instance.OnDragging(eventData);
+    //    }
+    //    else if (parentUI != null)
+    //    {
+    //        parentUI.OnDragging(eventData);
+    //    }
+    //}
+
+    //public void OnEndDrag(PointerEventData eventData)
+    //{
+    //    if (enableDebugLogs)
+    //    {
+    //        string dropTarget = eventData.pointerCurrentRaycast.gameObject != null ? eventData.pointerCurrentRaycast.gameObject.name : "None (ra ngoài UI)";
+    //        Debug.Log($"<color=yellow>[InventorySlotUI] [OnEndDrag] Kết thúc kéo Slot Index: {slotIndex} | Thả tại: {dropTarget}</color>", this);
+    //    }
+
+    //    isDragging = false;
+
+    //    EnsureActive();
+
+    //    if (canvasGroup != null)
+    //    {
+    //        canvasGroup.alpha = 1f;
+    //        canvasGroup.blocksRaycasts = true;
+    //    }
+
+    //    if (InventoryUI.Instance != null)
+    //    {
+    //        InventoryUI.Instance.EndDragging();
+    //    }
+    //    else if (parentUI != null)
+    //    {
+    //        parentUI.EndDragging();
+    //    }
+
+    //    if (parentUI != null)
+    //    {
+    //        parentUI.RefreshAllSlots();
+    //    }
+    //    if (ChestUI.Instance != null && ChestUI.Instance.IsOpen)
+    //    {
+    //        ChestUI.Instance.RefreshSlots();
+    //    }
+    //}
+
+    // Xử lý sự kiện thả vật phẩm (OnDrop) hỗ trợ cả nội bộ kho lẫn chuyển giao liên kho (Túi đồ <-> Rương)
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Inventory inv = AssignedInventory;
         bool hasItem = inv != null && inv.IsValidIndex(slotIndex) && !inv.GetSlot(slotIndex).IsEmpty();
 
-        if (enableDebugLogs)
-        {
-            Debug.Log($"<color=yellow>[InventorySlotUI] [OnBeginDrag] Bắt đầu kéo Slot Index: {slotIndex} | HasItem: {hasItem} | Inventory: {(inv != null ? inv.name : "NULL")}</color>", this);
-        }
-
-        // Không cho phép kéo nếu ô đang rỗng hoặc không có Inventory
         if (!hasItem)
         {
             eventData.pointerDrag = null;
@@ -365,7 +453,6 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         }
 
         isDragging = true;
-
         EnsureActive();
 
         if (canvasGroup != null)
@@ -375,16 +462,10 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         }
 
         InventorySlot slot = inv.GetSlot(slotIndex);
-        if (slot != null && slot.ItemData != null)
+        if (slot != null && slot.ItemData != null && parentUI != null)
         {
-            if (InventoryUI.Instance != null)
-            {
-                InventoryUI.Instance.StartDragging(slot.ItemData.Icon, eventData);
-            }
-            else if (parentUI != null)
-            {
-                parentUI.StartDragging(slot.ItemData.Icon, eventData);
-            }
+            // Safely start dragging via local parent UI only
+            parentUI.StartDragging(slot.ItemData.Icon, eventData);
         }
     }
 
@@ -392,11 +473,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
     {
         if (!isDragging) return;
 
-        if (InventoryUI.Instance != null)
-        {
-            InventoryUI.Instance.OnDragging(eventData);
-        }
-        else if (parentUI != null)
+        if (parentUI != null)
         {
             parentUI.OnDragging(eventData);
         }
@@ -404,14 +481,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (enableDebugLogs)
-        {
-            string dropTarget = eventData.pointerCurrentRaycast.gameObject != null ? eventData.pointerCurrentRaycast.gameObject.name : "None (ra ngoài UI)";
-            Debug.Log($"<color=yellow>[InventorySlotUI] [OnEndDrag] Kết thúc kéo Slot Index: {slotIndex} | Thả tại: {dropTarget}</color>", this);
-        }
-
         isDragging = false;
-
         EnsureActive();
 
         if (canvasGroup != null)
@@ -420,26 +490,36 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             canvasGroup.blocksRaycasts = true;
         }
 
-        if (InventoryUI.Instance != null)
-        {
-            InventoryUI.Instance.EndDragging();
-        }
-        else if (parentUI != null)
-        {
-            parentUI.EndDragging();
-        }
-
         if (parentUI != null)
         {
+            parentUI.EndDragging();
             parentUI.RefreshAllSlots();
-        }
-        if (ChestUI.Instance != null && ChestUI.Instance.IsOpen)
-        {
-            ChestUI.Instance.RefreshSlots();
         }
     }
 
-    // Xử lý sự kiện thả vật phẩm (OnDrop) hỗ trợ cả nội bộ kho lẫn chuyển giao liên kho (Túi đồ <-> Rương)
+    //public void OnDrop(PointerEventData eventData)
+    //{
+    //    if (eventData.pointerDrag == null) return;
+
+    //    InventorySlotUI fromSlotUI = eventData.pointerDrag.GetComponentInParent<InventorySlotUI>();
+
+    //    if (fromSlotUI != null && fromSlotUI != this)
+    //    {
+    //        Inventory fromInv = fromSlotUI.AssignedInventory;
+    //        Inventory toInv = this.AssignedInventory;
+
+    //        if (fromInv != null && toInv != null)
+    //        {
+    //            if (enableDebugLogs)
+    //            {
+    //                Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ {fromInv.name} [Slot {fromSlotUI.SlotIndex}] -> {toInv.name} [Slot {this.SlotIndex}]</color>", this);
+    //            }
+
+    //            InventoryTransferHelper.TransferBetweenSlots(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
+    //        }
+    //    }
+    //}
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
@@ -453,12 +533,27 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
 
             if (fromInv != null && toInv != null)
             {
-                if (enableDebugLogs)
+                bool isRightClick = eventData.button == PointerEventData.InputButton.Right;
+                bool isShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+                if (isRightClick)
                 {
-                    Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả từ {fromInv.name} [Slot {fromSlotUI.SlotIndex}] -> {toInv.name} [Slot {this.SlotIndex}]</color>", this);
+                    InventoryTransferHelper.TransferHalf(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
+                }
+                else if (isShiftHeld)
+                {
+                    InventoryTransferHelper.TransferOne(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
+                }
+                else
+                {
+                    InventoryTransferHelper.TransferBetweenSlots(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
                 }
 
-                InventoryTransferHelper.TransferBetweenSlots(fromInv, fromSlotUI.SlotIndex, toInv, this.SlotIndex);
+                if (enableDebugLogs)
+                {
+                    string action = isRightClick ? "HALF" : (isShiftHeld ? "ONE" : "ALL");
+                    Debug.Log($"<color=green>[InventorySlotUI] [OnDrop] Thả {action} từ {fromInv.name} [Slot {fromSlotUI.SlotIndex}] -> {toInv.name} [Slot {this.SlotIndex}]</color>", this);
+                }
             }
         }
     }
