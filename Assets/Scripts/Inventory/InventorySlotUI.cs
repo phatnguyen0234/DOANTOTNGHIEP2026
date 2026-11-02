@@ -464,8 +464,20 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
         InventorySlot slot = inv.GetSlot(slotIndex);
         if (slot != null && slot.ItemData != null && parentUI != null)
         {
-            // Safely start dragging via local parent UI only
-            parentUI.StartDragging(slot.ItemData.Icon, eventData);
+            int dragAmount = slot.Amount;
+            bool isRightClick = eventData.button == PointerEventData.InputButton.Right;
+            bool isShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+            if (isRightClick)
+            {
+                dragAmount = Mathf.Max(1, slot.Amount / 2);
+            }
+            else if (isShiftHeld)
+            {
+                dragAmount = 1;
+            }
+
+            parentUI.StartDragging(slot.ItemData.Icon, dragAmount, eventData);
         }
     }
 

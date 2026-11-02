@@ -52,6 +52,7 @@ public class InventoryUI : MonoBehaviour
 
     // Thành phần trực quan hiển thị icon khi đang kéo (Drag Ghost)
     private Image dragGhostImage;
+    private TextMeshProUGUI dragGhostAmountText;
     private RectTransform dragGhostRect;
     private CanvasGroup dragGhostCanvasGroup;
 
@@ -355,7 +356,42 @@ public class InventoryUI : MonoBehaviour
     }
 
     // Bắt đầu thao tác kéo: Khởi tạo và hiển thị Drag Ghost icon theo con trỏ chuột từ Sprite icon trực tiếp.
-    public void StartDragging(Sprite icon, PointerEventData eventData)
+    //public void StartDragging(Sprite icon, PointerEventData eventData)
+    //{
+    //    if (icon == null) return;
+    //    EnsureDragGhost();
+
+    //    if (dragGhostImage != null)
+    //    {
+    //        dragGhostImage.sprite = icon;
+    //        dragGhostImage.raycastTarget = false;
+    //        if (dragGhostCanvasGroup != null)
+    //        {
+    //            dragGhostCanvasGroup.blocksRaycasts = false;
+    //            dragGhostCanvasGroup.interactable = false;
+    //        }
+
+    //        dragGhostImage.gameObject.SetActive(true);
+    //        dragGhostRect.SetAsLastSibling();
+
+    //        UpdateDragPosition(eventData);
+    //    }
+    //}
+
+    //// Bắt đầu thao tác kéo theo chỉ số slot của Inventory chính (tương thích ngược).
+    //public void StartDragging(int slotIndex, PointerEventData eventData)
+    //{
+    //    if (!HasItemInSlot(slotIndex)) return;
+
+    //    InventorySlot slot = inventory.GetSlot(slotIndex);
+    //    if (slot != null && slot.ItemData != null)
+    //    {
+    //        StartDragging(slot.ItemData.Icon, eventData);
+    //    }
+    //}
+
+    //2 HAM START DRAGGING MOI CO THEM SO LUONG HIEN THI TREN DRAG GHOST
+    public void StartDragging(Sprite icon, int amount, PointerEventData eventData)
     {
         if (icon == null) return;
         EnsureDragGhost();
@@ -364,10 +400,16 @@ public class InventoryUI : MonoBehaviour
         {
             dragGhostImage.sprite = icon;
             dragGhostImage.raycastTarget = false;
+
             if (dragGhostCanvasGroup != null)
             {
                 dragGhostCanvasGroup.blocksRaycasts = false;
                 dragGhostCanvasGroup.interactable = false;
+            }
+
+            if (dragGhostAmountText != null)
+            {
+                dragGhostAmountText.text = amount > 1 ? amount.ToString() : "";
             }
 
             dragGhostImage.gameObject.SetActive(true);
@@ -377,7 +419,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // Bắt đầu thao tác kéo theo chỉ số slot của Inventory chính (tương thích ngược).
     public void StartDragging(int slotIndex, PointerEventData eventData)
     {
         if (!HasItemInSlot(slotIndex)) return;
@@ -385,7 +426,7 @@ public class InventoryUI : MonoBehaviour
         InventorySlot slot = inventory.GetSlot(slotIndex);
         if (slot != null && slot.ItemData != null)
         {
-            StartDragging(slot.ItemData.Icon, eventData);
+            StartDragging(slot.ItemData.Icon, slot.Amount, eventData);
         }
     }
 
@@ -416,11 +457,37 @@ public class InventoryUI : MonoBehaviour
     }
 
     // Đảm bảo đối tượng Drag Ghost đã được tạo sẵn trong Root Canvas.
+    //private void EnsureDragGhost()
+    //{
+    //    if (dragGhostImage != null) return;
+
+    //    Transform parentTransform = rootCanvas != null ? rootCanvas.transform : transform.root;
+    //    GameObject ghostObj = new GameObject("Inventory_DragGhost", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(CanvasGroup));
+    //    ghostObj.transform.SetParent(parentTransform, false);
+
+    //    dragGhostImage = ghostObj.GetComponent<Image>();
+    //    dragGhostImage.raycastTarget = false;
+    //    dragGhostImage.color = Color.white;
+
+    //    dragGhostCanvasGroup = ghostObj.GetComponent<CanvasGroup>();
+    //    dragGhostCanvasGroup.blocksRaycasts = false;
+    //    dragGhostCanvasGroup.interactable = false;
+
+    //    dragGhostRect = ghostObj.GetComponent<RectTransform>();
+    //    dragGhostRect.pivot = new Vector2(0.5f, 0.5f);
+    //    dragGhostRect.sizeDelta = new Vector2(50f, 50f);
+
+    //    ghostObj.SetActive(false);
+    //}
+
+    //ENSURE DRAG GHOST MOI CO THEM SO LUONG HIEN THI TREN DRAG GHOST
+
     private void EnsureDragGhost()
     {
         if (dragGhostImage != null) return;
 
         Transform parentTransform = rootCanvas != null ? rootCanvas.transform : transform.root;
+
         GameObject ghostObj = new GameObject("Inventory_DragGhost", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(CanvasGroup));
         ghostObj.transform.SetParent(parentTransform, false);
 
@@ -435,6 +502,26 @@ public class InventoryUI : MonoBehaviour
         dragGhostRect = ghostObj.GetComponent<RectTransform>();
         dragGhostRect.pivot = new Vector2(0.5f, 0.5f);
         dragGhostRect.sizeDelta = new Vector2(50f, 50f);
+
+        GameObject textObj = new GameObject("DragAmountText", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+        textObj.transform.SetParent(ghostObj.transform, false);
+
+        RectTransform textRect = textObj.GetComponent<RectTransform>();
+        textRect.anchorMin = new Vector2(1, 0);
+        textRect.anchorMax = new Vector2(1, 0);
+        textRect.pivot = new Vector2(1, 0);
+        textRect.anchoredPosition = new Vector2(0, 0);
+        textRect.sizeDelta = new Vector2(50f, 30f);
+
+        dragGhostAmountText = textObj.GetComponent<TextMeshProUGUI>();
+        dragGhostAmountText.fontSize = 16;
+        dragGhostAmountText.alignment = TextAlignmentOptions.BottomRight;
+        dragGhostAmountText.raycastTarget = false;
+        dragGhostAmountText.enableWordWrapping = false;
+
+        dragGhostAmountText.fontMaterial.EnableKeyword("OUTLINE_ON");
+        dragGhostAmountText.outlineWidth = 0.2f;
+        dragGhostAmountText.outlineColor = Color.black;
 
         ghostObj.SetActive(false);
     }
