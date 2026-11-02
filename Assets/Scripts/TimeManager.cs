@@ -58,11 +58,11 @@ public class TimeManager : MonoBehaviour
         }
 
         currentHour += Time.deltaTime * timeSpeed;
-        if (currentHour >= 2f && currentHour < wakeUpHour && !hasPassedOutToday)
-        {
-            hasPassedOutToday = true;
-            PlayerStamina.Instance.TriggerPassoutState();
-        }
+        //if (currentHour >= 2f && currentHour < wakeUpHour && !hasPassedOutToday)
+        //{
+        //    hasPassedOutToday = true;
+        //    PlayerStamina.Instance.TriggerPassoutState();
+        //}
         if (currentHour >= 24f)
         {
             currentHour = 0f;
