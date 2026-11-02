@@ -33,6 +33,8 @@ public class ItemData : ScriptableObject
     [Tooltip("Dữ liệu CropData tương ứng để gieo trồng và phát triển cây.")]
     [SerializeField] private CropData cropData;
 
+    [SerializeField] private FertilizerType fertilizerType = FertilizerType.None;
+
     [Tooltip("Dữ liệu cấu hình cần câu nếu item là cần câu (tùy chọn).")]
     [SerializeField] private FishingRodData rodData;
 
@@ -62,6 +64,7 @@ public class ItemData : ScriptableObject
     public ToolType ToolType => toolType;
     public string CropId => cropId;
     public CropData CropData => cropData;
+    public FertilizerType FertilizerType => fertilizerType;
     public FishingRodData RodData => rodData;
     public string AnimationTrigger => animationTrigger;
     public int MaxStack => maxStack;
@@ -74,6 +77,8 @@ public class ItemData : ScriptableObject
     public bool IsCrop => itemType == ItemType.Crop;
     public bool IsWeapon => itemType == ItemType.Weapon;
     public bool IsEquipment => itemType == ItemType.Equipment;
+
+    public bool IsFertilizer => itemType == ItemType.Fertilizer || toolType == ToolType.FertilizerBag;
 
     #endregion
 

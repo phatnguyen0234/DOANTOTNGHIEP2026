@@ -12,7 +12,8 @@ public enum ItemType
     Material,
     Quest,
     Weapon,
-    Equipment
+    Equipment,
+    Fertilizer
 }
 
 // Định nghĩa các loại công cụ và hành vi tương tác của vật phẩm trong game Farming.
@@ -30,6 +31,7 @@ public enum ToolType
     sickle,       // liềm
     Sword,        // Kiếm
     Bow,          // Cung
-    Staff         // Gậy phép
+    Staff,        // Gậy phép
+    FertilizerBag     // Phân bón
 }
 
