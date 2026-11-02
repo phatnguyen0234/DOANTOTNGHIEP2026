@@ -4,7 +4,6 @@ using UnityEngine;
 public class CraftingSystem : MonoBehaviour
 {
     [Header("Core References")]
-    [Tooltip("The 9-slot inventory used for the crafting grid.")]
     public Inventory craftingGridInventory;
     public Inventory playerInventory;
     public CraftingOutputUI outputUI;
@@ -44,7 +43,6 @@ public class CraftingSystem : MonoBehaviour
 
         if (currentValidRecipe != null)
         {
-            // Show the result and how many the player will get if they Shift-Click
             bool isShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             int displayAmt = isShiftHeld ? (currentValidRecipe.resultAmount * maxCraftableAmount) : currentValidRecipe.resultAmount;
 
@@ -58,40 +56,99 @@ public class CraftingSystem : MonoBehaviour
 
     private bool IsShapeMatching(CraftingRecipe recipe, out int possibleCrafts)
     {
+        possibleCrafts = 0;
+
+        GetRecipeBounds(recipe, out int rMinX, out int rMaxX, out int rMinY, out int rMaxY);
+        GetGridBounds(out int gMinX, out int gMaxX, out int gMinY, out int gMaxY);
+
+        if (gMinX > gMaxX || rMinX > rMaxX) return false;
+
+        int rWidth = rMaxX - rMinX + 1;
+        int rHeight = rMaxY - rMinY + 1;
+        int gWidth = gMaxX - gMinX + 1;
+        int gHeight = gMaxY - gMinY + 1;
+
+        if (rWidth != gWidth || rHeight != gHeight) return false;
+
         possibleCrafts = int.MaxValue;
         bool hasAnyIngredient = false;
 
-        for (int i = 0; i < 9; i++)
+        for (int y = 0; y < rHeight; y++)
         {
-            InventorySlot gridSlot = craftingGridInventory.GetSlot(i);
-            ItemData requiredItem = recipe.requiredItems[i];
-
-            if (requiredItem == null)
+            for (int x = 0; x < rWidth; x++)
             {
-                if (!gridSlot.IsEmpty())
-                {
-                    possibleCrafts = 0;
-                    return false; // Grid contains an item where the recipe expects empty space
-                }
-            }
-            else
-            {
-                if (gridSlot.IsEmpty() || gridSlot.ItemData.ItemID != requiredItem.ItemID)
-                {
-                    possibleCrafts = 0;
-                    return false; // Missing item or wrong item type
-                }
+                int rIndex = (rMinY + y) * 3 + (rMinX + x);
+                int gIndex = (gMinY + y) * 3 + (gMinX + x);
 
-                if (gridSlot.Amount < possibleCrafts)
-                {
-                    possibleCrafts = gridSlot.Amount; // Bottleneck for bulk crafting
-                }
+                if (rIndex >= recipe.requiredIngredients.Length) return false;
 
-                hasAnyIngredient = true;
+                CraftingIngredient required = recipe.requiredIngredients[rIndex];
+                InventorySlot gridSlot = craftingGridInventory.GetSlot(gIndex);
+
+                if (required.item == null || required.amount <= 0)
+                {
+                    if (!gridSlot.IsEmpty()) return false;
+                }
+                else
+                {
+                    if (gridSlot.IsEmpty() || gridSlot.ItemData.ItemID != required.item.ItemID)
+                        return false;
+
+                    if (gridSlot.Amount < required.amount)
+                        return false;
+
+                    int craftsForThisSlot = gridSlot.Amount / required.amount;
+                    if (craftsForThisSlot < possibleCrafts)
+                    {
+                        possibleCrafts = craftsForThisSlot;
+                    }
+
+                    hasAnyIngredient = true;
+                }
             }
         }
 
         return hasAnyIngredient && possibleCrafts > 0;
+    }
+
+    private void GetRecipeBounds(CraftingRecipe recipe, out int minX, out int maxX, out int minY, out int maxY)
+    {
+        minX = 3; maxX = -1; minY = 3; maxY = -1;
+
+        if (recipe == null || recipe.requiredIngredients == null) return;
+
+        int length = Mathf.Min(9, recipe.requiredIngredients.Length);
+
+        for (int i = 0; i < length; i++)
+        {
+            if (recipe.requiredIngredients[i].item != null && recipe.requiredIngredients[i].amount > 0)
+            {
+                int x = i % 3;
+                int y = i / 3;
+                if (x < minX) minX = x;
+                if (x > maxX) maxX = x;
+                if (y < minY) minY = y;
+                if (y > maxY) maxY = y;
+            }
+        }
+    }
+
+    private void GetGridBounds(out int minX, out int maxX, out int minY, out int maxY)
+    {
+        minX = 3; maxX = -1; minY = 3; maxY = -1;
+        for (int i = 0; i < 9; i++)
+        {
+            InventorySlot slot = craftingGridInventory.GetSlot(i);
+            if (!slot.IsEmpty())
+            {
+                int x = i % 3;
+                int y = i / 3;
+                if (x < minX) minX = x;
+                if (x > maxX) maxX = x;
+                if (y < minY) minY = y;
+                if (y > maxY) maxY = y;
+            }
+        }
     }
 
     public void ExecuteCrafting(bool craftAll)
@@ -107,18 +164,30 @@ public class CraftingSystem : MonoBehaviour
             return;
         }
 
-        // Add result to player inventory
+        // 1. Give result to player
         playerInventory.TryAddItem(currentValidRecipe.resultItem, totalYield);
 
-        // Consume ingredients from the grid
-        for (int i = 0; i < 9; i++)
+        // 2. Consume ingredients based on their mapped positions
+        GetRecipeBounds(currentValidRecipe, out int rMinX, out int rMaxX, out int rMinY, out int rMaxY);
+        GetGridBounds(out int gMinX, out int gMaxX, out int gMinY, out int gMaxY);
+
+        int rWidth = rMaxX - rMinX + 1;
+        int rHeight = rMaxY - rMinY + 1;
+
+        for (int y = 0; y < rHeight; y++)
         {
-            if (currentValidRecipe.requiredItems[i] != null)
+            for (int x = 0; x < rWidth; x++)
             {
-                craftingGridInventory.RemoveItemFromSlot(i, craftsToPerform);
+                int rIndex = (rMinY + y) * 3 + (rMinX + x);
+                int gIndex = (gMinY + y) * 3 + (gMinX + x);
+
+                CraftingIngredient required = currentValidRecipe.requiredIngredients[rIndex];
+                if (required.item != null && required.amount > 0)
+                {
+                    int amountToRemove = required.amount * craftsToPerform;
+                    craftingGridInventory.RemoveItemFromSlot(gIndex, amountToRemove);
+                }
             }
         }
-
-        // EvaluateGrid is automatically called by RemoveItemFromSlot due to OnInventoryChanged event
     }
 }

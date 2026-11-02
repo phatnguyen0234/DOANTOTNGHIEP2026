@@ -4,9 +4,6 @@ public class InteractController : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private HotbarController hotbarController;
-    [SerializeField] private PlayerMoney playerMoney;
 
     [Header("Settings")]
     [SerializeField] private LayerMask interactableMask;
@@ -14,9 +11,6 @@ public class InteractController : MonoBehaviour
     private void Start()
     {
         if (mainCamera == null) mainCamera = Camera.main;
-        if (inventory == null) inventory = FindFirstObjectByType<Inventory>();
-        if (hotbarController == null) hotbarController = FindFirstObjectByType<HotbarController>();
-        if (playerMoney == null) playerMoney = FindFirstObjectByType<PlayerMoney>();
     }
 
     private void Update()
@@ -36,37 +30,12 @@ public class InteractController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // 0. Check for Generic Interactables (Chest, Doors, etc.)
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
             if (interactable != null && interactable.CanInteract(gameObject))
             {
+                // Pass the Player gameObject so the interactable object knows who is interacting
                 interactable.Interact(gameObject);
-                return;
-            }
-
-            // 1. Check for Trade Receivers (Shipping Bin, Merchant NPC)
-            ITradeReceiver receiver = hit.collider.GetComponent<ITradeReceiver>();
-
-            if (receiver != null)
-            {
-                InventorySlot activeSlot = hotbarController.SelectedSlot;
-
-                if (activeSlot != null && !activeSlot.IsEmpty())
-                {
-                    receiver.ProcessTransaction(activeSlot.ItemData, 1, inventory, playerMoney);
-                }
-                return; // Stop interaction flow here
-            }
-
-
-            //Logic tuong tac crafting table
-            // 2. Check for Crafting Table
-            CraftingTable craftingTable = hit.collider.GetComponent<CraftingTable>();
-
-            if (craftingTable != null)
-            {
-                craftingTable.OpenCraftingTable();
-                return; // Stop interaction flow here
             }
         }
     }
