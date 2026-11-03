@@ -710270,14 +710270,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a3d560a07dff90409103b9400f02e40, type: 2}
   stackableItemList:
   - {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
-  - {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
-  - {fileID: 11400000, guid: 001d66e6866677b80c192ddb90d4f265, type: 2}
   blueberrySeed: {fileID: 11400000, guid: 019eaa7e607a1774c8fc2f14f898e56e, type: 2}
+  fertilizerList:
+  - {fileID: 11400000, guid: 812adb310554750469f55953c6c896cb, type: 2}
+  - {fileID: 11400000, guid: c458da263a51ac144a078ff57eef51c0, type: 2}
+  - {fileID: 11400000, guid: b7f483715338fda419b3ff35364a8549, type: 2}
+  - {fileID: 11400000, guid: bc43bb478f61dcd4ca29f250142103bf, type: 2}
+  - {fileID: 11400000, guid: b2f0c3d4fffde0e41943d83717b802aa, type: 2}
+  - {fileID: 11400000, guid: 5222fc544d1dd414287528a431ed0b39, type: 2}
+  - {fileID: 11400000, guid: f81bbd4c22966d047bf5eecd68f9c680, type: 2}
+  - {fileID: 11400000, guid: d6631d8bfe893b243b71255447ccc481, type: 2}
+  - {fileID: 11400000, guid: aac7fbf5f4bc05e47bb8448bf14e1f4b, type: 2}
   stackableItemAmount: 10
+  fertilizerAmount: 10
   autoAddTestDataOnStart: 1
   autoAddStackableItemsOnStart: 1
   placeStackablesInBagFirst: 0
   dropTestKey: 103
+  addAllFertilizersKey: 102
+  cycleFertilizerKey: 118
+  enableNumpadFertilizerKeys: 1
   hoe: {fileID: 11400000, guid: 86b5e1f16e15c5b4394ada11a467d783, type: 2}
   wateringCan: {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
   axe: {fileID: 11400000, guid: 4367635b629e46d429c8462a34fac0de, type: 2}
