@@ -687498,7 +687498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   currentHour: 24
-  timeSpeed: 0.1
+  timeSpeed: 2
   currentDay: 1
   daysPerSeason: 5
   currentSeason: 0
@@ -757939,9 +757939,9 @@ MonoBehaviour:
   fertilizerTileMap: {fileID: 1718047271}
   soilTile: {fileID: 11400000, guid: 8f05ba89b99eb004693da473b753acee, type: 2}
   soilWetTile: {fileID: 11400000, guid: c76a2f036d27edf45aaf43e7da5f0eb1, type: 2}
-  speedGroTile: {fileID: 11400000, guid: 5ade1ed00a064e049b0aeac0035bfa11, type: 2}
-  retainingSoilTile: {fileID: 11400000, guid: ca0af4b08b17e6c42b851748ebf90abb, type: 2}
-  qualityFertilizer: {fileID: 0}
+  speedGroTile: {fileID: 11400000, guid: 284a7dd0d24e1c3459bce6ae5ff958aa, type: 2}
+  retainingSoilTile: {fileID: 11400000, guid: 28e74cf9bfddea84caba00a9a3070ac1, type: 2}
+  qualityFertilizer: {fileID: 11400000, guid: 632b966716312e544bf33eb49805ceb9, type: 2}
   cropDataList:
   - {fileID: 11400000, guid: 7c1eda7e699d9254e82c447854759091, type: 2}
   - {fileID: 11400000, guid: 92c44e8e663ea794a9b093f6ad8f81a4, type: 2}
