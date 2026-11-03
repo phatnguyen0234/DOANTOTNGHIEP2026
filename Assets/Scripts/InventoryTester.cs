@@ -26,17 +26,23 @@ public class InventoryTester : MonoBehaviour
     [Tooltip("Hạt giống Blueberry / BubbleBerry dùng để test bấm phím B (tự tìm nếu để trống).")]
     [SerializeField] private ItemData blueberrySeed;
 
+    [Tooltip("Danh sách các loại phân bón test (tự động load từ Assets/Data/InventoryItem/Fertilizer nếu để trống).")]
+    [SerializeField] private List<ItemData> fertilizerList = new List<ItemData>();
+
     [Header("Test Settings")]
     [Tooltip("Số lượng vật phẩm stack thêm mỗi lần nhấn Q hoặc nạp test ban đầu.")]
     [FormerlySerializedAs("seedAmount")]
     [SerializeField, Min(1)] private int stackableItemAmount = 10;
+
+    [Tooltip("Số lượng phân bón thêm vào mỗi lần bấm phím test.")]
+    [SerializeField, Min(1)] private int fertilizerAmount = 10;
 
     [Tooltip("Tự động thêm công cụ và vật phẩm test khi bắt đầu game.")]
     [FormerlySerializedAs("autoAddToolsOnStart")]
     [SerializeField] private bool autoAddTestDataOnStart = true;
 
     [Tooltip("Tự động nạp luôn danh sách vật phẩm stackable khi bắt đầu game.")]
-    [SerializeField] private bool autoAddStackableItemsOnStart = true;
+    [SerializeField] private bool autoAddStackableItemsOnStart = false;
 
     [Tooltip("Ưu tiên đưa vật phẩm stackable vào túi đồ (Bag) thay vì các ô trống còn lại trên Hotbar.")]
     [SerializeField] private bool placeStackablesInBagFirst = false;
@@ -44,6 +50,16 @@ public class InventoryTester : MonoBehaviour
     [Header("Item Drop Testing")]
     [Tooltip("Phím tắt để thử nghiệm rơi vật phẩm tại vị trí người chơi (Mặc định: G).")]
     [SerializeField] private KeyCode dropTestKey = KeyCode.G;
+
+    [Header("Fertilizer Keybindings")]
+    [Tooltip("Phím nạp toàn bộ 9 loại phân bón cùng lúc vào Inventory (Mặc định: F).")]
+    [SerializeField] private KeyCode addAllFertilizersKey = KeyCode.F;
+
+    [Tooltip("Phím xoay vòng nạp từng loại phân bón lần lượt vào ô đang chọn (Mặc định: V).")]
+    [SerializeField] private KeyCode cycleFertilizerKey = KeyCode.V;
+
+    [Tooltip("Bật phím tắt bàn phím số Numpad (Keypad 1 -> 9) để thêm trực tiếp 9 loại phân bón.")]
+    [SerializeField] private bool enableNumpadFertilizerKeys = true;
 
     #region Legacy Fields (Hỗ trợ tương thích ngược cho Scene/Prefab cũ)
     [HideInInspector] [SerializeField] private ItemData hoe;
@@ -58,6 +74,7 @@ public class InventoryTester : MonoBehaviour
     #region Properties
     public List<ItemData> ToolList => toolList;
     public List<ItemData> StackableItemList => stackableItemList;
+    public List<ItemData> FertilizerList => fertilizerList;
     #endregion
 
     private void Awake()
@@ -99,6 +116,32 @@ public class InventoryTester : MonoBehaviour
         if (Input.GetKeyDown(dropTestKey))
         {
             TestSpawnDropAtPlayer();
+        }
+
+        // Nhấn phím F (hoặc addAllFertilizersKey): Thêm toàn bộ 9 loại phân bón
+        if (Input.GetKeyDown(addAllFertilizersKey))
+        {
+            AddAllFertilizers();
+        }
+
+        // Nhấn phím V (hoặc cycleFertilizerKey): Xoay vòng thêm từng loại phân bón vào ô đang chọn
+        if (Input.GetKeyDown(cycleFertilizerKey))
+        {
+            AddNextFertilizer();
+        }
+
+        // Phím tắt bàn phím số Numpad (Keypad 1 -> 9): Bấm phím nào ra đúng loại phân bón đó
+        if (enableNumpadFertilizerKeys)
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad1)) AddFertilizerByIndex(0);
+            else if (Input.GetKeyDown(KeyCode.Keypad2)) AddFertilizerByIndex(1);
+            else if (Input.GetKeyDown(KeyCode.Keypad3)) AddFertilizerByIndex(2);
+            else if (Input.GetKeyDown(KeyCode.Keypad4)) AddFertilizerByIndex(3);
+            else if (Input.GetKeyDown(KeyCode.Keypad5)) AddFertilizerByIndex(4);
+            else if (Input.GetKeyDown(KeyCode.Keypad6)) AddFertilizerByIndex(5);
+            else if (Input.GetKeyDown(KeyCode.Keypad7)) AddFertilizerByIndex(6);
+            else if (Input.GetKeyDown(KeyCode.Keypad8)) AddFertilizerByIndex(7);
+            else if (Input.GetKeyDown(KeyCode.Keypad9)) AddFertilizerByIndex(8);
         }
     }
 
@@ -278,6 +321,7 @@ public class InventoryTester : MonoBehaviour
     {
         if (toolList == null) toolList = new List<ItemData>();
         if (stackableItemList == null) stackableItemList = new List<ItemData>();
+        if (fertilizerList == null) fertilizerList = new List<ItemData>();
 
         ItemData[] legacyTools = new ItemData[] { hoe, wateringCan, axe, pickaxe, shovel, hammer };
         foreach (var legacyTool in legacyTools)
@@ -297,7 +341,7 @@ public class InventoryTester : MonoBehaviour
     private void ResolveItems()
     {
 #if UNITY_EDITOR
-        if (toolList.Count == 0 || stackableItemList.Count == 0)
+        if (toolList.Count == 0 || stackableItemList.Count == 0 || fertilizerList.Count == 0)
         {
             string[] guids = AssetDatabase.FindAssets("t:ItemData");
             foreach (string guid in guids)
@@ -311,7 +355,7 @@ public class InventoryTester : MonoBehaviour
         }
 #endif
 
-        if (toolList.Count == 0 || stackableItemList.Count == 0)
+        if (toolList.Count == 0 || stackableItemList.Count == 0 || fertilizerList.Count == 0)
         {
             ItemData[] allItems = Resources.FindObjectsOfTypeAll<ItemData>();
             foreach (var item in allItems)
@@ -321,6 +365,163 @@ public class InventoryTester : MonoBehaviour
             }
         }
     }
+
+    private void SortFertilizerList()
+    {
+        if (fertilizerList != null && fertilizerList.Count > 0)
+        {
+            fertilizerList.Sort((a, b) => a.FertilizerType.CompareTo(b.FertilizerType));
+        }
+    }
+
+    #region Fertilizer Testing Actions
+
+    private int currentFertilizerIndex = 0;
+
+    private void EnsureFertilizerListReady()
+    {
+        if (fertilizerList == null || fertilizerList.Count == 0)
+        {
+            ResolveItems();
+        }
+    }
+
+    // Thêm toàn bộ các loại phân bón trong Data/InventoryItem/Fertilizer vào Inventory
+    [ContextMenu("Fertilizer/Add All 9 Fertilizers")]
+    public void AddAllFertilizers()
+    {
+        EnsureDependencies();
+        EnsureFertilizerListReady();
+        if (inventory == null) return;
+
+        if (fertilizerList == null || fertilizerList.Count == 0)
+        {
+            Debug.LogWarning("[InventoryTester] Danh sách phân bón đang rỗng! Hãy kiểm tra Assets/Data/InventoryItem/Fertilizer.", this);
+            return;
+        }
+
+        int addedCount = 0;
+        foreach (var fert in fertilizerList)
+        {
+            if (fert == null) continue;
+            int countToAdd = fertilizerAmount > 0 ? Mathf.Min(fertilizerAmount, fert.MaxStack) : 10;
+            int remaining = inventory.AddItem(fert, countToAdd);
+            int added = countToAdd - remaining;
+            if (added > 0) addedCount++;
+        }
+
+        Debug.Log($"<color=green>[InventoryTester] Đã thêm thành công {addedCount}/{fertilizerList.Count} loại phân bón (x{fertilizerAmount}) vào kho đồ.</color>");
+    }
+
+    // Xoay vòng thêm từng loại phân bón (bấm phím V liên tục sẽ lần lượt thêm từng loại)
+    [ContextMenu("Fertilizer/Add Next Fertilizer (Cycle)")]
+    public void AddNextFertilizer()
+    {
+        EnsureFertilizerListReady();
+        if (fertilizerList == null || fertilizerList.Count == 0) return;
+
+        AddFertilizerByIndex(currentFertilizerIndex);
+        currentFertilizerIndex = (currentFertilizerIndex + 1) % fertilizerList.Count;
+    }
+
+    // Thêm phân bón theo chỉ số index trong danh sách (0 đến 8)
+    public void AddFertilizerByIndex(int index, int amount = -1)
+    {
+        EnsureFertilizerListReady();
+        if (fertilizerList == null || fertilizerList.Count == 0)
+        {
+            Debug.LogWarning("[InventoryTester] Danh sách phân bón đang rỗng! Kiểm tra Assets/Data/InventoryItem/Fertilizer.", this);
+            return;
+        }
+
+        if (index < 0 || index >= fertilizerList.Count)
+        {
+            Debug.LogWarning($"[InventoryTester] Chỉ số phân bón không hợp lệ: {index}. Hiện có {fertilizerList.Count} loại.", this);
+            return;
+        }
+
+        ItemData fert = fertilizerList[index];
+        if (fert != null)
+        {
+            AddFertilizerToInventory(fert, amount);
+        }
+    }
+
+    // Thêm 1 loại phân bón vào ô đang chọn (nếu trống hoặc cùng loại) hoặc vào ô trống đầu tiên
+    public void AddFertilizerToInventory(ItemData fert, int amount = -1)
+    {
+        if (fert == null) return;
+        EnsureDependencies();
+        if (inventory == null) return;
+
+        int countToAdd = amount > 0 ? amount : (fertilizerAmount > 0 ? Mathf.Min(fertilizerAmount, fert.MaxStack) : 10);
+        int activeIndex = GetActiveSlotIndex();
+        InventorySlot slot = inventory.GetSlot(activeIndex);
+        string fertName = !string.IsNullOrEmpty(fert.ItemName) ? fert.ItemName : fert.name;
+
+        // Nếu ô đang chọn trống hoặc có thể cộng dồn loại phân bón này
+        if (slot != null && (slot.IsEmpty() || slot.CanStack(fert)))
+        {
+            ExecuteAddItemToActiveSlot(fert, countToAdd);
+        }
+        else
+        {
+            // Nếu ô đang chọn đã có món khác, tự động thêm vào ô trống đầu tiên trong Inventory
+            int remaining = inventory.AddItem(fert, countToAdd);
+            int added = countToAdd - remaining;
+            if (added > 0)
+            {
+                Debug.Log($"<color=green>[InventoryTester] Đã thêm {added}x '{fertName}' vào Inventory.</color>");
+            }
+            else
+            {
+                Debug.LogWarning($"<color=red>[InventoryTester] Kho đồ đã đầy, không thể thêm '{fertName}'!</color>");
+            }
+        }
+    }
+
+    public void AddFertilizerByType(FertilizerType type)
+    {
+        EnsureFertilizerListReady();
+        ItemData fert = fertilizerList.Find(f => f != null && f.FertilizerType == type);
+        if (fert != null)
+        {
+            AddFertilizerToInventory(fert);
+        }
+        else
+        {
+            Debug.LogWarning($"[InventoryTester] Không tìm thấy phân bón loại {type} trong danh sách!", this);
+        }
+    }
+
+    [ContextMenu("Fertilizer/1. Basic Fertilizer")]
+    public void AddBasicFertilizer() => AddFertilizerByType(FertilizerType.BasicFertilizer);
+
+    [ContextMenu("Fertilizer/2. Quality Fertilizer")]
+    public void AddQualityFertilizer() => AddFertilizerByType(FertilizerType.QualityFertilizer);
+
+    [ContextMenu("Fertilizer/3. Deluxe Fertilizer")]
+    public void AddDeluxeFertilizer() => AddFertilizerByType(FertilizerType.DeluxeFertilizer);
+
+    [ContextMenu("Fertilizer/4. Speed-Gro")]
+    public void AddSpeedGro() => AddFertilizerByType(FertilizerType.SpeedGro);
+
+    [ContextMenu("Fertilizer/5. Deluxe Speed-Gro")]
+    public void AddDeluxeSpeedGro() => AddFertilizerByType(FertilizerType.DeluxeSpeedGro);
+
+    [ContextMenu("Fertilizer/6. Hyper Speed-Gro")]
+    public void AddHyperSpeedGro() => AddFertilizerByType(FertilizerType.HyperSpeedGro);
+
+    [ContextMenu("Fertilizer/7. Basic Retaining Soil")]
+    public void AddBasicRetainingSoil() => AddFertilizerByType(FertilizerType.BasicRetainingSoil);
+
+    [ContextMenu("Fertilizer/8. Quality Retaining Soil")]
+    public void AddQualityRetainingSoil() => AddFertilizerByType(FertilizerType.QualityRetainingSoil);
+
+    [ContextMenu("Fertilizer/9. Deluxe Retaining Soil")]
+    public void AddDeluxeRetainingSoil() => AddFertilizerByType(FertilizerType.DeluxeRetainingSoil);
+
+    #endregion
 
     private void MatchAndAssignItem(ItemData item)
     {
@@ -337,7 +538,16 @@ public class InventoryTester : MonoBehaviour
                       id.Contains("hammer") || name.Contains("hammer") ||
                       id.Contains("rod") || name.Contains("rod");
 
-        if (isTool)
+        if (item.IsFertilizer || item.FertilizerType != FertilizerType.None ||
+            id.Contains("fertilizer") || id.Contains("retaining") || id.Contains("speed_gro") || id.Contains("speedgro"))
+        {
+            if (!fertilizerList.Contains(item))
+            {
+                fertilizerList.Add(item);
+                SortFertilizerList();
+            }
+        }
+        else if (isTool)
         {
             if (!toolList.Contains(item))
             {

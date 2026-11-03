@@ -68,10 +68,10 @@ public class PlayerStamina : MonoBehaviour
       //  onStaminaChanged?.Invoke(currentStamina, max);
     }
 
-    public void TriggerPassoutState()
-    {
-        statePlayer = state.passout;
-        onStateStaminaChanged?.Invoke(statePlayer);
-        UIManager.Instance.TriggerPassOutSleep();
-    }
+    //public void TriggerPassoutState()
+    //{
+    //    statePlayer = state.passout;
+    //    onStateStaminaChanged?.Invoke(statePlayer);
+    //    UIManager.Instance.TriggerPassOutSleep();
+    //}
 }
