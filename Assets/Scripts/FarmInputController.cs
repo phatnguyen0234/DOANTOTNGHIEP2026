@@ -35,7 +35,7 @@ public class FarmInputController : MonoBehaviour
 
     public FarmTool CurrentTool { get; private set; } = FarmTool.None;
     private bool isFertilizeMode = false;
-    private FertilizerType fertilizer = FertilizerType.DeluxeRetainingSoil;
+    private FertilizerType fertilizer = FertilizerType.None;
 
     #region Unity Lifecycle
 
@@ -101,12 +101,6 @@ public class FarmInputController : MonoBehaviour
         else
         {
             Use();
-        }
-        if (Input.GetKeyDown(KeyCode.H)) isFertilizeMode = true;
-        if (Input.GetKeyDown(KeyCode.G)) isFertilizeMode = false;
-        if(isFertilizeMode && Input.GetMouseButtonDown(0))
-        {
-            TryApplyFertilize();
         }
     }
 
@@ -192,6 +186,11 @@ public class FarmInputController : MonoBehaviour
         else if (item.ToolType == ToolType.fishingRod)
         {
             CurrentTool = FarmTool.fishingRod;
+        }
+        else if (item.ToolType == ToolType.FertilizerBag)
+        {
+            CurrentTool = FarmTool.Fertilizer;
+            fertilizer = item.FertilizerType;
         }
         else
         {
@@ -283,6 +282,9 @@ public class FarmInputController : MonoBehaviour
                 break;
             case FarmTool.Pickaxe:
                 Pickaxe();
+                break;
+            case FarmTool.Fertilizer:
+                Fertilizer();
                 break;
             case FarmTool.None:
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
@@ -522,7 +524,7 @@ public class FarmInputController : MonoBehaviour
         return false;
     }
 
-    private void TryApplyFertilize()
+    private void Fertilizer()
     {
         Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
