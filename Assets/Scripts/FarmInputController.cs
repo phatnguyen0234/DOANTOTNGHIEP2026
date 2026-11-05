@@ -30,6 +30,7 @@ public class FarmInputController : MonoBehaviour
 
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
+    private Vector3Int targetCellSickle;
     public bool isWatering = false;
 
 
@@ -192,6 +193,10 @@ public class FarmInputController : MonoBehaviour
             CurrentTool = FarmTool.Fertilizer;
             fertilizer = item.FertilizerType;
         }
+        else if (item.ToolType == ToolType.sickle)
+        {
+            CurrentTool = FarmTool.Sickle;
+        }
         else
         {
             CurrentTool = FarmTool.None;
@@ -283,6 +288,9 @@ public class FarmInputController : MonoBehaviour
             case FarmTool.Pickaxe:
                 Pickaxe();
                 break;
+            case FarmTool.Sickle:
+                Sickle();
+                break;
             case FarmTool.Fertilizer:
                 Fertilizer();
                 break;
@@ -293,6 +301,29 @@ public class FarmInputController : MonoBehaviour
         }
     }
 
+    private bool CanSickle(Vector3Int cell)
+    {
+        return SoilManager.Instance.IsWithered(cell);
+    }
+
+    private void Sickle()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.position);
+        Vector3Int distance = mouseCell - playerCell;
+        targetCellSickle = CheckDistance(distance) ? mouseCell : playerCell + Offset(playerMovement.FacingDirection);
+        Vector2 direction = CheckDistance(distance) ? (Vector2)(mouseWorld - player.position) : playerMovement.FacingDirection;
+        if (CanSickle(targetCellSickle))
+        {
+            playerMovement.TryUseSickle(direction);
+        }
+    }
+
+    public void OnCompleteSickle()
+    {
+        SoilManager.Instance.ClearCropTile(targetCellSickle);
+    }
     public bool CanPlant(Vector3Int cell)
     {
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);

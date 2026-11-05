@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     public Vector2 lastDirection = Vector2.down;
     public Vector2 FacingDirection => lastDirection;
     public bool isUsingHoe = false;
     public bool isUsingWater = false;
     public bool isUsingAxe = false;
     public bool isUsingPickaxe = false;
+    public bool isUsingSickle = false;
     public bool isSleeping = false; // Bed bật trong lúc màn hình tối khi ngủ để khoá di chuyển
     Vector2 moveDirection;
     [SerializeField] private FarmInputController controller;
@@ -181,6 +183,30 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("MoveY", lastDirection.y);
         anim.SetFloat("Speed", 0);
         anim.SetTrigger("UsePickaxe");
+    }
+
+    public void TryUseSickle(Vector2 requestDirection)
+    {
+        if (isUsingSickle) return;
+        if(requestDirection != Vector2.zero)
+        {
+            lastDirection = requestDirection.normalized;
+        }
+        if(lastDirection.x < 0) spriteRenderer.flipX = true;
+        else spriteRenderer.flipX = false;
+        isUsingSickle = true;
+        moveDirection = Vector2.zero;
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0);
+        anim.SetTrigger("UseSickle");
+    }
+
+    public void OnSickleAnimationComplete()
+    {
+        isUsingSickle = false;
+        controller.OnCompleteSickle();
+        PlayerStamina.Instance.ConsumeStamina(2f);
     }
 
     public void OnCompletePickaxe()
