@@ -9,5 +9,6 @@ public enum FarmTool
     Pickaxe,
     fishingRod,
     Fertilizer,
-    Sickle
+    Sickle,
+    Shovel
 }

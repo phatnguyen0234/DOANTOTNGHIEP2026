@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isUsingAxe = false;
     public bool isUsingPickaxe = false;
     public bool isUsingSickle = false;
+    public bool isUsingShovel = false;
     public bool isSleeping = false; // Bed bật trong lúc màn hình tối khi ngủ để khoá di chuyển
     Vector2 moveDirection;
     [SerializeField] private FarmInputController controller;
@@ -124,6 +125,31 @@ public class PlayerMovement : MonoBehaviour
         if (!isUsingHoe) return;
         isUsingHoe = false;
         controller.OnHoeAnimationComplete();
+        PlayerStamina.Instance.ConsumeStamina(2f);
+    }
+
+    public void TryUseShovel(Vector2 requestFaceDirection)
+    {
+        if (isUsingShovel) return;
+        if (requestFaceDirection != Vector2.zero)
+        {
+            lastDirection = requestFaceDirection.normalized;
+        }
+        if(lastDirection.x < 0) spriteRenderer.flipX = true;
+        else if (lastDirection.x > 0) spriteRenderer.flipX = false;
+        isUsingShovel = true;
+        moveDirection = Vector2.zero;
+        anim.SetFloat("MoveX", lastDirection.x);
+        anim.SetFloat("MoveY", lastDirection.y);
+        anim.SetFloat("Speed", 0f);
+        anim.SetTrigger("UseShovel");
+    }
+
+    public void OnShovelAnimationComplete()
+    {
+        if (!isUsingShovel) return;
+        isUsingShovel = false;
+        controller.OnShovelAnimationComplete();
         PlayerStamina.Instance.ConsumeStamina(2f);
     }
 

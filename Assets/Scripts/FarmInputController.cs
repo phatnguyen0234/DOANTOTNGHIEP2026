@@ -31,6 +31,7 @@ public class FarmInputController : MonoBehaviour
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
     private Vector3Int targetCellSickle;
+    private Vector3Int targetCellShovel;
     public bool isWatering = false;
 
 
@@ -197,6 +198,10 @@ public class FarmInputController : MonoBehaviour
         {
             CurrentTool = FarmTool.Sickle;
         }
+        else if(item.ToolType == ToolType.Shovel)
+        {
+            CurrentTool = FarmTool.Shovel;
+        }
         else
         {
             CurrentTool = FarmTool.None;
@@ -291,6 +296,9 @@ public class FarmInputController : MonoBehaviour
             case FarmTool.Sickle:
                 Sickle();
                 break;
+            case FarmTool.Shovel:
+                Shovel();
+                break;
             case FarmTool.Fertilizer:
                 Fertilizer();
                 break;
@@ -298,6 +306,25 @@ public class FarmInputController : MonoBehaviour
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
                 TryHarvestAtMouse();
                 break;
+        }
+    }
+
+    private bool CanShovel(Vector3Int pos)
+    {
+        return SoilManager.Instance.IsTilled(pos);
+        //TODO: goi soilmaanger.instance.IsTilled(pos)
+    }
+    private void Shovel()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.position);
+        Vector3Int distance = mouseCell - playerCell;
+        targetCellShovel = CheckDistance(distance) ? mouseCell : playerCell + Offset(playerMovement.FacingDirection);
+        Vector2 direction = CheckDistance(distance) ? (Vector2) (mouseWorld - player.position) : playerMovement.FacingDirection;
+        if(CanShovel(targetCellShovel))
+        {
+            playerMovement.TryUseShovel(direction);
         }
     }
 
@@ -630,6 +657,11 @@ public class FarmInputController : MonoBehaviour
     private bool CheckDistance(Vector3Int distance)
     {
         return distance != Vector3Int.zero && Mathf.Abs(distance.x) <= 1 && Mathf.Abs(distance.y) <= 1;
+    }
+
+    internal void OnShovelAnimationComplete()
+    {
+        SoilManager.Instance.ClearSoil(targetCellShovel);
     }
 
     #endregion

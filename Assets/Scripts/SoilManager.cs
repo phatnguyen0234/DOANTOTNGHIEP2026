@@ -284,6 +284,24 @@ public class SoilManager : MonoBehaviour
         }
     }
 
+    public void ClearSoil(Vector3Int pos)
+    {
+        FarmCell cell = currentFarmData.GetCell(pos);
+        TileBase tile = cell.originTile;
+        if(tile == null)
+        {
+            tile = GetTile(cell.originTileName);
+        }
+        tile = seasonTileSet.GetSeasonTile(tile, TimeManager.Instance.currentSeason);
+        groundTileMap.SetTile(pos, tile);
+        fertilizerTileMap.SetTile(pos, null);
+        cell.state = FarmCellState.Empty;
+        cell.fertilizer = FertilizerType.None;
+        cell.originTile = null;
+        cell.originTileName = null;
+        cell.wateredToday = false;
+    }
+
     public void ReBuildFarm()
     {
         ClearFarm();
