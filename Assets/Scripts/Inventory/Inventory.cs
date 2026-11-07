@@ -269,6 +269,12 @@ public class Inventory : MonoBehaviour
         if (addedCount > 0)
         {
             OnInventoryChanged?.Invoke();
+
+            // QUAN TRONG LENH NAY DUNG DE KICH HOAT SU KIEN MO KHOA CONG THUC
+            if (isPlayerInventory && PlayerRecipeManager.Instance != null)
+            {
+                PlayerRecipeManager.Instance.DiscoverItem(item);
+            }
         }
 
         // Trả về true nếu toàn bộ số lượng đã được thêm hết vào kho
@@ -285,17 +291,15 @@ public class Inventory : MonoBehaviour
 
         int remainingAmount = amount;
 
-        // 1. Stack vào ô cũ
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].CanStack(item,quality))
+            if (slots[i].CanStack(item, quality))
             {
                 remainingAmount = slots[i].AddAmount(remainingAmount);
                 if (remainingAmount <= 0) break;
             }
         }
 
-        // 2. Tạo ô mới
         if (remainingAmount > 0)
         {
             for (int i = 0; i < slots.Count; i++)
@@ -313,6 +317,11 @@ public class Inventory : MonoBehaviour
         if (amount - remainingAmount > 0)
         {
             OnInventoryChanged?.Invoke();
+
+            if (isPlayerInventory && PlayerRecipeManager.Instance != null)
+            {
+                PlayerRecipeManager.Instance.DiscoverItem(item);
+            }
         }
 
         return remainingAmount;
@@ -370,12 +379,14 @@ public class Inventory : MonoBehaviour
 
         InventorySlot slot = slots[slotIndex];
         int remaining = amount;
+        bool itemAddedSuccessfully = false;
 
         if (slot.IsEmpty())
         {
             int addCount = Mathf.Min(amount, item.MaxStack);
             slot.SetItem(item, addCount);
             remaining -= addCount;
+            itemAddedSuccessfully = true;
             OnInventoryChanged?.Invoke();
         }
         else if (slot.CanStack(item))
@@ -383,12 +394,18 @@ public class Inventory : MonoBehaviour
             remaining = slot.AddAmount(amount);
             if (remaining < amount)
             {
+                itemAddedSuccessfully = true;
                 OnInventoryChanged?.Invoke();
             }
         }
         else
         {
             Debug.LogWarning($"[Inventory] Slot {slotIndex} đang chứa vật phẩm khác ({slot.ItemData.ItemName}) hoặc đã đầy stack ({slot.Amount}/{slot.ItemData.MaxStack}).", this);
+        }
+
+        if (itemAddedSuccessfully && isPlayerInventory && PlayerRecipeManager.Instance != null)
+        {
+            PlayerRecipeManager.Instance.DiscoverItem(item);
         }
 
         return remaining;

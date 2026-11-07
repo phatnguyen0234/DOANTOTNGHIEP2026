@@ -8,13 +8,40 @@ public class CraftingRecipeEditor : Editor
     {
         serializedObject.Update();
 
-        EditorGUILayout.LabelField("Categorization", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("category"));
+        SerializedProperty property = serializedObject.GetIterator();
+
+        bool enterChildren = true;
+        while (property.NextVisible(enterChildren))
+        {
+            enterChildren = false;
+
+            if (property.name == "requiredIngredients")
+            {
+                DrawRecipeGrid(property);
+            }
+            else
+            {
+                if (property.name == "m_Script")
+                {
+                    GUI.enabled = false;
+                    EditorGUILayout.PropertyField(property, true);
+                    GUI.enabled = true;
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(property, true);
+                }
+            }
+        }
+
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    //ham ve ma tran cong thuc 3x3
+    private void DrawRecipeGrid(SerializedProperty ingredientsProp)
+    {
         EditorGUILayout.Space(10);
-
         EditorGUILayout.LabelField("Recipe Shape (3x3 Grid)", EditorStyles.boldLabel);
-
-        SerializedProperty ingredientsProp = serializedObject.FindProperty("requiredIngredients");
 
         if (ingredientsProp.arraySize != 9)
         {
@@ -45,13 +72,6 @@ public class CraftingRecipeEditor : Editor
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
         }
-
         EditorGUILayout.Space(10);
-
-        EditorGUILayout.LabelField("Result", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("resultItem"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("resultAmount"));
-
-        serializedObject.ApplyModifiedProperties();
     }
 }
