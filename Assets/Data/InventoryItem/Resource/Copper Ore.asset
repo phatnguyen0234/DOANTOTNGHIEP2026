@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Copper Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: copper_ore
-  itemName: "Quặng Đồng (Copper Ore)"
-  description: "Quặng đồng thô khai thác từ lòng đất."
-  icon: {fileID: -8296408694704615830, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng \u0110\u1ED3ng (Copper Ore)"
+  description: "Qu\u1EB7ng \u0111\u1ED3ng th\xF4 khai th\xE1c t\u1EEB l\xF2ng \u0111\u1EA5t."
+  icon: {fileID: 4526543822523179516, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

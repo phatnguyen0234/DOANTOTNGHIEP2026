@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Iron Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: iron_ore
-  itemName: "Quặng Sắt (Iron Ore)"
-  description: "Quặng sắt chất lượng cao cần thiết cho rèn đúc."
-  icon: {fileID: -6159463551018316995, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng S\u1EAFt (Iron Ore)"
+  description: "Qu\u1EB7ng s\u1EAFt ch\u1EA5t l\u01B0\u1EE3ng cao c\u1EA7n thi\u1EBFt
+    cho r\xE8n \u0111\xFAc."
+  icon: {fileID: 5960479658712495672, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
