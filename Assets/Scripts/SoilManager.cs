@@ -59,6 +59,12 @@ public class SoilManager : MonoBehaviour
         return cell != null && cell.state == FarmCellState.Tilled;
     } 
 
+    public bool IsWithered(Vector3Int pos)
+    {
+        FarmCell cell = currentFarmData.GetCell(pos);
+        return cell != null && cell.isWithered == true;
+    }
+
     public bool CanWater(Vector3Int pos)
     {
         FarmCell cell = currentFarmData.GetCell(pos);
@@ -262,6 +268,39 @@ public class SoilManager : MonoBehaviour
         }
     }
 
+    public void ClearCropTile(Vector3Int pos)
+    {
+        if(farmCells.TryGetValue(pos, out CropTile cropTile) && cropTile != null)
+        {
+            farmCells.Remove(pos);
+            Destroy(cropTile.gameObject);
+        }
+        FarmCell cell = currentFarmData.GetCell(pos);
+        if(cell != null)
+        {
+            cell.cropId = null;
+            cell.isWithered = false;
+            cell.state = FarmCellState.Tilled;
+        }
+    }
+
+    public void ClearSoil(Vector3Int pos)
+    {
+        FarmCell cell = currentFarmData.GetCell(pos);
+        TileBase tile = cell.originTile;
+        if(tile == null)
+        {
+            tile = GetTile(cell.originTileName);
+        }
+        tile = seasonTileSet.GetSeasonTile(tile, TimeManager.Instance.currentSeason);
+        groundTileMap.SetTile(pos, tile);
+        fertilizerTileMap.SetTile(pos, null);
+        cell.state = FarmCellState.Empty;
+        cell.fertilizer = FertilizerType.None;
+        cell.originTile = null;
+        cell.originTileName = null;
+        cell.wateredToday = false;
+    }
 
     public void ReBuildFarm()
     {

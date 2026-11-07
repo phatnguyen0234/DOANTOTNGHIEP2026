@@ -30,12 +30,14 @@ public class FarmInputController : MonoBehaviour
 
     private Vector3Int targetCellHoe;
     private Vector3Int targetCellWater;
+    private Vector3Int targetCellSickle;
+    private Vector3Int targetCellShovel;
     public bool isWatering = false;
 
 
     public FarmTool CurrentTool { get; private set; } = FarmTool.None;
     private bool isFertilizeMode = false;
-    private FertilizerType fertilizer = FertilizerType.DeluxeRetainingSoil;
+    private FertilizerType fertilizer = FertilizerType.None;
 
     #region Unity Lifecycle
 
@@ -101,12 +103,6 @@ public class FarmInputController : MonoBehaviour
         else
         {
             Use();
-        }
-        if (Input.GetKeyDown(KeyCode.H)) isFertilizeMode = true;
-        if (Input.GetKeyDown(KeyCode.G)) isFertilizeMode = false;
-        if(isFertilizeMode && Input.GetMouseButtonDown(0))
-        {
-            TryApplyFertilize();
         }
     }
 
@@ -192,6 +188,19 @@ public class FarmInputController : MonoBehaviour
         else if (item.ToolType == ToolType.fishingRod)
         {
             CurrentTool = FarmTool.fishingRod;
+        }
+        else if (item.ToolType == ToolType.FertilizerBag)
+        {
+            CurrentTool = FarmTool.Fertilizer;
+            fertilizer = item.FertilizerType;
+        }
+        else if (item.ToolType == ToolType.sickle)
+        {
+            CurrentTool = FarmTool.Sickle;
+        }
+        else if(item.ToolType == ToolType.Shovel)
+        {
+            CurrentTool = FarmTool.Shovel;
         }
         else
         {
@@ -284,6 +293,15 @@ public class FarmInputController : MonoBehaviour
             case FarmTool.Pickaxe:
                 Pickaxe();
                 break;
+            case FarmTool.Sickle:
+                Sickle();
+                break;
+            case FarmTool.Shovel:
+                Shovel();
+                break;
+            case FarmTool.Fertilizer:
+                Fertilizer();
+                break;
             case FarmTool.None:
                 // Nếu tay không hoặc vật phẩm không phải công cụ canh tác, cho phép click thu hoạch cây chín
                 TryHarvestAtMouse();
@@ -291,6 +309,48 @@ public class FarmInputController : MonoBehaviour
         }
     }
 
+    private bool CanShovel(Vector3Int pos)
+    {
+        return SoilManager.Instance.IsTilled(pos);
+        //TODO: goi soilmaanger.instance.IsTilled(pos)
+    }
+    private void Shovel()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.position);
+        Vector3Int distance = mouseCell - playerCell;
+        targetCellShovel = CheckDistance(distance) ? mouseCell : playerCell + Offset(playerMovement.FacingDirection);
+        Vector2 direction = CheckDistance(distance) ? (Vector2) (mouseWorld - player.position) : playerMovement.FacingDirection;
+        if(CanShovel(targetCellShovel))
+        {
+            playerMovement.TryUseShovel(direction);
+        }
+    }
+
+    private bool CanSickle(Vector3Int cell)
+    {
+        return SoilManager.Instance.IsWithered(cell);
+    }
+
+    private void Sickle()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
+        Vector3Int playerCell = groundTileMap.WorldToCell(player.position);
+        Vector3Int distance = mouseCell - playerCell;
+        targetCellSickle = CheckDistance(distance) ? mouseCell : playerCell + Offset(playerMovement.FacingDirection);
+        Vector2 direction = CheckDistance(distance) ? (Vector2)(mouseWorld - player.position) : playerMovement.FacingDirection;
+        if (CanSickle(targetCellSickle))
+        {
+            playerMovement.TryUseSickle(direction);
+        }
+    }
+
+    public void OnCompleteSickle()
+    {
+        SoilManager.Instance.ClearCropTile(targetCellSickle);
+    }
     public bool CanPlant(Vector3Int cell)
     {
         Vector3Int playerCell = groundTileMap.WorldToCell(player.transform.position);
@@ -452,22 +512,22 @@ public class FarmInputController : MonoBehaviour
         {
             if (SoilManager.Instance.farmCells.TryGetValue(mouseCell, out CropTile crop) && crop != null)
             {
-                    CropQuality harvestQuality = QualityCalculator.DetermineQuality();
+                    CropQuality harvestQuality = QualityCalculator.DetermineQuality(cell.fertilizer);
                     Debug.Log("CropQuality " + harvestQuality);
-                    //// 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
+                    // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     //if (crop.GetDropTable() != null)
                     //{
-                    //    DropContext context = new DropContext(
-                    //        source: crop.gameObject,
-                    //        player: player != null ? player.gameObject : gameObject,
-                    //        tool: null,
-                    //        toolLevel: 1,
-                    //        dropMultiplier: 1f,
-                    //        luck: 0f
-                    //    );
-                    //    DropSystem.TriggerDrop(crop, context);
+                    //DropContext context = new DropContext(
+                    //    source: crop.gameObject,
+                    //    player: player != null ? player.gameObject : gameObject,
+                    //    tool: null,
+                    //    toolLevel: 1,
+                    //    dropMultiplier: 1f,
+                    //    luck: 0f
+                    //);
+                    //DropSystem.TriggerDrop(crop, context);
                     //}
-                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
+                    //2.Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner(hoặc thêm vào túi)
                     if (crop.CropData != null && crop.CropData.harvestItem != null)
                     {
                         int amount = Mathf.Max(1, crop.CropData.harvestAmount);
@@ -475,11 +535,11 @@ public class FarmInputController : MonoBehaviour
 
                         if (ItemDropSpawner.Instance != null)
                         {
-                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos, harvestQuality);
+                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos);
                         }
                         else if (inventory != null)
                         {
-                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount, harvestQuality);
+                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount);
                             if (!added)
                             {
                                 Debug.LogWarning($"[FarmInputController] Túi đồ đã đầy! Không thể thu hoạch {crop.CropData.harvestItem.ItemName}.");
@@ -488,21 +548,19 @@ public class FarmInputController : MonoBehaviour
                         }
                     }
 
-                    // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     if (crop.GetDropTable() != null)
                     {
-                        DropContext context = new DropContext(
-                            source: crop.gameObject,
-                            player: player != null ? player.gameObject : gameObject,
-                            tool: null,
-                            toolLevel: 1,
-                            dropMultiplier: 1f,
-                            luck: 0f
+                    DropContext context = new DropContext(
+                        source: crop.gameObject,
+                        player: player != null ? player.gameObject : gameObject,
+                        tool: null,
+                        toolLevel: 1,
+                        dropMultiplier: 1f,
+                        luck: 0f
                     );
                     DropSystem.TriggerDrop(crop, context);
                     }
-
-                    if (crop.Harvest())
+                if (crop.Harvest())
                     {
                         cell.state = FarmCellState.Growing;
                     }
@@ -522,7 +580,7 @@ public class FarmInputController : MonoBehaviour
         return false;
     }
 
-    private void TryApplyFertilize()
+    private void Fertilizer()
     {
         Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseCell = groundTileMap.WorldToCell(mouseWorld);
@@ -597,6 +655,11 @@ public class FarmInputController : MonoBehaviour
     private bool CheckDistance(Vector3Int distance)
     {
         return distance != Vector3Int.zero && Mathf.Abs(distance.x) <= 1 && Mathf.Abs(distance.y) <= 1;
+    }
+
+    internal void OnShovelAnimationComplete()
+    {
+        SoilManager.Instance.ClearSoil(targetCellShovel);
     }
 
     #endregion

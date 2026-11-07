@@ -4,5 +4,6 @@ public enum FarmCellState
     Tilled,
     Seeded,
     Growing,
-    ReadyToHarvest
+    ReadyToHarvest,
+    Withered
 }
