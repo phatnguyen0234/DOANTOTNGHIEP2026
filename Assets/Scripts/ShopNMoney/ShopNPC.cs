@@ -7,43 +7,59 @@ public class ShopNPC : MonoBehaviour
     [SerializeField] private string npcName;
 
     [Header("NPC's Inventory")]
-    [SerializeField] private List<ShopItem> myShopItems = new List<ShopItem>();
+    [SerializeField] private List<ShopItem> myShopItems = new();
 
-    private bool isPlayerInRange = false;
+    private bool isPlayerInRange;
 
     private void Update()
     {
-        if (isPlayerInRange)
+        if (!isPlayerInRange)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            ShopManager shopManager = ShopManager.instance;
+
+            if (shopManager == null)
+                return;
+
+            if (shopManager.IsShopOpen &&
+                shopManager.CurrentShopNpc == this)
             {
-                ShopManager.instance.OpenShop(myShopItems);
+                shopManager.CloseShop();
             }
-            if(Input.GetKeyUp(KeyCode.F))
+            else
             {
-                ShopManager.instance.CloseShop();
+                shopManager.OpenShop(this, myShopItems);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerInRange = true;
-            Debug.Log($"F to buy from {npcName}");
-        }
+        if (!collision.CompareTag("Player"))
+            return;
+
+        isPlayerInRange = true;
+
+        Debug.Log($"Press F to buy from {npcName}");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player"))
+            return;
+
+        isPlayerInRange = false;
+
+        ShopManager shopManager = ShopManager.instance;
+
+        if (shopManager == null)
+            return;
+
+        if (shopManager.CurrentShopNpc == this)
         {
-            isPlayerInRange = false;
-            if (ShopManager.instance != null)
-            {
-                ShopManager.instance.CloseShop();
-            }
+            shopManager.CloseShop();
         }
     }
 }

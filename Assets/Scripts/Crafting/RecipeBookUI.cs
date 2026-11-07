@@ -42,18 +42,15 @@ public class RecipeBookUI : MonoBehaviour
         }
 
         RegisterEvents();
-    }
-
-    private void Start()
-    {
-        RegisterEvents();
 
         if (PlayerRecipeManager.Instance != null)
         {
             PlayerRecipeManager.Instance.OnRecipeUnlocked += RefreshBook;
         }
+    }
 
-        // Automatically close the book on game start unless startOpen is checked
+    private void Start()
+    {
         if (!startOpen)
         {
             CloseBook();

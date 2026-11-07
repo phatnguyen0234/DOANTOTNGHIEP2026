@@ -8,7 +8,6 @@ public class CraftingOutputUI : MonoBehaviour
     public Image iconImage;
     public TextMeshProUGUI amountText;
     public Button outputButton;
-    public CraftingSystem craftingSystem;
 
     private void Start()
     {
@@ -32,10 +31,17 @@ public class CraftingOutputUI : MonoBehaviour
         outputButton.interactable = false;
     }
 
-    private void OnOutputClicked()
+    public void OnOutputClicked()
     {
-        // Check if player is holding Shift for bulk crafting
-        bool craftAll = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        craftingSystem.ExecuteCrafting(craftAll);
+        if (CraftingSystem.Instance != null)
+        {
+            bool isShiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+            CraftingSystem.Instance.ExecuteCrafting(isShiftHeld);
+        }
+        else
+        {
+            Debug.LogError("Cant find Crafting System");
+        }
     }
 }

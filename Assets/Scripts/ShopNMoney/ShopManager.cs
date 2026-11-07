@@ -5,6 +5,10 @@ public class ShopManager : MonoBehaviour
 {
     public static ShopManager instance { get; private set; }
 
+    public bool IsShopOpen => shopUIPanel.activeSelf;
+
+    public ShopNPC CurrentShopNpc { get; private set; }
+
     [Header("Dependencies")]
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private PlayerMoney playerMoney;
@@ -12,42 +16,55 @@ public class ShopManager : MonoBehaviour
     [Header("UI Generation")]
     [SerializeField] private GameObject shopUIPanel;
     [SerializeField] private ShopSlotUI shopSlotPrefab;
-
     [SerializeField] private Transform shopContentContainer;
 
-    //[Header("Shop Database")]
-    //[SerializeField] private List<ShopItem> shopItems = new List<ShopItem>();
-
-    private List<ShopItem> currentShopItems = new List<ShopItem>();
-    private List<ShopSlotUI> activeUIElements = new List<ShopSlotUI>();
+    private List<ShopItem> currentShopItems = new();
+    private readonly List<ShopSlotUI> activeUIElements = new();
 
     private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
-        else
+
+        instance = this;
+    }
+
+    private void Start()
+    {
+        shopUIPanel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (IsShopOpen && Input.GetKeyDown(KeyCode.Escape))
         {
-            instance = this;
+            CloseShop();
         }
     }
 
-    public void OpenShop(List<ShopItem> shopItems)
+    public void OpenShop(ShopNPC shopNpc, List<ShopItem> shopItems)
     {
+        CurrentShopNpc = shopNpc;
+
         currentShopItems = shopItems;
+
         GenerateShopUI();
+
         shopUIPanel.SetActive(true);
+
+        Debug.Log("[Shop] Shop opened");
     }
 
     public void CloseShop()
     {
         shopUIPanel.SetActive(false);
-    }
 
-    private void Start()
-    {
-        GenerateShopUI();
+        CurrentShopNpc = null;
+
+        Debug.Log("[Shop] Shop closed");
     }
 
     private void GenerateShopUI()
@@ -56,23 +73,29 @@ public class ShopManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
         activeUIElements.Clear();
 
         for (int i = 0; i < currentShopItems.Count; i++)
         {
-            ShopSlotUI newSlot = Instantiate(shopSlotPrefab, shopContentContainer);
+            ShopSlotUI newSlot =
+                Instantiate(shopSlotPrefab, shopContentContainer);
+
             newSlot.Setup(this, i, currentShopItems[i]);
+
             activeUIElements.Add(newSlot);
         }
     }
 
     public void AttemptBuyItem(int index)
     {
-        if (index < 0 || index >= currentShopItems.Count) return;
+        if (index < 0 || index >= currentShopItems.Count)
+            return;
 
         ShopItem itemToBuy = currentShopItems[index];
 
-        if (itemToBuy.stock <= 0) return;
+        if (itemToBuy.stock <= 0)
+            return;
 
         if (playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
         {
@@ -86,12 +109,14 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
+        playerMoney.TrySpendMoney(itemToBuy.itemData.BuyPrice);
 
-        playerMoney.TrySpendMoney(itemToBuy.itemData.BuyPrice); 
-        playerInventory.TryAddItem(itemToBuy.itemData, 1);      
-        itemToBuy.stock--;                                     
+        playerInventory.TryAddItem(itemToBuy.itemData, 1);
 
-        Debug.Log($"[Shop] Buy succesful {itemToBuy.itemData.ItemName}. Shop has {itemToBuy.stock}");
+        itemToBuy.stock--;
+
+        Debug.Log(
+            $"[Shop] Bought {itemToBuy.itemData.ItemName}. Remaining stock: {itemToBuy.stock}");
 
         activeUIElements[index].RefreshUI();
     }
