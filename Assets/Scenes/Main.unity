@@ -67841,7 +67841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6592097425169601289, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7597241205737381688, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_SizeDelta.x
@@ -526738,7 +526738,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a674ffcbc41109a43b8ccca23e03ef5b, type: 2}
   fallbackFishItem: {fileID: 11400000, guid: c440100254b54768a0408cedf72d88f8, type: 2}
   rewardQuantity: 1
-  testFishingKey: 102
+  testFishingKey: 112
 --- !u!4 &1362552434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6950151618649110325, guid: a64b10a43f9ecea4ab060c90d41dcba8, type: 3}
@@ -712522,124 +712522,84 @@ MonoBehaviour:
   slots:
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   isPlayerInventory: 1
   toggleBagKey: 27
   inventoryUI: {fileID: 1308161821}
@@ -1030586,31 +1030546,22 @@ MonoBehaviour:
   slots:
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   - itemData: {fileID: 0}
     amount: 0
-    quality: 0
   isPlayerInventory: 0
   toggleBagKey: 0
   inventoryUI: {fileID: 0}
