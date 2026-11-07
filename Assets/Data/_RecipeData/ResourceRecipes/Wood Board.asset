@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
-  m_Name: TestRecipe
+  m_Name: Wood Board
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 1
   requiredIngredients:
-  - item: {fileID: 11400000, guid: 001d66e6866677b80c192ddb90d4f265, type: 2}
-    amount: 1
   - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
     amount: 1
   - item: {fileID: 0}
@@ -31,5 +30,7 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  resultItem: {fileID: 11400000, guid: 4367635b629e46d429c8462a34fac0de, type: 2}
-  resultAmount: 1
+  - item: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
+  resultAmount: 3

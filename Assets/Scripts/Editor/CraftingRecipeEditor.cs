@@ -8,6 +8,10 @@ public class CraftingRecipeEditor : Editor
     {
         serializedObject.Update();
 
+        EditorGUILayout.LabelField("Categorization", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("category"));
+        EditorGUILayout.Space(10);
+
         EditorGUILayout.LabelField("Recipe Shape (3x3 Grid)", EditorStyles.boldLabel);
 
         SerializedProperty ingredientsProp = serializedObject.FindProperty("requiredIngredients");
@@ -43,6 +47,7 @@ public class CraftingRecipeEditor : Editor
         }
 
         EditorGUILayout.Space(10);
+
         EditorGUILayout.LabelField("Result", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("resultItem"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("resultAmount"));

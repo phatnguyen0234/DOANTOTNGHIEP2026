@@ -3,16 +3,24 @@ using UnityEngine;
 
 public class CraftingSystem : MonoBehaviour
 {
+    public static CraftingSystem Instance { get; private set; }
+
     [Header("Core References")]
     public Inventory craftingGridInventory;
     public Inventory playerInventory;
     public CraftingOutputUI outputUI;
 
-    [Header("Recipes Database")]
-    public List<CraftingRecipe> availableRecipes;
+    [Header("Master Recipe Database")]
+    public List<CraftingRecipe> allRecipes = new List<CraftingRecipe>();
 
     private CraftingRecipe currentValidRecipe = null;
     private int maxCraftableAmount = 0;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     private void OnEnable()
     {
@@ -31,7 +39,7 @@ public class CraftingSystem : MonoBehaviour
         currentValidRecipe = null;
         maxCraftableAmount = 0;
 
-        foreach (var recipe in availableRecipes)
+        foreach (var recipe in allRecipes)
         {
             if (IsShapeMatching(recipe, out int possibleCrafts))
             {
