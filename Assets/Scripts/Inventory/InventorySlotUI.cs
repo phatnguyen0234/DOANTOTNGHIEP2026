@@ -275,20 +275,9 @@ public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerClick
             amountText.text = slot.Amount > 1 ? slot.Amount.ToString() : string.Empty;
         }
 
-        if(qualityStarImage != null)
+        if (qualityStarImage != null)
         {
-            if (slot.Quality == CropQuality.Normal) qualityStarImage.gameObject.SetActive(false);
-            else
-            {
-                qualityStarImage.gameObject.SetActive(true);
-                qualityStarImage.color = slot.Quality switch
-                {
-                    CropQuality.Silver => new Color(0.75f, 0.82f, 0.90f),
-                    CropQuality.Gold => new Color(1.00f, 0.84f, 0.00f),
-                    CropQuality.Iridium => new Color(0.78f, 0.35f, 1.00f),
-                    _ => Color.white
-                };
-            }
+            qualityStarImage.gameObject.SetActive(false);
         }
     }
 
