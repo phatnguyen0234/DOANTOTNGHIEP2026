@@ -135,8 +135,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lastDirection = requestFaceDirection.normalized;
         }
-        if(lastDirection.x < 0) spriteRenderer.flipX = true;
-        else if (lastDirection.x > 0) spriteRenderer.flipX = false;
+        //if(lastDirection.x < 0) spriteRenderer.flipX = true;
+        //else if (lastDirection.x > 0) spriteRenderer.flipX = false;
         isUsingShovel = true;
         moveDirection = Vector2.zero;
         anim.SetFloat("MoveX", lastDirection.x);
@@ -218,8 +218,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lastDirection = requestDirection.normalized;
         }
-        if(lastDirection.x < 0) spriteRenderer.flipX = true;
-        else spriteRenderer.flipX = false;
+        //if(lastDirection.x < 0) spriteRenderer.flipX = true;
+        //else spriteRenderer.flipX = false;
         isUsingSickle = true;
         moveDirection = Vector2.zero;
         anim.SetFloat("MoveX", lastDirection.x);

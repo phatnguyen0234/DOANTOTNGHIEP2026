@@ -512,22 +512,22 @@ public class FarmInputController : MonoBehaviour
         {
             if (SoilManager.Instance.farmCells.TryGetValue(mouseCell, out CropTile crop) && crop != null)
             {
-                    CropQuality harvestQuality = QualityCalculator.DetermineQuality();
+                    CropQuality harvestQuality = QualityCalculator.DetermineQuality(cell.fertilizer);
                     Debug.Log("CropQuality " + harvestQuality);
-                    //// 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
+                    // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     //if (crop.GetDropTable() != null)
                     //{
-                    //    DropContext context = new DropContext(
-                    //        source: crop.gameObject,
-                    //        player: player != null ? player.gameObject : gameObject,
-                    //        tool: null,
-                    //        toolLevel: 1,
-                    //        dropMultiplier: 1f,
-                    //        luck: 0f
-                    //    );
-                    //    DropSystem.TriggerDrop(crop, context);
+                    //DropContext context = new DropContext(
+                    //    source: crop.gameObject,
+                    //    player: player != null ? player.gameObject : gameObject,
+                    //    tool: null,
+                    //    toolLevel: 1,
+                    //    dropMultiplier: 1f,
+                    //    luck: 0f
+                    //);
+                    //DropSystem.TriggerDrop(crop, context);
                     //}
-                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
+                    //2.Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner(hoặc thêm vào túi)
                     if (crop.CropData != null && crop.CropData.harvestItem != null)
                     {
                         int amount = Mathf.Max(1, crop.CropData.harvestAmount);
@@ -535,11 +535,11 @@ public class FarmInputController : MonoBehaviour
 
                         if (ItemDropSpawner.Instance != null)
                         {
-                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos, harvestQuality);
+                            ItemDropSpawner.Instance.SpawnDrop(crop.CropData.harvestItem, amount, harvestPos);
                         }
                         else if (inventory != null)
                         {
-                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount, harvestQuality);
+                            bool added = inventory.TryAddItem(crop.CropData.harvestItem, amount);
                             if (!added)
                             {
                                 Debug.LogWarning($"[FarmInputController] Túi đồ đã đầy! Không thể thu hoạch {crop.CropData.harvestItem.ItemName}.");
@@ -548,21 +548,19 @@ public class FarmInputController : MonoBehaviour
                         }
                     }
 
-                    // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
                     if (crop.GetDropTable() != null)
                     {
-                        DropContext context = new DropContext(
-                            source: crop.gameObject,
-                            player: player != null ? player.gameObject : gameObject,
-                            tool: null,
-                            toolLevel: 1,
-                            dropMultiplier: 1f,
-                            luck: 0f
+                    DropContext context = new DropContext(
+                        source: crop.gameObject,
+                        player: player != null ? player.gameObject : gameObject,
+                        tool: null,
+                        toolLevel: 1,
+                        dropMultiplier: 1f,
+                        luck: 0f
                     );
                     DropSystem.TriggerDrop(crop, context);
                     }
-
-                    if (crop.Harvest())
+                if (crop.Harvest())
                     {
                         cell.state = FarmCellState.Growing;
                     }
