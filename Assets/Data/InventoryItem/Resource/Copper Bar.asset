@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Copper Bar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: copper_bar
-  itemName: "Thỏi Đồng (Copper Bar)"
-  description: "Thỏi đồng tinh luyện sáng bóng dùng để chế tạo."
-  icon: {fileID: 4526543822523179516, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Th\u1ECFi \u0110\u1ED3ng (Copper Bar)"
+  description: "Th\u1ECFi \u0111\u1ED3ng tinh luy\u1EC7n s\xE1ng b\xF3ng d\xF9ng
+    \u0111\u1EC3 ch\u1EBF t\u1EA1o."
+  icon: {fileID: -8296408694704615830, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Iron Bar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: iron_bar
-  itemName: "Thỏi Sắt (Iron Bar)"
-  description: "Thỏi sắt đúc chắc chắn nguyên liệu rèn công cụ."
-  icon: {fileID: 5960479658712495672, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Th\u1ECFi S\u1EAFt (Iron Bar)"
+  description: "Th\u1ECFi s\u1EAFt \u0111\xFAc ch\u1EAFc ch\u1EAFn nguy\xEAn li\u1EC7u
+    r\xE8n c\xF4ng c\u1EE5."
+  icon: {fileID: -6159463551018316995, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
