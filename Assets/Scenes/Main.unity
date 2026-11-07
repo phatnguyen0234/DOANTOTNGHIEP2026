@@ -67705,7 +67705,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 77723750674057269, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_FillAmount
-      value: 0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1454422821272952023, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_LocalScale.x
@@ -67800,8 +67800,12 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2831206244021115089, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831206244021115089, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137.27809
+      value: -0.13903809
       objectReference: {fileID: 0}
     - target: {fileID: 3185514253330338318, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1030023,7 +1030027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &876872318676467673
 MonoBehaviour:
   m_ObjectHideFlags: 0
