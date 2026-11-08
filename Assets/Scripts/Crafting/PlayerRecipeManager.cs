@@ -21,6 +21,35 @@ public class PlayerRecipeManager : MonoBehaviour
 
     public event System.Action<CraftingRecipe> OnShowUnlockNotification;
 
+    [Header("Notification System")]
+    public List<CraftingRecipe> unseenRecipes = new List<CraftingRecipe>();
+    public event System.Action OnUnseenRecipesChanged;
+
+    public int GetUnseenCount(RecipeCategory category)
+    {
+        int count = 0;
+        foreach (var r in unseenRecipes)
+        {
+            if (r.category == category) count++;
+        }
+        return count;
+    }
+
+    public void MarkCategoryAsSeen(RecipeCategory category)
+    {
+        bool isChanged = false;
+        for (int i = unseenRecipes.Count - 1; i >= 0; i--)
+        {
+            if (unseenRecipes[i].category == category)
+            {
+                unseenRecipes.RemoveAt(i);
+                isChanged = true;
+            }
+        }
+
+        if (isChanged) OnUnseenRecipesChanged?.Invoke();
+    }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -93,16 +122,32 @@ public class PlayerRecipeManager : MonoBehaviour
         }
     }
 
+    //public void UnlockRecipe(CraftingRecipe newRecipe)
+    //{
+    //    if (newRecipe != null && !unlockedRecipes.Contains(newRecipe))
+    //    {
+    //        unlockedRecipes.Add(newRecipe);
+    //        Debug.Log($"<color=green>Unlocked new recipe: {newRecipe.resultItem.ItemName}</color>");
+
+    //        OnRecipeUnlocked?.Invoke();
+
+    //        OnShowUnlockNotification?.Invoke(newRecipe);
+    //    }
+    //}
+
     public void UnlockRecipe(CraftingRecipe newRecipe)
     {
         if (newRecipe != null && !unlockedRecipes.Contains(newRecipe))
         {
             unlockedRecipes.Add(newRecipe);
+
+            unseenRecipes.Add(newRecipe);
+
             Debug.Log($"<color=green>Unlocked new recipe: {newRecipe.resultItem.ItemName}</color>");
-
             OnRecipeUnlocked?.Invoke();
-
             OnShowUnlockNotification?.Invoke(newRecipe);
+
+            OnUnseenRecipesChanged?.Invoke();
         }
     }
 

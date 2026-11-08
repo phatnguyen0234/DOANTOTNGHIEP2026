@@ -10,26 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
-  m_Name: Wood Pickaxe
+  m_Name: Copper Helmet
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 3
+  unlockType: 1
   requiredIngredients:
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  resultItem: {fileID: 11400000, guid: 6867985c83f720a2c46a66c747c784d5, type: 2}
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: a1a2dee0e9fa3822a2883037d54a4da7, type: 2}
   resultAmount: 1
