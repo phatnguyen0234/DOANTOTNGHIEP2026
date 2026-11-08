@@ -1,8 +1,10 @@
 using System;
+using Core.UI;
 using UnityEngine;
 
-// Nhạc trưởng quản lý phiên Minigame câu cá
-public class FishingMinigame : MonoBehaviour
+// Nhạc trưởng quản lý phiên Minigame câu cá.
+// Kế thừa UIScreen để tích hợp vào hệ thống UIManager tập trung.
+public class FishingMinigame : UIScreen
 {
     [Header("Sub-systems")]
     [Tooltip("Thành phần vật lý của thanh đỡ.")]
@@ -28,6 +30,11 @@ public class FishingMinigame : MonoBehaviour
     private void Awake()
     {
         ResolveDependencies();
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.RemoveScreen(this);
+        }
+
         gameObject.SetActive(false);
     }
 
@@ -53,6 +60,12 @@ public class FishingMinigame : MonoBehaviour
         }
     }
 
+    public override void OnHide()
+    {
+        base.OnHide();
+        StopMinigame();
+    }
+
     // Bắt đầu một ván Minigame với loài cá và cần câu chỉ định
     public void StartMinigame(FishData fish, FishingRodData rod)
     {
@@ -63,6 +76,11 @@ public class FishingMinigame : MonoBehaviour
         IsActive = true;
 
         gameObject.SetActive(true);
+
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.PushScreen(this);
+        }
 
         float barMultiplier = rod != null ? rod.BarSizeMultiplier : 1.0f;
         float gainMult = rod != null ? rod.ProgressGainMultiplier : 1.0f;
@@ -137,6 +155,11 @@ public class FishingMinigame : MonoBehaviour
             minigameUI.Hide();
         }
 
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.RemoveScreen(this);
+        }
+
         gameObject.SetActive(false);
 
         FishingResult result;
@@ -166,6 +189,11 @@ public class FishingMinigame : MonoBehaviour
     {
         IsActive = false;
         if (minigameUI != null) minigameUI.Hide();
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.RemoveScreen(this);
+        }
+
         gameObject.SetActive(false);
     }
 }

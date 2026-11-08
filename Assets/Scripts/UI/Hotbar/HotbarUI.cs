@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Core.UI;
 using UnityEngine;
 
 // Quản lý toàn bộ giao diện thanh Hotbar, tự động đồng bộ theo dữ liệu từ Inventory và HotbarController.
-public class HotbarUI : MonoBehaviour
+// Kế thừa UIHUDView để tích hợp vào hệ thống UIManager tập trung.
+public class HotbarUI : UIHUDView
 {
     [Header("Dependencies")]
     [Tooltip("Tham chiếu tới Component Inventory chính.")]
@@ -108,8 +110,9 @@ public class HotbarUI : MonoBehaviour
     #region Initialization & Creation
 
     // Khởi tạo danh sách các ô Slot UI theo đúng số lượng hiệu dụng
-    public void Initialize()
+    public override void Initialize()
     {
+        base.Initialize();
         if (isInitialized) return;
 
         ResolveDependencies();

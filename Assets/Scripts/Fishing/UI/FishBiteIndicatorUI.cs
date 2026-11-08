@@ -1,8 +1,10 @@
 using System.Collections;
+using Core.UI;
 using UnityEngine;
 
-// Hiển thị hiệu ứng bóng bóng chấm than "!" khi cá cắn câu
-public class FishBiteIndicatorUI : MonoBehaviour
+// Hiển thị hiệu ứng bóng bóng chấm than "!" khi cá cắn câu.
+// Kế thừa UIHUDView để tích hợp vào hệ thống UIManager tập trung.
+public class FishBiteIndicatorUI : UIHUDView
 {
     [Header("Settings")]
     [Tooltip("Khoảng dịch chuyển vị trí so với điểm mục tiêu.")]
@@ -59,6 +61,12 @@ public class FishBiteIndicatorUI : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;
+    }
+
+    public override void OnHide()
+    {
+        base.OnHide();
+        Hide();
     }
 
     public void Hide()

@@ -85,7 +85,8 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerInventory && Input.GetKeyDown(toggleBagKey))
+        // Phím Escape được UIManager quản lý tập trung qua UIStack; chỉ bắt phím riêng nếu khác Escape hoặc thiếu UIManager
+        if (isPlayerInventory && toggleBagKey != KeyCode.Escape && Input.GetKeyDown(toggleBagKey))
         {
             ToggleBag();
         }

@@ -1,8 +1,10 @@
+using Core.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Hiển thị thanh tích lực khi người chơi giữ nút để quăng cần
-public class FishingPowerBarUI : MonoBehaviour
+// Hiển thị thanh tích lực khi người chơi giữ nút để quăng cần.
+// Kế thừa UIHUDView để tích hợp vào hệ thống UIManager tập trung.
+public class FishingPowerBarUI : UIHUDView
 {
     [Header("UI Elements")]
     [Tooltip("Thanh trượt hoặc hình ảnh thể hiện độ dài lực tích.")]
@@ -78,6 +80,19 @@ public class FishingPowerBarUI : MonoBehaviour
                 fillImage.color = powerGradient.Evaluate(powerNormalized);
             }
         }
+    }
+
+    public override void OnShow()
+    {
+        base.OnShow();
+        if (targetFollow != null) Show(targetFollow);
+        else gameObject.SetActive(true);
+    }
+
+    public override void OnHide()
+    {
+        base.OnHide();
+        Hide();
     }
 
     public void Hide()

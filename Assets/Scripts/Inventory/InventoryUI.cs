@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,9 +8,8 @@ using UnityEngine.UI;
 
 // Quản lý giao diện tổng thể của Inventory.
 // Lắng nghe sự kiện OnInventoryChanged từ Inventory để cập nhật toàn bộ các ô UI.
-// Điều phối tương tác Kéo Thả (Drag & Drop) và tạo hiệu ứng trực quan Drag Ghost.
-// Hỗ trợ phím tắt ESC bật/tắt (Toggle) hiển thị túi đồ.
-public class InventoryUI : MonoBehaviour
+// Kế thừa UIScreen để tích hợp vào hệ thống UIManager tập trung.
+public class InventoryUI : UIScreen
 {
     [Header("Inventory & UI References")]
     [Tooltip("Tham chiếu tới Component Inventory cần hiển thị.")]
@@ -124,8 +124,8 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        // Lắng nghe phím bấm bật/tắt túi đồ
-        if (Input.GetKeyDown(toggleKey))
+        // Nếu UIManager không tồn tại hoặc phím tắt không phải Escape, vẫn hỗ trợ phím tắt cục bộ
+        if (toggleKey != KeyCode.Escape && Input.GetKeyDown(toggleKey))
         {
             ToggleBag();
         }
@@ -186,6 +186,18 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public override void OnShow()
+    {
+        base.OnShow();
+        OpenBag();
+    }
+
+    public override void OnHide()
+    {
+        base.OnHide();
+        CloseBag();
+    }
+
     // Mở túi đồ (Đồng thời tắt UI Hotbar)
     public void OpenBag()
     {
@@ -204,6 +216,11 @@ public class InventoryUI : MonoBehaviour
 
         RefreshAllSlots();
         OnBagToggled?.Invoke(true);
+
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.PushScreen(this);
+        }
     }
 
     // Đóng túi đồ (Đồng thời bật lại UI Hotbar)
@@ -225,6 +242,11 @@ public class InventoryUI : MonoBehaviour
         }
 
         OnBagToggled?.Invoke(false);
+
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.RemoveScreen(this);
+        }
     }
 
     #endregion
@@ -232,8 +254,9 @@ public class InventoryUI : MonoBehaviour
     #region UI Setup & Generation
 
     // Khởi tạo và sinh động danh sách các ô Slot UI theo đúng Capacity của Inventory.
-    public void Initialize()
+    public override void Initialize()
     {
+        base.Initialize();
         if (isInitialized) return;
 
         if (inventory == null)

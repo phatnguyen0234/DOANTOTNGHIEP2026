@@ -338,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2028994940288090865}
   - component: {fileID: 8051500070944514626}
+  - component: {fileID: 3887360488462799024}
   m_Layer: 5
   m_Name: FishingMinigame
   m_TagString: Untagged
@@ -378,10 +379,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770c3ea6a31ca534e912a4299441dbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingMinigame
+  hideLowerScreens: 0
   barPhysics: {fileID: 7285140014952994057}
   fishMovement: {fileID: 6634893821648979734}
   progress: {fileID: 691022573395123597}
   minigameUI: {fileID: 5482857048901013805}
+--- !u!225 &3887360488462799024
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592097425169601289}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6872043395821885028
 GameObject:
   m_ObjectHideFlags: 0

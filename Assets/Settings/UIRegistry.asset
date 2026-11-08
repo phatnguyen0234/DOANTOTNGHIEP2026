@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d230ee9670e183347bbf5834dd01bef0, type: 3}
+  m_Name: UIRegistry
+  m_EditorClassIdentifier: Assembly-CSharp::Core.UI.UIRegistry
+  entries:
+  - key: InventoryUI
+    prefab: {fileID: 1302766324269192, guid: 94731ce65c127924ba6a1c6294207eb1, type: 3}
+    layer: 20
+  - key: ChestUI
+    prefab: {fileID: 100001, guid: d2d1fd80bff116046a61daab731d9a77, type: 3}
+    layer: 20
+  - key: FishingMinigame
+    prefab: {fileID: 7856407026771031388, guid: 9e463751d82905d4f9fdd2e0ee25e730, type: 3}
+    layer: 20
+  - key: FishingPowerBarUI
+    prefab: {fileID: 6314924719158115379, guid: 004db15dcc5eacd49a34b62eeaad9e67, type: 3}
+    layer: 10
+  - key: FishBiteIndicatorUI
+    prefab: {fileID: 300001, guid: 5a9b3c22d14e53f4a9b80e813cc15d21, type: 3}
+    layer: 10
+  - key: FishingResultUI
+    prefab: {fileID: 200001, guid: 8e5f2a11c03d42b498f89a912bb04c10, type: 3}
+    layer: 30

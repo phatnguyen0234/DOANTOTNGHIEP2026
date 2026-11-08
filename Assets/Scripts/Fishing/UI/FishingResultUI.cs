@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using Core.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Hiển thị Popup thông báo kết quả sau khi kết thúc lượt câu cá
-public class FishingResultUI : MonoBehaviour
+// Hiển thị Popup thông báo kết quả sau khi kết thúc lượt câu cá.
+// Kế thừa UIPopup để tích hợp vào hệ thống UIManager tập trung.
+public class FishingResultUI : UIPopup
 {
     [Header("UI Elements")]
     [Tooltip("Panel chính chứa toàn bộ kết quả.")]
@@ -36,10 +38,21 @@ public class FishingResultUI : MonoBehaviour
         Hide();
     }
 
+    public override void OnHide()
+    {
+        base.OnHide();
+        Hide();
+    }
+
     public void ShowResult(FishingResult result)
     {
         if (resultPanel != null) resultPanel.SetActive(true);
         gameObject.SetActive(true);
+
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.PushPopup(this);
+        }
 
         if (result.IsSuccess && (result.CaughtFish != null || result.RewardItem != null))
         {

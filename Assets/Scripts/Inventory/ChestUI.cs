@@ -1,13 +1,13 @@
 using System.Collections.Generic;
+using Core.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 // Quản lý giao diện hiển thị của Rương đồ (Chest UI).
 // Tự động sinh số ô slot theo dung lượng của rương đang mở.
-// Tự động mở đồng thời túi đồ của người chơi bên dưới và hỗ trợ đóng bằng phím ESC hoặc nút X.
-// Điều phối các thao tác nhanh: Shift-Click (Quick Transfer), Lấy tất cả (Loot All), Cất tất cả (Deposit All).
-public class ChestUI : MonoBehaviour
+// Kế thừa UIScreen để tích hợp vào hệ thống UIManager tập trung.
+public class ChestUI : UIScreen
 {
     [Header("UI Panels")]
     [Tooltip("Panel UI của rương đồ cần bật/tắt (nếu để trống sẽ dùng chính GameObject này).")]
@@ -71,10 +71,16 @@ public class ChestUI : MonoBehaviour
         }
     }
 
+    public override void OnHide()
+    {
+        base.OnHide();
+        CloseChest();
+    }
+
     private void Update()
     {
-        // Phím tắt ESC đóng rương
-        if (IsOpen && Input.GetKeyDown(KeyCode.Escape))
+        // Phím ESC được UIManager quản lý tập trung; chỉ bắt cục bộ nếu không có UIManager
+        if (UIManager.Instance == null && IsOpen && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseChest();
         }
@@ -106,6 +112,11 @@ public class ChestUI : MonoBehaviour
             chestPanel.SetActive(true);
         }
 
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.PushScreen(this);
+        }
+
         // Tự động mở túi đồ người chơi để sẵn sàng kéo thả hoặc Shift-Click
         if (Inventory.Instance != null && !Inventory.Instance.IsBagOpen)
         {
@@ -119,6 +130,11 @@ public class ChestUI : MonoBehaviour
     public void CloseChest()
     {
         if (!IsOpen && currentChest == null) return;
+
+        if (UIManager.Instance != null && UIManager.Instance.Stack != null)
+        {
+            UIManager.Instance.Stack.RemoveScreen(this);
+        }
 
         if (currentChest != null)
         {

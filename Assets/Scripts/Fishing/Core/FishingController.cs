@@ -95,12 +95,18 @@ public class FishingController : MonoBehaviour
         if (waterDetector == null) waterDetector = FindAnyObjectByType<WaterDetector>(FindObjectsInactive.Include);
         if (fishSpawner == null) fishSpawner = GetComponentInChildren<FishSpawner>();
         if (fishSpawner == null) fishSpawner = FindAnyObjectByType<FishSpawner>(FindObjectsInactive.Include);
+        if (minigame == null && UIManager.Instance != null) minigame = UIManager.Instance.GetScreen<FishingMinigame>();
         if (minigame == null) minigame = GetComponentInChildren<FishingMinigame>();
         if (inventory == null) inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
         if (itemDropSpawner == null) itemDropSpawner = FindAnyObjectByType<ItemDropSpawner>(FindObjectsInactive.Include);
 
+        if (powerBarUI == null && UIManager.Instance != null) powerBarUI = UIManager.Instance.GetHUD<FishingPowerBarUI>();
         if (powerBarUI == null) powerBarUI = FindAnyObjectByType<FishingPowerBarUI>(FindObjectsInactive.Include);
+
+        if (biteIndicatorUI == null && UIManager.Instance != null) biteIndicatorUI = UIManager.Instance.GetHUD<FishBiteIndicatorUI>();
         if (biteIndicatorUI == null) biteIndicatorUI = FindAnyObjectByType<FishBiteIndicatorUI>(FindObjectsInactive.Include);
+
+        if (resultUI == null && UIManager.Instance != null) resultUI = UIManager.Instance.GetPopup<FishingResultUI>() ?? FindAnyObjectByType<FishingResultUI>(FindObjectsInactive.Include);
         if (resultUI == null) resultUI = FindAnyObjectByType<FishingResultUI>(FindObjectsInactive.Include);
     }
 
@@ -357,7 +363,8 @@ public class FishingController : MonoBehaviour
 
         if (minigame == null)
         {
-            minigame = GetComponentInChildren<FishingMinigame>(true);
+            if (UIManager.Instance != null) minigame = UIManager.Instance.GetScreen<FishingMinigame>();
+            if (minigame == null) minigame = GetComponentInChildren<FishingMinigame>(true);
             if (minigame == null) minigame = FindAnyObjectByType<FishingMinigame>(FindObjectsInactive.Include);
         }
 
