@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Wooden Flute
+  m_Name: Wooden Stick
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: wooden_flute
-  itemName: "Ống Sáo Gỗ (Wooden Flute)"
-  description: "Cây sáo gỗ phát ra giai điệu êm dịu làm dịu lòng động vật."
+  itemID: wooden_stick
+  itemName: "G\u1EADy G\u1ED7 (Wooden Stick"
+  description: "Thanh g\u1EADy g\u1ED7 c\xF3 th\u1EC3 thu th\u1EADp \u0111\u01B0\u1EE3c
+    khi ch\u1EBF t\u1EA1o t\u1EEB g\u1ED7 ho\u1EB7c ch\u1EB7t c\xE2y."
   icon: {fileID: -1542529692774452513, guid: 5defd9b8697de2b41ab5372ca91a747e, type: 3}
-  itemType: 5
+  itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
-  maxStack: 1
+  maxStack: 99
   buyPrice: 100
   sellPrice: 40
   canSell: 1

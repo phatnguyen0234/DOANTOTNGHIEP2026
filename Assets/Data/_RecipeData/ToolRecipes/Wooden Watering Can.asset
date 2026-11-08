@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
-  m_Name: Wood Axe
+  m_Name: Wooden Watering Can
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
   requiredIngredients:
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
-    amount: 1
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
+  - item: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  resultItem: {fileID: 11400000, guid: eea64d23448c4d3ae0faf76b7aeaf0c9, type: 2}
+  - item: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 34b4f74f9de12074fae300b3b1789178, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: 026cd4a796d0628748468e27d92a8e61, type: 2}
   resultAmount: 1

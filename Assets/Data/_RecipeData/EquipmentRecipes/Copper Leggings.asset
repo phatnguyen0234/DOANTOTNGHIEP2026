@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
-  m_Name: TestRecipe
+  m_Name: Copper Leggings
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
-  category: 1
-  unlockType: 2
+  category: 3
+  unlockType: 1
   requiredIngredients:
   - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
+  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    amount: 1
   - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
     amount: 1
   - item: {fileID: 0}
@@ -27,11 +31,7 @@ MonoBehaviour:
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  resultItem: {fileID: 11400000, guid: cffb3574f12dd630de69d032c32a3579, type: 2}
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    amount: 1
+  resultItem: {fileID: 11400000, guid: 3af5619931d5dca0bdd20797f1d87e77, type: 2}
   resultAmount: 1
