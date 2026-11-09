@@ -20,7 +20,20 @@ namespace Core.UI
         public virtual void OnShow()
         {
             Initialize();
+            EnsureAncestorsActive();
             gameObject.SetActive(true);
+        }
+
+        private void EnsureAncestorsActive()
+        {
+            if (transform.localScale == Vector3.zero) transform.localScale = Vector3.one;
+            Transform p = transform.parent;
+            while (p != null && p.GetComponent<Canvas>() == null)
+            {
+                if (!p.gameObject.activeSelf) p.gameObject.SetActive(true);
+                if (p.localScale == Vector3.zero) p.localScale = Vector3.one;
+                p = p.parent;
+            }
         }
 
         public virtual void OnHide()

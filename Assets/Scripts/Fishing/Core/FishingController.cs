@@ -215,6 +215,7 @@ public class FishingController : MonoBehaviour
             castingController.StartCharging(activeRodData, dir);
         }
 
+        if (powerBarUI == null && UIManager.Instance != null) powerBarUI = UIManager.Instance.GetHUD<FishingPowerBarUI>();
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
@@ -240,6 +241,7 @@ public class FishingController : MonoBehaviour
             castingController.StartCharging(activeRodData, facingDir);
         }
 
+        if (powerBarUI == null && UIManager.Instance != null) powerBarUI = UIManager.Instance.GetHUD<FishingPowerBarUI>();
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
@@ -401,6 +403,8 @@ public class FishingController : MonoBehaviour
         reactionTimer = activeRodData != null ? activeRodData.HookReactionWindow : 1.2f;
 
         FishingBobber bobber = castingController != null ? castingController.GetBobber() : null;
+        if (biteIndicatorUI == null && UIManager.Instance != null) biteIndicatorUI = UIManager.Instance.GetHUD<FishBiteIndicatorUI>();
+
         if (bobber != null)
         {
             bobber.PlayBiteNibbleAnimation();
@@ -459,6 +463,7 @@ public class FishingController : MonoBehaviour
             StateMachine.ChangeState(FishingState.Failed);
         }
 
+        if (resultUI == null && UIManager.Instance != null) resultUI = UIManager.Instance.GetPopup<FishingResultUI>();
         if (resultUI != null)
         {
             resultUI.ShowResult(result);

@@ -87,9 +87,10 @@ public class Chest : MonoBehaviour, IInteractable
             float distance = Vector2.Distance(currentInteractor.transform.position, transform.position);
             if (distance > maxInteractDistance)
             {
-                if (ChestUI.Instance != null && ChestUI.Instance.CurrentChest == this)
+                ChestUI chestUI = ChestUI.Instance ?? (UIManager.Instance != null ? UIManager.Instance.GetScreen<ChestUI>() : null);
+                if (chestUI != null && chestUI.CurrentChest == this)
                 {
-                    ChestUI.Instance.CloseChest();
+                    chestUI.CloseChest();
                 }
                 else
                 {
@@ -116,13 +117,19 @@ public class Chest : MonoBehaviour, IInteractable
 
         UpdateVisual(true);
 
-        if (ChestUI.Instance != null)
+        ChestUI chestUI = ChestUI.Instance;
+        if (chestUI == null && UIManager.Instance != null)
         {
-            ChestUI.Instance.OpenChest(this);
+            chestUI = UIManager.Instance.ShowScreen<ChestUI>();
+        }
+
+        if (chestUI != null)
+        {
+            chestUI.OpenChest(this);
         }
         else
         {
-            Debug.LogWarning("[Chest] Không tìm thấy ChestUI.Instance trong Scene!", this);
+            Debug.LogWarning("[Chest] Không tìm thấy ChestUI từ Scene lẫn Prefab!", this);
         }
     }
 

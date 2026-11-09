@@ -85,15 +85,33 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        // Phím Escape được UIManager quản lý tập trung qua UIStack; chỉ bắt phím riêng nếu khác Escape hoặc thiếu UIManager
-        if (isPlayerInventory && toggleBagKey != KeyCode.Escape && Input.GetKeyDown(toggleBagKey))
+        if (!isPlayerInventory) return;
+
+        if (Input.GetKeyDown(toggleBagKey))
         {
+            if (toggleBagKey == KeyCode.Escape && UIManager.Instance != null && UIManager.Instance.Stack != null)
+            {
+                // Khi phím tắt túi đồ là Escape:
+                // - Nếu stack rỗng (chưa có UI nào mở), phím Escape sẽ mở túi đồ
+                if (UIManager.Instance.Stack.ScreenCount == 0 && UIManager.Instance.Stack.PopupCount == 0)
+                {
+                    OpenBag();
+                }
+                // - Nếu đang có UI mở (chính túi đồ hoặc popup/screen khác), UIManager.Update() sẽ bắt Escape để Pop (đóng UI)
+                return;
+            }
+
             ToggleBag();
         }
     }
 
     private void ResolveUI()
     {
+        if (inventoryUI == null && UIManager.Instance != null)
+        {
+            inventoryUI = UIManager.Instance.GetScreen<InventoryUI>();
+        }
+
         if (inventoryUI == null)
         {
             inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
@@ -520,42 +538,45 @@ public class Inventory : MonoBehaviour
     // Bật/tắt hiển thị giao diện túi đồ (UI Inventory Bag)
     public void ToggleBag()
     {
-        if (inventoryUI == null)
-        {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
-        }
+        ResolveUI();
 
         if (inventoryUI != null)
         {
             inventoryUI.ToggleBag();
         }
+        else if (UIManager.Instance != null)
+        {
+            inventoryUI = UIManager.Instance.ShowScreen<InventoryUI>();
+        }
         else
         {
-            Debug.LogWarning("[Inventory] Không tìm thấy Component InventoryUI trong Scene!", this);
+            Debug.LogWarning("[Inventory] Không tìm thấy Component InventoryUI từ Scene lẫn Prefab!", this);
         }
     }
 
     // Mở giao diện túi đồ
     public void OpenBag()
     {
-        if (inventoryUI == null)
-        {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
-        }
+        ResolveUI();
 
         if (inventoryUI != null)
         {
             inventoryUI.OpenBag();
+        }
+        else if (UIManager.Instance != null)
+        {
+            inventoryUI = UIManager.Instance.ShowScreen<InventoryUI>();
+        }
+        else
+        {
+            Debug.LogWarning("[Inventory] Không tìm thấy Component InventoryUI từ Scene lẫn Prefab!", this);
         }
     }
 
     // Đóng giao diện túi đồ
     public void CloseBag()
     {
-        if (inventoryUI == null)
-        {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
-        }
+        ResolveUI();
 
         if (inventoryUI != null)
         {

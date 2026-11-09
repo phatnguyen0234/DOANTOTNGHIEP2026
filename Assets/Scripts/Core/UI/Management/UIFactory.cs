@@ -78,6 +78,10 @@ namespace Core.UI
             GameObject spawnedObj = UnityEngine.Object.Instantiate(prefab, parentTransform);
             spawnedObj.name = prefab.name;
 
+            // Đảm bảo scale và position hợp lệ khi instantiate vào Layer
+            spawnedObj.transform.localScale = Vector3.one;
+            spawnedObj.transform.localPosition = Vector3.zero;
+
             T viewComponent = spawnedObj.GetComponent<T>();
             if (viewComponent == null)
             {
@@ -88,7 +92,18 @@ namespace Core.UI
             {
                 cachedViews[viewType] = viewComponent;
                 viewComponent.Initialize();
-                spawnedObj.SetActive(false);
+
+                // Nếu viewComponent là GameObject con (ví dụ Panel nằm trong Canvas wrapper),
+                // giữ spawnedObj active để không chặn hiển thị của view con, chỉ ẩn viewComponent
+                if (viewComponent.gameObject != spawnedObj)
+                {
+                    spawnedObj.SetActive(true);
+                    viewComponent.gameObject.SetActive(false);
+                }
+                else
+                {
+                    spawnedObj.SetActive(false);
+                }
             }
             else
             {

@@ -38,7 +38,7 @@ public class ChestUI : UIScreen
     public static ChestUI Instance { get; private set; }
 
     public Chest CurrentChest => currentChest;
-    public bool IsOpen => chestPanel != null ? chestPanel.activeSelf : gameObject.activeSelf;
+    public override bool IsOpen => chestPanel != null ? chestPanel.activeSelf : gameObject.activeSelf;
 
     private void Awake()
     {

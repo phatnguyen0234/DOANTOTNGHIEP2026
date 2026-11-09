@@ -62,7 +62,7 @@ public class InventoryUI : UIScreen
     public static event Action<bool> OnBagToggled;
 
     public Inventory Inventory => inventory;
-    public bool IsOpen => bagPanel != null ? bagPanel.activeSelf : gameObject.activeSelf;
+    public override bool IsOpen => bagPanel != null ? bagPanel.activeSelf : gameObject.activeSelf;
     public Transform HotbarSlotContainer => hotbarSlotContainer;
     public Transform MainSlotContainer => mainSlotContainer;
     public int HotbarSize => hotbarSize;
@@ -206,6 +206,16 @@ public class InventoryUI : UIScreen
         {
             target.SetActive(true);
         }
+        gameObject.SetActive(true);
+
+        // Đảm bảo tất cả Transform cha tới Canvas đều active và scale không bị 0
+        Transform p = transform.parent;
+        while (p != null && p.GetComponent<Canvas>() == null)
+        {
+            if (!p.gameObject.activeSelf) p.gameObject.SetActive(true);
+            if (p.localScale == Vector3.zero) p.localScale = Vector3.one;
+            p = p.parent;
+        }
 
         // Tắt UI Hotbar khi mở túi đồ
         ResolveHotbarUI();
@@ -261,7 +271,12 @@ public class InventoryUI : UIScreen
 
         if (inventory == null)
         {
-            Debug.LogError("[InventoryUI] Chưa gán tham chiếu Inventory vào Inspector!", this);
+            inventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        if (inventory == null)
+        {
+            Debug.LogError("[InventoryUI] Chưa gán tham chiếu Inventory vào Inspector và không tìm thấy Inventory.Instance!", this);
             return;
         }
 
@@ -269,6 +284,15 @@ public class InventoryUI : UIScreen
         {
             Debug.LogError("[InventoryUI] Cần gán ít nhất một Container (hotbarSlotContainer hoặc mainSlotContainer) vào Inspector!", this);
             return;
+        }
+
+        if (slotPrefab == null)
+        {
+            InventorySlotUI existingSlot = FindAnyObjectByType<InventorySlotUI>(FindObjectsInactive.Include);
+            if (existingSlot != null)
+            {
+                slotPrefab = existingSlot;
+            }
         }
 
         if (slotPrefab == null)
