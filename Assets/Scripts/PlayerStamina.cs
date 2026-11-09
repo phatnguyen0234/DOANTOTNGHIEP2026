@@ -47,7 +47,10 @@ public class PlayerStamina : MonoBehaviour
         if(currentStamina <= -15f)
         {
             statePlayer = state.passout;
-            UIManager.Instance.TriggerPassOutSleep();
+            if (ScreenFader.Instance != null)
+            {
+                ScreenFader.Instance.TriggerPassOutSleep();
+            }
         }
         else if(currentStamina <= 0f)
         {
@@ -72,6 +75,6 @@ public class PlayerStamina : MonoBehaviour
     //{
     //    statePlayer = state.passout;
     //    onStateStaminaChanged?.Invoke(statePlayer);
-    //    UIManager.Instance.TriggerPassOutSleep();
+    //    ScreenFader.Instance.TriggerPassOutSleep();
     //}
 }
