@@ -40,7 +40,31 @@ namespace BlitzyUI
         public delegate void PushedDelegate(Screen screen);
         public delegate void PoppedDelegate(Screen.Id id);
 
-        public static UIManager Instance { get; private set; }
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void AutoInitialize()
+        {
+            var _ = Instance;
+        }
+
+        private static UIManager _instance;
+        public static UIManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindAnyObjectByType<UIManager>(FindObjectsInactive.Include);
+                    if (_instance == null)
+                    {
+                        GameObject go = new GameObject("UIManager_Blitzy");
+                        _instance = go.AddComponent<UIManager>();
+                        DontDestroyOnLoad(go);
+                    }
+                }
+                return _instance;
+            }
+            private set => _instance = value;
+        }
 
         [Header("Paths & Roots")]
         [Tooltip("Resources path where Screen prefabs are loaded from.")]
@@ -89,11 +113,11 @@ namespace BlitzyUI
 
         private void Awake()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = this;
+                _instance = this;
             }
-            else if (Instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
                 return;
@@ -101,17 +125,17 @@ namespace BlitzyUI
 
             EnsureRootCanvas();
 
-            _cache = new Dictionary<string, Screen>();
-            _queue = new Queue<QueuedScreen>();
-            _stack = new List<Screen>();
+            if (_cache == null) _cache = new Dictionary<string, Screen>();
+            if (_queue == null) _queue = new Queue<QueuedScreen>();
+            if (_stack == null) _stack = new List<Screen>();
             _state = State.Ready;
         }
 
         private void OnDestroy()
         {
-            if (Instance == this)
+            if (_instance == this)
             {
-                Instance = null;
+                _instance = null;
             }
         }
 
@@ -132,6 +156,14 @@ namespace BlitzyUI
                     {
                         QueuePopTo(ScreenIds.Chest, include: true);
                     }
+                    else if (GetScreen(ScreenIds.Crafting) != null)
+                    {
+                        QueuePopTo(ScreenIds.Crafting, include: true);
+                    }
+                    else if (GetScreen(ScreenIds.Shop) != null)
+                    {
+                        QueuePopTo(ScreenIds.Shop, include: true);
+                    }
                     else
                     {
                         QueuePop();
@@ -147,6 +179,14 @@ namespace BlitzyUI
                     if (GetScreen(ScreenIds.Chest) != null)
                     {
                         QueuePopTo(ScreenIds.Chest, include: true);
+                    }
+                    else if (GetScreen(ScreenIds.Crafting) != null)
+                    {
+                        QueuePopTo(ScreenIds.Crafting, include: true);
+                    }
+                    else if (GetScreen(ScreenIds.Shop) != null)
+                    {
+                        QueuePopTo(ScreenIds.Shop, include: true);
                     }
                     else if (GetTopScreen()?.id == ScreenIds.Inventory)
                     {
@@ -196,8 +236,11 @@ namespace BlitzyUI
                 {
                     if (c.isRootCanvas && c.gameObject.name != "UIManager_RootCanvas" && c.gameObject.activeInHierarchy)
                     {
-                        rootCanvas = c;
-                        break;
+                        if (c.gameObject.layer == 5 || c.transform.childCount > 1)
+                        {
+                            rootCanvas = c;
+                            break;
+                        }
                     }
                 }
             }
@@ -386,38 +429,71 @@ namespace BlitzyUI
                 }
                 else
                 {
-                    string path = System.IO.Path.Combine(resourcePrefabDirectory, queuedPush.prefabName).Replace('\\', '/');
-                    GameObject prefabGo = Resources.Load<GameObject>(path);
-
-                    if (prefabGo == null)
+                    // Kiểm tra xem màn hình này đã có sẵn trong rootCanvas (Scene) hay chưa
+                    if (rootCanvas != null)
                     {
-                        Debug.LogError(string.Format("[UIManager] Failed to load Screen prefab at path: 'Resources/{0}'", path));
-                        _state = State.Ready;
-                        if (CanExecuteNextQueueItem()) ExecuteNextQueueItem();
-                        return;
-                    }
+                        Screen[] existingScreens = rootCanvas.GetComponentsInChildren<Screen>(true);
+                        foreach (var s in existingScreens)
+                        {
+                            bool isMatch = s.gameObject.name == queuedPush.prefabName 
+                                || s.gameObject.name == queuedPush.id.ToString() 
+                                || s.gameObject.name == queuedPush.id.defaultPrefabName
+                                || (queuedPush.id == ScreenIds.Inventory && (s is InventoryUI || s.gameObject.name.Contains("Bag") || s.gameObject.name.Contains("Inventory")))
+                                || (queuedPush.id == ScreenIds.Chest && (s is ChestUI || s.gameObject.name.Contains("Chest")))
+                                || (queuedPush.id == ScreenIds.Crafting && (s is CraftingScreen || s.gameObject.name.Contains("Crafting")))
+                                || (queuedPush.id == ScreenIds.Shop && (s is ShopScreen || s.gameObject.name.Contains("Shop")))
+                                || (queuedPush.id == ScreenIds.Fishing && (s is FishingScreen || s.gameObject.name.Contains("Fishing")));
 
-                    GameObject screenGo = Instantiate(prefabGo, rootCanvas.transform, false);
-                    RectTransform rt = screenGo.GetComponent<RectTransform>();
-                    if (rt != null)
-                    {
-                        rt.anchorMin = Vector2.zero;
-                        rt.anchorMax = Vector2.one;
-                        rt.offsetMin = Vector2.zero;
-                        rt.offsetMax = Vector2.zero;
-                        rt.localScale = Vector3.one;
-                        rt.localPosition = Vector3.zero;
+                            if (isMatch)
+                            {
+                                screenInstance = s;
+                                screenInstance.transform.SetAsLastSibling();
+                                screenInstance.gameObject.SetActive(true);
+                                if (screenInstance.transform.parent != null && screenInstance.transform.parent != rootCanvas.transform)
+                                {
+                                    screenInstance.transform.parent.gameObject.SetActive(true);
+                                    screenInstance.transform.parent.SetAsLastSibling();
+                                }
+                                break;
+                            }
+                        }
                     }
-
-                    screenInstance = screenGo.GetComponent<Screen>() ?? screenGo.GetComponentInChildren<Screen>();
 
                     if (screenInstance == null)
                     {
-                        Debug.LogError(string.Format("[UIManager] Prefab at 'Resources/{0}' does not contain any component inheriting from BlitzyUI.Screen!", path));
-                        Destroy(screenGo);
-                        _state = State.Ready;
-                        if (CanExecuteNextQueueItem()) ExecuteNextQueueItem();
-                        return;
+                        string path = System.IO.Path.Combine(resourcePrefabDirectory, queuedPush.prefabName).Replace('\\', '/');
+                        GameObject prefabGo = Resources.Load<GameObject>(path);
+
+                        if (prefabGo == null)
+                        {
+                            Debug.LogError(string.Format("[UIManager] Failed to load Screen prefab at path: 'Resources/{0}'", path));
+                            _state = State.Ready;
+                            if (CanExecuteNextQueueItem()) ExecuteNextQueueItem();
+                            return;
+                        }
+
+                        GameObject screenGo = Instantiate(prefabGo, rootCanvas.transform, false);
+                        RectTransform rt = screenGo.GetComponent<RectTransform>();
+                        if (rt != null)
+                        {
+                            rt.anchorMin = Vector2.zero;
+                            rt.anchorMax = Vector2.one;
+                            rt.offsetMin = Vector2.zero;
+                            rt.offsetMax = Vector2.zero;
+                            rt.localScale = Vector3.one;
+                            rt.localPosition = Vector3.zero;
+                        }
+
+                        screenInstance = screenGo.GetComponent<Screen>() ?? screenGo.GetComponentInChildren<Screen>();
+
+                        if (screenInstance == null)
+                        {
+                            Debug.LogError(string.Format("[UIManager] Prefab at 'Resources/{0}' does not contain any component inheriting from BlitzyUI.Screen!", path));
+                            Destroy(screenGo);
+                            _state = State.Ready;
+                            if (CanExecuteNextQueueItem()) ExecuteNextQueueItem();
+                            return;
+                        }
                     }
 
                     screenInstance.Setup(queuedPush.id, queuedPush.prefabName);
@@ -591,10 +667,6 @@ namespace BlitzyUI
                 if (screen.keepCached)
                 {
                     screen.gameObject.SetActive(false);
-                    if (screen.transform.parent != null && screen.transform.parent != rootCanvas.transform)
-                    {
-                        screen.transform.parent.gameObject.SetActive(false);
-                    }
                     if (!_cache.ContainsKey(screen.PrefabName))
                     {
                         _cache.Add(screen.PrefabName, screen);
@@ -602,12 +674,7 @@ namespace BlitzyUI
                 }
                 else
                 {
-                    GameObject objToDestroy = screen.gameObject;
-                    if (screen.transform.parent != null && screen.transform.parent != rootCanvas.transform)
-                    {
-                        objToDestroy = screen.transform.parent.gameObject;
-                    }
-                    Destroy(objToDestroy);
+                    Destroy(screen.gameObject);
                 }
             }
 
@@ -617,6 +684,11 @@ namespace BlitzyUI
             {
                 _activePopCallback(screen != null ? screen.id : null);
                 _activePopCallback = null;
+            }
+
+            if (_stack.Count == 0 && _queue.Count == 0)
+            {
+                OnAnyScreenActiveChanged?.Invoke(false);
             }
 
             if (CanExecuteNextQueueItem())

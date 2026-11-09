@@ -20,8 +20,7 @@ public class FishingPowerBarUI : MonoBehaviour
 
     private void Awake()
     {
-        parentCanvas = GetComponentInParent<Canvas>();
-        mainCam = Camera.main;
+        EnsureCanvas();
 
         if (powerGradient == null || powerGradient.colorKeys == null || powerGradient.colorKeys.Length == 0)
         {
@@ -39,10 +38,36 @@ public class FishingPowerBarUI : MonoBehaviour
         Hide();
     }
 
+    private void EnsureCanvas()
+    {
+        if (parentCanvas == null)
+        {
+            parentCanvas = GetComponentInParent<Canvas>();
+        }
+
+        if (parentCanvas == null)
+        {
+            parentCanvas = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                ? BlitzyUI.UIManager.Instance.rootCanvas
+                : FindAnyObjectByType<Canvas>(FindObjectsInactive.Include);
+
+            if (parentCanvas != null && transform.parent != parentCanvas.transform)
+            {
+                transform.SetParent(parentCanvas.transform, false);
+            }
+        }
+
+        if (mainCam == null)
+        {
+            mainCam = Camera.main;
+        }
+    }
+
     private void Update()
     {
         if (targetFollow != null && gameObject.activeSelf)
         {
+            EnsureCanvas();
             Vector3 worldPos = targetFollow.position + offset;
             if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
             {
@@ -61,6 +86,7 @@ public class FishingPowerBarUI : MonoBehaviour
 
     public void Show(Transform followTransform)
     {
+        EnsureCanvas();
         targetFollow = followTransform;
         gameObject.SetActive(true);
         SetPower(0f);

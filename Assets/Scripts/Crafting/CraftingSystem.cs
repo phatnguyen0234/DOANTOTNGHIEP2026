@@ -34,6 +34,41 @@ public class CraftingSystem : MonoBehaviour
             craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
     }
 
+    public void BindCraftingUI(Inventory gridInv, CraftingOutputUI outUI)
+    {
+        if (craftingGridInventory != null)
+        {
+            craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
+        }
+
+        craftingGridInventory = gridInv;
+        outputUI = outUI;
+
+        if (playerInventory == null)
+        {
+            playerInventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        if (craftingGridInventory != null)
+        {
+            craftingGridInventory.OnInventoryChanged += EvaluateGrid;
+            EvaluateGrid();
+        }
+    }
+
+    public void UnbindCraftingUI(Inventory gridInv)
+    {
+        if (craftingGridInventory == gridInv)
+        {
+            if (craftingGridInventory != null)
+            {
+                craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
+            }
+            craftingGridInventory = null;
+            outputUI = null;
+        }
+    }
+
     private void EvaluateGrid()
     {
         currentValidRecipe = null;
@@ -162,6 +197,12 @@ public class CraftingSystem : MonoBehaviour
     public void ExecuteCrafting(bool craftAll)
     {
         if (currentValidRecipe == null) return;
+
+        if (playerInventory == null)
+        {
+            playerInventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+        if (playerInventory == null) return;
 
         int craftsToPerform = craftAll ? maxCraftableAmount : 1;
         int totalYield = currentValidRecipe.resultAmount * craftsToPerform;

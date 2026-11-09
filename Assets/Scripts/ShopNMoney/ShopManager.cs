@@ -5,7 +5,18 @@ public class ShopManager : MonoBehaviour
 {
     public static ShopManager instance { get; private set; }
 
-    public bool IsShopOpen => shopUIPanel.activeSelf;
+    public bool IsShopOpen
+    {
+        get
+        {
+            if (BlitzyUI.UIManager.Instance != null)
+            {
+                var screen = BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Shop);
+                return screen != null && screen.gameObject.activeSelf;
+            }
+            return shopUIPanel != null && shopUIPanel.activeSelf;
+        }
+    }
 
     public ShopNPC CurrentShopNpc { get; private set; }
 
@@ -30,11 +41,21 @@ public class ShopManager : MonoBehaviour
         }
 
         instance = this;
+        ResolveDependencies();
+    }
+
+    private void ResolveDependencies()
+    {
+        if (playerInventory == null) playerInventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        if (playerMoney == null) playerMoney = FindAnyObjectByType<PlayerMoney>(FindObjectsInactive.Include);
     }
 
     private void Start()
     {
-        shopUIPanel.SetActive(false);
+        if (shopUIPanel != null)
+        {
+            shopUIPanel.SetActive(false);
+        }
     }
 
     private void Update()
@@ -48,47 +69,92 @@ public class ShopManager : MonoBehaviour
     public void OpenShop(ShopNPC shopNpc, List<ShopItem> shopItems)
     {
         CurrentShopNpc = shopNpc;
+        currentShopItems = shopItems != null ? shopItems : new List<ShopItem>();
 
-        currentShopItems = shopItems;
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            var data = new BlitzyUI.Screen.Data();
+            data.Add("npc", shopNpc);
+            data.Add("items", currentShopItems);
+            BlitzyUI.UIManager.Instance.QueuePush(BlitzyUI.ScreenIds.Shop, data);
+            return;
+        }
 
-        GenerateShopUI();
+        GenerateShopUI(shopContentContainer);
 
-        shopUIPanel.SetActive(true);
+        if (shopUIPanel != null)
+        {
+            shopUIPanel.SetActive(true);
+        }
 
         Debug.Log("[Shop] Shop opened");
     }
 
     public void CloseShop()
     {
-        shopUIPanel.SetActive(false);
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            BlitzyUI.UIManager.Instance.QueuePopTo(BlitzyUI.ScreenIds.Shop, include: true);
+            CurrentShopNpc = null;
+            return;
+        }
+
+        if (shopUIPanel != null)
+        {
+            shopUIPanel.SetActive(false);
+        }
 
         CurrentShopNpc = null;
 
         Debug.Log("[Shop] Shop closed");
     }
 
-    private void GenerateShopUI()
+    public void OnShopScreenClosed()
     {
-        foreach (Transform child in shopContentContainer)
+        CurrentShopNpc = null;
+        Debug.Log("[Shop] Shop screen closed");
+    }
+
+    public void GenerateShopUI(Transform container = null, List<ShopItem> overrideItems = null)
+    {
+        Transform targetContainer = container != null ? container : shopContentContainer;
+        if (targetContainer == null) return;
+
+        if (overrideItems != null)
+        {
+            currentShopItems = overrideItems;
+        }
+
+        if (shopSlotPrefab == null)
+        {
+            shopSlotPrefab = Resources.Load<ShopSlotUI>("Prefabs/Shop/ShopSlot");
+        }
+
+        foreach (Transform child in targetContainer)
         {
             Destroy(child.gameObject);
         }
 
         activeUIElements.Clear();
 
+        if (shopSlotPrefab == null)
+        {
+            Debug.LogError("[ShopManager] Không tìm thấy shopSlotPrefab!");
+            return;
+        }
+
         for (int i = 0; i < currentShopItems.Count; i++)
         {
-            ShopSlotUI newSlot =
-                Instantiate(shopSlotPrefab, shopContentContainer);
-
+            ShopSlotUI newSlot = Instantiate(shopSlotPrefab, targetContainer);
             newSlot.Setup(this, i, currentShopItems[i]);
-
             activeUIElements.Add(newSlot);
         }
     }
 
     public void AttemptBuyItem(int index)
     {
+        ResolveDependencies();
+
         if (index < 0 || index >= currentShopItems.Count)
             return;
 
@@ -97,13 +163,13 @@ public class ShopManager : MonoBehaviour
         if (itemToBuy.stock <= 0)
             return;
 
-        if (playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
+        if (playerMoney == null || playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
         {
             Debug.LogWarning("[Shop] You don't have enough money!");
             return;
         }
 
-        if (!playerInventory.CanAddItem(itemToBuy.itemData, 1))
+        if (playerInventory == null || !playerInventory.CanAddItem(itemToBuy.itemData, 1))
         {
             Debug.LogWarning("[Shop] Full bag!");
             return;
@@ -118,6 +184,9 @@ public class ShopManager : MonoBehaviour
         Debug.Log(
             $"[Shop] Bought {itemToBuy.itemData.ItemName}. Remaining stock: {itemToBuy.stock}");
 
-        activeUIElements[index].RefreshUI();
+        if (index < activeUIElements.Count && activeUIElements[index] != null)
+        {
+            activeUIElements[index].RefreshUI();
+        }
     }
 }

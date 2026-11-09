@@ -91,6 +91,11 @@ public class HotbarUI : MonoBehaviour
 
         BlitzyUI.UIManager.OnAnyScreenActiveChanged -= HandleAnyScreenActiveChanged;
         BlitzyUI.UIManager.OnAnyScreenActiveChanged += HandleAnyScreenActiveChanged;
+
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            HandleAnyScreenActiveChanged(BlitzyUI.UIManager.Instance.HasActiveScreens);
+        }
     }
 
     private void UnsubscribeEvents()

@@ -19,16 +19,27 @@ public class CraftingTable : MonoBehaviour, IInteractable
         return true;
     }
 
+    public bool IsOpen
+    {
+        get
+        {
+            if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Crafting) != null)
+            {
+                var screen = BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Crafting);
+                return screen != null && screen.gameObject.activeSelf;
+            }
+            return craftingUIPanel != null && craftingUIPanel.activeSelf;
+        }
+    }
+
     public void Interact(GameObject interactor)
     {
-        if (craftingUIPanel == null) return;
-
         if (interactor != null)
         {
             playerTransform = interactor.transform;
         }
 
-        if (craftingUIPanel.activeSelf)
+        if (IsOpen)
         {
             CloseCraftingTable();
         }
@@ -40,35 +51,68 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     public void OpenCraftingTable()
     {
-        craftingUIPanel.SetActive(true);
-
-        Inventory playerInv = Inventory.Instance;
-        if (playerInv != null && !playerInv.IsBagOpen)
+        if (BlitzyUI.UIManager.Instance != null)
         {
-            playerInv.OpenBag();
+            BlitzyUI.UIManager.Instance.QueuePush(BlitzyUI.ScreenIds.Crafting);
+            // Đảm bảo túi đồ của người chơi được đẩy vào hàng đợi mở đồng thời bên dưới
+            Inventory playerInv = Inventory.Instance;
+            if (playerInv != null && !playerInv.IsBagOpen)
+            {
+                playerInv.OpenBag();
+            }
+            return;
+        }
+
+        if (craftingUIPanel != null)
+        {
+            craftingUIPanel.SetActive(true);
+        }
+
+        Inventory inv = Inventory.Instance;
+        if (inv != null && !inv.IsBagOpen)
+        {
+            inv.OpenBag();
         }
     }
 
     public void CloseCraftingTable()
     {
-        craftingUIPanel.SetActive(false);
+        if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Crafting) != null)
+        {
+            BlitzyUI.UIManager.Instance.QueuePopTo(BlitzyUI.ScreenIds.Crafting, include: true);
+            Inventory pInv = Inventory.Instance;
+            if (pInv != null && pInv.IsBagOpen)
+            {
+                pInv.CloseBag();
+            }
+            return;
+        }
+
+        if (craftingUIPanel != null)
+        {
+            craftingUIPanel.SetActive(false);
+        }
+
         ReturnItemsToPlayer();
 
-        Inventory playerInv = Inventory.Instance;
-        if (playerInv != null && playerInv.IsBagOpen) playerInv.CloseBag();
+        Inventory inv = Inventory.Instance;
+        if (inv != null && inv.IsBagOpen)
+        {
+            inv.CloseBag();
+        }
     }
 
-    //private void Update()
-    //{
-    //    if (isOpen && playerTransform != null)
-    //    {
-    //        float distance = Vector2.Distance(transform.position, playerTransform.position);
-    //        if (distance > autoCloseDistance)
-    //        {
-    //            CloseCraftingTable();
-    //        }
-    //    }
-    //}
+    private void Update()
+    {
+        if (IsOpen && playerTransform != null)
+        {
+            float distance = Vector2.Distance(transform.position, playerTransform.position);
+            if (distance > autoCloseDistance)
+            {
+                CloseCraftingTable();
+            }
+        }
+    }
 
     private void ReturnItemsToPlayer()
     {
