@@ -88,6 +88,9 @@ public class HotbarUI : MonoBehaviour
             hotbarController.OnSelectedSlotChanged -= RefreshSelection;
             hotbarController.OnSelectedSlotChanged += RefreshSelection;
         }
+
+        BlitzyUI.UIManager.OnAnyScreenActiveChanged -= HandleAnyScreenActiveChanged;
+        BlitzyUI.UIManager.OnAnyScreenActiveChanged += HandleAnyScreenActiveChanged;
     }
 
     private void UnsubscribeEvents()
@@ -100,6 +103,31 @@ public class HotbarUI : MonoBehaviour
         if (hotbarController != null)
         {
             hotbarController.OnSelectedSlotChanged -= RefreshSelection;
+        }
+
+        BlitzyUI.UIManager.OnAnyScreenActiveChanged -= HandleAnyScreenActiveChanged;
+    }
+
+    [Tooltip("CanvasGroup điều khiển hiển thị/mờ của Hotbar (tự động thêm nếu để trống).")]
+    [SerializeField] private CanvasGroup hotbarCanvasGroup;
+
+    private void HandleAnyScreenActiveChanged(bool isAnyScreenActive)
+    {
+        // Ẩn/hiện qua CanvasGroup thay vì SetActive(false) để không bị ngắt sự kiện OnDisable
+        if (hotbarCanvasGroup == null)
+        {
+            hotbarCanvasGroup = GetComponent<CanvasGroup>();
+            if (hotbarCanvasGroup == null)
+            {
+                hotbarCanvasGroup = gameObject.AddComponent<CanvasGroup>();
+            }
+        }
+
+        if (hotbarCanvasGroup != null)
+        {
+            hotbarCanvasGroup.alpha = isAnyScreenActive ? 0f : 1f;
+            hotbarCanvasGroup.interactable = !isAnyScreenActive;
+            hotbarCanvasGroup.blocksRaycasts = !isAnyScreenActive;
         }
     }
 
