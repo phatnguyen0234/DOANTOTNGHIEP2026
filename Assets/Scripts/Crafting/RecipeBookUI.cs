@@ -11,11 +11,14 @@ public class RecipeBookUI : MonoBehaviour
     [Tooltip("Drag the 6 RecipeEntry_UI instances from PageGrid_Container here")]
     public RecipeEntryUI[] entrySlots = new RecipeEntryUI[6];
 
-    [Header("Search & Pagination UI")]
+    [Header("Search, Tab & Pagination UI")]
     public TMP_InputField searchInput;
     public TextMeshProUGUI pageText;
     public Button nextButton;
     public Button prevButton;
+
+    [Tooltip("The category of recipes currently being viewed in the book")]
+    public RecipeCategory currentSelectedCategory = RecipeCategory.Tool;
 
     [Header("Book Visibility Settings")]
     [Tooltip("Key to close the book when it is open")]
@@ -122,6 +125,22 @@ public class RecipeBookUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void ChangeCategory(RecipeCategory newCategory)
+    {
+        if (currentSelectedCategory != newCategory)
+        {
+            currentSelectedCategory = newCategory;
+            currentSpreadIndex = 0;
+
+            if (searchInput != null && !string.IsNullOrEmpty(searchInput.text))
+            {
+                searchInput.text = "";
+            }
+
+            RefreshBook();
+        }
+    }
+
     public void RefreshBook()
     {
         if (PlayerRecipeManager.Instance == null) return;
@@ -132,6 +151,8 @@ public class RecipeBookUI : MonoBehaviour
         foreach (var recipe in PlayerRecipeManager.Instance.unlockedRecipes)
         {
             if (recipe == null || recipe.resultItem == null) continue;
+
+            if (recipe.category != currentSelectedCategory) continue;
 
             if (string.IsNullOrEmpty(keyword) || recipe.resultItem.ItemName.ToLower().Contains(keyword))
             {
@@ -166,6 +187,11 @@ public class RecipeBookUI : MonoBehaviour
         int leftPageNum = (currentSpreadIndex * 2) + 1;
         int rightPageNum = leftPageNum + 1;
         int totalPages = (GetMaxSpreadIndex() + 1) * 2;
+
+        if (totalPages == 2 && filteredRecipes.Count == 0)
+        {
+            leftPageNum = 0; rightPageNum = 0; totalPages = 0;
+        }
 
         if (pageText != null)
         {

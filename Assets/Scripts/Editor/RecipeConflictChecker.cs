@@ -6,11 +6,12 @@ public class RecipeConflictChecker : EditorWindow
 {
     private List<string> conflictReports = new List<string>();
     private Vector2 scrollPosition;
+    private int totalAssetsCount = 0;
+    private int recipesInSystemCount = 0;
 
     [MenuItem("Farming Tools/Check Recipe Conflicts")]
     public static void ShowWindow()
     {
-        // Creates and opens the Editor Window
         GetWindow<RecipeConflictChecker>("Recipe Checker");
     }
 
@@ -25,6 +26,11 @@ public class RecipeConflictChecker : EditorWindow
         }
 
         GUILayout.Space(10);
+
+        if (totalAssetsCount > 0)
+        {
+            EditorGUILayout.HelpBox($"Recipes in Assets (Project): {totalAssetsCount}\nRecipes in Crafting System (Scene): {recipesInSystemCount}", MessageType.Info);
+        }
 
         if (conflictReports.Count == 0)
         {
@@ -46,8 +52,9 @@ public class RecipeConflictChecker : EditorWindow
     private void AnalyzeRecipes()
     {
         conflictReports.Clear();
+        totalAssetsCount = 0;
+        recipesInSystemCount = 0;
 
-        // 1. Find all CraftingRecipe ScriptableObjects in the project
         string[] guids = AssetDatabase.FindAssets("t:CraftingRecipe");
         List<CraftingRecipe> allRecipes = new List<CraftingRecipe>();
 
@@ -61,7 +68,18 @@ public class RecipeConflictChecker : EditorWindow
             }
         }
 
-        // 2. Compare every recipe against each other
+        totalAssetsCount = allRecipes.Count;
+
+        CraftingSystem system = FindAnyObjectByType<CraftingSystem>();
+        if (system != null && system.allRecipes != null)
+        {
+            recipesInSystemCount = system.allRecipes.Count;
+        }
+        else
+        {
+            recipesInSystemCount = 0;
+        }
+
         for (int i = 0; i < allRecipes.Count; i++)
         {
             for (int j = i + 1; j < allRecipes.Count; j++)

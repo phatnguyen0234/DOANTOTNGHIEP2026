@@ -12,6 +12,8 @@ public enum RecipeCategory
 {
     Tool,
     Resource,
+    Weapon,
+    Equipment,
     Requirement,
     Furniture,
     Consumable
