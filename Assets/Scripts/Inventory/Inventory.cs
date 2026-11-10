@@ -109,7 +109,15 @@ public class Inventory : MonoBehaviour
     {
         if (inventoryUI == null)
         {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+            var allUIs = FindObjectsByType<InventoryUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var ui in allUIs)
+            {
+                if (ui.gameObject.name == "BagInventory" || ui.gameObject.name == "InventoryScreen" || ui.gameObject.name.Contains("Bag"))
+                {
+                    inventoryUI = ui;
+                    break;
+                }
+            }
         }
     }
 

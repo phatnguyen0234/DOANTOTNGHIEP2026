@@ -114,7 +114,7 @@ public class Bed : MonoBehaviour
         canvas.sortingOrder = 100;
         CanvasScaler scaler = canvas.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.referenceResolution = new Vector2(1600f, 900f);
 
         Image black = CreateImage("Screen Fade", canvas.transform, Color.black);
         Stretch(black.rectTransform);

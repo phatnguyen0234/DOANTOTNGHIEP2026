@@ -100,7 +100,7 @@ namespace BlitzyUI
         private PoppedDelegate _activePopCallback;
         private Coroutine _watchdogCoroutine;
 
-        public Vector2 ReferenceResolution => _rootCanvasScalar != null ? _rootCanvasScalar.referenceResolution : new Vector2(1920, 1080);
+        public Vector2 ReferenceResolution => _rootCanvasScalar != null ? _rootCanvasScalar.referenceResolution : new Vector2(1600, 900);
         public bool HasActiveScreens => _stack != null && _stack.Count > 0;
         public int ActiveScreenCount => _stack != null ? _stack.Count : 0;
 
@@ -259,10 +259,10 @@ namespace BlitzyUI
             if (_rootCanvasScalar == null)
             {
                 _rootCanvasScalar = rootCanvas.gameObject.AddComponent<CanvasScaler>();
-                _rootCanvasScalar.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                _rootCanvasScalar.referenceResolution = new Vector2(1920, 1080);
-                _rootCanvasScalar.matchWidthOrHeight = 0.5f;
             }
+            _rootCanvasScalar.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            _rootCanvasScalar.referenceResolution = new Vector2(1600, 900);
+            _rootCanvasScalar.matchWidthOrHeight = 0.5f;
         }
 
         /// <summary>
@@ -420,12 +420,16 @@ namespace BlitzyUI
                 if (_cache.TryGetValue(queuedPush.prefabName, out screenInstance))
                 {
                     _cache.Remove(queuedPush.prefabName);
-                    screenInstance.transform.SetAsLastSibling();
+                    Transform rootScreenTransform = (screenInstance.transform.parent != null && screenInstance.transform.parent != rootCanvas.transform)
+                        ? screenInstance.transform.parent
+                        : screenInstance.transform;
+
+                    rootScreenTransform.SetAsLastSibling();
+                    rootScreenTransform.gameObject.SetActive(true);
                     screenInstance.gameObject.SetActive(true);
-                    if (screenInstance.transform.parent != null && screenInstance.transform.parent != rootCanvas.transform)
-                    {
-                        screenInstance.transform.parent.gameObject.SetActive(true);
-                    }
+
+                    var cachedScaler = rootScreenTransform.GetComponent<CanvasScaler>();
+                    if (cachedScaler != null) Destroy(cachedScaler);
                 }
                 else
                 {
@@ -438,22 +442,25 @@ namespace BlitzyUI
                             bool isMatch = s.gameObject.name == queuedPush.prefabName 
                                 || s.gameObject.name == queuedPush.id.ToString() 
                                 || s.gameObject.name == queuedPush.id.defaultPrefabName
-                                || (queuedPush.id == ScreenIds.Inventory && (s is InventoryUI || s.gameObject.name.Contains("Bag") || s.gameObject.name.Contains("Inventory")))
-                                || (queuedPush.id == ScreenIds.Chest && (s is ChestUI || s.gameObject.name.Contains("Chest")))
-                                || (queuedPush.id == ScreenIds.Crafting && (s is CraftingScreen || s.gameObject.name.Contains("Crafting")))
-                                || (queuedPush.id == ScreenIds.Shop && (s is ShopScreen || s.gameObject.name.Contains("Shop")))
-                                || (queuedPush.id == ScreenIds.Fishing && (s is FishingScreen || s.gameObject.name.Contains("Fishing")));
+                                || (queuedPush.id == ScreenIds.Inventory && (s.gameObject.name == "BagInventory" || s.gameObject.name == "InventoryScreen" || (s is InventoryUI && s.gameObject.name.Contains("Bag") && !s.gameObject.name.Contains("Crafting"))))
+                                || (queuedPush.id == ScreenIds.Chest && (s.gameObject.name == "ChestUI" || s.gameObject.name == "ChestScreen"))
+                                || (queuedPush.id == ScreenIds.Crafting && (s.gameObject.name == "CraftingScreen" || s.gameObject.name == "CraftingTable_UI" || s.gameObject.name.Contains("Crafting")))
+                                || (queuedPush.id == ScreenIds.Shop && (s.gameObject.name == "ShopScreen" || s.gameObject.name == "ShopUI"))
+                                || (queuedPush.id == ScreenIds.Fishing && s.gameObject.name == "FishingScreen");
 
                             if (isMatch)
                             {
                                 screenInstance = s;
-                                screenInstance.transform.SetAsLastSibling();
+                                Transform rootScreenTransform = (screenInstance.transform.parent != null && screenInstance.transform.parent != rootCanvas.transform)
+                                    ? screenInstance.transform.parent
+                                    : screenInstance.transform;
+
+                                rootScreenTransform.SetAsLastSibling();
+                                rootScreenTransform.gameObject.SetActive(true);
                                 screenInstance.gameObject.SetActive(true);
-                                if (screenInstance.transform.parent != null && screenInstance.transform.parent != rootCanvas.transform)
-                                {
-                                    screenInstance.transform.parent.gameObject.SetActive(true);
-                                    screenInstance.transform.parent.SetAsLastSibling();
-                                }
+
+                                var existingScaler = rootScreenTransform.GetComponent<CanvasScaler>();
+                                if (existingScaler != null) Destroy(existingScaler);
                                 break;
                             }
                         }
@@ -473,6 +480,14 @@ namespace BlitzyUI
                         }
 
                         GameObject screenGo = Instantiate(prefabGo, rootCanvas.transform, false);
+
+                        // Tự hủy CanvasScaler tạm (nếu có trên prefab để preview editor) khi đưa vào rootCanvas
+                        var tempScaler = screenGo.GetComponent<CanvasScaler>();
+                        if (tempScaler != null)
+                        {
+                            Destroy(tempScaler);
+                        }
+
                         RectTransform rt = screenGo.GetComponent<RectTransform>();
                         if (rt != null)
                         {
@@ -667,6 +682,11 @@ namespace BlitzyUI
                 if (screen.keepCached)
                 {
                     screen.gameObject.SetActive(false);
+                    if (screen.transform.parent != null && screen.transform.parent != rootCanvas.transform)
+                    {
+                        screen.transform.parent.gameObject.SetActive(false);
+                    }
+
                     if (!_cache.ContainsKey(screen.PrefabName))
                     {
                         _cache.Add(screen.PrefabName, screen);
@@ -674,7 +694,10 @@ namespace BlitzyUI
                 }
                 else
                 {
-                    Destroy(screen.gameObject);
+                    GameObject targetToDestroy = (screen.transform.parent != null && screen.transform.parent != rootCanvas.transform)
+                        ? screen.transform.parent.gameObject
+                        : screen.gameObject;
+                    Destroy(targetToDestroy);
                 }
             }
 
