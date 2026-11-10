@@ -10,6 +10,7 @@ public class FarmData
 
     // List để sau này dễ save/load JSON.
     public List<FarmCell> cells = new List<FarmCell>();
+    public Dictionary<Vector3Int, FarmCell> farmCells = new();
     public List<TreeCell> treeCells = new List<TreeCell>();
     public List<RockCell> rockCells = new List<RockCell>();
 

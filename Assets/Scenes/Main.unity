@@ -509351,7 +509351,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.039451122, y: -0.3945135}
+  m_Offset: {x: 0.039451122, y: -0.53742707}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -509361,7 +509361,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.92109776, y: 0.585973}
+  m_Size: {x: 0.6352701, y: 0.25931334}
   m_EdgeRadius: 0
 --- !u!114 &1202959763
 MonoBehaviour:
@@ -689486,7 +689486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   currentHour: 24
-  timeSpeed: 0.1
+  timeSpeed: 1
   currentDay: 1
   daysPerSeason: 5
   currentSeason: 0
