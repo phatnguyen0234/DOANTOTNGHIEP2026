@@ -111,6 +111,18 @@ public class FishingController : MonoBehaviour
                 powerBarUI = Instantiate(powerBarPrefab, canvasTransform);
             }
         }
+        else if (powerBarUI.transform.parent == null || !powerBarUI.transform.parent.gameObject.activeInHierarchy)
+        {
+            Transform canvasTransform = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                ? BlitzyUI.UIManager.Instance.rootCanvas.transform
+                : null;
+            if (canvasTransform != null && powerBarUI.transform.parent != canvasTransform)
+            {
+                powerBarUI.transform.SetParent(canvasTransform, false);
+                powerBarUI.transform.localScale = Vector3.one;
+                powerBarUI.transform.SetAsLastSibling();
+            }
+        }
         if (biteIndicatorUI == null) biteIndicatorUI = FindAnyObjectByType<FishBiteIndicatorUI>(FindObjectsInactive.Include);
         if (biteIndicatorUI == null)
         {
@@ -230,14 +242,14 @@ public class FishingController : MonoBehaviour
         // Chuyển trạng thái sang tích lực (Charging)
         StateMachine.ChangeState(FishingState.Charging);
 
-        if (castingController != null)
-        {
-            castingController.StartCharging(activeRodData, dir);
-        }
-
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
+        }
+
+        if (castingController != null)
+        {
+            castingController.StartCharging(activeRodData, dir);
         }
 
         return true;
@@ -255,14 +267,14 @@ public class FishingController : MonoBehaviour
 
         StateMachine.ChangeState(FishingState.Charging);
 
-        if (castingController != null)
-        {
-            castingController.StartCharging(activeRodData, facingDir);
-        }
-
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
+        }
+
+        if (castingController != null)
+        {
+            castingController.StartCharging(activeRodData, facingDir);
         }
 
         return true;
