@@ -100,6 +100,17 @@ public class FishingController : MonoBehaviour
         if (itemDropSpawner == null) itemDropSpawner = FindAnyObjectByType<ItemDropSpawner>(FindObjectsInactive.Include);
 
         if (powerBarUI == null) powerBarUI = FindAnyObjectByType<FishingPowerBarUI>(FindObjectsInactive.Include);
+        if (powerBarUI == null)
+        {
+            var powerBarPrefab = Resources.Load<FishingPowerBarUI>("Prefabs/UI/Powerbar");
+            if (powerBarPrefab != null)
+            {
+                Transform canvasTransform = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                    ? BlitzyUI.UIManager.Instance.rootCanvas.transform
+                    : null;
+                powerBarUI = Instantiate(powerBarPrefab, canvasTransform);
+            }
+        }
         if (biteIndicatorUI == null) biteIndicatorUI = FindAnyObjectByType<FishBiteIndicatorUI>(FindObjectsInactive.Include);
         if (biteIndicatorUI == null)
         {
