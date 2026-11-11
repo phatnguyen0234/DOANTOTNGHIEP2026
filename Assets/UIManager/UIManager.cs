@@ -164,6 +164,19 @@ namespace BlitzyUI
                     {
                         QueuePopTo(ScreenIds.Shop, include: true);
                     }
+                    else if (GetScreen(ScreenIds.DataBook) != null)
+                    {
+                        RecipeBookUI book = GetScreen<RecipeBookUI>(ScreenIds.DataBook);
+                        if (book != null && book.searchInput != null && book.searchInput.isFocused)
+                        {
+                            book.searchInput.DeactivateInputField();
+                            UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
+                        }
+                        else
+                        {
+                            QueuePopTo(ScreenIds.DataBook, include: true);
+                        }
+                    }
                     else
                     {
                         QueuePop();
@@ -174,6 +187,15 @@ namespace BlitzyUI
             // Phím E bật/tắt nhanh túi đồ (Inventory)
             if (Input.GetKeyDown(KeyCode.E))
             {
+                // Bỏ qua nếu người chơi đang nhập ký tự trong ô InputField (như ô tìm kiếm DataBook)
+                if (UnityEngine.EventSystems.EventSystem.current != null &&
+                    UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null &&
+                    (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null ||
+                     UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() != null))
+                {
+                    return;
+                }
+
                 if (HasActiveScreens)
                 {
                     if (GetScreen(ScreenIds.Chest) != null)
@@ -187,6 +209,10 @@ namespace BlitzyUI
                     else if (GetScreen(ScreenIds.Shop) != null)
                     {
                         QueuePopTo(ScreenIds.Shop, include: true);
+                    }
+                    else if (GetScreen(ScreenIds.DataBook) != null)
+                    {
+                        QueuePopTo(ScreenIds.DataBook, include: true);
                     }
                     else if (GetTopScreen()?.id == ScreenIds.Inventory)
                     {
@@ -446,7 +472,8 @@ namespace BlitzyUI
                                 || (queuedPush.id == ScreenIds.Chest && (s.gameObject.name == "ChestUI" || s.gameObject.name == "ChestScreen"))
                                 || (queuedPush.id == ScreenIds.Crafting && (s.gameObject.name == "CraftingScreen" || s.gameObject.name == "CraftingTable_UI" || s.gameObject.name.Contains("Crafting")))
                                 || (queuedPush.id == ScreenIds.Shop && (s.gameObject.name == "ShopScreen" || s.gameObject.name == "ShopUI"))
-                                || (queuedPush.id == ScreenIds.Fishing && s.gameObject.name == "FishingScreen");
+                                || (queuedPush.id == ScreenIds.Fishing && s.gameObject.name == "FishingScreen")
+                                || (queuedPush.id == ScreenIds.DataBook && (s is RecipeBookUI || s.gameObject.name == "DataBook" || s.gameObject.name == "DataBookScreen"));
 
                             if (isMatch)
                             {
