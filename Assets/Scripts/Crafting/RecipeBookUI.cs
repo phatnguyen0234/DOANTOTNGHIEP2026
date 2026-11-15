@@ -18,7 +18,7 @@ public class RecipeBookUI : MonoBehaviour
     public Button prevButton;
 
     [Tooltip("The category of recipes currently being viewed in the book")]
-    public RecipeCategory currentSelectedCategory = RecipeCategory.Tool;
+    public RecipeCategory currentSelectedCategory = RecipeCategory.All;
 
     [Header("Book Visibility Settings")]
     [Tooltip("Key to close the book when it is open")]
@@ -116,6 +116,15 @@ public class RecipeBookUI : MonoBehaviour
 
     public void OpenBook()
     {
+        // Always default to the "All" tab whenever the book is opened
+        currentSelectedCategory = RecipeCategory.All;
+        currentSpreadIndex = 0;
+
+        if (searchInput != null && !string.IsNullOrEmpty(searchInput.text))
+        {
+            searchInput.text = "";
+        }
+
         gameObject.SetActive(true);
         RefreshBook();
     }
@@ -152,7 +161,8 @@ public class RecipeBookUI : MonoBehaviour
         {
             if (recipe == null || recipe.resultItem == null) continue;
 
-            if (recipe.category != currentSelectedCategory) continue;
+            if (currentSelectedCategory != RecipeCategory.All && recipe.category != currentSelectedCategory)
+                continue;
 
             if (string.IsNullOrEmpty(keyword) || recipe.resultItem.ItemName.ToLower().Contains(keyword))
             {

@@ -35,7 +35,6 @@ public class ItemDataProjectIcon
     }
 
     // Main drawing method triggered for each item in the Project Window
-    // Main drawing method triggered for each item in the Project Window
     private static void DrawItemDataIcon(string guid, Rect selectionRect)
     {
         // 1. Convert GUID to asset path
@@ -74,13 +73,13 @@ public class ItemDataProjectIcon
     }
 
     // Validates if the given path starts with any of the configured target folders
-    private static bool IsInTargetFolder(string assetPath)
+    public static bool IsInTargetFolder(string assetPath)
     {
         if (TargetFolders == null || TargetFolders.Count == 0) return true;
 
         foreach (string folderPath in TargetFolders)
         {
-            if (assetPath.StartsWith(folderPath))
+            if (!string.IsNullOrWhiteSpace(folderPath) && assetPath.StartsWith(folderPath))
             {
                 return true;
             }
@@ -110,15 +109,31 @@ public class ItemDataProjectIcon
 }
 
 // ---------------------------------------------------------
-// This class creates a standalone Editor Window for the settings
+// Standalone Editor Window for Folder Settings & Duplicate Icon Audit
 // ---------------------------------------------------------
 public class ItemDataIconSettingsWindow : EditorWindow
 {
-    // Adds this window to the "Farming Tools" menu alongside the Recipe Checker
+    private class DuplicateIconGroup
+    {
+        public Sprite sharedSprite;
+        public List<ItemData> items = new List<ItemData>();
+    }
+
+    private List<DuplicateIconGroup> duplicateGroups = new List<DuplicateIconGroup>();
+    private int totalScannedItems = 0;
+    private int missingIconCount = 0;
+    private bool hasScanned = false;
+    private Vector2 scrollPosition;
+
     [MenuItem("Farming Tools/Item Icon Settings")]
     public static void ShowWindow()
     {
         GetWindow<ItemDataIconSettingsWindow>("Icon Settings");
+    }
+
+    private void OnEnable()
+    {
+        ScanForDuplicateIcons();
     }
 
     private void OnGUI()
@@ -136,29 +151,173 @@ public class ItemDataIconSettingsWindow : EditorWindow
 
             ItemDataProjectIcon.TargetFolders[i] = EditorGUILayout.TextField(ItemDataProjectIcon.TargetFolders[i]);
 
-            // Delete button for this row
             if (GUILayout.Button("X", GUILayout.Width(25)))
             {
                 ItemDataProjectIcon.TargetFolders.RemoveAt(i);
                 ItemDataProjectIcon.SaveSettings();
-                break;
+                ScanForDuplicateIcons();
+                GUIUtility.ExitGUI();
             }
             EditorGUILayout.EndHorizontal();
         }
 
         EditorGUILayout.Space();
 
-        // Button to add a new folder path row
         if (GUILayout.Button("Add New Folder Path", GUILayout.Height(25)))
         {
             ItemDataProjectIcon.TargetFolders.Add("Assets/...");
             ItemDataProjectIcon.SaveSettings();
         }
 
-        // Auto-save when the user types or modifies a field
         if (GUI.changed)
         {
             ItemDataProjectIcon.SaveSettings();
         }
+
+        // ---------------------------------------------------------
+        // Duplicate Icon Audit Section
+        // ---------------------------------------------------------
+        GUILayout.Space(15);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GUILayout.Space(5);
+
+        EditorGUILayout.LabelField("Duplicate Icon Audit", EditorStyles.boldLabel);
+
+        if (GUILayout.Button("Scan Target Folders & Check Duplicate Icons", GUILayout.Height(30)))
+        {
+            ScanForDuplicateIcons();
+        }
+
+        if (!hasScanned) return;
+
+        GUILayout.Space(8);
+        EditorGUILayout.HelpBox(
+            $"Scanned ItemData Assets: {totalScannedItems}\n" +
+            $"Items Without Icon: {missingIconCount}\n" +
+            $"Shared Icon Groups Found: {duplicateGroups.Count}",
+            MessageType.Info
+        );
+
+        if (duplicateGroups.Count == 0)
+        {
+            EditorGUILayout.HelpBox("All scanned ItemData assets use unique icons!", MessageType.None);
+            return;
+        }
+
+        GUILayout.Space(5);
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, "box");
+
+        foreach (var group in duplicateGroups)
+        {
+            EditorGUILayout.BeginVertical("helpbox");
+            EditorGUILayout.BeginHorizontal();
+
+            // Draw cropped sprite preview
+            Rect previewRect = GUILayoutUtility.GetRect(36, 36, GUILayout.Width(36), GUILayout.Height(36));
+            DrawSpritePreview(previewRect, group.sharedSprite);
+
+            GUILayout.Space(8);
+
+            EditorGUILayout.BeginVertical();
+            EditorGUILayout.LabelField($"Sprite: {group.sharedSprite.name} ({group.items.Count} items)", EditorStyles.boldLabel);
+
+            foreach (ItemData item in group.items)
+            {
+                if (item == null) continue;
+
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField($"• {item.name}  (ID: {item.ItemID})", GUILayout.ExpandWidth(true));
+
+                if (GUILayout.Button("Select", GUILayout.Width(60)))
+                {
+                    Selection.activeObject = item;
+                    EditorGUIUtility.PingObject(item);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndVertical();
+            GUILayout.Space(4);
+        }
+
+        EditorGUILayout.EndScrollView();
+    }
+
+    private void ScanForDuplicateIcons()
+    {
+        duplicateGroups.Clear();
+        totalScannedItems = 0;
+        missingIconCount = 0;
+        hasScanned = true;
+
+        // Filter only valid existing folders so AssetDatabase.FindAssets does not throw errors
+        string[] validFolders = ItemDataProjectIcon.TargetFolders
+            .Where(path => !string.IsNullOrWhiteSpace(path) && AssetDatabase.IsValidFolder(path))
+            .ToArray();
+
+        string[] guids = validFolders.Length > 0
+            ? AssetDatabase.FindAssets("t:ItemData", validFolders)
+            : AssetDatabase.FindAssets("t:ItemData");
+
+        Dictionary<Sprite, List<ItemData>> spriteUsageMap = new Dictionary<Sprite, List<ItemData>>();
+
+        foreach (string guid in guids)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            ItemData itemData = AssetDatabase.LoadAssetAtPath<ItemData>(assetPath);
+            if (itemData == null) continue;
+
+            totalScannedItems++;
+
+            if (itemData.Icon == null)
+            {
+                missingIconCount++;
+                continue;
+            }
+
+            if (!spriteUsageMap.TryGetValue(itemData.Icon, out List<ItemData> itemList))
+            {
+                itemList = new List<ItemData>();
+                spriteUsageMap[itemData.Icon] = itemList;
+            }
+
+            itemList.Add(itemData);
+        }
+
+        // Keep only sprites used by 2 or more ItemData assets
+        foreach (var kvp in spriteUsageMap)
+        {
+            if (kvp.Value.Count > 1)
+            {
+                duplicateGroups.Add(new DuplicateIconGroup
+                {
+                    sharedSprite = kvp.Key,
+                    items = kvp.Value.OrderBy(i => i.name).ToList()
+                });
+            }
+        }
+
+        duplicateGroups = duplicateGroups.OrderByDescending(g => g.items.Count).ToList();
+        EditorApplication.RepaintProjectWindow();
+    }
+
+    private void DrawSpritePreview(Rect rect, Sprite sprite)
+    {
+        if (sprite == null || sprite.texture == null) return;
+
+        EditorGUI.DrawRect(rect, new Color(0.2f, 0.2f, 0.2f, 1f));
+
+        Texture2D tex = sprite.texture;
+        Rect texRect = sprite.textureRect;
+        Rect uvRect = new Rect(
+            texRect.x / tex.width,
+            texRect.y / tex.height,
+            texRect.width / tex.width,
+            texRect.height / tex.height
+        );
+
+        GUI.DrawTextureWithTexCoords(rect, tex, uvRect, true);
     }
 }
