@@ -16,7 +16,8 @@ public enum RecipeCategory
     Equipment,
     Requirement,
     Furniture,
-    Consumable
+    Consumable,
+    All //CAI NAY BAT BUOC PHAI DE CUOI CUNG KHONG SE LOI
 }
 
 public enum RecipeUnlockType

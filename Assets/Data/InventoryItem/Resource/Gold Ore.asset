@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Gold Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: gold_ore
-  itemName: "Quặng Vàng (Gold Ore)"
-  description: "Quặng vàng lấp lánh quý giá trong lòng mỏ."
-  icon: {fileID: -5961338761083578815, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng V\xE0ng (Gold Ore)"
+  description: "Qu\u1EB7ng v\xE0ng l\u1EA5p l\xE1nh qu\xFD gi\xE1 trong l\xF2ng m\u1ECF."
+  icon: {fileID: -5004365392878288380, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Crimson Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: crimson_ore
-  itemName: "Quặng Huyết Nguyệt (Crimson Ore)"
-  description: "Quặng đỏ rực chứa nguồn ma lực bí ẩn."
-  icon: {fileID: 1161174183736332035, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng Huy\u1EBFt Nguy\u1EC7t (Crimson Ore)"
+  description: "Qu\u1EB7ng \u0111\u1ECF r\u1EF1c ch\u1EE9a ngu\u1ED3n ma l\u1EF1c
+    b\xED \u1EA9n."
+  icon: {fileID: 984160325338491763, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Gold Bar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: gold_bar
-  itemName: "Thỏi Vàng (Gold Bar)"
-  description: "Thỏi vàng ròng nguyên chất có giá trị kinh tế cao."
-  icon: {fileID: 79979714913563611, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Th\u1ECFi V\xE0ng (Gold Bar)"
+  description: "Th\u1ECFi v\xE0ng r\xF2ng nguy\xEAn ch\u1EA5t c\xF3 gi\xE1 tr\u1ECB
+    kinh t\u1EBF cao."
+  icon: {fileID: 6179175150105788262, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

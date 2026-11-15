@@ -27,6 +27,14 @@ public class PlayerRecipeManager : MonoBehaviour
 
     public int GetUnseenCount(RecipeCategory category)
     {
+        // Return total unseen recipes across all categories for the "All" tab badge
+        // (Or return 0 if you don't want the "All" tab to display a badge at all)
+        if (category == RecipeCategory.All)
+        {
+            //return unseenRecipes.Count;
+            return 0; // Disable badge for "All" tab
+        }
+
         int count = 0;
         foreach (var r in unseenRecipes)
         {
@@ -37,6 +45,13 @@ public class PlayerRecipeManager : MonoBehaviour
 
     public void MarkCategoryAsSeen(RecipeCategory category)
     {
+        // Do NOT clear unseen recipes when viewing the "All" tab,
+        // so category badges remain visible until the player inspects each specific category.
+        if (category == RecipeCategory.All)
+        {
+            return;
+        }
+
         bool isChanged = false;
         for (int i = unseenRecipes.Count - 1; i >= 0; i--)
         {
