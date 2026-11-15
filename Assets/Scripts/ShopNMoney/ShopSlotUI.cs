@@ -56,6 +56,6 @@ public class ShopSlotUI : MonoBehaviour
             return;
         }
 
-        shopManager.AttemptBuyItem(slotIndex);
+        shopManager.RequestBuyItem(slotIndex);
     }
 }
