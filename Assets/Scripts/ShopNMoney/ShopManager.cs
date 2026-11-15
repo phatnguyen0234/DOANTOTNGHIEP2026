@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("UI Generation")]
     [SerializeField] private GameObject shopUIPanel;
+    [SerializeField] private ScrollRect shopScrollRect; // Drag ShopUI here in Inspector
     [SerializeField] private ShopSlotUI shopSlotPrefab;
     [SerializeField] private Transform shopContentContainer;
 
@@ -45,15 +47,34 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    //public void OpenShop(ShopNPC shopNpc, List<ShopItem> shopItems)
+    //{
+    //    CurrentShopNpc = shopNpc;
+
+    //    currentShopItems = shopItems;
+
+    //    GenerateShopUI();
+
+    //    shopUIPanel.SetActive(true);
+
+    //    Debug.Log("[Shop] Shop opened");
+    //}
+
     public void OpenShop(ShopNPC shopNpc, List<ShopItem> shopItems)
     {
         CurrentShopNpc = shopNpc;
-
         currentShopItems = shopItems;
 
         GenerateShopUI();
 
         shopUIPanel.SetActive(true);
+
+        // Reset scroll position to the top whenever the shop opens
+        if (shopScrollRect != null)
+        {
+            Canvas.ForceUpdateCanvases();
+            shopScrollRect.verticalNormalizedPosition = 1f;
+        }
 
         Debug.Log("[Shop] Shop opened");
     }
