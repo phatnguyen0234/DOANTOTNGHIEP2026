@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Enhanced Amethyst
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: enhanced_amethyst
+  itemName: "Th\u1EA1ch Anh T\xEDm C\u01B0\u1EDDng H\xF3a (Enhanced Amethyst)"
+  description: "Th\u1EA1ch anh t\xEDm \u0111\u01B0\u1EE3c c\u01B0\u1EDDng h\xF3a
+    b\u1EDFi n\u0103ng l\u01B0\u1EE3ng b\xED \u1EA9n."
+  icon: {fileID: 5733320130379569448, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
+  itemType: 2
+  toolType: 0
+  cropId: 
+  cropData: {fileID: 0}
+  fertilizerType: 0
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 550
+  sellPrice: 430
+  canSell: 1

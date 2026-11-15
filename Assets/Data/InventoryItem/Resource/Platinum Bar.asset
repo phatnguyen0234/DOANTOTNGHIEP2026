@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Platinum Bar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: platinum_bar
-  itemName: "Thỏi Bạch Kim (Platinum Bar)"
-  description: "Thỏi bạch kim cao cấp dùng chế tác trang bị tối thượng."
-  icon: {fileID: 7891146164793920424, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Th\u1ECFi B\u1EA1ch Kim (Platinum Bar)"
+  description: "Th\u1ECFi b\u1EA1ch kim cao c\u1EA5p d\xF9ng ch\u1EBF t\xE1c trang
+    b\u1ECB t\u1ED1i th\u01B0\u1EE3ng."
+  icon: {fileID: -7448497554363194234, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
