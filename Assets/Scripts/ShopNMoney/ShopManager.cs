@@ -87,37 +87,95 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void AttemptBuyItem(int index)
+    //public void AttemptBuyItem(int index)
+    //{
+    //    if (index < 0 || index >= currentShopItems.Count)
+    //        return;
+
+    //    ShopItem itemToBuy = currentShopItems[index];
+
+    //    if (itemToBuy.stock <= 0)
+    //        return;
+
+    //    if (playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
+    //    {
+    //        Debug.LogWarning("[Shop] You don't have enough money!");
+    //        return;
+    //    }
+
+    //    if (!playerInventory.CanAddItem(itemToBuy.itemData, 1))
+    //    {
+    //        Debug.LogWarning("[Shop] Full bag!");
+    //        return;
+    //    }
+
+    //    playerMoney.TrySpendMoney(itemToBuy.itemData.BuyPrice);
+
+    //    playerInventory.TryAddItem(itemToBuy.itemData, 1);
+
+    //    itemToBuy.stock--;
+
+    //    Debug.Log(
+    //        $"[Shop] Bought {itemToBuy.itemData.ItemName}. Remaining stock: {itemToBuy.stock}");
+
+    //    activeUIElements[index].RefreshUI();
+    //}
+
+
+    // --2 HAM DUOI THAY THE ATTEMPTBUYITEM, DE GIUP CHO CODE DE QUAN LY HON, VA DE THEM CAC TINH NANG MULTIPLAYER SAU NAY--
+    // Call this from ShopSlotUI instead of AttemptBuyItem directly
+    public void RequestBuyItem(int index)
     {
         if (index < 0 || index >= currentShopItems.Count)
             return;
 
         ShopItem itemToBuy = currentShopItems[index];
 
+        // Client-side pre-validation (prevents unnecessary network traffic later)
+        if (itemToBuy.stock <= 0 ||
+            playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice ||
+            !playerInventory.CanAddItem(itemToBuy.itemData, 1))
+        {
+            return;
+        }
+
+        // In Singleplayer: Execute immediately.
+        // In Multiplayer: Replace this call with RequestBuyServerRpc(index).
+        ExecuteBuyTransaction(index);
+    }
+
+    // [SERVER AUTHORITY] In Multiplayer, this logic runs exclusively on the Server
+    private void ExecuteBuyTransaction(int index)
+    {
+        if (index < 0 || index >= currentShopItems.Count)
+            return;
+
+        ShopItem itemToBuy = currentShopItems[index];
+
+        // Authoritative validation
         if (itemToBuy.stock <= 0)
             return;
 
         if (playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
-        {
-            Debug.LogWarning("[Shop] You don't have enough money!");
             return;
-        }
 
         if (!playerInventory.CanAddItem(itemToBuy.itemData, 1))
-        {
-            Debug.LogWarning("[Shop] Full bag!");
             return;
-        }
 
+        // Commit state changes
         playerMoney.TrySpendMoney(itemToBuy.itemData.BuyPrice);
-
         playerInventory.TryAddItem(itemToBuy.itemData, 1);
-
         itemToBuy.stock--;
 
-        Debug.Log(
-            $"[Shop] Bought {itemToBuy.itemData.ItemName}. Remaining stock: {itemToBuy.stock}");
+        // In Multiplayer: Broadcast updated stock to all clients via ClientRpc
+        OnTransactionCompleted(index);
+    }
 
-        activeUIElements[index].RefreshUI();
+    private void OnTransactionCompleted(int index)
+    {
+        if (index >= 0 && index < activeUIElements.Count)
+        {
+            activeUIElements[index].RefreshUI();
+        }
     }
 }
