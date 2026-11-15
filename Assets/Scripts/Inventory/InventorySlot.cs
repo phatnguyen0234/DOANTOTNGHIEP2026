@@ -8,8 +8,6 @@ public class InventorySlot
 {
     [SerializeField] private ItemData itemData;
     [SerializeField] private int amount;
-    [SerializeField] private CropQuality quality = CropQuality.Normal;
-    public CropQuality Quality => quality;
     #region Constructors
 
     public InventorySlot()
@@ -49,12 +47,12 @@ public class InventorySlot
 
     // Kiểm tra xem slot hiện tại có thể xếp chồng (stack) thêm Item này hay không.
     // Điều kiện: Slot không rỗng, đúng loại Item, và chưa đạt maxStack.
-    public bool CanStack(ItemData item, CropQuality itemQuality = CropQuality.Normal)
+    public bool CanStack(ItemData item)
     {
         if (IsEmpty() || item == null || itemData == null)
             return false;
 
-        return itemData.ItemID == item.ItemID && this.quality == itemQuality && amount < itemData.MaxStack;
+        return itemData.ItemID == item.ItemID && amount < itemData.MaxStack;
     }
 
     // Trả về khoảng trống còn lại có thể chứa thêm trong slot hiện tại.
@@ -107,7 +105,7 @@ public class InventorySlot
     }
 
     // Đặt mới dữ liệu cho một ô (thường dùng khi gán item vào slot rỗng).
-    public void SetItem(ItemData newItem, int newAmount, CropQuality newQuality = CropQuality.Normal)
+    public void SetItem(ItemData newItem, int newAmount)
     {
         if (newItem == null || newAmount <= 0)
         {
@@ -117,7 +115,6 @@ public class InventorySlot
 
         itemData = newItem;
         amount = Mathf.Min(newAmount, newItem.MaxStack);
-        this.quality = newQuality;
     }
 
     // Đổi chỗ toàn bộ dữ liệu vật phẩm với một ô khác.

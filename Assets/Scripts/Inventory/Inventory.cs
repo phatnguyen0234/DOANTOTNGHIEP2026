@@ -285,7 +285,7 @@ public class Inventory : MonoBehaviour
     // ItemData cần thêm.
     // Số lượng cần thêm.
     // Số lượng còn dư (0 nếu thêm thành công toàn bộ).
-    public int AddItem(ItemData item, int amount, CropQuality quality = CropQuality.Normal)
+    public int AddItem(ItemData item, int amount)
     {
         if (item == null || amount <= 0) return amount;
 
@@ -293,7 +293,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].CanStack(item, quality))
+            if (slots[i].CanStack(item))
             {
                 remainingAmount = slots[i].AddAmount(remainingAmount);
                 if (remainingAmount <= 0) break;
@@ -307,7 +307,7 @@ public class Inventory : MonoBehaviour
                 if (slots[i].IsEmpty())
                 {
                     int addCount = Mathf.Min(remainingAmount, item.MaxStack);
-                    slots[i].SetItem(item, addCount, quality);
+                    slots[i].SetItem(item, addCount);
                     remainingAmount -= addCount;
                     if (remainingAmount <= 0) break;
                 }
