@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Amethyst
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: amethyst
-  itemName: "Thạch Anh Tím (Amethyst)"
-  description: "Viên thạch anh tím huyền bí giúp tinh thần minh mẫn."
-  icon: {fileID: -5191982557448148470, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
+  itemName: "Th\u1EA1ch Anh T\xEDm (Amethyst)"
+  description: "Vi\xEAn th\u1EA1ch anh t\xEDm huy\u1EC1n b\xED gi\xFAp tinh th\u1EA7n
+    minh m\u1EABn."
+  icon: {fileID: -3456156317398478145, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
