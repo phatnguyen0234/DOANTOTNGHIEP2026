@@ -1,14 +1,16 @@
+using System;
+
+[Serializable]
 public class QuestProgressData
 {
     public enum QuestStatus
     {
         Locked,
         InProgress,
+        ReadyToAccept,
         Completed
     }
-
-    //TODO: questid
     public string questId;
-    //TODO: amount
     public int amount;
+    public QuestStatus status;
 }

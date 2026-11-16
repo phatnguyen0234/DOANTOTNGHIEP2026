@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isUsingPickaxe = false;
     public bool isUsingSickle = false;
     public bool isUsingShovel = false;
-    public bool isSleeping = false; // Bed bật trong lúc màn hình tối khi ngủ để khoá di chuyển
+    public bool isSleeping = false;
+    public bool isCutSceneLoaded = false;
     Vector2 moveDirection;
     [SerializeField] private FarmInputController controller;
     [SerializeField] private GameObject particleLeafPrefab;
@@ -86,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         bool isFishing = (FishingController.Instance != null && FishingController.Instance.IsFishing) ||
                          (FishingQuickTester.Instance != null && FishingQuickTester.Instance.IsFishing);
 
-        if (isUsingHoe || isFishing || isSleeping)
+        if (isUsingHoe || isFishing || isSleeping || isCutSceneLoaded)
         {
             moveDirection = Vector2.zero;
             anim.SetFloat("Speed", 0f);
@@ -295,7 +296,7 @@ public class PlayerMovement : MonoBehaviour
         bool isFishing = (FishingController.Instance != null && FishingController.Instance.IsFishing) ||
                          (FishingQuickTester.Instance != null && FishingQuickTester.Instance.IsFishing);
 
-        if (isUsingHoe || isFishing || isSleeping) return;
+        if (isUsingHoe || isFishing || isSleeping || isCutSceneLoaded) return;
 
         Vector2 direction = HasManualInput ? moveDirection : autoMoveDirection;
         Vector2 movePosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
