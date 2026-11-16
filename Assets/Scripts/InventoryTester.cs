@@ -116,13 +116,7 @@ public class InventoryTester : MonoBehaviour
         if (Input.GetKeyDown(dropTestKey))
         {
             TestSpawnDropAtPlayer();
-        }
-
-        // Nhấn phím F (hoặc addAllFertilizersKey): Thêm toàn bộ 9 loại phân bón
-        if (Input.GetKeyDown(addAllFertilizersKey))
-        {
-            AddAllFertilizers();
-        }
+        }      
 
         // Nhấn phím V (hoặc cycleFertilizerKey): Xoay vòng thêm từng loại phân bón vào ô đang chọn
         if (Input.GetKeyDown(cycleFertilizerKey))

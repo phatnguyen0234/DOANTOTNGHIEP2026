@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.Toolbars;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +19,32 @@ public class UIManager : MonoBehaviour
         Instance = this;
     //    DontDestroyOnLoad(gameObject);
     }
+
+    void OnEnable()
+    {
+        //TODO: ActManger.instance.hoi += PassHoi(scriptable);
+    }
+
+    void Disable()
+    {
+        //TODO: ActManger.instance.hoi -= PassHoi(scriptable);
+    }
+
+    public void PassHoi()
+    {
+        //StartCoroutine(Chuyenman());
+    }
+
+    //private IEnumerator Chuyenman()
+    //{
+    //    //TODO: khoa di chuyen nhan vat, toi nghi nen co 1 bien khoa PlayerMovement.instance.moveDirection = Vector2.zero;
+    //    //TODO: Fade(1f,0f)
+    //    //TODO: Gan ActTile and ActSubtitle
+    //    //TODO: Fade(0f,1f)
+    //    //TODO: Delay Coroutine(2.5s)
+    //    //TODO: Fade(1f,0f) 
+    //    //TODO: tra quyen dieu khien player
+    //}
 
     public void TriggerPassOutSleep()
     {
