@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Frost Bar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: frost_bar
-  itemName: "Thỏi Băng Tuyết (Frost Bar)"
-  description: "Thỏi kim loại băng tuyết tỏa khí lạnh buốt giá."
-  icon: {fileID: -4390848941766133449, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Th\u1ECFi B\u0103ng Tuy\u1EBFt (Frost Bar)"
+  description: "Th\u1ECFi kim lo\u1EA1i b\u0103ng tuy\u1EBFt t\u1ECFa kh\xED l\u1EA1nh
+    bu\u1ED1t gi\xE1."
+  icon: {fileID: 4760368782481029062, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
