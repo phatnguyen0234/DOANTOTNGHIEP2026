@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1541a67fad6e354bb0402c4b4c07bbb, type: 3}
+  m_Name: DefaultTimeConfig
+  m_EditorClassIdentifier: Assembly-CSharp::TimeLightingConfig
+  clockHandSprites:
+  - {fileID: -6234262068815838107, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: 8969452321954757342, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: 628495844534032972, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: 2488373494468920414, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: -697204134070912667, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: 3123633751117434422, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: -3489249547500097249, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  - {fileID: -7138081694299908955, guid: 526ee037441dce24183752965f4fff99, type: 3}
+  lightColor:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.078256205, b: 0.6150943, a: 1}
+    key1: {r: 0.9876533, g: 1, b: 0.6924528, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 0.98490566, g: 0.5433659, b: 0.29547158, a: 0}
+    key4: {r: 0, g: 0.078431375, b: 0.6156863, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 16384
+    ctime2: 32768
+    ctime3: 49151
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
+  lightIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.65460205
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.22950108
+      value: 0.89755934
+      inSlope: 0.7600716
+      outSlope: 0.7600716
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4993726
+      value: 0.9967424
+      inSlope: 0.0042674853
+      outSlope: 0.0042674853
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9225029
+      value: 0.77522707
+      inSlope: -0.6904257
+      outSlope: -0.6904257
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.95915866
+      value: 0.6650145
+      inSlope: -0.41663942
+      outSlope: -0.41663942
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9866638
+      value: 0.6346321
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  vietnameseHolidays:
+  - eventId: new_year
+    holidayTitle: "T\u1EBFt D\u01B0\u01A1ng L\u1ECBch"
+    calendarType: 0
+    day: 1
+    month: 1
+    description: "Ch\xE0o m\u1EEBng n\u0103m m\u1EDBi {YEAR}! D\xE2n l\xE0ng g\u1EEDi
+      t\u1EB7ng b\u1EA1n m\u1ED9t ph\u1EA7n qu\xE0 kh\u1EDFi \u0111\u1EA7u n\u0103m
+      m\u1EDBi thu\u1EADn l\u1EE3i."
+    bonusGoldReward: 300
+  - eventId: lunar_new_year
+    holidayTitle: "T\u1EBFt Nguy\xEAn \u0110\xE1n (M\xF9ng 1 T\u1EBFt)"
+    calendarType: 1
+    day: 1
+    month: 1
+    description: "Ch\xFAc m\u1EEBng n\u0103m m\u1EDBi \xC2m l\u1ECBch! Ch\xFAc n\xF4ng
+      tr\u1EA1i m\u1ED9t n\u0103m m\xF9a m\xE0ng b\u1ED9i thu, v\u1EA1n s\u1EF1 nh\u01B0
+      \xFD."
+    bonusGoldReward: 1000
+  - eventId: hung_kings
+    holidayTitle: "Gi\u1ED7 T\u1ED5 H\xF9ng V\u01B0\u01A1ng (10/3 \xC2m l\u1ECBch)"
+    calendarType: 1
+    day: 10
+    month: 3
+    description: "Ng\xE0y l\u1EC5 h\u01B0\u1EDBng v\u1EC1 c\u1ED9i ngu\u1ED3n d\xE2n
+      t\u1ED9c. C\u1EEDa h\xE0ng g\u1EEDi t\u1EB7ng ph\u1EA7n qu\xE0 tri \xE2n cho
+      n\xF4ng tr\u1EA1i!"
+    bonusGoldReward: 500
+  - eventId: reunification_day
+    holidayTitle: "Ng\xE0y Gi\u1EA3i Ph\xF3ng Mi\u1EC1n Nam (30/4)"
+    calendarType: 0
+    day: 30
+    month: 4
+    description: "K\u1EF7 ni\u1EC7m ng\xE0y th\u1ED1ng nh\u1EA5t \u0111\u1EA5t n\u01B0\u1EDBc
+      30/04. Ch\xFAc b\u1EA1n m\u1ED9t ng\xE0y l\xE0m vi\u1EC7c th\u1EADt nhi\u1EC1u
+      ni\u1EC1m vui!"
+    bonusGoldReward: 500
+  - eventId: labor_day
+    holidayTitle: "Ng\xE0y Qu\u1ED1c T\u1EBF Lao \u0110\u1ED9ng (1/5)"
+    calendarType: 0
+    day: 1
+    month: 5
+    description: "T\xF4n vinh s\u1EE9c lao \u0111\u1ED9ng! Th\xE0nh qu\u1EA3 ch\u0103m
+      s\xF3c n\xF4ng tr\u1EA1i c\u1EE7a b\u1EA1n lu\xF4n x\u1EE9ng \u0111\xE1ng \u0111\u01B0\u1EE3c
+      tr\xE2n tr\u1ECDng."
+    bonusGoldReward: 400
+  - eventId: national_day
+    holidayTitle: "Qu\u1ED1c Kh\xE1nh Vi\u1EC7t Nam (2/9)"
+    calendarType: 0
+    day: 2
+    month: 9
+    description: "Ch\xE0o m\u1EEBng ng\xE0y Qu\u1ED1c Kh\xE1nh 02/09! C\u1EA3 th\u1ECB
+      tr\u1EA5n r\u1EF1c r\u1EE1 c\u1EDD hoa \u0111\xF3n l\u1EC5."
+    bonusGoldReward: 800
+  - eventId: mid_autumn
+    holidayTitle: "T\u1EBFt Trung Thu (15/8 \xC2m l\u1ECBch)"
+    calendarType: 1
+    day: 15
+    month: 8
+    description: "\u0110\xEAm h\u1ED9i tr\u0103ng r\u1EB1m! D\xE2n l\xE0ng g\u1EEDi
+      t\u1EB7ng qu\xE0 m\u1EEBng m\xF9a thu \u0111o\xE0n vi\xEAn."
+    bonusGoldReward: 500
+  - eventId: vietnamese_women_day
+    holidayTitle: "Ng\xE0y Ph\u1EE5 N\u1EEF Vi\u1EC7t Nam (20/10)"
+    calendarType: 0
+    day: 20
+    month: 10
+    description: "Ch\xFAc m\u1EEBng ng\xE0y Ph\u1EE5 n\u1EEF Vi\u1EC7t Nam 20/10!
+      G\u1EEDi l\u1EDDi ch\xFAc t\u1ED1t \u0111\u1EB9p nh\u1EA5t t\u1EDBi m\u1ECDi
+      ng\u01B0\u1EDDi trong th\u1ECB tr\u1EA5n."
+    bonusGoldReward: 300
+  - eventId: teachers_day
+    holidayTitle: "Ng\xE0y Nh\xE0 Gi\xE1o Vi\u1EC7t Nam (20/11)"
+    calendarType: 0
+    day: 20
+    month: 11
+    description: "Tri \xE2n ng\xE0y Nh\xE0 gi\xE1o Vi\u1EC7t Nam 20/11! Ch\xFAc h\xE0nh
+      tr\xECnh kh\xE1m ph\xE1 v\xE0 h\u1ECDc h\u1ECFi c\u1EE7a b\u1EA1n lu\xF4n ti\u1EBFn
+      xa."
+    bonusGoldReward: 300
