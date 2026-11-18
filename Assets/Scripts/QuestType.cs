@@ -1,5 +1,6 @@
 public enum QuestType
 {
+    TalkNPC,
     Till,
     Water,
     Plant,
