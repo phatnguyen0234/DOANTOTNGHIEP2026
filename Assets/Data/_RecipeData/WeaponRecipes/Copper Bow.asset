@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Copper Bow
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 2
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 251033149bf61f2a7ba02164fc111e67, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: ea88e9d0e13bbff65299e8c83e0791e6, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 251033149bf61f2a7ba02164fc111e67, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 251033149bf61f2a7ba02164fc111e67, type: 2}
+    amount: 1
+  resultItem: {fileID: 11400000, guid: 9b154869ae868968cf6a3c59b7fe3784, type: 2}
+  resultAmount: 1

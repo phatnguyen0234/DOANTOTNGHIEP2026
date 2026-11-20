@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Topaz
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: topaz
-  itemName: "Hoàng Ngọc (Topaz)"
-  description: "Viên hoàng ngọc vàng cam ấm áp mang lại may mắn."
-  icon: {fileID: 4309491554132300366, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
+  itemName: "Ho\xE0ng Ng\u1ECDc (Topaz)"
+  description: "Vi\xEAn ho\xE0ng ng\u1ECDc v\xE0ng cam \u1EA5m \xE1p mang l\u1EA1i
+    may m\u1EAFn."
+  icon: {fileID: -5191982557448148470, guid: 3a2793b4e7f41c7428041d27b81acc9e, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
-  buyPrice: 160
-  sellPrice: 95
+  buyPrice: 260
+  sellPrice: 160
   canSell: 1

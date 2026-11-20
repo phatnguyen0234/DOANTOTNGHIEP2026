@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Obsidian Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: obsidian_ore
-  itemName: "Quặng Hắc Diệu Thạch (Obsidian Ore)"
-  description: "Quặng hắc diệu thạch tạo từ dung nham đông nguội cứng cáp tuyệt đối."
-  icon: {fileID: -1347806244768570232, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng H\u1EAFc Di\u1EC7u Th\u1EA1ch (Obsidian Ore)"
+  description: "Qu\u1EB7ng h\u1EAFc di\u1EC7u th\u1EA1ch t\u1EA1o t\u1EEB dung nham
+    \u0111\xF4ng ngu\u1ED9i c\u1EE9ng c\xE1p tuy\u1EC7t \u0111\u1ED1i."
+  icon: {fileID: 1132450987368304395, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

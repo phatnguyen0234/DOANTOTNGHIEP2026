@@ -15,6 +15,9 @@ public class ShopScreen : BlitzyUI.Screen
     [Tooltip("Panel chính chứa giao diện cửa hàng.")]
     [SerializeField] private GameObject shopPanel;
 
+    [Tooltip("ScrollRect chứa danh sách cửa hàng (dùng để reset cuộn lên đầu khi mở).")]
+    [SerializeField] private ScrollRect shopScrollRect;
+
     [Tooltip("Transform chứa các ô ShopSlotUI (gắn LayoutGroup hoặc Content trong ScrollRect).")]
     [SerializeField] private Transform shopContentContainer;
 
@@ -105,17 +108,7 @@ public class ShopScreen : BlitzyUI.Screen
             data.TryGet("items", out items);
         }
 
-        if (titleText != null)
-        {
-            titleText.text = npc != null ? $"CỬA HÀNG - {npc.name}" : "CỬA HÀNG";
-        }
-
-        // 1. Tạo danh sách vật phẩm bán qua ShopManager
-        if (ShopManager.instance != null)
-        {
-            Transform targetContainer = shopContentContainer != null ? shopContentContainer : transform;
-            ShopManager.instance.GenerateShopUI(targetContainer, items);
-        }
+        RefreshShop(npc, items);
 
         // 2. Cập nhật và lắng nghe thay đổi tiền người chơi
         if (playerMoney == null)
@@ -169,9 +162,34 @@ public class ShopScreen : BlitzyUI.Screen
 
     #region Internal Logic
 
+    public void RefreshShop(ShopNPC npc, List<ShopItem> items)
+    {
+        ResolveReferences();
+
+        if (titleText != null)
+        {
+            titleText.text = npc != null ? $"CỬA HÀNG - {npc.name}" : "CỬA HÀNG";
+        }
+
+        // 1. Tạo danh sách vật phẩm bán qua ShopManager
+        if (ShopManager.instance != null)
+        {
+            Transform targetContainer = shopContentContainer != null ? shopContentContainer : transform;
+            ShopManager.instance.GenerateShopUI(targetContainer, items);
+        }
+
+        // Reset vị trí cuộn lên đầu danh sách mỗi khi mở/làm mới shop
+        if (shopScrollRect != null)
+        {
+            Canvas.ForceUpdateCanvases();
+            shopScrollRect.verticalNormalizedPosition = 1f;
+        }
+    }
+
     private void ResolveReferences()
     {
         if (shopPanel == null) shopPanel = gameObject;
+        if (shopScrollRect == null) shopScrollRect = GetComponentInChildren<ScrollRect>(true);
         if (shopContentContainer == null) shopContentContainer = GetComponentInChildren<VerticalLayoutGroup>(true)?.transform ?? transform;
         if (closeButton == null) closeButton = GetComponentInChildren<Button>(true);
     }

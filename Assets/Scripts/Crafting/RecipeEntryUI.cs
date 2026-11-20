@@ -7,6 +7,8 @@ public class RecipeDisplaySlot
     public GameObject slotRoot;
     public Image iconImage;
     public TextMeshProUGUI amountText;
+
+    public ItemTooltipTrigger tooltipTrigger;
 }
 
 public class RecipeEntryUI : MonoBehaviour
@@ -43,6 +45,14 @@ public class RecipeEntryUI : MonoBehaviour
             resultAmountText.text = recipe.resultAmount > 1 ? recipe.resultAmount.ToString() : "";
         }
 
+        ItemTooltipTrigger resultTrigger = resultIcon.GetComponent<ItemTooltipTrigger>();
+        if (resultTrigger == null)
+        {
+            resultTrigger = resultIcon.gameObject.AddComponent<ItemTooltipTrigger>();
+        }
+        resultTrigger.currentItem = recipe.resultItem;
+        resultIcon.raycastTarget = true;
+
         for (int i = 0; i < 9; i++)
         {
             CraftingIngredient ingredient = recipe.requiredIngredients[i];
@@ -52,29 +62,55 @@ public class RecipeEntryUI : MonoBehaviour
 
             if (ingredient.item != null && ingredient.amount > 0)
             {
-                slot.iconImage.gameObject.SetActive(true); 
+                slot.iconImage.gameObject.SetActive(true);
                 slot.iconImage.sprite = ingredient.item.Icon;
                 slot.iconImage.color = Color.white;
 
                 if (slot.amountText != null)
                 {
-                    slot.amountText.gameObject.SetActive(true); 
+                    slot.amountText.gameObject.SetActive(true);
                     slot.amountText.text = ingredient.amount > 1 ? ingredient.amount.ToString() : "";
+                }
+
+                if (slot.tooltipTrigger != null)
+                {
+                    slot.tooltipTrigger.currentItem = ingredient.item;
                 }
             }
             else
             {
                 if (slot.iconImage != null) slot.iconImage.gameObject.SetActive(false);
                 if (slot.amountText != null) slot.amountText.gameObject.SetActive(false);
+
+                if (slot.tooltipTrigger != null)
+                {
+                    slot.tooltipTrigger.currentItem = null;
+                }
             }
         }
     }
 
     private void InitializeSlots()
     {
-        foreach (Transform child in gridContainer)
+        if (gridContainer != null)
         {
-            Destroy(child.gameObject);
+            for (int i = gridContainer.childCount - 1; i >= 0; i--)
+            {
+                Transform child = gridContainer.GetChild(i);
+                if (child != null)
+                {
+                    child.gameObject.SetActive(false);
+
+#if UNITY_EDITOR
+                    if (!Application.isPlaying)
+                    {
+                        DestroyImmediate(child.gameObject);
+                        continue;
+                    }
+#endif
+                    Destroy(child.gameObject);
+                }
+            }
         }
 
         for (int i = 0; i < 9; i++)
@@ -88,7 +124,17 @@ public class RecipeEntryUI : MonoBehaviour
             newSlot.slotRoot = slotObj;
 
             Transform iconTrans = slotObj.transform.Find("Icon");
-            if (iconTrans != null) newSlot.iconImage = iconTrans.GetComponent<Image>();
+            if (iconTrans != null)
+            {
+                newSlot.iconImage = iconTrans.GetComponent<Image>();
+
+                newSlot.tooltipTrigger = iconTrans.gameObject.AddComponent<ItemTooltipTrigger>();
+
+                if (newSlot.iconImage != null)
+                {
+                    newSlot.iconImage.raycastTarget = true;
+                }
+            }
 
             Transform amountTrans = slotObj.transform.Find("Amount Text")
                                  ?? slotObj.transform.Find("AmountText")

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Platinum Ore
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: platinum_ore
-  itemName: "Quặng Bạch Kim (Platinum Ore)"
-  description: "Quặng bạch kim cực kỳ bền chắc và quý hiếm."
-  icon: {fileID: 4663291215532381377, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
+  itemName: "Qu\u1EB7ng B\u1EA1ch Kim (Platinum Ore)"
+  description: "Qu\u1EB7ng b\u1EA1ch kim c\u1EF1c k\u1EF3 b\u1EC1n ch\u1EAFc v\xE0
+    qu\xFD hi\u1EBFm."
+  icon: {fileID: 7459518793897368132, guid: 0f15ba2759320e04cbaf97d93adb520a, type: 3}
   itemType: 2
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99
