@@ -95,6 +95,7 @@ MonoBehaviour:
   overrideManagedSorting: 0
   overrideSortValue: 0
   shopPanel: {fileID: 500001}
+  shopScrollRect: {fileID: 500035}
   shopContentContainer: {fileID: 500014}
   shopSlotPrefab: {fileID: 4288872089680587082, guid: 6c0711f589009f34d95eb37d544398ff, type: 3}
   titleText: {fileID: 500006}
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a1949cdeb71f8429001f3f82f37938, type: 3}
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
 --- !u!114 &500035
@@ -539,7 +540,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab510000a64770c69e12607c3d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 500014}
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f4a42c6c514814bba99d9b50e0d759, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
