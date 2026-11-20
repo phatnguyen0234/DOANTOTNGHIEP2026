@@ -97,9 +97,13 @@ public class Inventory : MonoBehaviour
     {
         if (!isPlayerInventory) return;
 
-        // Phím E và ESC đã được UIManager điều phối tập trung.
-        // Chỉ xử lý nếu dev cấu hình một phím riêng khác (ví dụ: I, Tab, B...)
-        if (toggleBagKey != KeyCode.Escape && toggleBagKey != KeyCode.E && Input.GetKeyDown(toggleBagKey))
+        bool uiManagerHandlesEscape = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.handleEscapeKey;
+
+        // Phím ESC đã được UIManager điều phối tập trung (đóng UI đang mở hoặc mở túi đồ).
+        // Chỉ xử lý trực tiếp nếu dùng phím khác ESC hoặc khi không có UIManager xử lý ESC.
+        if (toggleBagKey != KeyCode.None &&
+            !(toggleBagKey == KeyCode.Escape && uiManagerHandlesEscape) &&
+            Input.GetKeyDown(toggleBagKey))
         {
             ToggleBag();
         }

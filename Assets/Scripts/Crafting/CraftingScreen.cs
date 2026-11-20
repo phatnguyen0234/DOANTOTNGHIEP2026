@@ -46,6 +46,9 @@ public class CraftingScreen : BlitzyUI.Screen
 
     private void Update()
     {
+        if (UIManager.Instance != null && UIManager.Instance.handleEscapeKey)
+            return;
+
         if (IsOpen && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseScreen();

@@ -99,6 +99,7 @@ namespace BlitzyUI
         private PushedDelegate _activePushCallback;
         private PoppedDelegate _activePopCallback;
         private Coroutine _watchdogCoroutine;
+        private int _lastPopFrame = -1;
 
         public Vector2 ReferenceResolution => _rootCanvasScalar != null ? _rootCanvasScalar.referenceResolution : new Vector2(1600, 900);
         public bool HasActiveScreens => _stack != null && _stack.Count > 0;
@@ -147,7 +148,7 @@ namespace BlitzyUI
                 ExecuteNextQueueItem();
             }
 
-            // Centralized Escape handling
+            // Centralized Escape handling (đóng UI đang mở, hoặc mở túi đồ khi không có UI nào đang mở)
             if (handleEscapeKey && Input.GetKeyDown(KeyCode.Escape))
             {
                 if (HasActiveScreens)
@@ -182,45 +183,17 @@ namespace BlitzyUI
                         QueuePop();
                     }
                 }
-            }
+                else if (_lastPopFrame != Time.frameCount)
+                {
+                    // Bỏ qua nếu người chơi đang focus trong ô InputField
+                    if (UnityEngine.EventSystems.EventSystem.current != null &&
+                        UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null &&
+                        (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null ||
+                         UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() != null))
+                    {
+                        return;
+                    }
 
-            // Phím E bật/tắt nhanh túi đồ (Inventory)
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                // Bỏ qua nếu người chơi đang nhập ký tự trong ô InputField (như ô tìm kiếm DataBook)
-                if (UnityEngine.EventSystems.EventSystem.current != null &&
-                    UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null &&
-                    (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null ||
-                     UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() != null))
-                {
-                    return;
-                }
-
-                if (HasActiveScreens)
-                {
-                    if (GetScreen(ScreenIds.Chest) != null)
-                    {
-                        QueuePopTo(ScreenIds.Chest, include: true);
-                    }
-                    else if (GetScreen(ScreenIds.Crafting) != null)
-                    {
-                        QueuePopTo(ScreenIds.Crafting, include: true);
-                    }
-                    else if (GetScreen(ScreenIds.Shop) != null)
-                    {
-                        QueuePopTo(ScreenIds.Shop, include: true);
-                    }
-                    else if (GetScreen(ScreenIds.DataBook) != null)
-                    {
-                        QueuePopTo(ScreenIds.DataBook, include: true);
-                    }
-                    else if (GetTopScreen()?.id == ScreenIds.Inventory)
-                    {
-                        QueuePop();
-                    }
-                }
-                else
-                {
                     QueuePush(ScreenIds.Inventory);
                 }
             }
@@ -701,6 +674,7 @@ namespace BlitzyUI
 
         private void HandlePopFinished(Screen screen)
         {
+            _lastPopFrame = Time.frameCount;
             StopWatchdog();
             if (screen != null)
             {

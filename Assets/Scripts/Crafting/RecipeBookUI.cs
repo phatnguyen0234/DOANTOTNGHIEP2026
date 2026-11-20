@@ -75,7 +75,11 @@ public class RecipeBookUI : BlitzyUI.Screen
 
     private void Update()
     {
-        // Close the book when pressing Escape (only if user is not typing in the search bar)
+        // Khi UIManager đang điều phối phím ESC tập trung thì nhường quyền cho UIManager (tránh xử lý 2 lần trong cùng frame)
+        if (closeKey == KeyCode.Escape && UIManager.Instance != null && UIManager.Instance.handleEscapeKey)
+            return;
+
+        // Close the book when pressing closeKey (only if user is not typing in the search bar)
         if (IsOpen && Input.GetKeyDown(closeKey))
         {
             if (searchInput != null && searchInput.isFocused)

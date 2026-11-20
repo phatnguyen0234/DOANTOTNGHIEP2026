@@ -62,6 +62,9 @@ public class ShopManager : MonoBehaviour
 
     private void Update()
     {
+        if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.handleEscapeKey)
+            return;
+
         if (IsShopOpen && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseShop();
