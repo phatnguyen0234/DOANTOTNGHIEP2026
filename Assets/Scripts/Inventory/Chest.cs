@@ -87,7 +87,11 @@ public class Chest : MonoBehaviour, IInteractable
             float distance = Vector2.Distance(currentInteractor.transform.position, transform.position);
             if (distance > maxInteractDistance)
             {
-                if (ChestUI.Instance != null && ChestUI.Instance.CurrentChest == this)
+                if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Chest) != null)
+                {
+                    BlitzyUI.UIManager.Instance.QueuePopTo(BlitzyUI.ScreenIds.Chest, include: true);
+                }
+                else if (ChestUI.Instance != null && ChestUI.Instance.CurrentChest == this)
                 {
                     ChestUI.Instance.CloseChest();
                 }
@@ -116,13 +120,19 @@ public class Chest : MonoBehaviour, IInteractable
 
         UpdateVisual(true);
 
-        if (ChestUI.Instance != null)
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            var data = new BlitzyUI.Screen.Data();
+            data.Add("chest", this);
+            BlitzyUI.UIManager.Instance.QueuePush(BlitzyUI.ScreenIds.Chest, data);
+        }
+        else if (ChestUI.Instance != null)
         {
             ChestUI.Instance.OpenChest(this);
         }
         else
         {
-            Debug.LogWarning("[Chest] Không tìm thấy ChestUI.Instance trong Scene!", this);
+            Debug.LogWarning("[Chest] Không tìm thấy UIManager hay ChestUI trong Scene!", this);
         }
     }
 

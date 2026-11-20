@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using BlitzyUI;
 
-public class RecipeBookUI : MonoBehaviour
+[RequireComponent(typeof(Canvas))]
+public class RecipeBookUI : BlitzyUI.Screen
 {
     public static RecipeBookUI Instance { get; private set; }
 
@@ -16,6 +18,7 @@ public class RecipeBookUI : MonoBehaviour
     public TextMeshProUGUI pageText;
     public Button nextButton;
     public Button prevButton;
+    public Button closeButton;
 
     [Tooltip("The category of recipes currently being viewed in the book")]
     public RecipeCategory currentSelectedCategory = RecipeCategory.All;
@@ -32,6 +35,8 @@ public class RecipeBookUI : MonoBehaviour
 
     public bool IsOpen => gameObject.activeSelf;
 
+    #region Unity Lifecycle
+
     private void Awake()
     {
         if (Instance == null)
@@ -44,6 +49,7 @@ public class RecipeBookUI : MonoBehaviour
             return;
         }
 
+        keepCached = true;
         RegisterEvents();
 
         if (PlayerRecipeManager.Instance != null)
@@ -54,42 +60,41 @@ public class RecipeBookUI : MonoBehaviour
 
     private void Start()
     {
-        if (!startOpen)
+        if (UIManager.Instance == null)
         {
-            CloseBook();
-        }
-        else
-        {
-            OpenBook();
+            if (!startOpen)
+            {
+                CloseBook();
+            }
+            else
+            {
+                OpenBook();
+            }
         }
     }
 
     private void Update()
     {
-        // Close the book when pressing Escape (only if user is not typing in the search bar)
+        // Khi UIManager đang điều phối phím ESC tập trung thì nhường quyền cho UIManager (tránh xử lý 2 lần trong cùng frame)
+        if (closeKey == KeyCode.Escape && UIManager.Instance != null && UIManager.Instance.handleEscapeKey)
+            return;
+
+        // Close the book when pressing closeKey (only if user is not typing in the search bar)
         if (IsOpen && Input.GetKeyDown(closeKey))
         {
-            if (searchInput == null || !searchInput.isFocused)
+            if (searchInput != null && searchInput.isFocused)
+            {
+                searchInput.DeactivateInputField();
+                if (UnityEngine.EventSystems.EventSystem.current != null)
+                {
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                }
+            }
+            else
             {
                 CloseBook();
             }
         }
-    }
-
-    private void RegisterEvents()
-    {
-        if (isEventsRegistered) return;
-
-        if (searchInput != null)
-            searchInput.onValueChanged.AddListener(OnSearchChanged);
-
-        if (nextButton != null)
-            nextButton.onClick.AddListener(NextPage);
-
-        if (prevButton != null)
-            prevButton.onClick.AddListener(PrevPage);
-
-        isEventsRegistered = true;
     }
 
     private void OnEnable()
@@ -105,6 +110,111 @@ public class RecipeBookUI : MonoBehaviour
         {
             PlayerRecipeManager.Instance.OnRecipeUnlocked -= RefreshBook;
         }
+
+        UnregisterEvents();
+    }
+
+    #endregion
+
+    #region BlitzyUI.Screen Lifecycle
+
+    public override void OnSetup()
+    {
+        Instance = this;
+        keepCached = true;
+        RegisterEvents();
+
+        if (PlayerRecipeManager.Instance != null)
+        {
+            PlayerRecipeManager.Instance.OnRecipeUnlocked -= RefreshBook;
+            PlayerRecipeManager.Instance.OnRecipeUnlocked += RefreshBook;
+        }
+    }
+
+    public override void OnPush(Data data)
+    {
+        gameObject.SetActive(true);
+        ResetFiltersToDefault();
+        RefreshBook();
+
+        // Bắt buộc gọi PushFinished để UIManager chuyển trạng thái Ready
+        PushFinished();
+    }
+
+    public override void OnPop()
+    {
+        if (searchInput != null && searchInput.isFocused)
+        {
+            searchInput.DeactivateInputField();
+            if (UnityEngine.EventSystems.EventSystem.current != null)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            }
+        }
+
+        gameObject.SetActive(false);
+
+        // Bắt buộc gọi PopFinished để UIManager hoàn tất thao tác
+        PopFinished();
+    }
+
+    public override void OnFocus()
+    {
+        RefreshBook();
+    }
+
+    public override void OnFocusLost()
+    {
+        if (searchInput != null && searchInput.isFocused)
+        {
+            searchInput.DeactivateInputField();
+            if (UnityEngine.EventSystems.EventSystem.current != null)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            }
+        }
+    }
+
+    #endregion
+
+    #region Event Handlers & Navigation
+
+    private void RegisterEvents()
+    {
+        if (isEventsRegistered) return;
+
+        if (searchInput != null)
+            searchInput.onValueChanged.AddListener(OnSearchChanged);
+
+        if (nextButton != null)
+            nextButton.onClick.AddListener(NextPage);
+
+        if (prevButton != null)
+            prevButton.onClick.AddListener(PrevPage);
+
+        if (closeButton != null)
+            closeButton.onClick.AddListener(CloseBook);
+
+        isEventsRegistered = true;
+    }
+
+    private void UnregisterEvents()
+    {
+        if (!isEventsRegistered) return;
+
+        if (searchInput != null)
+            searchInput.onValueChanged.RemoveListener(OnSearchChanged);
+
+        if (nextButton != null)
+            nextButton.onClick.RemoveListener(NextPage);
+
+        if (prevButton != null)
+            prevButton.onClick.RemoveListener(PrevPage);
+
+        if (closeButton != null)
+            closeButton.onClick.RemoveListener(CloseBook);
+
+        isEventsRegistered = false;
     }
 
     // Toggles the visibility of the DataBook UI
@@ -114,7 +224,7 @@ public class RecipeBookUI : MonoBehaviour
         else OpenBook();
     }
 
-    public void OpenBook()
+    private void ResetFiltersToDefault()
     {
         // Always default to the "All" tab whenever the book is opened
         currentSelectedCategory = RecipeCategory.All;
@@ -122,16 +232,34 @@ public class RecipeBookUI : MonoBehaviour
 
         if (searchInput != null && !string.IsNullOrEmpty(searchInput.text))
         {
-            searchInput.text = "";
+            searchInput.SetTextWithoutNotify("");
         }
+    }
 
-        gameObject.SetActive(true);
-        RefreshBook();
+    public void OpenBook()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.QueuePush(ScreenIds.DataBook);
+        }
+        else
+        {
+            ResetFiltersToDefault();
+            gameObject.SetActive(true);
+            RefreshBook();
+        }
     }
 
     public void CloseBook()
     {
-        gameObject.SetActive(false);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.QueuePopTo(ScreenIds.DataBook, include: true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void ChangeCategory(RecipeCategory newCategory)
@@ -241,4 +369,6 @@ public class RecipeBookUI : MonoBehaviour
         if (filteredRecipes.Count == 0) return 0;
         return (filteredRecipes.Count - 1) / RECIPES_PER_SPREAD;
     }
+
+    #endregion
 }

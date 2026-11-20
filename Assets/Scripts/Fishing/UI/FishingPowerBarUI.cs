@@ -20,10 +20,21 @@ public class FishingPowerBarUI : MonoBehaviour
 
     private void Awake()
     {
-        parentCanvas = GetComponentInParent<Canvas>();
-        mainCam = Camera.main;
+        EnsureCanvas();
 
+        bool needDefaultGradient = false;
         if (powerGradient == null || powerGradient.colorKeys == null || powerGradient.colorKeys.Length == 0)
+        {
+            needDefaultGradient = true;
+        }
+        else if (powerGradient.colorKeys.Length == 2 &&
+                 powerGradient.colorKeys[0].color == Color.white &&
+                 powerGradient.colorKeys[1].color == Color.white)
+        {
+            needDefaultGradient = true;
+        }
+
+        if (needDefaultGradient)
         {
             powerGradient = new Gradient();
             GradientColorKey[] colorKeys = new GradientColorKey[3];
@@ -39,29 +50,88 @@ public class FishingPowerBarUI : MonoBehaviour
         Hide();
     }
 
-    private void Update()
+    private void EnsureCanvas()
     {
-        if (targetFollow != null && gameObject.activeSelf)
+        if (parentCanvas == null || !parentCanvas.gameObject.activeInHierarchy)
         {
-            Vector3 worldPos = targetFollow.position + offset;
-            if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            parentCanvas = GetComponentInParent<Canvas>();
+        }
+
+        if (parentCanvas == null || !parentCanvas.gameObject.activeInHierarchy)
+        {
+            if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null && BlitzyUI.UIManager.Instance.rootCanvas.gameObject.activeInHierarchy)
             {
-                if (mainCam == null) mainCam = Camera.main;
-                if (mainCam != null)
-                {
-                    transform.position = mainCam.WorldToScreenPoint(worldPos);
-                }
+                parentCanvas = BlitzyUI.UIManager.Instance.rootCanvas;
             }
             else
             {
-                transform.position = worldPos;
+                var allCanvases = FindObjectsByType<Canvas>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                foreach (var c in allCanvases)
+                {
+                    if (c.isRootCanvas && c.gameObject.activeInHierarchy)
+                    {
+                        parentCanvas = c;
+                        break;
+                    }
+                }
+
+                if (parentCanvas == null)
+                {
+                    parentCanvas = FindAnyObjectByType<Canvas>(FindObjectsInactive.Include);
+                }
             }
+
+            if (parentCanvas != null && transform.parent != parentCanvas.transform)
+            {
+                transform.SetParent(parentCanvas.transform, false);
+                transform.localScale = Vector3.one;
+                transform.SetAsLastSibling();
+            }
+        }
+
+        if (mainCam == null)
+        {
+            mainCam = Camera.main;
+        }
+    }
+
+    public void UpdatePosition()
+    {
+        if (targetFollow == null) return;
+        EnsureCanvas();
+
+        Vector3 worldPos = targetFollow.position + offset;
+        if (parentCanvas != null && parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+        {
+            if (mainCam == null) mainCam = Camera.main;
+            if (mainCam != null)
+            {
+                Vector3 screenPos = mainCam.WorldToScreenPoint(worldPos);
+                screenPos.z = 0f;
+                transform.position = screenPos;
+            }
+        }
+        else
+        {
+            transform.position = worldPos;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (targetFollow != null && gameObject.activeSelf)
+        {
+            UpdatePosition();
         }
     }
 
     public void Show(Transform followTransform)
     {
+        EnsureCanvas();
         targetFollow = followTransform;
+        transform.SetAsLastSibling();
+        transform.localScale = Vector3.one;
+        UpdatePosition();
         gameObject.SetActive(true);
         SetPower(0f);
     }

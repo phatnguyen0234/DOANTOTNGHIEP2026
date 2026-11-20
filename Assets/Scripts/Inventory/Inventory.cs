@@ -32,7 +32,17 @@ public class Inventory : MonoBehaviour
 
     public int Capacity => capacity;
     public IReadOnlyList<InventorySlot> Slots => slots;
-    public bool IsBagOpen => inventoryUI != null && inventoryUI.IsOpen;
+    public bool IsBagOpen
+    {
+        get
+        {
+            if (BlitzyUI.UIManager.Instance != null)
+            {
+                return BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Inventory) != null;
+            }
+            return inventoryUI != null && inventoryUI.IsOpen;
+        }
+    }
     public InventoryUI InventoryUI => inventoryUI;
     public bool IsPlayerInventory => isPlayerInventory;
 
@@ -85,7 +95,15 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerInventory && Input.GetKeyDown(toggleBagKey))
+        if (!isPlayerInventory) return;
+
+        bool uiManagerHandlesEscape = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.handleEscapeKey;
+
+        // Phím ESC đã được UIManager điều phối tập trung (đóng UI đang mở hoặc mở túi đồ).
+        // Chỉ xử lý trực tiếp nếu dùng phím khác ESC hoặc khi không có UIManager xử lý ESC.
+        if (toggleBagKey != KeyCode.None &&
+            !(toggleBagKey == KeyCode.Escape && uiManagerHandlesEscape) &&
+            Input.GetKeyDown(toggleBagKey))
         {
             ToggleBag();
         }
@@ -95,7 +113,15 @@ public class Inventory : MonoBehaviour
     {
         if (inventoryUI == null)
         {
-            inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+            var allUIs = FindObjectsByType<InventoryUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var ui in allUIs)
+            {
+                if (ui.gameObject.name == "BagInventory" || ui.gameObject.name == "InventoryScreen" || ui.gameObject.name.Contains("Bag"))
+                {
+                    inventoryUI = ui;
+                    break;
+                }
+            }
         }
     }
 
@@ -519,6 +545,19 @@ public class Inventory : MonoBehaviour
     // Bật/tắt hiển thị giao diện túi đồ (UI Inventory Bag)
     public void ToggleBag()
     {
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            if (IsBagOpen)
+            {
+                CloseBag();
+            }
+            else
+            {
+                OpenBag();
+            }
+            return;
+        }
+
         if (inventoryUI == null)
         {
             inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
@@ -537,6 +576,15 @@ public class Inventory : MonoBehaviour
     // Mở giao diện túi đồ
     public void OpenBag()
     {
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            if (!IsBagOpen)
+            {
+                BlitzyUI.UIManager.Instance.QueuePush(BlitzyUI.ScreenIds.Inventory);
+            }
+            return;
+        }
+
         if (inventoryUI == null)
         {
             inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
@@ -551,6 +599,15 @@ public class Inventory : MonoBehaviour
     // Đóng giao diện túi đồ
     public void CloseBag()
     {
+        if (BlitzyUI.UIManager.Instance != null)
+        {
+            if (IsBagOpen)
+            {
+                BlitzyUI.UIManager.Instance.QueuePopTo(BlitzyUI.ScreenIds.Inventory, include: true);
+            }
+            return;
+        }
+
         if (inventoryUI == null)
         {
             inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
