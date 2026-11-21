@@ -14,17 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 008
   cropName: Asparagus
-  growthTime: 80
+  growthTime: 70
   maxStage: 5
   stageSprites:
   - {fileID: -5125048416200854798, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
   - {fileID: -1521065269026237685, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
+  - {fileID: -1521065269026237685, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
   - {fileID: 7059826356676346046, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
-  - {fileID: 1221555154660322175, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
-  - {fileID: -6612487924839674670, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
+  - {fileID: 7059826356676346046, guid: d15ab72e42516de4290d5a0db06aed85, type: 3}
   dropTable: {fileID: 0}
   harvestItem: {fileID: 11400000, guid: d68320cd6ca7dd6984e7fdc6a8bfe763, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 00000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 0
+  regrowStage: 0

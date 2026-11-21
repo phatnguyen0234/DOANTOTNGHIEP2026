@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 013
   cropName: Aloe
   growthTime: 80
-  maxStage: 7
+  maxStage: 6
   stageSprites:
   - {fileID: -2817107685474369666, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
   - {fileID: -2290638743845882974, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
@@ -23,10 +23,10 @@ MonoBehaviour:
   - {fileID: -8636481832652692260, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
   - {fileID: 470621242737815008, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
   - {fileID: -2600400073476253552, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
-  - {fileID: -1873535136603939203, guid: 804dcac807480f44fb143f2761eb7be0, type: 3}
   dropTable: {fileID: 0}
   harvestItem: {fileID: 11400000, guid: 4b52e7588c1f3fd9dce141391bf1d017, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 0100000002000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 0
+  regrowStage: 0

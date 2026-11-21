@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 016
   cropName: Eggplant
-  growthTime: 90
-  maxStage: 7
+  growthTime: 80
+  maxStage: 6
   stageSprites:
   - {fileID: -6905139553319271647, guid: bbfbe85d16f3de9418554084835202be, type: 3}
   - {fileID: 660843597062781518, guid: bbfbe85d16f3de9418554084835202be, type: 3}
@@ -23,10 +23,10 @@ MonoBehaviour:
   - {fileID: 6760512655499572333, guid: bbfbe85d16f3de9418554084835202be, type: 3}
   - {fileID: -1414401220342530014, guid: bbfbe85d16f3de9418554084835202be, type: 3}
   - {fileID: 5265256098166310276, guid: bbfbe85d16f3de9418554084835202be, type: 3}
-  - {fileID: 8696727781784020766, guid: bbfbe85d16f3de9418554084835202be, type: 3}
   dropTable: {fileID: 0}
   harvestItem: {fileID: 11400000, guid: 3f41b9dd7e22c18b668d4fd958ace199, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 02000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 1
+  regrowStage: 4

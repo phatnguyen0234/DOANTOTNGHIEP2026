@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Wheat
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 030
+  cropName: Wheat
+  growthTime: 60
+  maxStage: 6
+  stageSprites:
+  - {fileID: 7720945941185500035, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  - {fileID: -8584868804314651190, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  - {fileID: 7496326680409604657, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  - {fileID: 2000933539036765551, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  - {fileID: -2780286958352041688, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  - {fileID: -2152290069661278788, guid: 7a2742f4fcbf7974b86eeef4412683aa, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: eb10762a77b8ff53b2c9fef7827a2285, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0100000002000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

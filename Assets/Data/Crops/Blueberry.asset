@@ -14,18 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 002
   cropName: Blueberry
-  growthTime: 60
-  maxStage: 5
+  growthTime: 80
+  maxStage: 6
   stageSprites:
-  - {fileID: -1800126058511640119, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
-  - {fileID: -1957658871821922118, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
-  - {fileID: 1942767228105140428, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
-  - {fileID: 8523965287709476415, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
-  - {fileID: 8849037320410730604, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
+  - {fileID: -2534248692213106135, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -1689513711262940089, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -1474874400585026657, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -8152682977502255077, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -6383259595677825952, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
+  - {fileID: -6087991206280479571, guid: 70f84f40fcb6a8a40baedccee10d1a50, type: 3}
   dropTable: {fileID: 0}
   harvestItem: {fileID: 11400000, guid: f99175758e53ae64339088be9b788a1e, type: 2}
-  harvestAmount: 1
-  allowedSeason: 00000000010000000200000003000000
+  harvestAmount: 2
+  allowedSeason: 0000000001000000
   maxUnwateredDays: 2
   isReharvest: 1
-  regrowStage: 2
+  regrowStage: 4

@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 017
   cropName: Grapes
-  growthTime: 100
-  maxStage: 6
+  growthTime: 90
+  maxStage: 5
   stageSprites:
   - {fileID: -1225635468801588992, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
   - {fileID: -111885973100229174, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
   - {fileID: -4802079438333504345, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
   - {fileID: 1652390584746202593, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
   - {fileID: -4890384639242830058, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
-  - {fileID: 3076383106787044409, guid: f86f481a0f6b6ec4195acfa14fae863c, type: 3}
   dropTable: {fileID: 0}
   harvestItem: {fileID: 11400000, guid: 0b96a229b25169f7566d8f7a176849fe, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 02000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 1
+  regrowStage: 3

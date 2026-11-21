@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Sunflower
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 027
+  cropName: Sunflower
+  growthTime: 80
+  maxStage: 5
+  stageSprites:
+  - {fileID: -7039873942469640697, guid: c533d27836f4f774880f24e340559460, type: 3}
+  - {fileID: 8782663904212672053, guid: c533d27836f4f774880f24e340559460, type: 3}
+  - {fileID: 3606243134133044992, guid: c533d27836f4f774880f24e340559460, type: 3}
+  - {fileID: 7666367429017818220, guid: c533d27836f4f774880f24e340559460, type: 3}
+  - {fileID: -4782665449679226813, guid: c533d27836f4f774880f24e340559460, type: 3}
+  dropTable: {fileID: 0}
+  harvestItem: {fileID: 11400000, guid: a6df1d9e8c643af0a0d368a09897321e, type: 2}
+  harvestAmount: 1
+  allowedSeason: 0100000002000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

@@ -515,20 +515,20 @@ public class FarmInputController : MonoBehaviour
                     CropQuality harvestQuality = QualityCalculator.DetermineQuality(cell.fertilizer);
                     Debug.Log("CropQuality " + harvestQuality);
                     // 1. Ưu tiên kích hoạt rơi qua DropSystem nếu cây trồng có DropTable
-                    //if (crop.GetDropTable() != null)
-                    //{
-                    //DropContext context = new DropContext(
-                    //    source: crop.gameObject,
-                    //    player: player != null ? player.gameObject : gameObject,
-                    //    tool: null,
-                    //    toolLevel: 1,
-                    //    dropMultiplier: 1f,
-                    //    luck: 0f
-                    //);
-                    //DropSystem.TriggerDrop(crop, context);
-                    //}
-                    //2.Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner(hoặc thêm vào túi)
-                    if (crop.CropData != null && crop.CropData.harvestItem != null)
+                    if (crop.GetDropTable() != null)
+                    {
+                        DropContext context = new DropContext(
+                            source: crop.gameObject,
+                            player: player != null ? player.gameObject : gameObject,
+                            tool: null,
+                            toolLevel: 1,
+                            dropMultiplier: 1f,
+                            luck: 0f
+                        );
+                        DropSystem.TriggerDrop(crop, context);
+                    }
+                    // 2. Fallback: Rơi theo harvestItem đơn lẻ qua ItemDropSpawner (hoặc thêm vào túi)
+                    else if (crop.CropData != null && crop.CropData.harvestItem != null)
                     {
                         int amount = Mathf.Max(1, crop.CropData.harvestAmount);
                         Vector3 harvestPos = crop.transform.position;
@@ -546,19 +546,6 @@ public class FarmInputController : MonoBehaviour
                                 return false;
                             }
                         }
-                    }
-
-                    if (crop.GetDropTable() != null)
-                    {
-                    DropContext context = new DropContext(
-                        source: crop.gameObject,
-                        player: player != null ? player.gameObject : gameObject,
-                        tool: null,
-                        toolLevel: 1,
-                        dropMultiplier: 1f,
-                        luck: 0f
-                    );
-                    DropSystem.TriggerDrop(crop, context);
                     }
                 if (crop.Harvest())
                     {

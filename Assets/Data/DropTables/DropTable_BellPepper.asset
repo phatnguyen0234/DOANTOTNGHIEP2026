@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7bb2e42716a7447b9755495e57e982, type: 3}
+  m_Name: DropTable_BellPepper
+  m_EditorClassIdentifier: Assembly-CSharp::DropTable
+  entries:
+  - item: {fileID: 11400000, guid: a785a5829cfa9a43e34ef289c70a1979, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    dropChance: 1
+    affectedByLuck: 0
+    affectedByToolLevel: 0
+  - item: {fileID: 11400000, guid: 996efa8917ff5a55f44dabd23d8d8f18, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    dropChance: 0.45
+    affectedByLuck: 1
+    affectedByToolLevel: 0
+  - item: {fileID: 11400000, guid: 713ec614647136a62ce06c6911573ebf, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    dropChance: 0.35
+    affectedByLuck: 1
+    affectedByToolLevel: 0
