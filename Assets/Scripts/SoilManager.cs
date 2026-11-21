@@ -376,7 +376,7 @@ public class SoilManager : MonoBehaviour
             {
                 if (cell.isDestroyed)
                 {
-                    rock.Hit();
+                    rock.Init(true);
                     rockCells.Remove(cell.position);
                 }
             }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7bb2e42716a7447b9755495e57e982, type: 3}
+  m_Name: DropTable_Onion
+  m_EditorClassIdentifier: Assembly-CSharp::DropTable
+  entries:
+  - item: {fileID: 11400000, guid: 5ad040da5b1495aa5b9b675cf35f769c, type: 2}
+    minAmount: 1
+    maxAmount: 2
+    dropChance: 1
+    affectedByLuck: 1
+    affectedByToolLevel: 0
+  - item: {fileID: 11400000, guid: dafa1eeb23fec36da4af730643384130, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    dropChance: 0.2
+    affectedByLuck: 1
+    affectedByToolLevel: 0
