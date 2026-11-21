@@ -17,6 +17,15 @@ TextureImporter:
   - first:
       213: 2679749292721836395
     second: Green Beans_4
+  - first:
+      213: -1644224139968867147
+    second: Green Beans_5
+  - first:
+      213: 5339555029018481576
+    second: Green Beans_6
+  - first:
+      213: -8573924814422026865
+    second: Green Beans_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,15 +124,179 @@ TextureImporter:
       name: Green Beans_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 12
-        height: 19
+        width: 10
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec42a91baf2658f20800000000000000
+      internalID: 3424251920546145486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79143837bff846000800000000000000
+      internalID: 28305807808610711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4458aefb9f284ec50800000000000000
+      internalID: 6693618955357685060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6ee89333e4d6b20800000000000000
+      internalID: 3129243298008327886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b611ac7a8c1603520800000000000000
+      internalID: 2679749292721836395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4bc83a0e5fc3c580800000000000000
+      internalID: -1644224139968867147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46d39f5388769f0a0800000000000000
+      internalID: 5339555029018481576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Beans_7
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 2
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e98cfd606a8ec240800000000000000
+      internalID: -8573924814422026865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
@@ -240,6 +413,9 @@ TextureImporter:
       Green Beans_2: 6693618955357685060
       Green Beans_3: 3129243298008327886
       Green Beans_4: 2679749292721836395
+      Green Beans_5: -1644224139968867147
+      Green Beans_6: 5339555029018481576
+      Green Beans_7: -8573924814422026865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

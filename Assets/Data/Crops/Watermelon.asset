@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Watermelon
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 029
+  cropName: Watermelon
+  growthTime: 130
+  maxStage: 8
+  stageSprites:
+  - {fileID: -8558258358756935692, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: 1013754601337358461, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: 5992088724867527691, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: 3159699416640270981, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: 5187548815225833754, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: -4424528892947583781, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: -1847860089355230943, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  - {fileID: 5753343077069338363, guid: 3ade1039b220bed4cab98564ef3646f4, type: 3}
+  dropTable: {fileID: 11400000, guid: 1411d4dde17d99802d11e89deaa92837, type: 2}
+  harvestItem: {fileID: 11400000, guid: a9960bd6c946785d8b5e33b93172929e, type: 2}
+  harvestAmount: 1
+  allowedSeason: 01000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

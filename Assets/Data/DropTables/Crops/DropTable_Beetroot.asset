@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7bb2e42716a7447b9755495e57e982, type: 3}
-  m_Name: DropTable_Tree
+  m_Name: DropTable_Beetroot
   m_EditorClassIdentifier: Assembly-CSharp::DropTable
   entries:
-  - item: {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
-    minAmount: 3
-    maxAmount: 5
-    dropChance: 1
-    affectedByLuck: 0
-    affectedByToolLevel: 1
-  - item: {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
+  - item: {fileID: 11400000, guid: c8653e3234e1a3a7a68f20c3fe21724b, type: 2}
     minAmount: 1
     maxAmount: 2
     dropChance: 1
+    affectedByLuck: 1
+    affectedByToolLevel: 0
+  - item: {fileID: 11400000, guid: e9cada925696621787e11181bc5fb88d, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    dropChance: 0.2
     affectedByLuck: 1
     affectedByToolLevel: 0

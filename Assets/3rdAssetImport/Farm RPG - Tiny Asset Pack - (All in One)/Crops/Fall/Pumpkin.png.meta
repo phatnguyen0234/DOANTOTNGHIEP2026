@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: 7185039186225281475
     second: Pumpkin_4
+  - first:
+      213: 4330368351664923668
+    second: Pumpkin_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,15 +118,135 @@ TextureImporter:
       name: Pumpkin_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 4
         y: 0
-        width: 42
-        height: 8
+        width: 7
+        height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60fc968b15fccec0800000000000000
+      internalID: -3545189308076068758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67ab9f6ded0db1440800000000000000
+      internalID: 4907745874458294902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08d36e94ce361890800000000000000
+      internalID: -7487728316265015285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c11ac262335aff0800000000000000
+      internalID: -25557983830139815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c93838621366b360800000000000000
+      internalID: 7185039186225281475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_5
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efead560861170130800000000000000
+      internalID: 4330368351664923668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
@@ -240,6 +363,7 @@ TextureImporter:
       Pumpkin_2: -7487728316265015285
       Pumpkin_3: -25557983830139815
       Pumpkin_4: 7185039186225281475
+      Pumpkin_5: 4330368351664923668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

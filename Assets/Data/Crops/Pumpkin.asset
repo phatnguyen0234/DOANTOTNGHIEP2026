@@ -19,12 +19,13 @@ MonoBehaviour:
   stageSprites:
   - {fileID: -3545189308076068758, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
   - {fileID: 4907745874458294902, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
+  - {fileID: 4907745874458294902, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
   - {fileID: -7487728316265015285, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
-  - {fileID: -25557983830139815, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
-  - {fileID: 7185039186225281475, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
-  dropTable: {fileID: 0}
+  - {fileID: -7487728316265015285, guid: 40be36f8bd0dad0458c65f4e074ddf3f, type: 3}
+  dropTable: {fileID: 11400000, guid: a0106365c81b40d3d55276c6dad92bbd, type: 2}
   harvestItem: {fileID: 11400000, guid: 345e76811a04f8021758e776da61c927, type: 2}
   harvestAmount: 1
-  allowedSeason: 0000000001000000
+  allowedSeason: 02000000
   maxUnwateredDays: 2
-  witheredSprite: {fileID: 0}
+  isReharvest: 0
+  regrowStage: 0

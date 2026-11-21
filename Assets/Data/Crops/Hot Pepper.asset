@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Hot Pepper
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 024
+  cropName: Hot Pepper
+  growthTime: 80
+  maxStage: 6
+  stageSprites:
+  - {fileID: 5953287508915389101, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  - {fileID: -1115450108091160325, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  - {fileID: -6320527653908318063, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  - {fileID: -5076699796137546156, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  - {fileID: -4905772009040333120, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  - {fileID: 4904154408657244531, guid: 100f1868f69a59944aa7c1a95ab4e467, type: 3}
+  dropTable: {fileID: 11400000, guid: 149688fa6212c0f7f6e5d8be9738fa1b, type: 2}
+  harvestItem: {fileID: 11400000, guid: fb65a6b8bddc394ee334ad0e7c966db8, type: 2}
+  harvestAmount: 1
+  allowedSeason: 01000000
+  maxUnwateredDays: 2
+  isReharvest: 1
+  regrowStage: 4
