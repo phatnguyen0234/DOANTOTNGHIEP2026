@@ -48418,7 +48418,23 @@ PrefabInstance:
       value: Chef
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: itemsPerRotation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: myShopItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
@@ -48434,6 +48450,34 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[0].stock
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[1].stock
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[2].stock
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[0].stock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[1].stock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[2].stock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[3].stock
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: myShopItems.Array.data[0].itemData
       value: 
       objectReference: {fileID: 11400000, guid: d946256cf4d87084eac2d057904d7540, type: 2}
@@ -48441,6 +48485,50 @@ PrefabInstance:
       propertyPath: myShopItems.Array.data[1].itemData
       value: 
       objectReference: {fileID: 11400000, guid: 5a8e64c129e59a44b82d3f749a0e1189, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[0].stock
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[1].stock
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 409dec5ce497510312c3ee6547db2005, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: f305b0bfdb4c9147381f0654f3711b0c, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bdae16b738f56af5f803c5b6486d052, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a1af8ef6bd58987dda836b234bbf13f, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: f6f32a30f8d61d1ee01d9f65f53a8842, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 327bfe291e09ac5c21d2a10835381a9f, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: ebcd83c2deb14df04e8ba2abe46d3291, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 026cd4a796d0628748468e27d92a8e61, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 952daef95dce96854224a117d5b564dd, type: 2}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: possibleShopItems.Array.data[0].stock
       value: 5
@@ -48513,6 +48601,50 @@ PrefabInstance:
       propertyPath: possibleShopItems.Array.data[8].itemData
       value: 
       objectReference: {fileID: 11400000, guid: ae3638750ae881e04e5e843ac551072a, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[0].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[1].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: seasonalItems.Array.data[2].validSeasons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[0].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[1].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[2].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: dailyPoolItems.Array.data[3].validSeasons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: 'seasonalItems.Array.data[1].validSeasons.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: 'seasonalItems.Array.data[2].validSeasons.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: 'dailyPoolItems.Array.data[2].validSeasons.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: 'dailyPoolItems.Array.data[3].validSeasons.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7865951380911358425, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -484883,6 +485015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UITooltipManager
   tooltipPanel: {fileID: 590927006}
   tooltipText: {fileID: 510205837}
+  tooltipSortingOrder: 100
 --- !u!1 &968063320
 GameObject:
   m_ObjectHideFlags: 0
