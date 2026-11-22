@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,30 +29,39 @@ public class ShopSlotUI : MonoBehaviour
 
     public void RefreshUI()
     {
-        if (currentShopItem.itemData == null) return;
+        if (currentShopItem == null || currentShopItem.itemData == null) return;
 
         iconImage.sprite = currentShopItem.itemData.Icon;
-        nameText.text = currentShopItem.itemData.ItemName;
-        priceText.text = currentShopItem.itemData.BuyPrice.ToString() + " G";
+        nameText.text = $"[{currentShopItem.cycleType}] {currentShopItem.itemData.ItemName}";
+        priceText.text = $"{currentShopItem.itemData.BuyPrice} G";
 
-        stockText.text = "" + currentShopItem.stock;
-
-        if (currentShopItem.stock <= 0)
+        if (currentShopItem.IsUnlimited)
+        {
+            iconImage.color = Color.white;
+            stockText.text = "∞";
+        }
+        else if (currentShopItem.IsSoldOut)
         {
             iconImage.color = new Color(0.3f, 0.3f, 0.3f, 1f);
             stockText.text = "<color=red>Sold Out</color>";
         }
         else
         {
-            iconImage.color = Color.white; 
+            iconImage.color = Color.white;
+            stockText.text = currentShopItem.stock.ToString();
+        }
+
+        if (buyButton != null)
+        {
+            buyButton.interactable = !currentShopItem.IsSoldOut;
         }
     }
 
     public void OnBuyClicked()
     {
-        if (currentShopItem.stock <= 0)
+        if (currentShopItem == null || currentShopItem.IsSoldOut)
         {
-            Debug.LogWarning($"[Shop]'{currentShopItem.itemData.ItemName}' is out of stock !");
+            Debug.LogWarning($"[Shop] '{currentShopItem?.itemData?.ItemName}' is out of stock!");
             return;
         }
 

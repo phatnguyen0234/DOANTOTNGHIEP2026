@@ -229,9 +229,9 @@ public class ShopManager : MonoBehaviour
         ShopItem itemToBuy = currentShopItems[index];
 
         // Client-side pre-validation (prevents unnecessary network traffic later)
-        if (itemToBuy.stock <= 0 ||
-            playerMoney == null || playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice ||
-            playerInventory == null || !playerInventory.CanAddItem(itemToBuy.itemData, 1))
+        if (itemToBuy.IsSoldOut ||
+    playerMoney == null || playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice ||
+    playerInventory == null || !playerInventory.CanAddItem(itemToBuy.itemData, 1))
         {
             return;
         }
@@ -252,7 +252,7 @@ public class ShopManager : MonoBehaviour
         ShopItem itemToBuy = currentShopItems[index];
 
         // Authoritative validation
-        if (itemToBuy.stock <= 0)
+        if (itemToBuy.IsSoldOut)
             return;
 
         if (playerMoney == null || playerMoney.CurrentMoney < itemToBuy.itemData.BuyPrice)
@@ -270,7 +270,10 @@ public class ShopManager : MonoBehaviour
         // Commit state changes
         playerMoney.TrySpendMoney(itemToBuy.itemData.BuyPrice);
         playerInventory.TryAddItem(itemToBuy.itemData, 1);
-        itemToBuy.stock--;
+        if (!itemToBuy.IsUnlimited)
+        {
+            itemToBuy.stock--;
+        }
 
         // In Multiplayer: Broadcast updated stock to all clients via ClientRpc
         OnTransactionCompleted(index);

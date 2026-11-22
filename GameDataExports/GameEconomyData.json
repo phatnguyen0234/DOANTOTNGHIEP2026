@@ -1,5 +1,5 @@
 ﻿{
-    "exportedAtUtc": "2026-11-17T16:48:31.5749177Z",
+    "exportedAtUtc": "2026-11-22T07:17:11.5467261Z",
     "items": [
         {
             "itemID": "albacore",
@@ -1575,6 +1575,19 @@
             "description": "Ớt chuông đỏ ngọt thơm, tạo màu sắc bắt mắt."
         },
         {
+            "itemID": "rice",
+            "itemName": "Lúa Gạo (Rice)",
+            "itemType": "Crop",
+            "toolType": "None",
+            "cropId": "Rice",
+            "fertilizerType": "None",
+            "maxStack": 99,
+            "buyPrice": 75,
+            "sellPrice": 50,
+            "canSell": true,
+            "description": "Hạt lúa gạo thơm dẻo thu hoạch từ đồng ruộng, nguyên liệu thiết yếu để nấu ăn."
+        },
+        {
             "itemID": "spring_onion",
             "itemName": "Hành Lá (Spring Onion)",
             "itemType": "Crop",
@@ -1599,6 +1612,19 @@
             "sellPrice": 85,
             "canSell": true,
             "description": "Quả dâu tây đỏ thắm thơm ngát, vị chua ngọt mê say."
+        },
+        {
+            "itemID": "sunflower",
+            "itemName": "Hoa Hướng Dương (Sunflower)",
+            "itemType": "Crop",
+            "toolType": "None",
+            "cropId": "Sunflower",
+            "fertilizerType": "None",
+            "maxStack": 99,
+            "buyPrice": 120,
+            "sellPrice": 80,
+            "canSell": true,
+            "description": "Bông hoa hướng dương rực rỡ sắc vàng, nở đẹp dưới nắng mùa hè và thu."
         },
         {
             "itemID": "tomato",
@@ -4071,19 +4097,6 @@
             "description": "Món ăn / thức uống Quesadilla thơm ngon bổ dưỡng phục hồi năng lượng."
         },
         {
-            "itemID": "rice",
-            "itemName": "Rice",
-            "itemType": "Food",
-            "toolType": "None",
-            "cropId": "",
-            "fertilizerType": "None",
-            "maxStack": 99,
-            "buyPrice": 150,
-            "sellPrice": 90,
-            "canSell": true,
-            "description": "Món ăn / thức uống Rice thơm ngon bổ dưỡng phục hồi năng lượng."
-        },
-        {
             "itemID": "rice_ball",
             "itemName": "Rice ball",
             "itemType": "Food",
@@ -4407,19 +4420,6 @@
             "sellPrice": 65,
             "canSell": true,
             "description": "Món ăn / thức uống Sun tea thơm ngon bổ dưỡng phục hồi năng lượng."
-        },
-        {
-            "itemID": "sunflower",
-            "itemName": "Sunflower",
-            "itemType": "Food",
-            "toolType": "None",
-            "cropId": "",
-            "fertilizerType": "None",
-            "maxStack": 99,
-            "buyPrice": 150,
-            "sellPrice": 90,
-            "canSell": true,
-            "description": "Món ăn / thức uống Sunflower thơm ngon bổ dưỡng phục hồi năng lượng."
         },
         {
             "itemID": "sweet_berry_cake",
@@ -5800,6 +5800,19 @@
             "description": "Túi hạt giống hạt ớt chuông, có thể gieo trồng trên ô đất đã cuốc."
         },
         {
+            "itemID": "blackberry_seed",
+            "itemName": "Hạt Mâm Xôi Đen (Blackberry Seed)",
+            "itemType": "Seed",
+            "toolType": "SeedBag",
+            "cropId": "Blackberry",
+            "fertilizerType": "None",
+            "maxStack": 99,
+            "buyPrice": 30,
+            "sellPrice": 15,
+            "canSell": true,
+            "description": "Túi hạt giống mâm xôi đen mùa hè, cho phép thu hoạch nhiều lần."
+        },
+        {
             "itemID": "blueberry_seed",
             "itemName": "Hạt Việt Quất (Blueberry Seed)",
             "itemType": "Seed",
@@ -6149,6 +6162,19 @@
             "sellPrice": 17,
             "canSell": true,
             "description": "Túi hạt giống hạt dâu tây, có thể gieo trồng trên ô đất đã cuốc."
+        },
+        {
+            "itemID": "sunflower_seed",
+            "itemName": "Hạt Hoa Hướng Dương (Sunflower Seed)",
+            "itemType": "Seed",
+            "toolType": "SeedBag",
+            "cropId": "Sunflower",
+            "fertilizerType": "None",
+            "maxStack": 99,
+            "buyPrice": 25,
+            "sellPrice": 12,
+            "canSell": true,
+            "description": "Túi hạt giống hoa hướng dương, thích hợp trồng vào mùa hè và mùa thu."
         },
         {
             "itemID": "tomato_seed",
