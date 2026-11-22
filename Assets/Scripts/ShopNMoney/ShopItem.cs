@@ -9,6 +9,27 @@ public enum StockCycleType
     Daily
 }
 
+public enum ShopUnlockConditionType
+{
+    None,                     // 1. Standard sale & day/season rotation (no extra condition)
+    MinDaysPlayed,            // 2. Unlocked after playing at least N in-game days
+    RequiredMaterialObtained, // 3. Unlocked after obtaining a specific material item
+    HolidayOnly               // 4. Unlocked only during an in-game holiday
+}
+
+[Serializable]
+public class ShopUnlockCondition
+{
+    public ShopUnlockConditionType conditionType = ShopUnlockConditionType.None;
+
+    [Min(0)]
+    public int requiredDaysPlayed = 0;
+
+    public ItemData requiredMaterial;
+
+    public string requiredHolidayEventId;
+}
+
 [Serializable]
 public class ShopItem
 {
@@ -19,6 +40,8 @@ public class ShopItem
 
     [Tooltip("Leave empty if this item is available in all seasons.")]
     public List<Season> validSeasons = new();
+
+    public ShopUnlockCondition unlockCondition = new();
 
     [HideInInspector]
     public StockCycleType cycleType = StockCycleType.Daily;
@@ -35,6 +58,15 @@ public class ShopItem
         validSeasons = template.validSeasons != null
             ? new List<Season>(template.validSeasons)
             : new List<Season>();
+        unlockCondition = template.unlockCondition != null
+            ? new ShopUnlockCondition
+            {
+                conditionType = template.unlockCondition.conditionType,
+                requiredDaysPlayed = template.unlockCondition.requiredDaysPlayed,
+                requiredMaterial = template.unlockCondition.requiredMaterial,
+                requiredHolidayEventId = template.unlockCondition.requiredHolidayEventId
+            }
+            : new ShopUnlockCondition();
         cycleType = assignedCycleType;
     }
 

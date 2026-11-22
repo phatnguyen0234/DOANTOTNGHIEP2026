@@ -48435,7 +48435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: permanentItems.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: possibleShopItems.Array.size
@@ -48494,6 +48494,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[2].stock
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: seasonalItems.Array.data[0].itemData
       value: 
       objectReference: {fileID: 11400000, guid: 409dec5ce497510312c3ee6547db2005, type: 2}
@@ -48529,6 +48533,10 @@ PrefabInstance:
       propertyPath: permanentItems.Array.data[1].itemData
       value: 
       objectReference: {fileID: 11400000, guid: 952daef95dce96854224a117d5b564dd, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed867daf2219a0b177d28151b566703a, type: 2}
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: possibleShopItems.Array.data[0].stock
       value: 5
@@ -48644,6 +48652,30 @@ PrefabInstance:
     - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: 'dailyPoolItems.Array.data[3].validSeasons.Array.data[0]'
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[0].unlockCondition.conditionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[1].unlockCondition.conditionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[2].unlockCondition.conditionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[1].unlockCondition.requiredMaterial
+      value: 
+      objectReference: {fileID: 11400000, guid: ed867daf2219a0b177d28151b566703a, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[2].unlockCondition.requiredMaterial
+      value: 
+      objectReference: {fileID: 11400000, guid: ed867daf2219a0b177d28151b566703a, type: 2}
+    - target: {fileID: 7543017158705959713, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
+      propertyPath: permanentItems.Array.data[2].unlockCondition.requiredDaysPlayed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7865951380911358425, guid: fc8e9faedf2415a49b0e354cb7059307, type: 3}
       propertyPath: m_LocalPosition.x
@@ -474091,7 +474123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/0/0
+  m_text: 31/01/2026
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -678812,7 +678844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Season
+  m_text: Spring
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -716370,9 +716402,6 @@ MonoBehaviour:
   stackableItemList:
   - {fileID: 11400000, guid: d8778742d9511ec4f93614bb29454c99, type: 2}
   - {fileID: 11400000, guid: 5f8892377b67be8499bee7b8a14e090b, type: 2}
-  - {fileID: 11400000, guid: 8f3c2a1b9d4e5f6a7b8c0d1e2f3a4b5c, type: 2}
-  - {fileID: 11400000, guid: 001d66e6866677b80c192ddb90d4f265, type: 2}
-  - {fileID: 11400000, guid: ecf4c17ec681ff24e89085feab6813f4, type: 2}
   blueberrySeed: {fileID: 11400000, guid: 019eaa7e607a1774c8fc2f14f898e56e, type: 2}
   fertilizerList:
   - {fileID: 11400000, guid: 812adb310554750469f55953c6c896cb, type: 2}

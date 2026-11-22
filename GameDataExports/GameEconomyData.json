@@ -1,5 +1,5 @@
 ﻿{
-    "exportedAtUtc": "2026-11-22T07:17:11.5467261Z",
+    "exportedAtUtc": "2026-11-22T09:08:42.2648768Z",
     "items": [
         {
             "itemID": "albacore",
@@ -7513,7 +7513,7 @@
             "buyPrice": 1500,
             "sellPrice": 0,
             "unlocksRecipeName": "Frost Staff",
-            "unlocksResultItemID": "crimson_staff"
+            "unlocksResultItemID": "frost_staff"
         },
         {
             "scrollItemID": "obsidianstaff_scroll",
@@ -9743,32 +9743,6 @@
             ]
         },
         {
-            "recipeAssetName": "Frost Staff",
-            "category": "Weapon",
-            "unlockType": "ManualViaScroll",
-            "resultItemID": "crimson_staff",
-            "resultItemName": "Gậy Phép Huyết Nguyệt (Crimson Staff)",
-            "resultAmount": 1,
-            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Kim Cương (Diamond) (diamond) + 2x Hồng Ngọc (Ruby) (ruby)",
-            "ingredients": [
-                {
-                    "itemID": "frost_bar",
-                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
-                    "totalAmount": 4
-                },
-                {
-                    "itemID": "diamond",
-                    "itemName": "Kim Cương (Diamond)",
-                    "totalAmount": 1
-                },
-                {
-                    "itemID": "ruby",
-                    "itemName": "Hồng Ngọc (Ruby)",
-                    "totalAmount": 2
-                }
-            ]
-        },
-        {
             "recipeAssetName": "Crimson Sword",
             "category": "Weapon",
             "unlockType": "AutoByIngredients",
@@ -9880,6 +9854,32 @@
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
                     "totalAmount": 1
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Frost Staff",
+            "category": "Weapon",
+            "unlockType": "ManualViaScroll",
+            "resultItemID": "frost_staff",
+            "resultItemName": "Gậy Phép Băng Tuyết (Frost Staff)",
+            "resultAmount": 1,
+            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Kim Cương (Diamond) (diamond) + 2x Hồng Ngọc (Ruby) (ruby)",
+            "ingredients": [
+                {
+                    "itemID": "frost_bar",
+                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
+                    "totalAmount": 4
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1
+                },
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 2
                 }
             ]
         },
