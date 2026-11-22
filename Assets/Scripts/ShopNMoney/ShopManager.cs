@@ -277,6 +277,12 @@ public class ShopManager : MonoBehaviour
 
         // In Multiplayer: Broadcast updated stock to all clients via ClientRpc
         OnTransactionCompleted(index);
+
+        // Re-evaluate material-gated items in case buying this item unlocked new stock
+        if (CurrentShopNpc != null)
+        {
+            CurrentShopNpc.SyncObtainedMaterialsFromInventory();
+        }
     }
 
     private void OnTransactionCompleted(int index)

@@ -7,7 +7,7 @@ public class ShopNPC : MonoBehaviour
     [SerializeField] private string npcName;
 
     [Header("1. Permanent Stock (Always Available)")]
-    [Tooltip("Items permanently sold year-round regardless of season or day.")]
+    [Tooltip("Items permanently sold year-round regardless of season or day (subject to unlock conditions).")]
     [SerializeField] private List<ShopItem> permanentItems = new();
 
     [Header("2. Seasonal Stock (Refreshes Every Season)")]
@@ -25,11 +25,16 @@ public class ShopNPC : MonoBehaviour
     [Min(1)]
     [SerializeField] private int daysBetweenRefresh = 1;
 
+    [Header("Runtime Unlock Tracking")]
+    [Tooltip("Caches material ItemIDs obtained by the player so unlocked items remain unlocked even if materials are later spent.")]
+    [SerializeField] private List<string> obtainedMaterialIds = new();
+
     // Runtime state split by lifecycle bucket (Owned by Server in Multiplayer)
     private readonly List<ShopItem> permanentStock = new();
     private readonly List<ShopItem> seasonalStock = new();
     private readonly List<ShopItem> currentDailyStock = new();
     private readonly List<ShopItem> combinedDisplayStock = new();
+    private readonly HashSet<string> activeHolidayIds = new();
 
     private Season currentSeason = Season.Spring;
     private int currentRotationSeed;
@@ -37,18 +42,20 @@ public class ShopNPC : MonoBehaviour
     private bool isPlayerInRange;
     private bool isSubscribedToDayEvent;
     private bool isSubscribedToSeasonEvent;
+    private bool isSubscribedToHolidayEvent;
+    private bool isSubscribedToInventoryEvent;
 
     public string NpcName => string.IsNullOrEmpty(npcName) ? gameObject.name : npcName;
 
     private void OnEnable()
     {
-        TrySubscribeToTimeEvents();
+        TrySubscribeToExternalEvents();
     }
 
     private void Start()
     {
-        // Fallback subscription in case TimeManager.Awake() ran after ShopNPC.OnEnable()
-        TrySubscribeToTimeEvents();
+        // Fallback subscription in case Managers initialized after ShopNPC.OnEnable()
+        TrySubscribeToExternalEvents();
 
         Season initialSeason = TimeManager.Instance != null
             ? TimeManager.Instance.currentSeason
@@ -56,6 +63,7 @@ public class ShopNPC : MonoBehaviour
 
         // Note: In Multiplayer, wrap this in: if (IsServer) { ... }
         InitializeAllBuckets(initialSeason);
+        SyncObtainedMaterialsFromInventory();
     }
 
     private void OnDisable()
@@ -66,14 +74,26 @@ public class ShopNPC : MonoBehaviour
             isSubscribedToSeasonEvent = false;
         }
 
+        if (isSubscribedToHolidayEvent)
+        {
+            TimeManager.OnHolidayTriggered -= HandleHolidayTriggered;
+            isSubscribedToHolidayEvent = false;
+        }
+
         if (isSubscribedToDayEvent && TimeManager.Instance != null)
         {
             TimeManager.Instance.onNewDay -= HandleNewDay;
             isSubscribedToDayEvent = false;
         }
+
+        if (isSubscribedToInventoryEvent && Inventory.Instance != null)
+        {
+            Inventory.Instance.OnInventoryChanged -= HandleInventoryChanged;
+            isSubscribedToInventoryEvent = false;
+        }
     }
 
-    private void TrySubscribeToTimeEvents()
+    private void TrySubscribeToExternalEvents()
     {
         if (!isSubscribedToSeasonEvent)
         {
@@ -81,10 +101,22 @@ public class ShopNPC : MonoBehaviour
             isSubscribedToSeasonEvent = true;
         }
 
+        if (!isSubscribedToHolidayEvent)
+        {
+            TimeManager.OnHolidayTriggered += HandleHolidayTriggered;
+            isSubscribedToHolidayEvent = true;
+        }
+
         if (!isSubscribedToDayEvent && TimeManager.Instance != null)
         {
             TimeManager.Instance.onNewDay += HandleNewDay;
             isSubscribedToDayEvent = true;
+        }
+
+        if (!isSubscribedToInventoryEvent && Inventory.Instance != null)
+        {
+            Inventory.Instance.OnInventoryChanged += HandleInventoryChanged;
+            isSubscribedToInventoryEvent = true;
         }
     }
 
@@ -95,6 +127,8 @@ public class ShopNPC : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            TrySubscribeToExternalEvents();
+
             ShopManager shopManager = ShopManager.instance;
             if (shopManager == null)
                 return;
@@ -133,17 +167,41 @@ public class ShopNPC : MonoBehaviour
     }
 
     /// <summary>
+    /// Triggered by TimeManager.OnHolidayTriggered right after onNewDay on matching holiday dates.
+    /// </summary>
+    private void HandleHolidayTriggered(HolidayEventData holiday)
+    {
+        if (holiday == null || string.IsNullOrEmpty(holiday.eventId))
+            return;
+
+        activeHolidayIds.Add(holiday.eventId);
+
+        // Re-apply current daily rotation seed so holiday-restricted daily pool items become eligible today
+        ApplyRotationFromSeed(currentRotationSeed, currentSeason);
+    }
+
+    /// <summary>
     /// Triggered automatically by TimeManager.Instance.onNewDay.
-    /// In Multiplayer, ensure this logic only executes on the Server.
+    /// Note: TimeManager invokes onNewDay BEFORE CheckAndTriggerHoliday(), so activeHolidayIds is cleared here.
     /// </summary>
     private void HandleNewDay()
     {
+        activeHolidayIds.Clear();
         daysSinceLastRefresh++;
 
         if (daysSinceLastRefresh >= daysBetweenRefresh)
         {
             ServerGenerateNewRotation();
         }
+        else
+        {
+            RefreshOpenShopUIIfNeeded();
+        }
+    }
+
+    private void HandleInventoryChanged()
+    {
+        SyncObtainedMaterialsFromInventory();
     }
 
     private void BuildPermanentStock()
@@ -184,6 +242,8 @@ public class ShopNPC : MonoBehaviour
     [ContextMenu("Force Refresh Daily Shop Stock")]
     public void ServerGenerateNewRotation()
     {
+        SyncObtainedMaterialsFromInventory();
+
         daysSinceLastRefresh = 0;
         currentRotationSeed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
 
@@ -203,7 +263,10 @@ public class ShopNPC : MonoBehaviour
             for (int i = 0; i < dailyPoolItems.Count; i++)
             {
                 ShopItem candidate = dailyPoolItems[i];
-                if (candidate != null && candidate.itemData != null && candidate.IsValidForSeason(season))
+                if (candidate != null &&
+                    candidate.itemData != null &&
+                    candidate.IsValidForSeason(season) &&
+                    IsItemUnlocked(candidate))
                 {
                     validIndices.Add(i);
                 }
@@ -226,27 +289,188 @@ public class ShopNPC : MonoBehaviour
             }
         }
 
-        // Refresh UI immediately if the local player currently has this shop open when midnight hits
+        RefreshOpenShopUIIfNeeded();
+
+        Debug.Log($"[ShopNPC] {NpcName} rotated daily stock (Season: {season}, Seed: {seed}, Next refresh in {daysBetweenRefresh} day(s)).");
+    }
+
+    /// <summary>
+    /// Evaluates whether a ShopItem satisfies its configured unlock condition.
+    /// </summary>
+    public bool IsItemUnlocked(ShopItem shopItem)
+    {
+        if (shopItem == null || shopItem.itemData == null)
+            return false;
+
+        ShopUnlockCondition condition = shopItem.unlockCondition;
+        if (condition == null || condition.conditionType == ShopUnlockConditionType.None)
+            return true;
+
+        switch (condition.conditionType)
+        {
+            case ShopUnlockConditionType.None:
+                return true;
+
+            case ShopUnlockConditionType.MinDaysPlayed:
+                return GetTotalDaysPlayed() >= condition.requiredDaysPlayed;
+
+            case ShopUnlockConditionType.RequiredMaterialObtained:
+                return HasObtainedRequiredMaterial(condition.requiredMaterial);
+
+            case ShopUnlockConditionType.HolidayOnly:
+                return IsHolidayConditionMet(condition.requiredHolidayEventId);
+
+            default:
+                return true;
+        }
+    }
+
+    /// <summary>
+    /// Returns total in-game days elapsed.
+    /// </summary>
+    private int GetTotalDaysPlayed()
+    {
+        // TODO [SaveManager & Cross-Scene Persistence]: Connect this to SaveManager or a persistent world progression tracker
+        // so playtime/day milestones persist accurately across scene transitions and loaded save files.
+        return TimeManager.Instance != null ? TimeManager.Instance.totalDaysElapsed : 0;
+    }
+
+    /// <summary>
+    /// Checks whether the player has obtained the specified material item (cached history or currently in Inventory).
+    /// </summary>
+    private bool HasObtainedRequiredMaterial(ItemData requiredMaterial)
+    {
+        if (requiredMaterial == null)
+            return true;
+
+        string key = GetMaterialTrackingKey(requiredMaterial);
+        if (obtainedMaterialIds.Contains(key))
+            return true;
+
+        Inventory playerInv = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        if (playerInv != null && playerInv.HasItem(requiredMaterial, 1))
+        {
+            obtainedMaterialIds.Add(key);
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Scans configured shop buckets and records any required materials currently held in Inventory.Instance.
+    /// Refreshes open shop UI without re-rolling daily stock counts.
+    /// </summary>
+    public void SyncObtainedMaterialsFromInventory()
+    {
+        Inventory playerInv = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        if (playerInv == null)
+            return;
+
+        bool unlockedNewMaterial = false;
+        unlockedNewMaterial |= CacheObtainedMaterialsInBucket(permanentStock, playerInv);
+        unlockedNewMaterial |= CacheObtainedMaterialsInBucket(seasonalStock, playerInv);
+        unlockedNewMaterial |= CacheObtainedMaterialsInBucket(dailyPoolItems, playerInv);
+
+        if (unlockedNewMaterial)
+        {
+            RefreshOpenShopUIIfNeeded();
+        }
+    }
+
+    private bool CacheObtainedMaterialsInBucket(List<ShopItem> bucket, Inventory playerInv)
+    {
+        if (bucket == null)
+            return false;
+
+        bool foundNew = false;
+        for (int i = 0; i < bucket.Count; i++)
+        {
+            ShopItem item = bucket[i];
+            if (item?.unlockCondition == null ||
+                item.unlockCondition.conditionType != ShopUnlockConditionType.RequiredMaterialObtained)
+            {
+                continue;
+            }
+
+            ItemData requiredMat = item.unlockCondition.requiredMaterial;
+            if (requiredMat == null)
+                continue;
+
+            string key = GetMaterialTrackingKey(requiredMat);
+            if (!obtainedMaterialIds.Contains(key) && playerInv.HasItem(requiredMat, 1))
+            {
+                obtainedMaterialIds.Add(key);
+                foundNew = true;
+            }
+        }
+
+        return foundNew;
+    }
+
+    private static string GetMaterialTrackingKey(ItemData item)
+    {
+        return !string.IsNullOrEmpty(item.ItemID) ? item.ItemID : item.name;
+    }
+
+    /// <summary>
+    /// Registers an obtained material ItemID manually (e.g., from external systems or save loading).
+    /// </summary>
+    public void NotifyMaterialObtained(string materialItemId)
+    {
+        if (string.IsNullOrEmpty(materialItemId) || obtainedMaterialIds.Contains(materialItemId))
+            return;
+
+        obtainedMaterialIds.Add(materialItemId);
+        RefreshOpenShopUIIfNeeded();
+    }
+
+    private bool IsHolidayConditionMet(string requiredEventId)
+    {
+        if (activeHolidayIds.Count == 0)
+            return false;
+
+        // Empty eventId means any active holiday unlocks the item
+        if (string.IsNullOrEmpty(requiredEventId))
+            return true;
+
+        return activeHolidayIds.Contains(requiredEventId);
+    }
+
+    /// <summary>
+    /// Merges unlocked Permanent, Seasonal, and Daily buckets into a single list for ShopManager UI rendering.
+    /// </summary>
+    public List<ShopItem> GetCombinedShopStock()
+    {
+        SyncObtainedMaterialsFromInventory();
+        combinedDisplayStock.Clear();
+
+        AppendUnlockedItems(permanentStock, combinedDisplayStock);
+        AppendUnlockedItems(seasonalStock, combinedDisplayStock);
+        AppendUnlockedItems(currentDailyStock, combinedDisplayStock);
+
+        return combinedDisplayStock;
+    }
+
+    private void AppendUnlockedItems(List<ShopItem> sourceBucket, List<ShopItem> destination)
+    {
+        for (int i = 0; i < sourceBucket.Count; i++)
+        {
+            if (IsItemUnlocked(sourceBucket[i]))
+            {
+                destination.Add(sourceBucket[i]);
+            }
+        }
+    }
+
+    private void RefreshOpenShopUIIfNeeded()
+    {
         if (ShopManager.instance != null &&
             ShopManager.instance.IsShopOpen &&
             ShopManager.instance.CurrentShopNpc == this)
         {
             ShopManager.instance.OpenShop(this, GetCombinedShopStock());
         }
-
-        Debug.Log($"[ShopNPC] {NpcName} rotated daily stock (Season: {season}, Seed: {seed}, Next refresh in {daysBetweenRefresh} day(s)).");
-    }
-
-    /// <summary>
-    /// Merges Permanent, Seasonal, and Daily buckets into a single list for ShopManager UI rendering.
-    /// </summary>
-    public List<ShopItem> GetCombinedShopStock()
-    {
-        combinedDisplayStock.Clear();
-        combinedDisplayStock.AddRange(permanentStock);
-        combinedDisplayStock.AddRange(seasonalStock);
-        combinedDisplayStock.AddRange(currentDailyStock);
-        return combinedDisplayStock;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -256,6 +480,7 @@ public class ShopNPC : MonoBehaviour
             return;
 
         isPlayerInRange = true;
+        TrySubscribeToExternalEvents();
         Debug.Log($"Press F to buy from {NpcName}");
     }
 
