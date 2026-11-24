@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdda54ecc4a8413419d4554c1bef3b7b, type: 3}
+  m_Name: Deer
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalSpecies
+  id: deer
+  displayName: "H\u01B0\u01A1u"
+  home: 2
+  variants:
+  - name: "\u0110\u1EF1c"
+    frames:
+    - {fileID: 538874744, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 463794490, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -1494123034, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -1545790651, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1203687613, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -884317647, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -348469328, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1653049816, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1054215346, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -1236232430, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1317539492, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -1269055723, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1220935644, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -2125653994, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 965097207, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: -1329936075, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1958302379, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 507546841, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 1987472662, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    - {fileID: 2012190403, guid: 9b8a7d820f1360b4aa0c3869885fdcf1, type: 3}
+    babyFrames: []
+    product: {fileID: 0}
+    largeProduct: {fileID: 0}
+  moveSpeed: 1.4
+  colliderRadius: 0.3
+  framesPerSecond: 6
+  foods: []
+  product: {fileID: 0}
+  largeProduct: {fileID: 0}
+  productEveryDays: 1
+  daysToAdult: 0
+  largeProductFriendship: 600
+  purchaseItem: {fileID: 0}
+  tameFood: {fileID: 0}
+  tameFeedsNeeded: 3
+  fleeDistance: 5

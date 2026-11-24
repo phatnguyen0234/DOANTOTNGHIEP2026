@@ -53,6 +53,8 @@ public class SaveManager : MonoBehaviour
             saveData.farmData = SoilManager.Instance.currentFarmData;
         }
 
+        if (RanchManager.Instance != null) saveData.ranchData = RanchManager.Instance.CaptureData();
+
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(savepath, json);
     }
@@ -99,6 +101,8 @@ public class SaveManager : MonoBehaviour
             SoilManager.Instance.ReBuildTree();
             SoilManager.Instance.ReBuildRock();
         }
+
+        if (RanchManager.Instance != null) RanchManager.Instance.RestoreData(saveData.ranchData);
     }
 
     [ContextMenu("Open json")]

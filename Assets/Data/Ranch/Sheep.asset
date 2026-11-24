@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdda54ecc4a8413419d4554c1bef3b7b, type: 3}
+  m_Name: Sheep
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalSpecies
+  id: sheep
+  displayName: "C\u1EEBu"
+  home: 1
+  variants:
+  - name: "Tr\u1EAFng"
+    frames:
+    - {fileID: -1780046019, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -576305631, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -381215882, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -910684980, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -1936119808, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1081356218, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 678044769, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1488678172, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -445485265, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1740926094, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -667221334, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 16537941, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1281432500, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -417446731, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 305796687, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -21381187, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 134914624, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: -806950983, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1333867281, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    - {fileID: 1079757993, guid: 4c3b3fa5335d17c469bc267ca8f9c9bb, type: 3}
+    babyFrames:
+    - {fileID: -946779554, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1873351539, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1620484350, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1176259326, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 1631014297, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1052658894, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1197236187, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 362755759, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 383379972, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -403991425, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -23081512, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 334614579, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1801322729, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -658030877, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 303620301, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1770149351, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 1352557119, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: 1973166432, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1452695875, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    - {fileID: -1778395006, guid: f9aad93003293434683f39db54f8282d, type: 3}
+    product: {fileID: 0}
+    largeProduct: {fileID: 0}
+  moveSpeed: 0.7
+  colliderRadius: 0.32
+  framesPerSecond: 5
+  foods:
+  - {fileID: 11400000, guid: 3b45993551f8b70ffceb405649f9bc36, type: 2}
+  - {fileID: 11400000, guid: 9e1c2d3a4b5f6a7b8c9d0e1f2a3b4c5d, type: 2}
+  - {fileID: 11400000, guid: eb10762a77b8ff53b2c9fef7827a2285, type: 2}
+  - {fileID: 11400000, guid: 775f585bdff69995944a36da7329bc2e, type: 2}
+  product: {fileID: 11400000, guid: 988ed5014eab5bc9c209c61a9e078795, type: 2}
+  largeProduct: {fileID: 0}
+  productEveryDays: 3
+  daysToAdult: 4
+  largeProductFriendship: 600
+  purchaseItem: {fileID: 11400000, guid: 4f6102d7484b0654196c63d146683b6b, type: 2}
+  tameFood: {fileID: 0}
+  tameFeedsNeeded: 3
+  fleeDistance: 3

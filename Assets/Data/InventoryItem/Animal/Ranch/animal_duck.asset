@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: animal_duck
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: animal_duck
+  itemName: "V\u1ECBt Con (Duckling)"
+  description: "Th\u1EA3 v\xE0o chu\u1ED3ng g\xE0. \u0102n th\xF3c, ng\xF4, b\u1EAFp
+    c\u1EA3i. L\u1EDBn sau 4 ng\xE0y \u0111\u01B0\u1EE3c \u0103n, c\u1EE9 2 b\u1EEFa
+    \u0111\u1EBB 1 tr\u1EE9ng v\u1ECBt."
+  icon: {fileID: 969288732, guid: dd917d7633b432a4faa9839ff9586ea1, type: 3}
+  itemType: 3
+  toolType: 0
+  cropId: Carrot
+  cropData: {fileID: 0}
+  fertilizerType: 0
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 10
+  buyPrice: 1200
+  sellPrice: 0
+  canSell: 0

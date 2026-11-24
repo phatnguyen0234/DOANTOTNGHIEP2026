@@ -8,4 +8,5 @@ public class SaveData
     public InventoryData inventoryData;
     public GameTimeData gameTimeData;
     public FarmData farmData;
+    public RanchData ranchData;
 }

@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdda54ecc4a8413419d4554c1bef3b7b, type: 3}
+  m_Name: Rabbit
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalSpecies
+  id: rabbit
+  displayName: "Th\u1ECF"
+  home: 0
+  variants:
+  - name: "Tr\u1EAFng"
+    frames:
+    - {fileID: 2108407237, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 952502341, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1416676194, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -681795198, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -772298091, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -950763874, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1359973423, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 546743941, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1133715713, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 1286187262, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1542615289, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 1083322498, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -2106217970, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 55228543, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -64433963, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: 634972820, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -2095729714, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1194381694, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -67496959, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    - {fileID: -1983508399, guid: 60fa68c0e245eed44bbea2ae7200142b, type: 3}
+    babyFrames: []
+    product: {fileID: 11400000, guid: 819ef88ca375eff2c3a72969207f017c, type: 2}
+    largeProduct: {fileID: 0}
+  - name: "\u0110en"
+    frames:
+    - {fileID: 13066485, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -1791700844, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1108161101, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 416641685, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -1263082197, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 230736051, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -259333539, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -1944545244, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 787244889, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1326991958, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1199951456, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -1236083996, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1418338252, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -1227903718, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1850876243, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 1069638386, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -501837338, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 622251133, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: -166809919, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    - {fileID: 102762900, guid: d80a8467bd96c0849aa26d15d15ed65e, type: 3}
+    babyFrames: []
+    product: {fileID: 11400000, guid: 716234404c13fbda18bb730bccfb5624, type: 2}
+    largeProduct: {fileID: 0}
+  - name: "H\u1ED3ng"
+    frames:
+    - {fileID: 832725727, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 1259929107, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 899924911, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -1310985541, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -196578089, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -857456429, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 2034767878, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -782537689, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 1970187707, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -1316972419, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -1981567049, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -733021982, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 1776249760, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 1593870142, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 304722638, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -1102878266, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -116284187, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 672254855, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: 224943968, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    - {fileID: -1958498016, guid: 696d75a0f6b86c04fa6eb1b945a50d7d, type: 3}
+    babyFrames: []
+    product: {fileID: 11400000, guid: 7806b0ac4d330de0aecd627cec02f23b, type: 2}
+    largeProduct: {fileID: 0}
+  moveSpeed: 1.3
+  colliderRadius: 0.15
+  framesPerSecond: 8
+  foods:
+  - {fileID: 11400000, guid: 9e1c2d3a4b5f6a7b8c9d0e1f2a3b4c5d, type: 2}
+  - {fileID: 11400000, guid: 3b45993551f8b70ffceb405649f9bc36, type: 2}
+  - {fileID: 11400000, guid: 775f585bdff69995944a36da7329bc2e, type: 2}
+  product: {fileID: 11400000, guid: 819ef88ca375eff2c3a72969207f017c, type: 2}
+  largeProduct: {fileID: 0}
+  productEveryDays: 3
+  daysToAdult: 0
+  largeProductFriendship: 600
+  purchaseItem: {fileID: 0}
+  tameFood: {fileID: 11400000, guid: 9e1c2d3a4b5f6a7b8c9d0e1f2a3b4c5d, type: 2}
+  tameFeedsNeeded: 3
+  fleeDistance: 3.5
