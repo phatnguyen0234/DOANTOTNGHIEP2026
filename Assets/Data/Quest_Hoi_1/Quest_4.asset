@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49820709d9f6baf47a168f5dcefca84a, type: 3}
   m_Name: Quest_4
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: 
-  subTitle: 
-  amountRequired: 0
-  questType: 0
+  questId: act1_q4_water
+  subTitle: "T\u01B0\u1EDBi n\u01B0\u1EDBc cho 5 m\u1EA7m non m\u1EDBi gieo"
+  amountRequired: 5
+  questType: 2
   targetId: 
-  triggerType: 0
-  triggerId: 
-  rewardGold: 0
+  triggerType: 1
+  triggerId: mayor_samuel
+  rewardGold: 50
   rewardItem: {fileID: 0}
   rewardItemAmount: 0

@@ -11,18 +11,26 @@ public class ActBannerUI : MonoBehaviour
     [SerializeField] private TMP_Text subTitle;
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private float duration = 2.5f;
+    //1 biến button
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void OnEnable()
     {
         ActManager.OnActStarted += PassAct;
+        //TODO: đki hàm khi quét hoàn thành
     }
 
     void OnDisable()
     {
         ActManager.OnActStarted -= PassAct;
+        //TODO: hủy hàm quét hhoanf thành
     }
 
+    public void NotifyQuest()
+    {
+        //TODO: Button.SetActive(true)
+        //TODO: Sau khi click vào thì Buttton.SetActive(false)
+    }
     public void PassAct(ActData data)
     {
         StartCoroutine(Chuyenman(data));

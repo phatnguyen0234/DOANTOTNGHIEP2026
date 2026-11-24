@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49820709d9f6baf47a168f5dcefca84a, type: 3}
   m_Name: Quest_1
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: 
-  subTitle: 
-  amountRequired: 0
+  questId: act1_q1_talk
+  subTitle: "Tr\xF2 chuy\u1EC7n v\u1EDBi B\xE1c Samuel"
+  amountRequired: 1
   questType: 0
-  targetId: 
+  targetId: mayor_samuel
   triggerType: 0
   triggerId: 
   rewardGold: 0
-  rewardItem: {fileID: 0}
-  rewardItemAmount: 0
+  rewardItem: {fileID: 11400000, guid: f305b0bfdb4c9147381f0654f3711b0c, type: 2}
+  rewardItemAmount: 5

@@ -7,7 +7,8 @@ using UnityEngine;
 public class CurrentActData 
 {
     public int currentActNumber;
-    public List<QuestProgressData> currentQuest = new();
+    //TODO: có cần biến để check xem đã hiện thông báo ! chưa ko nhỉ?
+    public List<QuestProgressData> currentQuest = new(); // chỗ này hiện tại đang là quest đơn, có cần list các quest như này ko nhỉ?
     public bool hasShownIntro;
     public bool isAllActsCompleted;
 }

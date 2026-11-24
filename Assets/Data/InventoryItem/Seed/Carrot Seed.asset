@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Carrot Seed
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: carrot_seed
-  itemName: "Hạt Cà Rốt (Carrot Seed)"
-  description: "Túi hạt giống hạt cà rốt, có thể gieo trồng trên ô đất đã cuốc."
-  icon: {fileID: 8849037320410730604, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
+  itemName: "H\u1EA1t C\xE0 R\u1ED1t (Carrot Seed)"
+  description: "T\xFAi h\u1EA1t gi\u1ED1ng h\u1EA1t c\xE0 r\u1ED1t, c\xF3 th\u1EC3
+    gieo tr\u1ED3ng tr\xEAn \xF4 \u0111\u1EA5t \u0111\xE3 cu\u1ED1c."
+  icon: {fileID: -4121517270082971212, guid: fa0c51c8c730fb0418aad7aa767221db, type: 3}
   itemType: 0
   toolType: 6
   cropId: Carrot
   cropData: {fileID: 11400000, guid: 7c1eda7e699d9254e82c447854759091, type: 2}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49820709d9f6baf47a168f5dcefca84a, type: 3}
   m_Name: Quest_2
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: 
-  subTitle: 
-  amountRequired: 0
-  questType: 0
+  questId: act1_q2_till
+  subTitle: "D\xF9ng Cu\u1ED1c khai hoang 5 \xF4 \u0111\u1EA5t"
+  amountRequired: 5
+  questType: 1
   targetId: 
-  triggerType: 0
-  triggerId: 
+  triggerType: 1
+  triggerId: mayor_samuel
   rewardGold: 0
   rewardItem: {fileID: 0}
   rewardItemAmount: 0

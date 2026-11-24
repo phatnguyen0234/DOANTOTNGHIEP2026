@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49820709d9f6baf47a168f5dcefca84a, type: 3}
   m_Name: Quest_6
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: 
-  subTitle: 
-  amountRequired: 0
-  questType: 0
+  questId: act1_q6_ship
+  subTitle: "Th\u1EA3 5 n\xF4ng s\u1EA3n v\xE0o Th\xF9ng Thu Gom"
+  amountRequired: 5
+  questType: 5
   targetId: 
-  triggerType: 0
-  triggerId: 
+  triggerType: 2
+  triggerId: mail_elena_01
   rewardGold: 0
   rewardItem: {fileID: 0}
   rewardItemAmount: 0
