@@ -6,17 +6,51 @@ public class ItemTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerE
     [HideInInspector]
     public ItemData currentItem;
 
+    [HideInInspector]
+    public string customTooltipText;
+
+    private bool isPointerOver;
+
+    public void SetTooltipData(ItemData item, string overrideText = null)
+    {
+        currentItem = item;
+        customTooltipText = overrideText;
+
+        if (isPointerOver)
+        {
+            RefreshTooltip();
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (currentItem != null && UITooltipManager.Instance != null)
-        {
-            UITooltipManager.Instance.ShowTooltip(currentItem.ItemName);
-        }
+        isPointerOver = true;
+        RefreshTooltip();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        isPointerOver = false;
         if (UITooltipManager.Instance != null)
+        {
+            UITooltipManager.Instance.HideTooltip();
+        }
+    }
+
+    private void RefreshTooltip()
+    {
+        if (UITooltipManager.Instance == null)
+            return;
+
+        string label = !string.IsNullOrEmpty(customTooltipText)
+            ? customTooltipText
+            : (currentItem != null ? currentItem.ItemName : string.Empty);
+
+        if (!string.IsNullOrEmpty(label))
+        {
+            UITooltipManager.Instance.ShowTooltip(label);
+        }
+        else
         {
             UITooltipManager.Instance.HideTooltip();
         }
@@ -24,6 +58,10 @@ public class ItemTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     private void OnDisable()
     {
-        if (UITooltipManager.Instance != null) UITooltipManager.Instance.HideTooltip();
+        isPointerOver = false;
+        if (UITooltipManager.Instance != null)
+        {
+            UITooltipManager.Instance.HideTooltip();
+        }
     }
 }

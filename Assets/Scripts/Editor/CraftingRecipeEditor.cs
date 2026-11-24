@@ -4,6 +4,9 @@ using UnityEngine;
 [CustomEditor(typeof(CraftingRecipe))]
 public class CraftingRecipeEditor : Editor
 {
+    private readonly bool[] useGroupMode = new bool[9];
+    private bool initializedModes = false;
+
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
@@ -37,7 +40,6 @@ public class CraftingRecipeEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    //ham ve ma tran cong thuc 3x3
     private void DrawRecipeGrid(SerializedProperty ingredientsProp)
     {
         EditorGUILayout.Space(10);
@@ -48,6 +50,19 @@ public class CraftingRecipeEditor : Editor
             ingredientsProp.arraySize = 9;
         }
 
+        if (!initializedModes)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                SerializedProperty el = ingredientsProp.GetArrayElementAtIndex(i);
+                SerializedProperty grp = el.FindPropertyRelative("ingredientGroup");
+                useGroupMode[i] = grp != null && grp.objectReferenceValue != null;
+            }
+            initializedModes = true;
+        }
+
+        Color defaultBg = GUI.backgroundColor;
+
         for (int y = 0; y < 3; y++)
         {
             EditorGUILayout.BeginHorizontal();
@@ -57,14 +72,48 @@ public class CraftingRecipeEditor : Editor
                 int index = y * 3 + x;
                 SerializedProperty element = ingredientsProp.GetArrayElementAtIndex(index);
                 SerializedProperty itemProp = element.FindPropertyRelative("item");
+                SerializedProperty groupProp = element.FindPropertyRelative("ingredientGroup");
                 SerializedProperty amountProp = element.FindPropertyRelative("amount");
 
-                EditorGUILayout.BeginVertical("box", GUILayout.Width(100), GUILayout.Height(40));
-                EditorGUILayout.PropertyField(itemProp, GUIContent.none);
+                if (groupProp.objectReferenceValue != null)
+                {
+                    useGroupMode[index] = true;
+                }
+
+                GUI.backgroundColor = useGroupMode[index] ? new Color(0.75f, 0.92f, 1f, 1f) : defaultBg;
+                EditorGUILayout.BeginVertical("box", GUILayout.Width(116), GUILayout.Height(46));
+                GUI.backgroundColor = defaultBg;
+
+                if (useGroupMode[index])
+                {
+                    EditorGUILayout.PropertyField(groupProp, GUIContent.none);
+                    if (groupProp.objectReferenceValue != null)
+                    {
+                        itemProp.objectReferenceValue = null;
+                    }
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(itemProp, GUIContent.none);
+                    if (itemProp.objectReferenceValue != null)
+                    {
+                        groupProp.objectReferenceValue = null;
+                    }
+                }
 
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("Qty:", GUILayout.Width(30));
-                EditorGUILayout.PropertyField(amountProp, GUIContent.none, GUILayout.Width(50));
+                EditorGUILayout.LabelField("Qty:", GUILayout.Width(26));
+                EditorGUILayout.PropertyField(amountProp, GUIContent.none, GUILayout.Width(36));
+
+                string modeLabel = useGroupMode[index] ? "Group" : "Item";
+                if (GUILayout.Button(modeLabel, EditorStyles.miniButton, GUILayout.Width(44)))
+                {
+                    useGroupMode[index] = !useGroupMode[index];
+                    if (useGroupMode[index])
+                        itemProp.objectReferenceValue = null;
+                    else
+                        groupProp.objectReferenceValue = null;
+                }
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.EndVertical();

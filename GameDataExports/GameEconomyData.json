@@ -1,5 +1,5 @@
 ﻿{
-    "exportedAtUtc": "2026-11-22T09:08:42.2648768Z",
+    "exportedAtUtc": "2026-11-24T08:59:32.6118607Z",
     "items": [
         {
             "itemID": "albacore",
@@ -7540,7 +7540,755 @@
             "unlocksResultItemID": "NONE"
         }
     ],
+    "ingredientGroups": [
+        {
+            "groupAssetName": "Any_Fish",
+            "groupDisplayName": "Any Fish",
+            "memberCount": 34,
+            "memberItemIDs": [
+                "albacore",
+                "anchovy",
+                "anglerfish",
+                "bream",
+                "bullhead_catfish",
+                "carp",
+                "chub",
+                "clownfish",
+                "crimson_snapper",
+                "dorado",
+                "flounder",
+                "glacier_fish",
+                "goby",
+                "golden_fish",
+                "halibut",
+                "herring",
+                "large_mouth_bass",
+                "lingcod",
+                "lionfish",
+                "perch",
+                "pike_fish",
+                "red_mullet",
+                "red_snapper",
+                "regal_blue_tang",
+                "salmon",
+                "sardine",
+                "sea_bullhead",
+                "shad",
+                "smallmouth_bass",
+                "sturgeon",
+                "sunfish",
+                "tiger_trout",
+                "tuna",
+                "walleye"
+            ]
+        }
+    ],
     "recipes": [
+        {
+            "recipeAssetName": "Animal Feed",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "animal_feed",
+            "resultItemName": "Animal Feed",
+            "resultAmount": 3,
+            "slot0": "wheat:1",
+            "slot1": "corn:1",
+            "slot2": "",
+            "slot3": "carrot:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Lúa Mì (Wheat) (wheat) + 1x Bắp Ngô (Corn) (corn) + 1x Củ Cà Rốt (Carrot) (carrot)",
+            "ingredients": [
+                {
+                    "itemID": "wheat",
+                    "itemName": "Lúa Mì (Wheat)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "corn",
+                    "itemName": "Bắp Ngô (Corn)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "carrot",
+                    "itemName": "Củ Cà Rốt (Carrot)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Apple Slices",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "apple_slices",
+            "resultItemName": "Apple Slices",
+            "resultAmount": 4,
+            "slot0": "apple:1",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Táo (Apple) (apple)",
+            "ingredients": [
+                {
+                    "itemID": "apple",
+                    "itemName": "Táo (Apple)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Baked Fish",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "baked_fish",
+            "resultItemName": "Baked Fish",
+            "resultAmount": 1,
+            "slot0": "group:Any_Fish:1",
+            "slot1": "butter:1",
+            "slot2": "",
+            "slot3": "salt:1",
+            "slot4": "pepper:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x [Group: Any Fish] (group:Any_Fish) + 1x Bơ Sữa (Butter) (butter) + 1x Salt (salt) + 1x Hạt Tiêu (Pepper) (pepper)",
+            "ingredients": [
+                {
+                    "itemID": "group:Any_Fish",
+                    "itemName": "[Group: Any Fish]",
+                    "totalAmount": 1,
+                    "isWildcardGroup": true
+                },
+                {
+                    "itemID": "butter",
+                    "itemName": "Bơ Sữa (Butter)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "salt",
+                    "itemName": "Salt",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "pepper",
+                    "itemName": "Hạt Tiêu (Pepper)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Bread",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "bread",
+            "resultItemName": "Bread",
+            "resultAmount": 4,
+            "slot0": "dough:1",
+            "slot1": "dough:1",
+            "slot2": "",
+            "slot3": "dough:1",
+            "slot4": "dough:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Dough (dough)",
+            "ingredients": [
+                {
+                    "itemID": "dough",
+                    "itemName": "Dough",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Bread 1",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "bread_2",
+            "resultItemName": "Bread 2",
+            "resultAmount": 3,
+            "slot0": "dough:1",
+            "slot1": "dough:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Dough (dough)",
+            "ingredients": [
+                {
+                    "itemID": "dough",
+                    "itemName": "Dough",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Cat Food 1",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cat_food",
+            "resultItemName": "Thức Ăn Mèo (Cat Food)",
+            "resultAmount": 3,
+            "slot0": "sunfish:1",
+            "slot1": "sardine:1",
+            "slot2": "",
+            "slot3": "rice:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Sunfish (sunfish) + 1x Sardine (sardine) + 1x Lúa Gạo (Rice) (rice)",
+            "ingredients": [
+                {
+                    "itemID": "sunfish",
+                    "itemName": "Sunfish",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sardine",
+                    "itemName": "Sardine",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "rice",
+                    "itemName": "Lúa Gạo (Rice)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Cat Food 2",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cat_food",
+            "resultItemName": "Thức Ăn Mèo (Cat Food)",
+            "resultAmount": 3,
+            "slot0": "anchovy:1",
+            "slot1": "sunfish:1",
+            "slot2": "",
+            "slot3": "rice:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Anchovy (anchovy) + 1x Sunfish (sunfish) + 1x Lúa Gạo (Rice) (rice)",
+            "ingredients": [
+                {
+                    "itemID": "anchovy",
+                    "itemName": "Anchovy",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sunfish",
+                    "itemName": "Sunfish",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "rice",
+                    "itemName": "Lúa Gạo (Rice)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Cat Food 3",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cat_food",
+            "resultItemName": "Thức Ăn Mèo (Cat Food)",
+            "resultAmount": 3,
+            "slot0": "sunfish:1",
+            "slot1": "bream:1",
+            "slot2": "",
+            "slot3": "rice:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Sunfish (sunfish) + 1x Bream (bream) + 1x Lúa Gạo (Rice) (rice)",
+            "ingredients": [
+                {
+                    "itemID": "sunfish",
+                    "itemName": "Sunfish",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "bream",
+                    "itemName": "Bream",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "rice",
+                    "itemName": "Lúa Gạo (Rice)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Cat Food",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cat_food",
+            "resultItemName": "Thức Ăn Mèo (Cat Food)",
+            "resultAmount": 3,
+            "slot0": "anchovy:1",
+            "slot1": "sardine:1",
+            "slot2": "",
+            "slot3": "rice:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Anchovy (anchovy) + 1x Sardine (sardine) + 1x Lúa Gạo (Rice) (rice)",
+            "ingredients": [
+                {
+                    "itemID": "anchovy",
+                    "itemName": "Anchovy",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sardine",
+                    "itemName": "Sardine",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "rice",
+                    "itemName": "Lúa Gạo (Rice)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Cookies",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cookies",
+            "resultItemName": "Cookies",
+            "resultAmount": 5,
+            "slot0": "flour:1",
+            "slot1": "sugar:1",
+            "slot2": "",
+            "slot3": "butter:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Flour (flour) + 1x Sugar (sugar) + 1x Bơ Sữa (Butter) (butter)",
+            "ingredients": [
+                {
+                    "itemID": "flour",
+                    "itemName": "Flour",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sugar",
+                    "itemName": "Sugar",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "butter",
+                    "itemName": "Bơ Sữa (Butter)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Dog Food",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "dog_food",
+            "resultItemName": "Thức Ăn Chó (Dog Food)",
+            "resultAmount": 3,
+            "slot0": "",
+            "slot1": "beef:1",
+            "slot2": "",
+            "slot3": "carrot:1",
+            "slot4": "bone:1",
+            "slot5": "chicken_drumstick:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Thịt Bò (Beef) (beef) + 1x Củ Cà Rốt (Carrot) (carrot) + 1x Xương Thú (Bone) (bone) + 1x Đùi Gà (Chicken Drumstick) (chicken_drumstick)",
+            "ingredients": [
+                {
+                    "itemID": "beef",
+                    "itemName": "Thịt Bò (Beef)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "carrot",
+                    "itemName": "Củ Cà Rốt (Carrot)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "bone",
+                    "itemName": "Xương Thú (Bone)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "chicken_drumstick",
+                    "itemName": "Đùi Gà (Chicken Drumstick)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Fried Egg",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "fried_egg",
+            "resultItemName": "Fried Egg",
+            "resultAmount": 1,
+            "slot0": "chicken_egg:1",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "oil:1",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Trứng Gà (Chicken Egg) (chicken_egg) + 1x Oil (oil)",
+            "ingredients": [
+                {
+                    "itemID": "chicken_egg",
+                    "itemName": "Trứng Gà (Chicken Egg)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "oil",
+                    "itemName": "Oil",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Green Tea",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "green_tea",
+            "resultItemName": "Green tea",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "spring_onion:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "aloe:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Hành Lá (Spring Onion) (spring_onion) + 1x Nha Đam (Aloe) (aloe)",
+            "ingredients": [
+                {
+                    "itemID": "spring_onion",
+                    "itemName": "Hành Lá (Spring Onion)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "aloe",
+                    "itemName": "Nha Đam (Aloe)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Test",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "NONE",
+            "resultItemName": "NONE",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "",
+            "ingredients": []
+        },
+        {
+            "recipeAssetName": "Oil",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "oil",
+            "resultItemName": "Oil",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "sunflower:1",
+            "slot2": "sunflower:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Hoa Hướng Dương (Sunflower) (sunflower)",
+            "ingredients": [
+                {
+                    "itemID": "sunflower",
+                    "itemName": "Hoa Hướng Dương (Sunflower)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Omelet",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "omelet",
+            "resultItemName": "Omelet",
+            "resultAmount": 1,
+            "slot0": "chicken_egg:1",
+            "slot1": "cheese:1",
+            "slot2": "chicken_egg:1",
+            "slot3": "butter:1",
+            "slot4": "spring_onion:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Trứng Gà (Chicken Egg) (chicken_egg) + 1x Phô Mai (Cheese) (cheese) + 1x Bơ Sữa (Butter) (butter) + 1x Hành Lá (Spring Onion) (spring_onion)",
+            "ingredients": [
+                {
+                    "itemID": "chicken_egg",
+                    "itemName": "Trứng Gà (Chicken Egg)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cheese",
+                    "itemName": "Phô Mai (Cheese)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "butter",
+                    "itemName": "Bơ Sữa (Butter)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "spring_onion",
+                    "itemName": "Hành Lá (Spring Onion)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Salad",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "salad",
+            "resultItemName": "Salad",
+            "resultAmount": 3,
+            "slot0": "cabbage:1",
+            "slot1": "tomato:1",
+            "slot2": "cucumber:1",
+            "slot3": "carrot:1",
+            "slot4": "oil:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Bắp Cải (Cabbage) (cabbage) + 1x Cà Chua (Tomato) (tomato) + 1x Dưa Leo (Cucumber) (cucumber) + 1x Củ Cà Rốt (Carrot) (carrot) + 1x Oil (oil)",
+            "ingredients": [
+                {
+                    "itemID": "cabbage",
+                    "itemName": "Bắp Cải (Cabbage)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "tomato",
+                    "itemName": "Cà Chua (Tomato)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cucumber",
+                    "itemName": "Dưa Leo (Cucumber)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "carrot",
+                    "itemName": "Củ Cà Rốt (Carrot)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "oil",
+                    "itemName": "Oil",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Salt",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "salt",
+            "resultItemName": "Salt",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "clam:1",
+            "slot4": "stone:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Clam (clam) + 1x Đá Tự Nhiên (Stone) (stone)",
+            "ingredients": [
+                {
+                    "itemID": "clam",
+                    "itemName": "Clam",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "stone",
+                    "itemName": "Đá Tự Nhiên (Stone)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Soup",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "soup",
+            "resultItemName": "Soup",
+            "resultAmount": 2,
+            "slot0": "potato:1",
+            "slot1": "carrot:1",
+            "slot2": "onion:1",
+            "slot3": "chicken_drumstick:1",
+            "slot4": "salt:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "1x Khoai Tây (Potato) (potato) + 1x Củ Cà Rốt (Carrot) (carrot) + 1x Hành Tây (Onion) (onion) + 1x Đùi Gà (Chicken Drumstick) (chicken_drumstick) + 1x Salt (salt)",
+            "ingredients": [
+                {
+                    "itemID": "potato",
+                    "itemName": "Khoai Tây (Potato)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "carrot",
+                    "itemName": "Củ Cà Rốt (Carrot)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "onion",
+                    "itemName": "Hành Tây (Onion)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "chicken_drumstick",
+                    "itemName": "Đùi Gà (Chicken Drumstick)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "salt",
+                    "itemName": "Salt",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Sugar",
+            "category": "Consumable",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "sugar",
+            "resultItemName": "Sugar",
+            "resultAmount": 3,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "beetroot:1",
+            "slot4": "beetroot:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Củ Dền (Beetroot) (beetroot)",
+            "ingredients": [
+                {
+                    "itemID": "beetroot",
+                    "itemName": "Củ Dền (Beetroot)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
         {
             "recipeAssetName": "Copper Boots",
             "category": "Equipment",
@@ -7548,12 +8296,22 @@
             "resultItemID": "copper_boots",
             "resultItemName": "Giày Giáp Đồng (Copper Boots)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "copper_ore:1",
+            "slot4": "",
+            "slot5": "copper_ore:1",
+            "slot6": "copper_ore:1",
+            "slot7": "",
+            "slot8": "copper_ore:1",
             "ingredientsSummary": "4x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7564,17 +8322,28 @@
             "resultItemID": "copper_chestplate",
             "resultItemName": "Áo Giáp Đồng (Copper Chestplate)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "leather:1",
+            "slot2": "copper_ore:1",
+            "slot3": "copper_ore:1",
+            "slot4": "copper_ore:1",
+            "slot5": "copper_ore:1",
+            "slot6": "copper_ore:1",
+            "slot7": "copper_ore:1",
+            "slot8": "copper_ore:1",
             "ingredientsSummary": "8x Quặng Đồng (Copper Ore) (copper_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 8
+                    "totalAmount": 8,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7585,12 +8354,22 @@
             "resultItemID": "copper_helmet",
             "resultItemName": "Mũ Giáp Đồng (Copper Helmet)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "copper_ore:1",
+            "slot2": "copper_ore:1",
+            "slot3": "copper_ore:1",
+            "slot4": "",
+            "slot5": "copper_ore:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "5x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 5
+                    "totalAmount": 5,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7601,17 +8380,28 @@
             "resultItemID": "copper_leggings",
             "resultItemName": "Quần Giáp Đồng (Copper Leggings)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "leather:1",
+            "slot2": "copper_ore:1",
+            "slot3": "copper_ore:1",
+            "slot4": "",
+            "slot5": "copper_ore:1",
+            "slot6": "copper_ore:1",
+            "slot7": "",
+            "slot8": "copper_ore:1",
             "ingredientsSummary": "6x Quặng Đồng (Copper Ore) (copper_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 6
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7622,17 +8412,28 @@
             "resultItemID": "wood_boots",
             "resultItemName": "Giày Giáp Gỗ (Wood Boots)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "wood:1",
+            "slot4": "",
+            "slot5": "wood:1",
+            "slot6": "wood_board:1",
+            "slot7": "",
+            "slot8": "wood_board:1",
             "ingredientsSummary": "2x Gỗ (Wood) (wood) + 2x Ván Gỗ (Wood Board) (wood_board)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wood_board",
                     "itemName": "Ván Gỗ (Wood Board)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7643,22 +8444,34 @@
             "resultItemID": "wood_chestplate",
             "resultItemName": "Áo Giáp Gỗ (Wood Chestplate)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "vine_rope:1",
+            "slot2": "wood:1",
+            "slot3": "wood:1",
+            "slot4": "wood_board:1",
+            "slot5": "wood:1",
+            "slot6": "wood:1",
+            "slot7": "wood_board:1",
+            "slot8": "wood:1",
             "ingredientsSummary": "6x Gỗ (Wood) (wood) + 1x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Ván Gỗ (Wood Board) (wood_board)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 6
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wood_board",
                     "itemName": "Ván Gỗ (Wood Board)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7669,17 +8482,28 @@
             "resultItemID": "wood_helmet",
             "resultItemName": "Mũ Giáp Gỗ (Wood Helmet)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "wood_board:1",
+            "slot2": "",
+            "slot3": "wood:1",
+            "slot4": "",
+            "slot5": "wood:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "1x Ván Gỗ (Wood Board) (wood_board) + 2x Gỗ (Wood) (wood)",
             "ingredients": [
                 {
                     "itemID": "wood_board",
                     "itemName": "Ván Gỗ (Wood Board)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7690,12 +8514,22 @@
             "resultItemID": "wood_leggings",
             "resultItemName": "Quần Giáp Gỗ (Wood Leggings)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "wood:1",
+            "slot2": "wood:1",
+            "slot3": "wood:1",
+            "slot4": "",
+            "slot5": "wood:1",
+            "slot6": "wood:1",
+            "slot7": "",
+            "slot8": "wood:1",
             "ingredientsSummary": "7x Gỗ (Wood) (wood)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 7
+                    "totalAmount": 7,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7706,22 +8540,34 @@
             "resultItemID": "copper_arrow",
             "resultItemName": "Mũi Tên Đồng (Copper Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Đồng (Copper Ore) (copper_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7732,22 +8578,34 @@
             "resultItemID": "copper_arrow",
             "resultItemName": "Mũi Tên Đồng (Copper Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Đồng (Copper Ore) (copper_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7758,12 +8616,22 @@
             "resultItemID": "copper_bar",
             "resultItemName": "Thỏi Đồng (Copper Bar)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "copper_ore:1",
+            "slot2": "",
+            "slot3": "copper_ore:1",
+            "slot4": "copper_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7774,12 +8642,22 @@
             "resultItemID": "crimson_bar",
             "resultItemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
             "resultAmount": 1,
+            "slot0": "crimson_ore:1",
+            "slot1": "crimson_ore:1",
+            "slot2": "",
+            "slot3": "crimson_ore:1",
+            "slot4": "crimson_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7790,22 +8668,34 @@
             "resultItemID": "fairy_arrow",
             "resultItemName": "Mũi Tên Thần Tiên (Fairy Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7816,22 +8706,34 @@
             "resultItemID": "fairy_arrow",
             "resultItemName": "Mũi Tên Thần Tiên (Fairy Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7842,22 +8744,34 @@
             "resultItemID": "frost_arrow",
             "resultItemName": "Mũi Tên Băng Tuyết (Frost Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7868,22 +8782,34 @@
             "resultItemID": "frost_arrow",
             "resultItemName": "Mũi Tên Băng Tuyết (Frost Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7894,12 +8820,22 @@
             "resultItemID": "frost_bar",
             "resultItemName": "Thỏi Băng Tuyết (Frost Bar)",
             "resultAmount": 1,
+            "slot0": "frost_ore:1",
+            "slot1": "frost_ore:1",
+            "slot2": "",
+            "slot3": "frost_ore:1",
+            "slot4": "frost_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Băng Tuyết (Frost Ore) (frost_ore)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7910,12 +8846,22 @@
             "resultItemID": "gold_bar",
             "resultItemName": "Thỏi Vàng (Gold Bar)",
             "resultAmount": 1,
+            "slot0": "gold_ore:1",
+            "slot1": "gold_ore:1",
+            "slot2": "",
+            "slot3": "gold_ore:1",
+            "slot4": "gold_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7926,22 +8872,34 @@
             "resultItemID": "golden_arrow",
             "resultItemName": "Mũi Tên Vàng (Golden Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Vàng (Gold Ore) (gold_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7952,22 +8910,34 @@
             "resultItemID": "golden_arrow",
             "resultItemName": "Mũi Tên Vàng (Golden Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Vàng (Gold Ore) (gold_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -7978,22 +8948,34 @@
             "resultItemID": "iron_arrow",
             "resultItemName": "Mũi Tên Sắt (Iron Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "iron_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Sắt (Iron Ore) (iron_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8004,22 +8986,34 @@
             "resultItemID": "iron_arrow",
             "resultItemName": "Mũi Tên Sắt (Iron Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "iron_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Sắt (Iron Ore) (iron_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8030,12 +9024,22 @@
             "resultItemID": "iron_bar",
             "resultItemName": "Thỏi Sắt (Iron Bar)",
             "resultAmount": 1,
+            "slot0": "iron_ore:1",
+            "slot1": "iron_ore:1",
+            "slot2": "",
+            "slot3": "iron_ore:1",
+            "slot4": "iron_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Sắt (Iron Ore) (iron_ore)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8046,22 +9050,34 @@
             "resultItemID": "obsidian_arrow",
             "resultItemName": "Mũi Tên Hắc Diệu Thạch (Obsidian Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8072,22 +9088,34 @@
             "resultItemID": "obsidian_arrow",
             "resultItemName": "Mũi Tên Hắc Diệu Thạch (Obsidian Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8098,12 +9126,22 @@
             "resultItemID": "obsidian_bar",
             "resultItemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
             "resultAmount": 1,
+            "slot0": "obsidian_ore:1",
+            "slot1": "obsidian_ore:1",
+            "slot2": "",
+            "slot3": "obsidian_ore:1",
+            "slot4": "obsidian_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8114,22 +9152,34 @@
             "resultItemID": "platinum_arrow",
             "resultItemName": "Mũi Tên Bạch Kim (Platinum Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8140,22 +9190,34 @@
             "resultItemID": "platinum_arrow",
             "resultItemName": "Mũi Tên Bạch Kim (Platinum Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8166,12 +9228,22 @@
             "resultItemID": "platinum_bar",
             "resultItemName": "Thỏi Bạch Kim (Platinum Bar)",
             "resultAmount": 1,
+            "slot0": "platinum_ore:1",
+            "slot1": "platinum_ore:1",
+            "slot2": "",
+            "slot3": "platinum_ore:1",
+            "slot4": "platinum_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8182,22 +9254,34 @@
             "resultItemID": "shadow_arrow",
             "resultItemName": "Mũi Tên Hắc Ám (Shadow Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8208,22 +9292,34 @@
             "resultItemID": "shadow_arrow",
             "resultItemName": "Mũi Tên Hắc Ám (Shadow Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8234,12 +9330,22 @@
             "resultItemID": "shadow_bar",
             "resultItemName": "Thỏi Hắc Ám (Shadow Bar)",
             "resultAmount": 1,
+            "slot0": "shadow_ore:1",
+            "slot1": "shadow_ore:1",
+            "slot2": "",
+            "slot3": "shadow_ore:1",
+            "slot4": "shadow_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "4x Quặng Hắc Ám (Shadow Ore) (shadow_ore)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8250,22 +9356,34 @@
             "resultItemID": "wood_arrow",
             "resultItemName": "Mũi Tên Gỗ (Wood Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "wood:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "chicken_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Gỗ (Wood) (wood) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Gà (Chicken Feather) (chicken_feather)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "chicken_feather",
                     "itemName": "Lông Gà (Chicken Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8276,22 +9394,34 @@
             "resultItemID": "wood_arrow",
             "resultItemName": "Mũi Tên Gỗ (Wood Arrow)",
             "resultAmount": 3,
+            "slot0": "",
+            "slot1": "wood:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "duck_feather:1",
+            "slot8": "",
             "ingredientsSummary": "1x Gỗ (Wood) (wood) + 1x Gậy Gỗ (Wooden Stick (wooden_stick) + 1x Lông Vịt (Duck Feather) (duck_feather)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "duck_feather",
                     "itemName": "Lông Vịt (Duck Feather)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8302,12 +9432,22 @@
             "resultItemID": "wood_board",
             "resultItemName": "Ván Gỗ (Wood Board)",
             "resultAmount": 3,
+            "slot0": "wood:1",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "1x Gỗ (Wood) (wood)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8318,12 +9458,22 @@
             "resultItemID": "wooden_stick",
             "resultItemName": "Gậy Gỗ (Wooden Stick",
             "resultAmount": 4,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wood:1",
+            "slot5": "",
+            "slot6": "wood:1",
+            "slot7": "",
+            "slot8": "",
             "ingredientsSummary": "2x Gỗ (Wood) (wood)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8334,17 +9484,28 @@
             "resultItemID": "axe",
             "resultItemName": "Rìu (Axe)",
             "resultAmount": 1,
+            "slot0": "stone:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "stone:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Đá Tự Nhiên (Stone) (stone) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "stone",
                     "itemName": "Đá Tự Nhiên (Stone)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8355,17 +9516,28 @@
             "resultItemID": "copper_axe",
             "resultItemName": "Rìu Đồng (Copper Axe)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "copper_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Đồng (Copper Ore) (copper_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8376,17 +9548,28 @@
             "resultItemID": "copper_hoe",
             "resultItemName": "Cuốc Đồng (Copper Hoe)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Đồng (Copper Ore) (copper_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8397,17 +9580,28 @@
             "resultItemID": "copper_pickaxe",
             "resultItemName": "Cuốc Chim Đồng (Copper Pickaxe)",
             "resultAmount": 1,
+            "slot0": "copper_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "copper_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Đồng (Copper Ore) (copper_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8418,17 +9612,28 @@
             "resultItemID": "copper_shovel",
             "resultItemName": "Xẻng Đồng (Copper Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Đồng (Copper Ore) (copper_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8439,17 +9644,28 @@
             "resultItemID": "copper_sickle",
             "resultItemName": "Liềm Đồng (Copper Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "copper_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "copper_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Đồng (Copper Ore) (copper_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8460,17 +9676,28 @@
             "resultItemID": "crimson_axe",
             "resultItemName": "Rìu Huyết Nguyệt (Crimson Axe)",
             "resultAmount": 1,
+            "slot0": "crimson_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "crimson_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8481,17 +9708,28 @@
             "resultItemID": "crimson_hoe",
             "resultItemName": "Cuốc Huyết Nguyệt (Crimson Hoe)",
             "resultAmount": 1,
+            "slot0": "crimson_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8502,17 +9740,28 @@
             "resultItemID": "crimson_pickaxe",
             "resultItemName": "Cuốc Chim Huyết Nguyệt (Crimson Pickaxe)",
             "resultAmount": 1,
+            "slot0": "crimson_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "crimson_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8523,17 +9772,28 @@
             "resultItemID": "crimson_shovel",
             "resultItemName": "Xẻng Huyết Nguyệt (Crimson Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "crimson_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8544,17 +9804,28 @@
             "resultItemID": "crimson_sickle",
             "resultItemName": "Liềm Huyết Nguyệt (Crimson Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "crimson_ore:1",
+            "slot2": "crimson_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "crimson_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8565,17 +9836,28 @@
             "resultItemID": "fairy_axe",
             "resultItemName": "Rìu Thần Tiên (Fairy Axe)",
             "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "pink_sapphire:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8586,17 +9868,28 @@
             "resultItemID": "fairy_hoe",
             "resultItemName": "Cuốc Thần Tiên (Fairy Hoe)",
             "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8607,17 +9900,28 @@
             "resultItemID": "fairy_pickaxe",
             "resultItemName": "Cuốc Chim Thần Tiên (Fairy Pickaxe)",
             "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8628,17 +9932,28 @@
             "resultItemID": "fairy_shovel",
             "resultItemName": "Xẻng Thần Tiên (Fairy Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8649,17 +9964,28 @@
             "resultItemID": "fairy_sickle",
             "resultItemName": "Liềm Thần Tiên (Fairy Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "pink_sapphire:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8670,22 +9996,34 @@
             "resultItemID": "fishingrod_copper",
             "resultItemName": "Copper Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "copper_ore:1",
+            "slot3": "",
+            "slot4": "copper_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Đồng (Copper Ore) (copper_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8696,22 +10034,34 @@
             "resultItemID": "fishingrod_crimson",
             "resultItemName": "Crimson Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "crimson_ore:1",
+            "slot3": "",
+            "slot4": "crimson_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8722,22 +10072,34 @@
             "resultItemID": "fishingrod_fairy",
             "resultItemName": "Fairy Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "pink_sapphire:1",
+            "slot3": "",
+            "slot4": "pink_sapphire:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8748,22 +10110,34 @@
             "resultItemID": "fishingrod_frost",
             "resultItemName": "Frost Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "frost_ore:1",
+            "slot3": "",
+            "slot4": "frost_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8774,22 +10148,34 @@
             "resultItemID": "fishingrod_gold",
             "resultItemName": "Golden Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "gold_ore:1",
+            "slot3": "",
+            "slot4": "gold_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Vàng (Gold Ore) (gold_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8800,22 +10186,34 @@
             "resultItemID": "fishingrod_obsidian",
             "resultItemName": "Obsidian Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "obsidian_ore:1",
+            "slot3": "",
+            "slot4": "obsidian_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8826,22 +10224,34 @@
             "resultItemID": "fishingrod_platinum",
             "resultItemName": "Platinum Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "platinum_ore:1",
+            "slot3": "",
+            "slot4": "platinum_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8852,22 +10262,34 @@
             "resultItemID": "fishingrod_shadow",
             "resultItemName": "Shadow Fishing Rod",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "shadow_ore:1",
+            "slot3": "",
+            "slot4": "shadow_ore:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8878,17 +10300,28 @@
             "resultItemID": "frost_axe",
             "resultItemName": "Rìu Băng Tuyết (Frost Axe)",
             "resultAmount": 1,
+            "slot0": "frost_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "frost_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8899,17 +10332,28 @@
             "resultItemID": "frost_hoe",
             "resultItemName": "Cuốc Băng Tuyết (Frost Hoe)",
             "resultAmount": 1,
+            "slot0": "frost_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8920,17 +10364,28 @@
             "resultItemID": "frost_pickaxe",
             "resultItemName": "Cuốc Chim Băng Tuyết (Frost Pickaxe)",
             "resultAmount": 1,
+            "slot0": "frost_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "frost_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8941,17 +10396,28 @@
             "resultItemID": "frost_shovel",
             "resultItemName": "Xẻng Băng Tuyết (Frost Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8962,17 +10428,28 @@
             "resultItemID": "frost_sickle",
             "resultItemName": "Liềm Băng Tuyết (Frost Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "frost_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "frost_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -8983,17 +10460,28 @@
             "resultItemID": "golden_axe",
             "resultItemName": "Rìu Vàng (Golden Axe)",
             "resultAmount": 1,
+            "slot0": "gold_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "gold_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Vàng (Gold Ore) (gold_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9004,17 +10492,28 @@
             "resultItemID": "golden_hoe",
             "resultItemName": "Cuốc Vàng (Golden Hoe)",
             "resultAmount": 1,
+            "slot0": "gold_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Vàng (Gold Ore) (gold_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9025,17 +10524,28 @@
             "resultItemID": "golden_pickaxe",
             "resultItemName": "Cuốc Chim Vàng (Golden Pickaxe)",
             "resultAmount": 1,
+            "slot0": "gold_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "gold_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Vàng (Gold Ore) (gold_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9046,17 +10556,28 @@
             "resultItemID": "golden_shovel",
             "resultItemName": "Xẻng Vàng (Golden Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Vàng (Gold Ore) (gold_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9067,17 +10588,28 @@
             "resultItemID": "golden_sickle",
             "resultItemName": "Liềm Vàng (Golden Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "gold_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "gold_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Vàng (Gold Ore) (gold_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9088,17 +10620,28 @@
             "resultItemID": "hoe",
             "resultItemName": "Cuốc (Hoe)",
             "resultAmount": 1,
+            "slot0": "stone:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Đá Tự Nhiên (Stone) (stone) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "stone",
                     "itemName": "Đá Tự Nhiên (Stone)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9109,17 +10652,28 @@
             "resultItemID": "obsidian_axe",
             "resultItemName": "Rìu Hắc Diệu Thạch (Obsidian Axe)",
             "resultAmount": 1,
+            "slot0": "obsidian_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "obsidian_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9130,17 +10684,28 @@
             "resultItemID": "obsidian_hoe",
             "resultItemName": "Cuốc Hắc Diệu Thạch (Obsidian Hoe)",
             "resultAmount": 1,
+            "slot0": "obsidian_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9151,17 +10716,28 @@
             "resultItemID": "obsidian_pickaxe",
             "resultItemName": "Cuốc Chim Hắc Diệu Thạch (Obsidian Pickaxe)",
             "resultAmount": 1,
+            "slot0": "obsidian_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "obsidian_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9172,17 +10748,28 @@
             "resultItemID": "obsidian_shovel",
             "resultItemName": "Xẻng Hắc Diệu Thạch (Obsidian Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9193,17 +10780,28 @@
             "resultItemID": "obsidian_sickle",
             "resultItemName": "Liềm Hắc Diệu Thạch (Obsidian Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "obsidian_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "obsidian_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9214,17 +10812,28 @@
             "resultItemID": "Pickaxe",
             "resultItemName": "Búa (Pickaxe)",
             "resultAmount": 1,
+            "slot0": "stone:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "stone:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Đá Tự Nhiên (Stone) (stone) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "stone",
                     "itemName": "Đá Tự Nhiên (Stone)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9235,17 +10844,28 @@
             "resultItemID": "platinum_axe",
             "resultItemName": "Rìu Bạch Kim (Platinum Axe)",
             "resultAmount": 1,
+            "slot0": "platinum_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "platinum_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9256,17 +10876,28 @@
             "resultItemID": "platinum_hoe",
             "resultItemName": "Cuốc Bạch Kim (Platinum Hoe)",
             "resultAmount": 1,
+            "slot0": "platinum_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9277,17 +10908,28 @@
             "resultItemID": "platinum_pickaxe",
             "resultItemName": "Cuốc Chim Bạch Kim (Platinum Pickaxe)",
             "resultAmount": 1,
+            "slot0": "platinum_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "platinum_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9298,17 +10940,28 @@
             "resultItemID": "platinum_shovel",
             "resultItemName": "Xẻng Bạch Kim (Platinum Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9319,17 +10972,28 @@
             "resultItemID": "platinum_sickle",
             "resultItemName": "Liềm Bạch Kim (Platinum Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "platinum_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "platinum_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9340,17 +11004,28 @@
             "resultItemID": "shadow_axe",
             "resultItemName": "Rìu Hắc Ám (Shadow Axe)",
             "resultAmount": 1,
+            "slot0": "shadow_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "shadow_ore:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9361,17 +11036,28 @@
             "resultItemID": "shadow_hoe",
             "resultItemName": "Cuốc Hắc Ám (Shadow Hoe)",
             "resultAmount": 1,
+            "slot0": "shadow_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9382,17 +11068,28 @@
             "resultItemID": "shadow_pickaxe",
             "resultItemName": "Cuốc Chim Hắc Ám (Shadow Pickaxe)",
             "resultAmount": 1,
+            "slot0": "shadow_ore:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "shadow_ore:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9403,17 +11100,28 @@
             "resultItemID": "shadow_shovel",
             "resultItemName": "Xẻng Hắc Ám (Shadow Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9424,17 +11132,28 @@
             "resultItemID": "shadow_sickle",
             "resultItemName": "Liềm Hắc Ám (Shadow Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "shadow_ore:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "shadow_ore:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9445,17 +11164,28 @@
             "resultItemID": "shovel",
             "resultItemName": "Xẻng (Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "stone:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Đá Tự Nhiên (Stone) (stone) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "stone",
                     "itemName": "Đá Tự Nhiên (Stone)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9466,17 +11196,28 @@
             "resultItemID": "sickle",
             "resultItemName": "Liềm (Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "stone:1",
+            "slot2": "stone:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "stone:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Đá Tự Nhiên (Stone) (stone) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "stone",
                     "itemName": "Đá Tự Nhiên (Stone)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9487,17 +11228,28 @@
             "resultItemID": "wood_axe",
             "resultItemName": "Rìu Gỗ (Wood Axe)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "wood:1",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Gỗ (Wood) (wood) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9508,17 +11260,28 @@
             "resultItemID": "wood_fishing_rod",
             "resultItemName": "Cần Câu Gỗ (Wood Fishing Rod)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "",
+            "slot2": "wooden_stick:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "vine_rope:1",
+            "slot6": "wooden_stick:1",
+            "slot7": "",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "3x Gậy Gỗ (Wooden Stick (wooden_stick) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope)",
             "ingredients": [
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9529,17 +11292,28 @@
             "resultItemID": "wood_hoe",
             "resultItemName": "Cuốc Gỗ (Wood Hoe)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Gỗ (Wood) (wood) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9550,17 +11324,28 @@
             "resultItemID": "wood_pickaxe",
             "resultItemName": "Cuốc Chim Gỗ (Wood Pickaxe)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "wooden_stick:1",
+            "slot2": "wood:1",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Gỗ (Wood) (wood) + 3x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9571,17 +11356,28 @@
             "resultItemID": "wood_shovel",
             "resultItemName": "Xẻng Gỗ (Wood Shovel)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "wood:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wooden_stick:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "1x Gỗ (Wood) (wood) + 2x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9592,17 +11388,28 @@
             "resultItemID": "wood_sickle",
             "resultItemName": "Liềm Gỗ (Wood Sickle)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "wood:1",
+            "slot2": "wood:1",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "wood:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "3x Gỗ (Wood) (wood) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9613,12 +11420,22 @@
             "resultItemID": "wood_watering_can",
             "resultItemName": "Bình Tưới Gỗ (Wood Watering Can)",
             "resultAmount": 1,
+            "slot0": "wood_board:1",
+            "slot1": "",
+            "slot2": "wood_board:1",
+            "slot3": "wood_board:1",
+            "slot4": "",
+            "slot5": "wood_board:1",
+            "slot6": "",
+            "slot7": "wood_board:1",
+            "slot8": "",
             "ingredientsSummary": "5x Ván Gỗ (Wood Board) (wood_board)",
             "ingredients": [
                 {
                     "itemID": "wood_board",
                     "itemName": "Ván Gỗ (Wood Board)",
-                    "totalAmount": 5
+                    "totalAmount": 5,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9629,22 +11446,34 @@
             "resultItemID": "copper_bow",
             "resultItemName": "Cung Đồng (Copper Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "copper_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Đồng (Copper Ore) (copper_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9655,17 +11484,28 @@
             "resultItemID": "copper_staff",
             "resultItemName": "Gậy Phép Đồng (Copper Staff)",
             "resultAmount": 1,
+            "slot0": "copper_bar:1",
+            "slot1": "amethyst:1",
+            "slot2": "copper_bar:1",
+            "slot3": "",
+            "slot4": "copper_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "copper_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Đồng (Copper Bar) (copper_bar) + 1x Thạch Anh Tím (Amethyst) (amethyst)",
             "ingredients": [
                 {
                     "itemID": "copper_bar",
                     "itemName": "Thỏi Đồng (Copper Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "amethyst",
                     "itemName": "Thạch Anh Tím (Amethyst)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9676,17 +11516,28 @@
             "resultItemID": "copper_sword",
             "resultItemName": "Kiếm Đồng (Copper Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "copper_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "copper_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Đồng (Copper Ore) (copper_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9697,22 +11548,34 @@
             "resultItemID": "crimson_bow",
             "resultItemName": "Cung Huyết Nguyệt (Crimson Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "crimson_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "crimson_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9723,22 +11586,34 @@
             "resultItemID": "crimson_staff",
             "resultItemName": "Gậy Phép Huyết Nguyệt (Crimson Staff)",
             "resultAmount": 1,
+            "slot0": "crimson_bar:1",
+            "slot1": "ruby:1",
+            "slot2": "crimson_bar:1",
+            "slot3": "topaz:1",
+            "slot4": "crimson_bar:1",
+            "slot5": "topaz:1",
+            "slot6": "",
+            "slot7": "crimson_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 2x Hoàng Ngọc (Topaz) (topaz)",
             "ingredients": [
                 {
                     "itemID": "crimson_bar",
                     "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "ruby",
                     "itemName": "Hồng Ngọc (Ruby)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "topaz",
                     "itemName": "Hoàng Ngọc (Topaz)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9749,17 +11624,28 @@
             "resultItemID": "crimson_sword",
             "resultItemName": "Kiếm Huyết Nguyệt (Crimson Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "crimson_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "crimson_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9770,22 +11656,34 @@
             "resultItemID": "fairy_bow",
             "resultItemName": "Cung Thần Tiên (Fairy Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "pink_sapphire:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9796,17 +11694,28 @@
             "resultItemID": "fairy_staff",
             "resultItemName": "Gậy Phép Thần Tiên (Fairy Staff)",
             "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "pink_sapphire:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "enhanced_amethyst:1",
+            "slot4": "pink_sapphire:1",
+            "slot5": "enhanced_amethyst:1",
+            "slot6": "",
+            "slot7": "pink_sapphire:1",
+            "slot8": "",
             "ingredientsSummary": "5x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 2x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 5
+                    "totalAmount": 5,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_amethyst",
                     "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9817,17 +11726,28 @@
             "resultItemID": "fairy_sword",
             "resultItemName": "Kiếm Thần Tiên (Fairy Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "pink_sapphire:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "pink_sapphire:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9838,22 +11758,34 @@
             "resultItemID": "frost_bow",
             "resultItemName": "Cung Băng Tuyết (Frost Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "frost_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9864,22 +11796,34 @@
             "resultItemID": "frost_staff",
             "resultItemName": "Gậy Phép Băng Tuyết (Frost Staff)",
             "resultAmount": 1,
+            "slot0": "frost_bar:1",
+            "slot1": "diamond:1",
+            "slot2": "frost_bar:1",
+            "slot3": "ruby:1",
+            "slot4": "frost_bar:1",
+            "slot5": "ruby:1",
+            "slot6": "",
+            "slot7": "frost_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Kim Cương (Diamond) (diamond) + 2x Hồng Ngọc (Ruby) (ruby)",
             "ingredients": [
                 {
                     "itemID": "frost_bar",
                     "itemName": "Thỏi Băng Tuyết (Frost Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "diamond",
                     "itemName": "Kim Cương (Diamond)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "ruby",
                     "itemName": "Hồng Ngọc (Ruby)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9890,17 +11834,28 @@
             "resultItemID": "frost_sword",
             "resultItemName": "Kiếm Băng Tuyết (Frost Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "frost_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "frost_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9911,22 +11866,34 @@
             "resultItemID": "golden_bow",
             "resultItemName": "Cung Vàng (Golden Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "gold_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Vàng (Gold Ore) (gold_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9937,17 +11904,28 @@
             "resultItemID": "golden_staff",
             "resultItemName": "Gậy Phép Vàng (Golden Staff)",
             "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "ruby:1",
+            "slot2": "gold_bar:1",
+            "slot3": "",
+            "slot4": "gold_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "gold_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hồng Ngọc (Ruby) (ruby)",
             "ingredients": [
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "ruby",
                     "itemName": "Hồng Ngọc (Ruby)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9958,17 +11936,28 @@
             "resultItemID": "golden_sword",
             "resultItemName": "Kiếm Vàng (Golden Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "gold_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "gold_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Vàng (Gold Ore) (gold_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -9979,22 +11968,34 @@
             "resultItemID": "iron_bow",
             "resultItemName": "Cung Sắt (Iron Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "iron_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "iron_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Sắt (Iron Ore) (iron_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10005,17 +12006,28 @@
             "resultItemID": "iron_staff",
             "resultItemName": "Gậy Phép Sắt (Iron Staff)",
             "resultAmount": 1,
+            "slot0": "iron_bar:1",
+            "slot1": "sapphire:1",
+            "slot2": "iron_bar:1",
+            "slot3": "",
+            "slot4": "iron_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "iron_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Lam Ngọc (Sapphire) (sapphire)",
             "ingredients": [
                 {
                     "itemID": "iron_bar",
                     "itemName": "Thỏi Sắt (Iron Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "sapphire",
                     "itemName": "Lam Ngọc (Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10026,17 +12038,28 @@
             "resultItemID": "iron_sword",
             "resultItemName": "Kiếm Sắt (Iron Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "iron_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "iron_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Sắt (Iron Ore) (iron_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10047,22 +12070,34 @@
             "resultItemID": "obsidian_bow",
             "resultItemName": "Cung Hắc Diệu Thạch (Obsidian Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "obsidian_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10073,22 +12108,34 @@
             "resultItemID": "obsidian_staff",
             "resultItemName": "Gậy Phép Hắc Diệu Thạch (Obsidian Staff)",
             "resultAmount": 1,
+            "slot0": "obsidian_bar:1",
+            "slot1": "enhanced_ruby:1",
+            "slot2": "obsidian_bar:1",
+            "slot3": "pink_sapphire:1",
+            "slot4": "obsidian_bar:1",
+            "slot5": "pink_sapphire:1",
+            "slot6": "",
+            "slot7": "obsidian_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire)",
             "ingredients": [
                 {
                     "itemID": "obsidian_bar",
                     "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_ruby",
                     "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10099,17 +12146,28 @@
             "resultItemID": "obsidian_sword",
             "resultItemName": "Kiếm Hắc Diệu Thạch (Obsidian Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "obsidian_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "obsidian_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10120,22 +12178,34 @@
             "resultItemID": "platinum_bow",
             "resultItemName": "Cung Bạch Kim (Platinum Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "platinum_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10146,17 +12216,28 @@
             "resultItemID": "platinum_staff",
             "resultItemName": "Gậy Phép Bạch Kim (Platinum Staff)",
             "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "topaz:1",
+            "slot2": "platinum_bar:1",
+            "slot3": "",
+            "slot4": "platinum_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "platinum_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
             "ingredients": [
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "topaz",
                     "itemName": "Hoàng Ngọc (Topaz)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10167,17 +12248,28 @@
             "resultItemID": "platinum_sword",
             "resultItemName": "Kiếm Bạch Kim (Platinum Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "platinum_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "platinum_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10188,22 +12280,34 @@
             "resultItemID": "shadow_bow",
             "resultItemName": "Cung Hắc Ám (Shadow Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "shadow_ore:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10214,22 +12318,34 @@
             "resultItemID": "shadow_staff",
             "resultItemName": "Gậy Phép Hắc Ám (Shadow Staff)",
             "resultAmount": 1,
+            "slot0": "shadow_bar:1",
+            "slot1": "pink_sapphire:1",
+            "slot2": "shadow_bar:1",
+            "slot3": "enhanced_amethyst:1",
+            "slot4": "shadow_bar:1",
+            "slot5": "enhanced_amethyst:1",
+            "slot6": "",
+            "slot7": "shadow_bar:1",
+            "slot8": "",
             "ingredientsSummary": "4x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 2x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
             "ingredients": [
                 {
                     "itemID": "shadow_bar",
                     "itemName": "Thỏi Hắc Ám (Shadow Bar)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_amethyst",
                     "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10240,17 +12356,28 @@
             "resultItemID": "shadow_sword",
             "resultItemName": "Kiếm Hắc Ám (Shadow Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "shadow_ore:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "shadow_ore:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10261,17 +12388,28 @@
             "resultItemID": "wood_bow",
             "resultItemName": "Cung Gỗ (Wood Bow)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "wooden_stick:1",
+            "slot2": "vine_rope:1",
+            "slot3": "wooden_stick:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "vine_rope:1",
             "ingredientsSummary": "3x Gậy Gỗ (Wooden Stick (wooden_stick) + 3x Dây Thừng Dây Leo (Vine Rope) (vine_rope)",
             "ingredients": [
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "vine_rope",
                     "itemName": "Dây Thừng Dây Leo (Vine Rope)",
-                    "totalAmount": 3
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10282,17 +12420,28 @@
             "resultItemID": "wood_staff",
             "resultItemName": "Gậy Phép Gỗ (Wood Staff)",
             "resultAmount": 1,
+            "slot0": "wood:1",
+            "slot1": "amethyst:1",
+            "slot2": "wood:1",
+            "slot3": "",
+            "slot4": "wood:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wood:1",
+            "slot8": "",
             "ingredientsSummary": "4x Gỗ (Wood) (wood) + 1x Thạch Anh Tím (Amethyst) (amethyst)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 4
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "amethyst",
                     "itemName": "Thạch Anh Tím (Amethyst)",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -10303,17 +12452,28 @@
             "resultItemID": "wood_sword",
             "resultItemName": "Kiếm Gỗ (Wood Sword)",
             "resultAmount": 1,
+            "slot0": "",
+            "slot1": "wood:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "wood:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wooden_stick:1",
+            "slot8": "",
             "ingredientsSummary": "2x Gỗ (Wood) (wood) + 1x Gậy Gỗ (Wooden Stick (wooden_stick)",
             "ingredients": [
                 {
                     "itemID": "wood",
                     "itemName": "Gỗ (Wood)",
-                    "totalAmount": 2
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
                 },
                 {
                     "itemID": "wooden_stick",
                     "itemName": "Gậy Gỗ (Wooden Stick",
-                    "totalAmount": 1
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         }

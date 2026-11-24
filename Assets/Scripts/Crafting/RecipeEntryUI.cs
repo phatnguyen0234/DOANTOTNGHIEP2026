@@ -7,7 +7,6 @@ public class RecipeDisplaySlot
     public GameObject slotRoot;
     public Image iconImage;
     public TextMeshProUGUI amountText;
-
     public ItemTooltipTrigger tooltipTrigger;
 }
 
@@ -19,17 +18,50 @@ public class RecipeEntryUI : MonoBehaviour
     public TextMeshProUGUI resultAmountText;
 
     [Header("Grid Configuration")]
-    [Tooltip("Ma tran 3x3")]
+    [Tooltip("3x3 ingredient grid container.")]
     public Transform gridContainer;
 
-    [Tooltip("Slot Prefab")]
+    [Tooltip("Slot prefab used to render each cell in the 3x3 grid.")]
     public GameObject displaySlotPrefab;
 
+    [Header("Wildcard Group Cycling")]
+    [Tooltip("Seconds between icon transitions when displaying an IngredientGroup slot.")]
+    [SerializeField] private float cycleInterval = 1.0f;
+
     private RecipeDisplaySlot[] gridSlots = new RecipeDisplaySlot[9];
+    private CraftingRecipe currentRecipe;
     private bool isInitialized = false;
+    private bool hasWildcardSlots = false;
+    private float cycleTimer = 0f;
+    private int cycleIndex = 0;
+
+    private void Update()
+    {
+        if (!hasWildcardSlots || currentRecipe == null || cycleInterval <= 0f)
+            return;
+
+        cycleTimer += Time.unscaledDeltaTime;
+        if (cycleTimer >= cycleInterval)
+        {
+            cycleTimer -= cycleInterval;
+            cycleIndex++;
+            RefreshWildcardSlots();
+        }
+    }
+
+    private void OnDisable()
+    {
+        cycleTimer = 0f;
+        cycleIndex = 0;
+    }
 
     public void SetupDisplay(CraftingRecipe recipe)
     {
+        currentRecipe = recipe;
+        cycleTimer = 0f;
+        cycleIndex = 0;
+        hasWildcardSlots = false;
+
         if (!isInitialized)
         {
             InitializeSlots();
@@ -50,7 +82,7 @@ public class RecipeEntryUI : MonoBehaviour
         {
             resultTrigger = resultIcon.gameObject.AddComponent<ItemTooltipTrigger>();
         }
-        resultTrigger.currentItem = recipe.resultItem;
+        resultTrigger.SetTooltipData(recipe.resultItem);
         resultIcon.raycastTarget = true;
 
         for (int i = 0; i < 9; i++)
@@ -60,22 +92,14 @@ public class RecipeEntryUI : MonoBehaviour
 
             slot.slotRoot.SetActive(true);
 
-            if (ingredient.item != null && ingredient.amount > 0)
+            if (ingredient.HasRequirement)
             {
-                slot.iconImage.gameObject.SetActive(true);
-                slot.iconImage.sprite = ingredient.item.Icon;
-                slot.iconImage.color = Color.white;
-
-                if (slot.amountText != null)
+                if (ingredient.IsWildcard)
                 {
-                    slot.amountText.gameObject.SetActive(true);
-                    slot.amountText.text = ingredient.amount > 1 ? ingredient.amount.ToString() : "";
+                    hasWildcardSlots = true;
                 }
 
-                if (slot.tooltipTrigger != null)
-                {
-                    slot.tooltipTrigger.currentItem = ingredient.item;
-                }
+                ApplyIngredientVisual(slot, ingredient, cycleIndex);
             }
             else
             {
@@ -84,8 +108,54 @@ public class RecipeEntryUI : MonoBehaviour
 
                 if (slot.tooltipTrigger != null)
                 {
-                    slot.tooltipTrigger.currentItem = null;
+                    slot.tooltipTrigger.SetTooltipData(null);
                 }
+            }
+        }
+    }
+
+    private void RefreshWildcardSlots()
+    {
+        if (currentRecipe == null || currentRecipe.requiredIngredients == null)
+            return;
+
+        for (int i = 0; i < 9; i++)
+        {
+            CraftingIngredient ingredient = currentRecipe.requiredIngredients[i];
+            if (ingredient.IsWildcard && gridSlots[i] != null)
+            {
+                ApplyIngredientVisual(gridSlots[i], ingredient, cycleIndex);
+            }
+        }
+    }
+
+    private static void ApplyIngredientVisual(RecipeDisplaySlot slot, CraftingIngredient ingredient, int currentCycle)
+    {
+        if (slot.iconImage != null)
+        {
+            slot.iconImage.gameObject.SetActive(true);
+            slot.iconImage.sprite = ingredient.GetDisplayIcon(currentCycle);
+            slot.iconImage.color = Color.white;
+        }
+
+        if (slot.amountText != null)
+        {
+            slot.amountText.gameObject.SetActive(true);
+            slot.amountText.text = ingredient.amount > 1 ? ingredient.amount.ToString() : "";
+        }
+
+        if (slot.tooltipTrigger != null)
+        {
+            if (ingredient.IsWildcard)
+            {
+                slot.tooltipTrigger.SetTooltipData(
+                    ingredient.GetDisplayItem(currentCycle),
+                    ingredient.GetTooltipLabel(currentCycle)
+                );
+            }
+            else
+            {
+                slot.tooltipTrigger.SetTooltipData(ingredient.item);
             }
         }
     }
@@ -127,7 +197,6 @@ public class RecipeEntryUI : MonoBehaviour
             if (iconTrans != null)
             {
                 newSlot.iconImage = iconTrans.GetComponent<Image>();
-
                 newSlot.tooltipTrigger = iconTrans.gameObject.AddComponent<ItemTooltipTrigger>();
 
                 if (newSlot.iconImage != null)
