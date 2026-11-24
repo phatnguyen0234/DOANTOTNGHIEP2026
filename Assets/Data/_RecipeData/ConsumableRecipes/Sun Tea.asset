@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Sun Tea
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 6
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 11400000, guid: a6df1d9e8c643af0a0d368a09897321e, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: a50e2c41c83f596ff92c41e5312a1a24, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: a5b4b72db77da8b0cb4f49f897351cf2, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 06a38cd1848957f03eaaf7a1e74ca6a6, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: ef9e64c46a32b085706752fc2bc6bd10, type: 2}
+  resultAmount: 1

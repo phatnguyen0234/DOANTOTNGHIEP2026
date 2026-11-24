@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Pina Colada
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 6
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 11400000, guid: b48e73081036965e822706010b2bc55a, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: dd394504ba7adaf399b6939b1141d67d, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 923b46c340605c31834d14efab248c96, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 222b82f2925e0d480b6f8f69030dcf6a, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: 6bdd5f04629a30a5fdebd298fe7ceffe, type: 2}
+  resultAmount: 1

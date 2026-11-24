@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Large Health Potion
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 6
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 11400000, guid: 4c2a869df89b9123c10285feff742080, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 7f1f24a8ba03c4f8debd8879e31a07c8, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 28ee59e7b87f1e10a480d7ad7045017d, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 118759a395dcb8d433b9e74e3f80e251, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 28ee59e7b87f1e10a480d7ad7045017d, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: 95322b2a22ba8c37fcf0cccae4130b23, type: 2}
+  resultAmount: 1

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Stir Fry
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 6
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 11400000, guid: 484a11c97433341c8c747e20fb4d67d5, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 02013e2ac1b66018fe4ea9abe105528e, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 9e1c2d3a4b5f6a7b8c9d0e1f2a3b4c5d, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: dafec92f8168ffed59411fdd2622dea5, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: f55e7f2bd6f17d590472f78592f98340, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: d754610b840635b48a4265221439e4b0, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  resultItem: {fileID: 11400000, guid: ce69205c883d5ed72d69fd1f44d305db, type: 2}
+  resultAmount: 1
