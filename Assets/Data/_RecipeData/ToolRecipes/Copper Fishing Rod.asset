@@ -16,22 +16,31 @@ MonoBehaviour:
   unlockType: 1
   requiredIngredients:
   - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
     amount: 0
   - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
     amount: 0
   - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
     amount: 0
   - item: {fileID: 11400000, guid: 1720ee0cc1abfb9ef136a2bb7d96a15d, type: 2}
+    ingredientGroup: {fileID: 0}
     amount: 1
-  - item: {fileID: 11400000, guid: 251033149bf61f2a7ba02164fc111e67, type: 2}
+  - item: {fileID: 11400000, guid: 7fb01d5a28f567c48b694b7296df28c2, type: 2}
+    ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 11400000, guid: ea88e9d0e13bbff65299e8c83e0791e6, type: 2}
+    ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 251033149bf61f2a7ba02164fc111e67, type: 2}
+  - item: {fileID: 11400000, guid: 7fb01d5a28f567c48b694b7296df28c2, type: 2}
+    ingredientGroup: {fileID: 0}
     amount: 1
   resultItem: {fileID: 11400000, guid: 4bd54ac37ce342c6bf59b7bb21335daa, type: 2}
   resultAmount: 1

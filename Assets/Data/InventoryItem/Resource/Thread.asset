@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Wood Watering Can
+  m_Name: Thread
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: wood_watering_can
-  itemName: "Bình Tưới Gỗ (Wood Watering Can)"
-  description: "Bình tưới nước Gỗ bền bỉ giúp tưới nước cho cây trồng."
-  icon: {fileID: -720151078975379389, guid: 6e9a12adb808d36489918461a5a2cead, type: 3}
-  itemType: 5
-  toolType: 5
+  itemID: thread
+  itemName: "S\u1EE3i d\u1EC7t (Thread)"
+  description: "S\u1EE3i \u0111\u01B0\u1EE3c b\u1EC7n t\u1EEB c\xE1c lo\u1EA1i l\xF4ng
+    \u0111\u1ED9ng v\u1EADt."
+  icon: {fileID: -2130774461241244688, guid: a66fe52fe3474af4680cf8298da040a0, type: 3}
+  itemType: 6
+  toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
-  maxStack: 1
-  buyPrice: 100
-  sellPrice: 40
+  maxStack: 99
+  buyPrice: 40
+  sellPrice: 20
   canSell: 1
