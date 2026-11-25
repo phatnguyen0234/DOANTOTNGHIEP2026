@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using BlitzyUI;
 
 public class RecipeBookItemController : MonoBehaviour
 {
     [Header("Item Configuration")]
     [Tooltip("The exact ItemID of the Recipe Book ItemData")]
-    [SerializeField] private string recipeBookItemID = "recipe_book";
+    [SerializeField] private string recipeBookItemID = "databook";
 
     [Tooltip("Direct reference to the RecipeBook ItemData (optional)")]
     [SerializeField] private ItemData recipeBookItemData;
@@ -27,19 +28,42 @@ public class RecipeBookItemController : MonoBehaviour
         // Check for Right Mouse Button click
         if (Input.GetMouseButtonDown(1))
         {
+            bool isBookOpen = false;
+            if (UIManager.Instance != null && UIManager.Instance.GetScreen(ScreenIds.DataBook) != null)
+            {
+                isBookOpen = true;
+            }
+            else if (RecipeBookUI.Instance != null && RecipeBookUI.Instance.IsOpen)
+            {
+                isBookOpen = true;
+            }
+
             // Ignore if clicking on UI elements unless the book is already open
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             {
-                if (RecipeBookUI.Instance != null && !RecipeBookUI.Instance.IsOpen)
+                if (!isBookOpen)
                     return;
             }
 
             if (IsHoldingRecipeBook())
             {
-                if (RecipeBookUI.Instance != null)
+                if (UIManager.Instance != null)
+                {
+                    if (isBookOpen)
+                    {
+                        UIManager.Instance.QueuePopTo(ScreenIds.DataBook, include: true);
+                        Debug.Log("<color=yellow>[RecipeBookItemController] Dong DataBook qua UIManager</color>");
+                    }
+                    else
+                    {
+                        UIManager.Instance.QueuePush(ScreenIds.DataBook);
+                        Debug.Log("<color=green>[RecipeBookItemController] Mo DataBook qua UIManager</color>");
+                    }
+                }
+                else if (RecipeBookUI.Instance != null)
                 {
                     RecipeBookUI.Instance.ToggleBook();
-                    Debug.Log("<color=green>[RecipeBookItemController] Bat sach </color>");
+                    Debug.Log("<color=green>[RecipeBookItemController] Bat/tat DataBook fallback</color>");
                 }
             }
         }

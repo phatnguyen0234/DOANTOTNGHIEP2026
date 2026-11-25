@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
+  m_Name: Rice
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: rice
+  itemName: "Lúa Gạo (Rice)"
+  description: "Hạt lúa gạo thơm dẻo thu hoạch từ đồng ruộng, nguyên liệu thiết yếu để nấu ăn."
+  icon: {fileID: -3491839630117010820, guid: b0b8e2b07a0ded84fac68eddcbe4000e, type: 3}
+  itemType: 1
+  toolType: 0
+  cropId: Rice
+  cropData: {fileID: 11400000, guid: fed6fe9efb29ba76fafb6473d96fef02, type: 2}
+  rodData: {fileID: 0}
+  animationTrigger: 
+  maxStack: 99
+  buyPrice: 75
+  sellPrice: 50
+  canSell: 1

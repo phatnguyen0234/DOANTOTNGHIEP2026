@@ -18,7 +18,6 @@ public class PlayerRecipeManager : MonoBehaviour
     public List<CraftingRecipe> unlockedRecipes = new List<CraftingRecipe>();
 
     public event System.Action OnRecipeUnlocked;
-
     public event System.Action<CraftingRecipe> OnShowUnlockNotification;
 
     [Header("Notification System")]
@@ -27,11 +26,8 @@ public class PlayerRecipeManager : MonoBehaviour
 
     public int GetUnseenCount(RecipeCategory category)
     {
-        // Return total unseen recipes across all categories for the "All" tab badge
-        // (Or return 0 if you don't want the "All" tab to display a badge at all)
         if (category == RecipeCategory.All)
         {
-            //return unseenRecipes.Count;
             return 0; // Disable badge for "All" tab
         }
 
@@ -120,7 +116,32 @@ public class PlayerRecipeManager : MonoBehaviour
 
                 foreach (var ingredient in recipe.requiredIngredients)
                 {
-                    if (ingredient.item != null && ingredient.amount > 0)
+                    if (!ingredient.HasRequirement)
+                        continue;
+
+                    if (ingredient.IsWildcard)
+                    {
+                        bool discoveredAnyInGroup = false;
+                        var groupItems = ingredient.ingredientGroup.items;
+                        for (int i = 0; i < groupItems.Count; i++)
+                        {
+                            ItemData groupItem = groupItems[i];
+                            if (groupItem != null &&
+                                !string.IsNullOrEmpty(groupItem.ItemID) &&
+                                discoveredItemIDs.Contains(groupItem.ItemID))
+                            {
+                                discoveredAnyInGroup = true;
+                                break;
+                            }
+                        }
+
+                        if (!discoveredAnyInGroup)
+                        {
+                            hasDiscoveredAll = false;
+                            break;
+                        }
+                    }
+                    else if (ingredient.item != null)
                     {
                         if (!discoveredItemIDs.Contains(ingredient.item.ItemID))
                         {
@@ -129,6 +150,7 @@ public class PlayerRecipeManager : MonoBehaviour
                         }
                     }
                 }
+
                 if (hasDiscoveredAll)
                 {
                     UnlockRecipe(recipe);
@@ -137,25 +159,11 @@ public class PlayerRecipeManager : MonoBehaviour
         }
     }
 
-    //public void UnlockRecipe(CraftingRecipe newRecipe)
-    //{
-    //    if (newRecipe != null && !unlockedRecipes.Contains(newRecipe))
-    //    {
-    //        unlockedRecipes.Add(newRecipe);
-    //        Debug.Log($"<color=green>Unlocked new recipe: {newRecipe.resultItem.ItemName}</color>");
-
-    //        OnRecipeUnlocked?.Invoke();
-
-    //        OnShowUnlockNotification?.Invoke(newRecipe);
-    //    }
-    //}
-
     public void UnlockRecipe(CraftingRecipe newRecipe)
     {
         if (newRecipe != null && !unlockedRecipes.Contains(newRecipe))
         {
             unlockedRecipes.Add(newRecipe);
-
             unseenRecipes.Add(newRecipe);
 
             Debug.Log($"<color=green>Unlocked new recipe: {newRecipe.resultItem.ItemName}</color>");

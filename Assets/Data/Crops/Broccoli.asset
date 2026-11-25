@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 003
   cropName: Broccoli
-  growthTime: 90
+  growthTime: 70
   maxStage: 5
   stageSprites:
   - {fileID: -918663293682559355, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: 3555338168022743488, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  - {fileID: -4210054856886039510, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
   - {fileID: 532733227651321159, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
-  - {fileID: 6952506519391513210, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
-  - {fileID: 4882106395590286939, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
-  - {fileID: -4519086435122091989, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
-
+  - {fileID: 3555338168022743488, guid: 3b90b563305f4a34bb30829d8d69247f, type: 3}
+  dropTable: {fileID: 11400000, guid: 0959340e3052af63e4691910faf937ae, type: 2}
   harvestItem: {fileID: 11400000, guid: 02013e2ac1b66018fe4ea9abe105528e, type: 2}
   harvestAmount: 1
+  allowedSeason: 00000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

@@ -14,14 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropData
   id: 004
   cropName: Cabbage
-  growthTime: 60
-  maxStage: 5
+  growthTime: 80
+  maxStage: 6
   stageSprites:
   - {fileID: 159068718711766808, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  - {fileID: 3994033136373939748, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  - {fileID: -4014818661885561068, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
   - {fileID: -4014818661885561068, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
   - {fileID: -2353564247272742209, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
-  - {fileID: 8395550974419666590, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
-  - {fileID: 3803989612537405054, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
-
+  - {fileID: -2353564247272742209, guid: f49b5d48a23985641a85f8b97adbed0e, type: 3}
+  dropTable: {fileID: 11400000, guid: e1a8374560d5675018e8ad5bac097995, type: 2}
   harvestItem: {fileID: 11400000, guid: 3b45993551f8b70ffceb405649f9bc36, type: 2}
   harvestAmount: 1
+  allowedSeason: 00000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

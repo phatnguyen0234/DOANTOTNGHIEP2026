@@ -100,7 +100,41 @@ public class FishingController : MonoBehaviour
         if (itemDropSpawner == null) itemDropSpawner = FindAnyObjectByType<ItemDropSpawner>(FindObjectsInactive.Include);
 
         if (powerBarUI == null) powerBarUI = FindAnyObjectByType<FishingPowerBarUI>(FindObjectsInactive.Include);
+        if (powerBarUI == null)
+        {
+            var powerBarPrefab = Resources.Load<FishingPowerBarUI>("Prefabs/UI/Powerbar");
+            if (powerBarPrefab != null)
+            {
+                Transform canvasTransform = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                    ? BlitzyUI.UIManager.Instance.rootCanvas.transform
+                    : null;
+                powerBarUI = Instantiate(powerBarPrefab, canvasTransform);
+            }
+        }
+        else if (powerBarUI.transform.parent == null || !powerBarUI.transform.parent.gameObject.activeInHierarchy)
+        {
+            Transform canvasTransform = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                ? BlitzyUI.UIManager.Instance.rootCanvas.transform
+                : null;
+            if (canvasTransform != null && powerBarUI.transform.parent != canvasTransform)
+            {
+                powerBarUI.transform.SetParent(canvasTransform, false);
+                powerBarUI.transform.localScale = Vector3.one;
+                powerBarUI.transform.SetAsLastSibling();
+            }
+        }
         if (biteIndicatorUI == null) biteIndicatorUI = FindAnyObjectByType<FishBiteIndicatorUI>(FindObjectsInactive.Include);
+        if (biteIndicatorUI == null)
+        {
+            var bitePrefab = Resources.Load<FishBiteIndicatorUI>("Prefabs/UI/FishBiteIndicator");
+            if (bitePrefab != null)
+            {
+                Transform canvasTransform = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                    ? BlitzyUI.UIManager.Instance.rootCanvas.transform
+                    : null;
+                biteIndicatorUI = Instantiate(bitePrefab, canvasTransform);
+            }
+        }
         if (resultUI == null) resultUI = FindAnyObjectByType<FishingResultUI>(FindObjectsInactive.Include);
     }
 
@@ -116,6 +150,8 @@ public class FishingController : MonoBehaviour
         {
             minigame.OnMinigameFinished += HandleMinigameFinished;
         }
+
+        FishingScreen.OnAnyFishingFinished += HandleMinigameFinished;
 
         if (resultUI != null)
         {
@@ -135,6 +171,8 @@ public class FishingController : MonoBehaviour
         {
             minigame.OnMinigameFinished -= HandleMinigameFinished;
         }
+
+        FishingScreen.OnAnyFishingFinished -= HandleMinigameFinished;
 
         if (resultUI != null)
         {
@@ -204,14 +242,14 @@ public class FishingController : MonoBehaviour
         // Chuyển trạng thái sang tích lực (Charging)
         StateMachine.ChangeState(FishingState.Charging);
 
-        if (castingController != null)
-        {
-            castingController.StartCharging(activeRodData, dir);
-        }
-
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
+        }
+
+        if (castingController != null)
+        {
+            castingController.StartCharging(activeRodData, dir);
         }
 
         return true;
@@ -229,14 +267,14 @@ public class FishingController : MonoBehaviour
 
         StateMachine.ChangeState(FishingState.Charging);
 
-        if (castingController != null)
-        {
-            castingController.StartCharging(activeRodData, facingDir);
-        }
-
         if (powerBarUI != null && playerMovement != null)
         {
             powerBarUI.Show(playerMovement.transform);
+        }
+
+        if (castingController != null)
+        {
+            castingController.StartCharging(activeRodData, facingDir);
         }
 
         return true;
@@ -355,26 +393,37 @@ public class FishingController : MonoBehaviour
             targetFish = fallbackFishData;
         }
 
-        if (minigame == null)
+        if (BlitzyUI.UIManager.Instance != null)
         {
-            minigame = GetComponentInChildren<FishingMinigame>(true);
-            if (minigame == null) minigame = FindAnyObjectByType<FishingMinigame>(FindObjectsInactive.Include);
-        }
-
-        if (minigame != null)
-        {
-            minigame.OnMinigameFinished -= HandleMinigameFinished;
-            minigame.OnMinigameFinished += HandleMinigameFinished;
             StateMachine.ChangeState(FishingState.Reeling);
-            minigame.StartMinigame(targetFish, activeRodData);
+            var data = new BlitzyUI.Screen.Data();
+            data.Add("fish", targetFish);
+            data.Add("rod", activeRodData);
+            BlitzyUI.UIManager.Instance.QueuePush(BlitzyUI.ScreenIds.Fishing, data);
         }
         else
         {
-            Debug.LogWarning("[FishingController] Không tìm thấy FishingMinigame component! Tự động bắt cá fallback.");
-            ItemData rewardItem = targetFish != null ? targetFish.RewardItemData : fallbackFishItem;
-            int exp = targetFish != null ? targetFish.ExpReward : 25;
-            FishingResult fallbackResult = new FishingResult(targetFish, true, true, exp, rewardItem, 1);
-            HandleMinigameFinished(fallbackResult);
+            if (minigame == null)
+            {
+                minigame = GetComponentInChildren<FishingMinigame>(true);
+                if (minigame == null) minigame = FindAnyObjectByType<FishingMinigame>(FindObjectsInactive.Include);
+            }
+
+            if (minigame != null)
+            {
+                minigame.OnMinigameFinished -= HandleMinigameFinished;
+                minigame.OnMinigameFinished += HandleMinigameFinished;
+                StateMachine.ChangeState(FishingState.Reeling);
+                minigame.StartMinigame(targetFish, activeRodData);
+            }
+            else
+            {
+                Debug.LogWarning("[FishingController] Không tìm thấy FishingMinigame component! Tự động bắt cá fallback.");
+                ItemData rewardItem = targetFish != null ? targetFish.RewardItemData : fallbackFishItem;
+                int exp = targetFish != null ? targetFish.ExpReward : 25;
+                FishingResult fallbackResult = new FishingResult(targetFish, true, true, exp, rewardItem, 1);
+                HandleMinigameFinished(fallbackResult);
+            }
         }
     }
 
@@ -452,7 +501,7 @@ public class FishingController : MonoBehaviour
             StateMachine.ChangeState(FishingState.Failed);
         }
 
-        if (resultUI != null)
+        if (resultUI != null && BlitzyUI.UIManager.Instance == null)
         {
             resultUI.ShowResult(result);
         }
@@ -528,6 +577,11 @@ public class FishingController : MonoBehaviour
         if (minigame != null) minigame.StopMinigame();
         if (powerBarUI != null) powerBarUI.Hide();
         if (biteIndicatorUI != null) biteIndicatorUI.Hide();
+
+        if (BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.GetScreen(BlitzyUI.ScreenIds.Fishing) != null)
+        {
+            BlitzyUI.UIManager.Instance.QueuePopTo(BlitzyUI.ScreenIds.Fishing, include: true);
+        }
 
         StateMachine.ResetToIdle();
         Debug.Log($"[FishingController] Hủy câu cá: {reason}");

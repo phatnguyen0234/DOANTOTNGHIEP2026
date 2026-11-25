@@ -34,8 +34,8 @@ public class GameDataExporterWindow : EditorWindow
         GUILayout.Space(10);
         EditorGUILayout.LabelField("Game Economy & Crafting Data Exporter", EditorStyles.boldLabel);
         EditorGUILayout.HelpBox(
-            "Scans all ItemData, RecipeScrollItemData, and CraftingRecipe assets in the project, " +
-            "serializes them into JSON, and syncs them directly to your Google Sheet.",
+            "Scans all ItemData, RecipeScrollItemData, IngredientGroup, and CraftingRecipe assets in the project, " +
+            "serializes them into JSON (including 3x3 slots & wildcard groups), and syncs them to your Google Sheet.",
             MessageType.Info
         );
 
@@ -57,18 +57,18 @@ public class GameDataExporterWindow : EditorWindow
 
         if (GUILayout.Button("1. Generate JSON Preview & Save Local", GUILayout.Height(35)))
         {
-            lastGeneratedJson = BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount);
+            lastGeneratedJson = BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount, out int groupCount);
             SaveLocalJsonBackup(lastGeneratedJson);
-            statusMessage = $"Generated JSON successfully: {itemCount} Items, {scrollCount} Scrolls, {recipeCount} Recipes.";
+            statusMessage = $"Generated JSON successfully: {itemCount} Items, {scrollCount} Scrolls, {groupCount} Groups, {recipeCount} Recipes.";
             statusType = MessageType.Info;
         }
 
         GUI.enabled = !isUploading && !string.IsNullOrWhiteSpace(webhookUrl);
         if (GUILayout.Button(isUploading ? "Syncing..." : "2. Export & Sync to Google Sheet", GUILayout.Height(35)))
         {
-            lastGeneratedJson = BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount);
+            lastGeneratedJson = BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount, out int groupCount);
             SaveLocalJsonBackup(lastGeneratedJson);
-            SendJsonToGoogleSheet(lastGeneratedJson, itemCount, scrollCount, recipeCount);
+            SendJsonToGoogleSheet(lastGeneratedJson, itemCount, scrollCount, recipeCount, groupCount);
         }
         GUI.enabled = true;
 
@@ -99,7 +99,7 @@ public class GameDataExporterWindow : EditorWindow
         }
     }
 
-    private string BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount)
+    private string BuildGameDataJson(out int itemCount, out int scrollCount, out int recipeCount, out int groupCount)
     {
         ExportPayload payload = new ExportPayload
         {
@@ -147,7 +147,36 @@ public class GameDataExporterWindow : EditorWindow
             }
         }
 
-        // 2. Scan all CraftingRecipe assets
+        // 2. Scan all IngredientGroup assets
+        string[] groupGuids = AssetDatabase.FindAssets("t:IngredientGroup");
+        foreach (string guid in groupGuids)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            IngredientGroup grp = AssetDatabase.LoadAssetAtPath<IngredientGroup>(path);
+            if (grp == null) continue;
+
+            List<string> memberIds = new List<string>();
+            if (grp.items != null)
+            {
+                foreach (var member in grp.items)
+                {
+                    if (member != null && !string.IsNullOrEmpty(member.ItemID))
+                    {
+                        memberIds.Add(member.ItemID);
+                    }
+                }
+            }
+
+            payload.ingredientGroups.Add(new IngredientGroupExportDto
+            {
+                groupAssetName = grp.name,
+                groupDisplayName = grp.groupName,
+                memberCount = memberIds.Count,
+                memberItemIDs = memberIds
+            });
+        }
+
+        // 3. Scan all CraftingRecipe assets
         string[] recipeGuids = AssetDatabase.FindAssets("t:CraftingRecipe");
         foreach (string guid in recipeGuids)
         {
@@ -165,29 +194,76 @@ public class GameDataExporterWindow : EditorWindow
                 resultAmount = recipe.resultAmount
             };
 
-            // Aggregate ingredients by ItemID so the formula is easy to analyze economically
+            string[] serializedSlots = new string[9];
             Dictionary<string, IngredientExportDto> aggregatedIngredients = new Dictionary<string, IngredientExportDto>();
+
             if (recipe.requiredIngredients != null)
             {
-                foreach (var ing in recipe.requiredIngredients)
+                int slotCount = Mathf.Min(9, recipe.requiredIngredients.Length);
+                for (int i = 0; i < slotCount; i++)
                 {
-                    if (ing.item == null || ing.amount <= 0) continue;
-
-                    if (aggregatedIngredients.TryGetValue(ing.item.ItemID, out var existing))
+                    var ing = recipe.requiredIngredients[i];
+                    if (ing.amount <= 0)
                     {
-                        existing.totalAmount += ing.amount;
+                        serializedSlots[i] = "";
+                        continue;
+                    }
+
+                    if (ing.IsWildcard)
+                    {
+                        string groupKey = $"group:{ing.ingredientGroup.name}";
+                        serializedSlots[i] = $"{groupKey}:{ing.amount}";
+
+                        if (aggregatedIngredients.TryGetValue(groupKey, out var existingGroup))
+                        {
+                            existingGroup.totalAmount += ing.amount;
+                        }
+                        else
+                        {
+                            aggregatedIngredients[groupKey] = new IngredientExportDto
+                            {
+                                itemID = groupKey,
+                                itemName = $"[Group: {ing.ingredientGroup.groupName}]",
+                                totalAmount = ing.amount,
+                                isWildcardGroup = true
+                            };
+                        }
+                    }
+                    else if (ing.item != null)
+                    {
+                        serializedSlots[i] = $"{ing.item.ItemID}:{ing.amount}";
+
+                        if (aggregatedIngredients.TryGetValue(ing.item.ItemID, out var existingItem))
+                        {
+                            existingItem.totalAmount += ing.amount;
+                        }
+                        else
+                        {
+                            aggregatedIngredients[ing.item.ItemID] = new IngredientExportDto
+                            {
+                                itemID = ing.item.ItemID,
+                                itemName = ing.item.ItemName,
+                                totalAmount = ing.amount,
+                                isWildcardGroup = false
+                            };
+                        }
                     }
                     else
                     {
-                        aggregatedIngredients[ing.item.ItemID] = new IngredientExportDto
-                        {
-                            itemID = ing.item.ItemID,
-                            itemName = ing.item.ItemName,
-                            totalAmount = ing.amount
-                        };
+                        serializedSlots[i] = "";
                     }
                 }
             }
+
+            recipeDto.slot0 = serializedSlots[0] ?? "";
+            recipeDto.slot1 = serializedSlots[1] ?? "";
+            recipeDto.slot2 = serializedSlots[2] ?? "";
+            recipeDto.slot3 = serializedSlots[3] ?? "";
+            recipeDto.slot4 = serializedSlots[4] ?? "";
+            recipeDto.slot5 = serializedSlots[5] ?? "";
+            recipeDto.slot6 = serializedSlots[6] ?? "";
+            recipeDto.slot7 = serializedSlots[7] ?? "";
+            recipeDto.slot8 = serializedSlots[8] ?? "";
 
             recipeDto.ingredients = aggregatedIngredients.Values.ToList();
             recipeDto.ingredientsSummary = string.Join(" + ", recipeDto.ingredients.Select(i => $"{i.totalAmount}x {i.itemName} ({i.itemID})"));
@@ -198,10 +274,12 @@ public class GameDataExporterWindow : EditorWindow
         // Sort cleanly for readability
         payload.items = payload.items.OrderBy(i => i.itemType).ThenBy(i => i.itemID).ToList();
         payload.scrolls = payload.scrolls.OrderBy(s => s.scrollItemID).ToList();
+        payload.ingredientGroups = payload.ingredientGroups.OrderBy(g => g.groupAssetName).ToList();
         payload.recipes = payload.recipes.OrderBy(r => r.category).ThenBy(r => r.resultItemID).ToList();
 
         itemCount = payload.items.Count;
         scrollCount = payload.scrolls.Count;
+        groupCount = payload.ingredientGroups.Count;
         recipeCount = payload.recipes.Count;
 
         return JsonUtility.ToJson(payload, true);
@@ -220,7 +298,7 @@ public class GameDataExporterWindow : EditorWindow
         Debug.Log($"[DataExporter] Saved local backup to: {Path.GetFullPath(filePath)}");
     }
 
-    private void SendJsonToGoogleSheet(string json, int itemCount, int scrollCount, int recipeCount)
+    private void SendJsonToGoogleSheet(string json, int itemCount, int scrollCount, int recipeCount, int groupCount)
     {
         isUploading = true;
         statusMessage = "Uploading data to Google Sheet...";
@@ -239,7 +317,7 @@ public class GameDataExporterWindow : EditorWindow
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                statusMessage = $"Synced to Google Sheet! ({itemCount} Items, {scrollCount} Scrolls, {recipeCount} Recipes).";
+                statusMessage = $"Synced to Google Sheet! ({itemCount} Items, {scrollCount} Scrolls, {groupCount} Groups, {recipeCount} Recipes).";
                 statusType = MessageType.Info;
                 Debug.Log($"[DataExporter] Google Sheet Response: {request.downloadHandler.text}");
             }
@@ -263,6 +341,7 @@ public class GameDataExporterWindow : EditorWindow
         public string exportedAtUtc;
         public List<ItemExportDto> items = new List<ItemExportDto>();
         public List<ScrollExportDto> scrolls = new List<ScrollExportDto>();
+        public List<IngredientGroupExportDto> ingredientGroups = new List<IngredientGroupExportDto>();
         public List<RecipeExportDto> recipes = new List<RecipeExportDto>();
     }
 
@@ -294,6 +373,15 @@ public class GameDataExporterWindow : EditorWindow
     }
 
     [Serializable]
+    private class IngredientGroupExportDto
+    {
+        public string groupAssetName;
+        public string groupDisplayName;
+        public int memberCount;
+        public List<string> memberItemIDs = new List<string>();
+    }
+
+    [Serializable]
     private class RecipeExportDto
     {
         public string recipeAssetName;
@@ -302,6 +390,15 @@ public class GameDataExporterWindow : EditorWindow
         public string resultItemID;
         public string resultItemName;
         public int resultAmount;
+        public string slot0;
+        public string slot1;
+        public string slot2;
+        public string slot3;
+        public string slot4;
+        public string slot5;
+        public string slot6;
+        public string slot7;
+        public string slot8;
         public string ingredientsSummary;
         public List<IngredientExportDto> ingredients = new List<IngredientExportDto>();
     }
@@ -312,6 +409,7 @@ public class GameDataExporterWindow : EditorWindow
         public string itemID;
         public string itemName;
         public int totalAmount;
+        public bool isWildcardGroup;
     }
 
     #endregion

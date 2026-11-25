@@ -34,18 +34,64 @@ public class CraftingSystem : MonoBehaviour
             craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
     }
 
+    public void BindCraftingUI(Inventory gridInv, CraftingOutputUI outUI)
+    {
+        if (craftingGridInventory != null)
+        {
+            craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
+        }
+
+        craftingGridInventory = gridInv;
+        outputUI = outUI;
+
+        if (playerInventory == null)
+        {
+            playerInventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+
+        if (craftingGridInventory != null)
+        {
+            craftingGridInventory.OnInventoryChanged += EvaluateGrid;
+            EvaluateGrid();
+        }
+    }
+
+    public void UnbindCraftingUI(Inventory gridInv)
+    {
+        if (craftingGridInventory == gridInv)
+        {
+            if (craftingGridInventory != null)
+            {
+                craftingGridInventory.OnInventoryChanged -= EvaluateGrid;
+            }
+            craftingGridInventory = null;
+            outputUI = null;
+        }
+    }
+
     private void EvaluateGrid()
     {
         currentValidRecipe = null;
         maxCraftableAmount = 0;
+        int bestWildcardCount = int.MaxValue;
 
         foreach (var recipe in allRecipes)
         {
+            if (recipe == null) continue;
+
             if (IsShapeMatching(recipe, out int possibleCrafts))
             {
-                currentValidRecipe = recipe;
-                maxCraftableAmount = possibleCrafts;
-                break;
+                int wildcardCount = CountWildcardSlots(recipe);
+                if (wildcardCount < bestWildcardCount)
+                {
+                    currentValidRecipe = recipe;
+                    maxCraftableAmount = possibleCrafts;
+                    bestWildcardCount = wildcardCount;
+
+                    // Exact match (0 wildcards) cannot be beaten, exit early
+                    if (bestWildcardCount == 0)
+                        break;
+                }
             }
         }
 
@@ -60,6 +106,23 @@ public class CraftingSystem : MonoBehaviour
         {
             outputUI.ClearResult();
         }
+    }
+
+    private int CountWildcardSlots(CraftingRecipe recipe)
+    {
+        if (recipe == null || recipe.requiredIngredients == null)
+            return 0;
+
+        int count = 0;
+        int length = Mathf.Min(9, recipe.requiredIngredients.Length);
+        for (int i = 0; i < length; i++)
+        {
+            if (recipe.requiredIngredients[i].HasRequirement && recipe.requiredIngredients[i].IsWildcard)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     private bool IsShapeMatching(CraftingRecipe recipe, out int possibleCrafts)
@@ -93,13 +156,13 @@ public class CraftingSystem : MonoBehaviour
                 CraftingIngredient required = recipe.requiredIngredients[rIndex];
                 InventorySlot gridSlot = craftingGridInventory.GetSlot(gIndex);
 
-                if (required.item == null || required.amount <= 0)
+                if (!required.HasRequirement)
                 {
                     if (!gridSlot.IsEmpty()) return false;
                 }
                 else
                 {
-                    if (gridSlot.IsEmpty() || gridSlot.ItemData.ItemID != required.item.ItemID)
+                    if (gridSlot.IsEmpty() || !required.Matches(gridSlot.ItemData))
                         return false;
 
                     if (gridSlot.Amount < required.amount)
@@ -129,7 +192,7 @@ public class CraftingSystem : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-            if (recipe.requiredIngredients[i].item != null && recipe.requiredIngredients[i].amount > 0)
+            if (recipe.requiredIngredients[i].HasRequirement)
             {
                 int x = i % 3;
                 int y = i / 3;
@@ -163,6 +226,12 @@ public class CraftingSystem : MonoBehaviour
     {
         if (currentValidRecipe == null) return;
 
+        if (playerInventory == null)
+        {
+            playerInventory = Inventory.Instance ?? FindAnyObjectByType<Inventory>(FindObjectsInactive.Include);
+        }
+        if (playerInventory == null) return;
+
         int craftsToPerform = craftAll ? maxCraftableAmount : 1;
         int totalYield = currentValidRecipe.resultAmount * craftsToPerform;
 
@@ -190,7 +259,7 @@ public class CraftingSystem : MonoBehaviour
                 int gIndex = (gMinY + y) * 3 + (gMinX + x);
 
                 CraftingIngredient required = currentValidRecipe.requiredIngredients[rIndex];
-                if (required.item != null && required.amount > 0)
+                if (required.HasRequirement)
                 {
                     int amountToRemove = required.amount * craftsToPerform;
                     craftingGridInventory.RemoveItemFromSlot(gIndex, amountToRemove);

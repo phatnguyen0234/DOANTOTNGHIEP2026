@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc7183f080e6a4ea9aeef6b1cffe9c, type: 3}
+  m_Name: Tomato
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  id: 028
+  cropName: Tomato
+  growthTime: 80
+  maxStage: 6
+  stageSprites:
+  - {fileID: -8113185096396602001, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  - {fileID: -1257518098505440576, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  - {fileID: 3336444044123149764, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  - {fileID: -6966369517673316951, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  - {fileID: -4667150655987312241, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  - {fileID: -6770858775108089496, guid: 6b7123830a2e6914bb281db77823c7a8, type: 3}
+  dropTable: {fileID: 11400000, guid: 9a2192bad8ab9bbae9613c4fdc57e81d, type: 2}
+  harvestItem: {fileID: 11400000, guid: 6286ec696625d0c782e49c095ce64773, type: 2}
+  harvestAmount: 1
+  allowedSeason: 01000000
+  maxUnwateredDays: 2
+  isReharvest: 1
+  regrowStage: 4

@@ -16,13 +16,38 @@ public class FishBiteIndicatorUI : MonoBehaviour
 
     private void Awake()
     {
-        parentCanvas = GetComponentInParent<Canvas>();
-        mainCam = Camera.main;
+        EnsureCanvas();
         gameObject.SetActive(false);
+    }
+
+    private void EnsureCanvas()
+    {
+        if (parentCanvas == null)
+        {
+            parentCanvas = GetComponentInParent<Canvas>();
+        }
+
+        if (parentCanvas == null)
+        {
+            parentCanvas = BlitzyUI.UIManager.Instance != null && BlitzyUI.UIManager.Instance.rootCanvas != null
+                ? BlitzyUI.UIManager.Instance.rootCanvas
+                : FindAnyObjectByType<Canvas>(FindObjectsInactive.Include);
+
+            if (parentCanvas != null && transform.parent != parentCanvas.transform)
+            {
+                transform.SetParent(parentCanvas.transform, false);
+            }
+        }
+
+        if (mainCam == null)
+        {
+            mainCam = Camera.main;
+        }
     }
 
     public void Show(Vector3 worldPosition)
     {
+        EnsureCanvas();
         gameObject.SetActive(true);
 
         Vector3 targetWorld = worldPosition + offset;

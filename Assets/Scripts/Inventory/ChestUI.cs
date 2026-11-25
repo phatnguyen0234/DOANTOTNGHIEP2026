@@ -2,12 +2,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using BlitzyUI;
 
 // Quản lý giao diện hiển thị của Rương đồ (Chest UI).
+// Kế thừa BlitzyUI.Screen để quản lý vòng đời và điều hướng tập trung qua Screen Stack.
 // Tự động sinh số ô slot theo dung lượng của rương đang mở.
 // Tự động mở đồng thời túi đồ của người chơi bên dưới và hỗ trợ đóng bằng phím ESC hoặc nút X.
 // Điều phối các thao tác nhanh: Shift-Click (Quick Transfer), Lấy tất cả (Loot All), Cất tất cả (Deposit All).
-public class ChestUI : MonoBehaviour
+[RequireComponent(typeof(Canvas))]
+public class ChestUI : BlitzyUI.Screen
 {
     [Header("UI Panels")]
     [Tooltip("Panel UI của rương đồ cần bật/tắt (nếu để trống sẽ dùng chính GameObject này).")]
@@ -40,16 +43,13 @@ public class ChestUI : MonoBehaviour
     public Chest CurrentChest => currentChest;
     public bool IsOpen => chestPanel != null ? chestPanel.activeSelf : gameObject.activeSelf;
 
+    #region Unity Lifecycle
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-            return;
         }
 
         if (chestPanel == null)
@@ -57,41 +57,129 @@ public class ChestUI : MonoBehaviour
             chestPanel = gameObject;
         }
 
-        if (closeButton != null) closeButton.onClick.AddListener(CloseChest);
-        if (lootAllButton != null) lootAllButton.onClick.AddListener(HandleLootAll);
-        if (depositAllButton != null) depositAllButton.onClick.AddListener(HandleDepositAll);
+        RegisterButtonEvents();
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        // Mặc định ban đầu luôn đóng giao diện rương
-        if (chestPanel != null && chestPanel.activeSelf)
+        if (currentChest != null && currentChest.Inventory != null)
         {
-            chestPanel.SetActive(false);
+            currentChest.Inventory.OnInventoryChanged -= RefreshSlots;
+        }
+
+        if (Instance == this)
+        {
+            Instance = null;
         }
     }
 
-    private void Update()
+    #endregion
+
+    #region BlitzyUI.Screen Lifecycle
+
+    public override void OnSetup()
     {
-        // Phím tắt ESC đóng rương
-        if (IsOpen && Input.GetKeyDown(KeyCode.Escape))
+        Instance = this;
+        keepCached = true;
+
+        if (chestPanel == null)
         {
-            CloseChest();
+            chestPanel = gameObject;
+        }
+
+        RegisterButtonEvents();
+    }
+
+    public override void OnPush(Data data)
+    {
+        if (data != null && data.TryGet<Chest>("chest", out var chest))
+        {
+            currentChest = chest;
+        }
+
+        OpenChestInternal(currentChest);
+
+        // BẮT BUỘC: Thông báo hoàn tất mở màn hình cho UIManager
+        PushFinished();
+    }
+
+    public override void OnPop()
+    {
+        CloseChestInternal();
+
+        // BẮT BUỘC: Thông báo hoàn tất đóng màn hình cho UIManager
+        PopFinished();
+    }
+
+    public override void OnFocus()
+    {
+        RefreshSlots();
+    }
+
+    public override void OnFocusLost()
+    {
+    }
+
+    #endregion
+
+    private void RegisterButtonEvents()
+    {
+        if (closeButton != null)
+        {
+            closeButton.onClick.RemoveListener(CloseChest);
+            closeButton.onClick.AddListener(CloseChest);
+        }
+
+        if (lootAllButton != null)
+        {
+            lootAllButton.onClick.RemoveListener(HandleLootAll);
+            lootAllButton.onClick.AddListener(HandleLootAll);
+        }
+
+        if (depositAllButton != null)
+        {
+            depositAllButton.onClick.RemoveListener(HandleDepositAll);
+            depositAllButton.onClick.AddListener(HandleDepositAll);
         }
     }
 
-    // Mở giao diện rương chỉ định và đồng thời mở túi đồ của người chơi
+    // Mở giao diện rương chỉ định (ưu tiên qua UIManager Queue)
     public void OpenChest(Chest chest)
     {
         if (chest == null || chest.Inventory == null) return;
 
-        if (currentChest != null && currentChest != chest)
+        if (UIManager.Instance != null)
         {
-            currentChest.Inventory.OnInventoryChanged -= RefreshSlots;
-            currentChest.OnChestClosed();
+            var data = new Data();
+            data.Add("chest", chest);
+            UIManager.Instance.QueuePush(ScreenIds.Chest, data);
         }
+        else
+        {
+            currentChest = chest;
+            OpenChestInternal(currentChest);
+        }
+    }
+
+    // Đóng giao diện rương (ưu tiên qua UIManager Queue)
+    public void CloseChest()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.QueuePopTo(ScreenIds.Chest, include: true);
+        }
+        else
+        {
+            CloseChestInternal();
+        }
+    }
+
+    private void OpenChestInternal(Chest chest)
+    {
+        if (chest == null || chest.Inventory == null) return;
 
         currentChest = chest;
+        currentChest.Inventory.OnInventoryChanged -= RefreshSlots;
         currentChest.Inventory.OnInventoryChanged += RefreshSlots;
 
         if (titleText != null)
@@ -106,6 +194,16 @@ public class ChestUI : MonoBehaviour
             chestPanel.SetActive(true);
         }
 
+        if (transform.parent != null && !transform.parent.gameObject.activeSelf)
+        {
+            transform.parent.gameObject.SetActive(true);
+        }
+
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+        }
+
         // Tự động mở túi đồ người chơi để sẵn sàng kéo thả hoặc Shift-Click
         if (Inventory.Instance != null && !Inventory.Instance.IsBagOpen)
         {
@@ -115,11 +213,8 @@ public class ChestUI : MonoBehaviour
         RefreshSlots();
     }
 
-    // Đóng giao diện rương và trả lại trạng thái bình thường cho túi đồ
-    public void CloseChest()
+    private void CloseChestInternal()
     {
-        if (!IsOpen && currentChest == null) return;
-
         if (currentChest != null)
         {
             currentChest.Inventory.OnInventoryChanged -= RefreshSlots;
@@ -142,7 +237,14 @@ public class ChestUI : MonoBehaviour
     // Khởi tạo các ô slot UI theo đúng số lượng Capacity của rương
     private void SetupSlots(int capacity)
     {
-        if (slotContainer == null || slotPrefab == null || currentChest == null) return;
+        if (slotContainer == null || currentChest == null) return;
+
+        if (slotPrefab == null)
+        {
+            slotPrefab = Resources.Load<InventorySlotUI>("Prefabs/SlotPrefab");
+        }
+
+        if (slotPrefab == null) return;
 
         // Sinh thêm nếu thiếu slot
         while (chestSlotUIList.Count < capacity)
@@ -196,24 +298,20 @@ public class ChestUI : MonoBehaviour
 
         if (clickedSlot.AssignedInventory == playerInv)
         {
-            // Click slot ở túi người chơi -> Chuyển sang rương
             InventoryTransferHelper.QuickTransferItem(playerInv, clickedSlot.SlotIndex, chestInv);
         }
         else if (clickedSlot.AssignedInventory == chestInv)
         {
-            // Click slot ở rương -> Chuyển sang túi người chơi
             InventoryTransferHelper.QuickTransferItem(chestInv, clickedSlot.SlotIndex, playerInv);
         }
     }
 
-    // Nút Lấy tất cả (Loot All): Chuyển tối đa vật phẩm từ rương về túi đồ người chơi
     private void HandleLootAll()
     {
         if (currentChest == null || currentChest.Inventory == null || Inventory.Instance == null) return;
         InventoryTransferHelper.TransferAll(currentChest.Inventory, Inventory.Instance);
     }
 
-    // Nút Cất tất cả (Deposit All): Chuyển tối đa vật phẩm từ túi đồ người chơi vào rương
     private void HandleDepositAll()
     {
         if (currentChest == null || currentChest.Inventory == null || Inventory.Instance == null) return;

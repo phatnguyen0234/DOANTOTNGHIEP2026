@@ -31,13 +31,19 @@ public class FishingResultUI : MonoBehaviour
 
     public event Action OnClosed;
 
+    private bool isShowing = false;
+
     private void Awake()
     {
-        Hide();
+        StopAllCoroutines();
+        if (resultPanel != null) resultPanel.SetActive(false);
+        gameObject.SetActive(false);
+        isShowing = false;
     }
 
     public void ShowResult(FishingResult result)
     {
+        isShowing = true;
         if (resultPanel != null) resultPanel.SetActive(true);
         gameObject.SetActive(true);
 
@@ -80,6 +86,11 @@ public class FishingResultUI : MonoBehaviour
         StopAllCoroutines();
         if (resultPanel != null) resultPanel.SetActive(false);
         gameObject.SetActive(false);
-        OnClosed?.Invoke();
+
+        if (isShowing)
+        {
+            isShowing = false;
+            OnClosed?.Invoke();
+        }
     }
 }

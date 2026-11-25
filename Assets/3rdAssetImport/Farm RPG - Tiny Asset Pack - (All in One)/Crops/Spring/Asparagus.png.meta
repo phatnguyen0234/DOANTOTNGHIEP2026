@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: -6612487924839674670
     second: Asparagus_4
+  - first:
+      213: 1761075104212121180
+    second: Asparagus_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,15 +118,135 @@ TextureImporter:
       name: Asparagus_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 25
-        height: 10
+        x: 3
+        y: 1
+        width: 8
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f27baf7e9b20e8b0800000000000000
+      internalID: -5125048416200854798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asparagus_1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 0
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b03d18f523714eae0800000000000000
+      internalID: -1521065269026237685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asparagus_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb042a5baaa89f160800000000000000
+      internalID: 7059826356676346046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asparagus_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b631be0f5d3f010800000000000000
+      internalID: 1221555154660322175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asparagus_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dc0f5e4449bb34a0800000000000000
+      internalID: -6612487924839674670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asparagus_5
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fb105e23bcc00ca0800000000000000
+      internalID: 1761075104212121180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
@@ -240,6 +363,7 @@ TextureImporter:
       Asparagus_2: 7059826356676346046
       Asparagus_3: 1221555154660322175
       Asparagus_4: -6612487924839674670
+      Asparagus_5: 1761075104212121180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

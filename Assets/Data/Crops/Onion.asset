@@ -17,11 +17,15 @@ MonoBehaviour:
   growthTime: 60
   maxStage: 5
   stageSprites:
-  - {fileID: 5465580561085644368, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: -3477578526051336873, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
   - {fileID: -2332356855530425355, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
   - {fileID: 3899546548142004079, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
+  - {fileID: -3390221917031993903, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
   - {fileID: -9063029999227916591, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
-  - {fileID: 6542246120824753569, guid: a1ad888afdd4a0a46a97d16fb8c4616f, type: 3}
-
+  dropTable: {fileID: 11400000, guid: 827b20eaaaeceaf309ca50a13dfff8d4, type: 2}
   harvestItem: {fileID: 11400000, guid: 5ad040da5b1495aa5b9b675cf35f769c, type: 2}
   harvestAmount: 1
+  allowedSeason: 00000000
+  maxUnwateredDays: 2
+  isReharvest: 0
+  regrowStage: 0

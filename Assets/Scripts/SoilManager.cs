@@ -376,7 +376,7 @@ public class SoilManager : MonoBehaviour
             {
                 if (cell.isDestroyed)
                 {
-                    rock.Hit();
+                    rock.Init(true);
                     rockCells.Remove(cell.position);
                 }
             }
@@ -398,7 +398,7 @@ public class SoilManager : MonoBehaviour
     {
         foreach(CropData cropData in cropDataList)
         {
-            if (cropData.id == cropId)
+            if (cropData != null && cropData.id == cropId)
             {
                 return cropData;
             }
@@ -406,5 +406,24 @@ public class SoilManager : MonoBehaviour
         return null;
     }
 
+// #if UNITY_EDITOR
+//     [ContextMenu("Get CropData")]
+//     public void GetAllCropData()
+//     {
+//         cropDataList.Clear();
+//         string[] guids = UnityEditor.AssetDatabase.FindAssets("t:CropData");
+//         foreach (string guid in guids)
+//         {
+//             string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+//             CropData data = UnityEditor.AssetDatabase.LoadAssetAtPath<CropData>(path);
+//             if (data != null)
+//             {
+//                 cropDataList.Add(data);
+//             }
+//         }
+//         cropDataList.Sort((a, b) => string.Compare(a.id, b.id, StringComparison.Ordinal));
+//         UnityEditor.EditorUtility.SetDirty(this);
+//     }
+// #endif
 
 }

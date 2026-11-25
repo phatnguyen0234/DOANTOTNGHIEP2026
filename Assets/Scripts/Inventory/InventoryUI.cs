@@ -4,15 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using BlitzyUI;
 
-// Quản lý giao diện tổng thể của Inventory.
+// Quản lý giao diện tổng thể của Inventory, kế thừa BlitzyUI.Screen để quản lý vòng đời và điều hướng tập trung.
 // Lắng nghe sự kiện OnInventoryChanged từ Inventory để cập nhật toàn bộ các ô UI.
 // Điều phối tương tác Kéo Thả (Drag & Drop) và tạo hiệu ứng trực quan Drag Ghost.
-// Hỗ trợ phím tắt ESC bật/tắt (Toggle) hiển thị túi đồ.
-public class InventoryUI : MonoBehaviour
+[RequireComponent(typeof(Canvas))]
+public class InventoryUI : BlitzyUI.Screen
 {
     [Header("Inventory & UI References")]
-    [Tooltip("Tham chiếu tới Component Inventory cần hiển thị.")]
+    [Tooltip("Tham chiếu tới Component Inventory cần hiển thị (tự động tìm kiếm nếu để trống).")]
     [SerializeField] private Inventory inventory;
 
     [Header("Slot Containers")]
@@ -29,9 +30,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventorySlotUI slotPrefab;
 
     [Header("Bag Toggle Settings")]
-    [Tooltip("Phím tắt để bật/tắt hiển thị túi đồ.")]
-    [SerializeField] private KeyCode toggleKey = KeyCode.Escape;
-
     [Tooltip("Panel UI của túi đồ cần bật/tắt (nếu để trống sẽ tự động điều khiển GameObject này).")]
     [SerializeField] private GameObject bagPanel;
 
@@ -48,7 +46,6 @@ public class InventoryUI : MonoBehaviour
 
     private readonly List<InventorySlotUI> slotUIList = new List<InventorySlotUI>();
     private bool isInitialized = false;
-    private int lastToggleFrame = -1;
 
     // Thành phần trực quan hiển thị icon khi đang kéo (Drag Ghost)
     private Image dragGhostImage;
@@ -71,7 +68,10 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
 
         if (bagPanel == null)
         {
@@ -82,52 +82,34 @@ public class InventoryUI : MonoBehaviour
 
         if (rootCanvas == null)
         {
-            rootCanvas = GetComponentInParent<Canvas>();
+            rootCanvas = GetComponent<Canvas>();
+            if (rootCanvas == null)
+            {
+                rootCanvas = GetComponentInParent<Canvas>();
+            }
         }
 
-        // Tự động kiểm tra và thêm GraphicRaycaster trên Canvas nếu thiếu
         if (rootCanvas != null && rootCanvas.GetComponent<GraphicRaycaster>() == null)
         {
-            Debug.LogWarning("[InventoryUI] Root Canvas chưa có GraphicRaycaster! Đang tự động thêm GraphicRaycaster...", this);
             rootCanvas.gameObject.AddComponent<GraphicRaycaster>();
-        }
-
-        // Kiểm tra EventSystem trong scene
-        if (FindFirstObjectByType<EventSystem>() == null)
-        {
-            Debug.LogError("[InventoryUI] <color=red>KHÔNG TÌM THẤY EventSystem trong Scene!</color> Hãy tạo GameObject EventSystem trong Unity Hierarchy (Chuột phải > UI > Event System) để hệ thống bắt được Raycast kéo thả.", this);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (Instance == this)
-        {
-            Instance = null;
         }
     }
 
     private void Start()
     {
         Initialize();
-
-        // Khởi tạo trạng thái ban đầu: Nếu không cấu hình mở sẵn thì đóng túi đồ
-        if (!startOpen)
-        {
-            CloseBag();
-        }
-        else
-        {
-            OpenBag();
-        }
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        // Lắng nghe phím bấm bật/tắt túi đồ
-        if (Input.GetKeyDown(toggleKey))
+        if (inventory != null)
         {
-            ToggleBag();
+            inventory.OnInventoryChanged -= RefreshAllSlots;
+        }
+
+        if (Instance == this)
+        {
+            Instance = null;
         }
     }
 
@@ -135,6 +117,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (inventory != null)
         {
+            inventory.OnInventoryChanged -= RefreshAllSlots;
             inventory.OnInventoryChanged += RefreshAllSlots;
         }
 
@@ -154,9 +137,80 @@ public class InventoryUI : MonoBehaviour
 
     #endregion
 
+    #region BlitzyUI.Screen Lifecycle
+
+    public override void OnSetup()
+    {
+        Instance = this;
+        keepCached = true;
+
+        if (bagPanel == null)
+        {
+            bagPanel = gameObject;
+        }
+
+        if (rootCanvas == null)
+        {
+            rootCanvas = GetComponent<Canvas>();
+            if (rootCanvas == null)
+            {
+                rootCanvas = GetComponentInParent<Canvas>();
+            }
+        }
+
+        ResolveInventory();
+        ResolveHotbarUI();
+        Initialize();
+    }
+
+    public override void OnPush(Data data)
+    {
+        ResolveInventory();
+        if (!isInitialized)
+        {
+            Initialize();
+        }
+        OpenBagInternal();
+
+        // BẮT BUỘC: Thông báo hoàn tất mở màn hình cho UIManager
+        PushFinished();
+    }
+
+    public override void OnPop()
+    {
+        CloseBagInternal();
+
+        // BẮT BUỘC: Thông báo hoàn tất đóng màn hình cho UIManager
+        PopFinished();
+    }
+
+    public override void OnFocus()
+    {
+        RefreshAllSlots();
+    }
+
+    public override void OnFocusLost()
+    {
+        EndDragging();
+    }
+
+    #endregion
+
     #region Bag Visibility Control
 
-    // Tự động tìm kiếm GameObject của HotbarUI trong Scene nếu chưa được gán
+    private void ResolveInventory()
+    {
+        if (inventory == null)
+        {
+            inventory = Inventory.Instance != null ? Inventory.Instance : FindFirstObjectByType<Inventory>();
+            if (inventory != null)
+            {
+                inventory.OnInventoryChanged -= RefreshAllSlots;
+                inventory.OnInventoryChanged += RefreshAllSlots;
+            }
+        }
+    }
+
     private void ResolveHotbarUI()
     {
         if (hotbarUI == null)
@@ -172,32 +226,79 @@ public class InventoryUI : MonoBehaviour
     // Bật/tắt trạng thái hiển thị của túi đồ
     public void ToggleBag()
     {
-        // Chống kích hoạt lặp lại nhiều lần trong cùng một frame
-        if (Time.frameCount == lastToggleFrame) return;
-        lastToggleFrame = Time.frameCount;
-
-        if (IsOpen)
+        if (UIManager.Instance != null)
         {
-            CloseBag();
+            if (IsOpen)
+            {
+                CloseBag();
+            }
+            else
+            {
+                OpenBag();
+            }
         }
         else
         {
-            OpenBag();
+            if (IsOpen)
+            {
+                CloseBagInternal();
+            }
+            else
+            {
+                OpenBagInternal();
+            }
         }
     }
 
-    // Mở túi đồ (Đồng thời tắt UI Hotbar)
+    // Mở túi đồ (ưu tiên qua UIManager Queue)
     public void OpenBag()
     {
+        if (UIManager.Instance != null)
+        {
+            if (UIManager.Instance.GetScreen(ScreenIds.Inventory) == null)
+            {
+                UIManager.Instance.QueuePush(ScreenIds.Inventory);
+            }
+        }
+        else
+        {
+            OpenBagInternal();
+        }
+    }
+
+    // Đóng túi đồ (ưu tiên qua UIManager Queue)
+    public void CloseBag()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.QueuePopTo(ScreenIds.Inventory, include: true);
+        }
+        else
+        {
+            CloseBagInternal();
+        }
+    }
+
+    private void OpenBagInternal()
+    {
+        if (transform.parent != null && !transform.parent.gameObject.activeSelf)
+        {
+            transform.parent.gameObject.SetActive(true);
+        }
+
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+        }
+
         GameObject target = bagPanel != null ? bagPanel : gameObject;
         if (!target.activeSelf)
         {
             target.SetActive(true);
         }
 
-        // Tắt UI Hotbar khi mở túi đồ
         ResolveHotbarUI();
-        if (hotbarUI != null && hotbarUI.activeSelf)
+        if (UIManager.Instance == null && hotbarUI != null && hotbarUI.activeSelf)
         {
             hotbarUI.SetActive(false);
         }
@@ -206,8 +307,7 @@ public class InventoryUI : MonoBehaviour
         OnBagToggled?.Invoke(true);
     }
 
-    // Đóng túi đồ (Đồng thời bật lại UI Hotbar)
-    public void CloseBag()
+    private void CloseBagInternal()
     {
         EndDragging();
 
@@ -217,9 +317,8 @@ public class InventoryUI : MonoBehaviour
             target.SetActive(false);
         }
 
-        // Bật lại UI Hotbar khi đóng túi đồ
         ResolveHotbarUI();
-        if (hotbarUI != null && !hotbarUI.activeSelf)
+        if (UIManager.Instance == null && hotbarUI != null && !hotbarUI.activeSelf)
         {
             hotbarUI.SetActive(true);
         }
@@ -231,14 +330,14 @@ public class InventoryUI : MonoBehaviour
 
     #region UI Setup & Generation
 
-    // Khởi tạo và sinh động danh sách các ô Slot UI theo đúng Capacity của Inventory.
     public void Initialize()
     {
         if (isInitialized) return;
 
+        ResolveInventory();
+
         if (inventory == null)
         {
-            Debug.LogError("[InventoryUI] Chưa gán tham chiếu Inventory vào Inspector!", this);
             return;
         }
 
@@ -250,13 +349,22 @@ public class InventoryUI : MonoBehaviour
 
         if (slotPrefab == null)
         {
-            Debug.LogError("[InventoryUI] Chưa gán Slot Prefab vào Inspector!", this);
-            return;
+            // Thử nạp fallback slotPrefab từ Resources nếu thiếu
+            slotPrefab = Resources.Load<InventorySlotUI>("Prefabs/SlotPrefab");
+            if (slotPrefab == null)
+            {
+                Debug.LogError("[InventoryUI] Chưa gán Slot Prefab vào Inspector!", this);
+                return;
+            }
         }
 
         if (rootCanvas == null)
         {
-            rootCanvas = GetComponentInParent<Canvas>();
+            rootCanvas = GetComponent<Canvas>();
+            if (rootCanvas == null)
+            {
+                rootCanvas = GetComponentInParent<Canvas>();
+            }
         }
 
         CreateSlots();
@@ -264,10 +372,8 @@ public class InventoryUI : MonoBehaviour
         RefreshAllSlots();
     }
 
-    // Xóa các UI slot cũ (nếu có) và khởi tạo các ô slot phân bổ vào hotbarSlotContainer và mainSlotContainer.
     private void CreateSlots()
     {
-        // Dọn dẹp các con cũ trong hotbarSlotContainer
         if (hotbarSlotContainer != null)
         {
             foreach (Transform child in hotbarSlotContainer)
@@ -276,7 +382,6 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        // Dọn dẹp các con cũ trong mainSlotContainer (tránh dọn 2 lần nếu trỏ cùng 1 transform)
         if (mainSlotContainer != null && mainSlotContainer != hotbarSlotContainer)
         {
             foreach (Transform child in mainSlotContainer)
@@ -289,10 +394,8 @@ public class InventoryUI : MonoBehaviour
 
         int effectiveHotbarCount = Mathf.Clamp(hotbarSize, 0, inventory.Capacity);
 
-        // Tạo đúng số lượng slot bằng inventory.Capacity
         for (int i = 0; i < inventory.Capacity; i++)
         {
-            // Xác định container phù hợp cho slot index này
             Transform targetContainer;
             if (i < effectiveHotbarCount && hotbarSlotContainer != null)
             {
@@ -311,7 +414,6 @@ public class InventoryUI : MonoBehaviour
 
             InventorySlotUI slotUI = Instantiate(slotPrefab, targetContainer);
 
-            // Ép buộc GameObject của Slot clone và script luôn Active
             slotUI.gameObject.SetActive(true);
             slotUI.enabled = true;
             slotUI.EnsureActive();
@@ -325,7 +427,6 @@ public class InventoryUI : MonoBehaviour
 
     #region UI Refresh
 
-    // Làm mới lại toàn bộ các ô Slot trên giao diện từ dữ liệu hiện tại của Inventory.
     public void RefreshAllSlots()
     {
         if (inventory == null || slotUIList == null || slotUIList.Count == 0)
@@ -345,7 +446,6 @@ public class InventoryUI : MonoBehaviour
 
     #region Drag & Drop Management
 
-    // Kiểm tra xem một slot cụ thể có đang chứa vật phẩm hay không.
     public bool HasItemInSlot(int slotIndex)
     {
         if (inventory == null || !inventory.IsValidIndex(slotIndex))
@@ -355,42 +455,6 @@ public class InventoryUI : MonoBehaviour
         return slot != null && !slot.IsEmpty();
     }
 
-    // Bắt đầu thao tác kéo: Khởi tạo và hiển thị Drag Ghost icon theo con trỏ chuột từ Sprite icon trực tiếp.
-    //public void StartDragging(Sprite icon, PointerEventData eventData)
-    //{
-    //    if (icon == null) return;
-    //    EnsureDragGhost();
-
-    //    if (dragGhostImage != null)
-    //    {
-    //        dragGhostImage.sprite = icon;
-    //        dragGhostImage.raycastTarget = false;
-    //        if (dragGhostCanvasGroup != null)
-    //        {
-    //            dragGhostCanvasGroup.blocksRaycasts = false;
-    //            dragGhostCanvasGroup.interactable = false;
-    //        }
-
-    //        dragGhostImage.gameObject.SetActive(true);
-    //        dragGhostRect.SetAsLastSibling();
-
-    //        UpdateDragPosition(eventData);
-    //    }
-    //}
-
-    //// Bắt đầu thao tác kéo theo chỉ số slot của Inventory chính (tương thích ngược).
-    //public void StartDragging(int slotIndex, PointerEventData eventData)
-    //{
-    //    if (!HasItemInSlot(slotIndex)) return;
-
-    //    InventorySlot slot = inventory.GetSlot(slotIndex);
-    //    if (slot != null && slot.ItemData != null)
-    //    {
-    //        StartDragging(slot.ItemData.Icon, eventData);
-    //    }
-    //}
-
-    //2 HAM START DRAGGING MOI CO THEM SO LUONG HIEN THI TREN DRAG GHOST
     public void StartDragging(Sprite icon, int amount, PointerEventData eventData)
     {
         if (icon == null) return;
@@ -430,13 +494,11 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // Di chuyển icon bóng theo tọa độ con trỏ chuột.
     public void OnDragging(PointerEventData eventData)
     {
         UpdateDragPosition(eventData);
     }
 
-    // Kết thúc thao tác kéo: Ẩn Drag Ghost.
     public void EndDragging()
     {
         if (dragGhostImage != null)
@@ -447,7 +509,6 @@ public class InventoryUI : MonoBehaviour
         RefreshAllSlots();
     }
 
-    // Xử lý sự kiện thả vật phẩm từ fromSlotIndex vào toSlotIndex.
     public void HandleDrop(int fromSlotIndex, int toSlotIndex)
     {
         if (inventory == null || fromSlotIndex == toSlotIndex)
@@ -456,37 +517,11 @@ public class InventoryUI : MonoBehaviour
         inventory.MoveOrSwapSlots(fromSlotIndex, toSlotIndex);
     }
 
-    // Đảm bảo đối tượng Drag Ghost đã được tạo sẵn trong Root Canvas.
-    //private void EnsureDragGhost()
-    //{
-    //    if (dragGhostImage != null) return;
-
-    //    Transform parentTransform = rootCanvas != null ? rootCanvas.transform : transform.root;
-    //    GameObject ghostObj = new GameObject("Inventory_DragGhost", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(CanvasGroup));
-    //    ghostObj.transform.SetParent(parentTransform, false);
-
-    //    dragGhostImage = ghostObj.GetComponent<Image>();
-    //    dragGhostImage.raycastTarget = false;
-    //    dragGhostImage.color = Color.white;
-
-    //    dragGhostCanvasGroup = ghostObj.GetComponent<CanvasGroup>();
-    //    dragGhostCanvasGroup.blocksRaycasts = false;
-    //    dragGhostCanvasGroup.interactable = false;
-
-    //    dragGhostRect = ghostObj.GetComponent<RectTransform>();
-    //    dragGhostRect.pivot = new Vector2(0.5f, 0.5f);
-    //    dragGhostRect.sizeDelta = new Vector2(50f, 50f);
-
-    //    ghostObj.SetActive(false);
-    //}
-
-    //ENSURE DRAG GHOST MOI CO THEM SO LUONG HIEN THI TREN DRAG GHOST
-
     private void EnsureDragGhost()
     {
         if (dragGhostImage != null) return;
 
-        Transform parentTransform = rootCanvas != null ? rootCanvas.transform : transform.root;
+        Transform parentTransform = rootCanvas != null ? rootCanvas.transform : transform;
 
         GameObject ghostObj = new GameObject("Inventory_DragGhost", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(CanvasGroup));
         ghostObj.transform.SetParent(parentTransform, false);
@@ -519,14 +554,16 @@ public class InventoryUI : MonoBehaviour
         dragGhostAmountText.raycastTarget = false;
         dragGhostAmountText.enableWordWrapping = false;
 
-        dragGhostAmountText.fontMaterial.EnableKeyword("OUTLINE_ON");
-        dragGhostAmountText.outlineWidth = 0.2f;
-        dragGhostAmountText.outlineColor = Color.black;
+        if (dragGhostAmountText.fontMaterial != null)
+        {
+            dragGhostAmountText.fontMaterial.EnableKeyword("OUTLINE_ON");
+            dragGhostAmountText.outlineWidth = 0.2f;
+            dragGhostAmountText.outlineColor = Color.black;
+        }
 
         ghostObj.SetActive(false);
     }
 
-    // Cập nhật vị trí hiển thị Drag Ghost theo vị trí PointerEventData.
     private void UpdateDragPosition(PointerEventData eventData)
     {
         if (dragGhostRect == null || rootCanvas == null) return;
