@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Wood Staff
+  m_Name: Wooden Watering Can
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: wood_staff
-  itemName: "Gậy Phép Gỗ (Wood Staff)"
-  description: "Gậy phép Gỗ tích tụ ma lực phóng ra phép thuật mạnh mẽ."
-  icon: {fileID: -5940781818166149764, guid: 24bc219150f99574883a0aea8530ddc1, type: 3}
-  itemType: 8
-  toolType: 12
+  itemID: wood_watering_can
+  itemName: "B\xECnh T\u01B0\u1EDBi G\u1ED7 (Wood Watering Can)"
+  description: "B\xECnh t\u01B0\u1EDBi n\u01B0\u1EDBc G\u1ED7 b\u1EC1n b\u1EC9 gi\xFAp
+    t\u01B0\u1EDBi n\u01B0\u1EDBc cho c\xE2y tr\u1ED3ng."
+  icon: {fileID: -720151078975379389, guid: 6e9a12adb808d36489918461a5a2cead, type: 3}
+  itemType: 5
+  toolType: 5
   cropId: 
   cropData: {fileID: 0}
   rodData: {fileID: 0}

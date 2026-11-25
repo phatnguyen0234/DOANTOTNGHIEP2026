@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee93d97646142e47ada4245ac9c76bc, type: 3}
-  m_Name: Wood Fishing Rod
+  m_Name: Wooden Staff
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: wood_fishing_rod
-  itemName: "Cần Câu Gỗ (Wood Fishing Rod)"
-  description: "Cần câu cá Gỗ dẻo dai giúp bắt được nhiều loại cá quý hiếm."
-  icon: {fileID: -2858176563081021727, guid: a278bb310afba8c4f9fc77b57934ff46, type: 3}
-  itemType: 5
-  toolType: 8
+  itemID: wooden_staff
+  itemName: "G\u1EADy Ph\xE9p G\u1ED7 (Wood Staff)"
+  description: "G\u1EADy ph\xE9p G\u1ED7 t\xEDch t\u1EE5 ma l\u1EF1c ph\xF3ng ra
+    ph\xE9p thu\u1EADt m\u1EA1nh m\u1EBD."
+  icon: {fileID: -5940781818166149764, guid: 24bc219150f99574883a0aea8530ddc1, type: 3}
+  itemType: 8
+  toolType: 12
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 1
