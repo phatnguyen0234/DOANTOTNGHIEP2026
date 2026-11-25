@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274dae490922b6f4f96be79984cadbc4, type: 3}
+  m_Name: Iron Leggings
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipe
+  category: 3
+  unlockType: 1
+  requiredIngredients:
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
+    ingredientGroup: {fileID: 0}
+    amount: 1
+  resultItem: {fileID: 11400000, guid: c5d4be773af208179f10d526ecb72baa, type: 2}
+  resultAmount: 1
