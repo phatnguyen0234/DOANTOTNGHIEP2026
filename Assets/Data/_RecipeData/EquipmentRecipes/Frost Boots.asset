@@ -18,9 +18,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 3014f265612a808a4f3465214ce890f0, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: 978a75055b769d9503014e0aa779c12a, type: 2}
     ingredientGroup: {fileID: 0}
-    amount: 0
+    amount: 1
   - item: {fileID: 11400000, guid: 3014f265612a808a4f3465214ce890f0, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
@@ -33,14 +33,14 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: fa1eb85fbacd055b8f1e1808af39e48d, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
-  - item: {fileID: 11400000, guid: 978a75055b769d9503014e0aa779c12a, type: 2}
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 0bf2a0f15c3da3a1934902ff748f0d30, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 0}
     ingredientGroup: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 978a75055b769d9503014e0aa779c12a, type: 2}
-    ingredientGroup: {fileID: 0}
-    amount: 1
   resultItem: {fileID: 11400000, guid: b31c023071b1f016d12498197e7ad87e, type: 2}
   resultAmount: 1
