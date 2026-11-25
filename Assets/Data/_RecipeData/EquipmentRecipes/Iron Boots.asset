@@ -15,13 +15,13 @@ MonoBehaviour:
   category: 3
   unlockType: 1
   requiredIngredients:
-  - item: {fileID: 11400000, guid: 3014f265612a808a4f3465214ce890f0, type: 2}
+  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: 118759a395dcb8d433b9e74e3f80e251, type: 2}
     ingredientGroup: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 3014f265612a808a4f3465214ce890f0, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
@@ -33,14 +33,14 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 5bf7c68272f377e5c01072e651f865e4, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
-  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
+  - item: {fileID: 0}
+    ingredientGroup: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: cc3aaa362fe27dbd7e165601d02d7996, type: 2}
     ingredientGroup: {fileID: 0}
     amount: 1
   - item: {fileID: 0}
     ingredientGroup: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: b198ed566b5e021764d4b38e87d5b7aa, type: 2}
-    ingredientGroup: {fileID: 0}
-    amount: 1
   resultItem: {fileID: 11400000, guid: add7e94d1d179e92846d3cd9f7f43c15, type: 2}
   resultAmount: 1

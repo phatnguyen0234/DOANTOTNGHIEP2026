@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Cloth
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemID: cloth
-  itemName: "Vải Dệt (Cloth)"
-  description: "Tấm vải mềm mại dệt từ sợi len hoặc bông."
-  icon: {fileID: -7775649970217235406, guid: a66fe52fe3474af4680cf8298da040a0, type: 3}
+  itemName: "V\u1EA3i D\u1EC7t (Cloth)"
+  description: "T\u1EA5m v\u1EA3i m\u1EC1m m\u1EA1i d\u1EC7t t\u1EEB s\u1EE3i len
+    ho\u1EB7c b\xF4ng."
+  icon: {fileID: 9049725113869873418, guid: a66fe52fe3474af4680cf8298da040a0, type: 3}
   itemType: 6
   toolType: 0
   cropId: 
   cropData: {fileID: 0}
+  fertilizerType: 0
   rodData: {fileID: 0}
   animationTrigger: 
   maxStack: 99

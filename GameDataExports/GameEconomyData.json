@@ -1,5 +1,5 @@
 ﻿{
-    "exportedAtUtc": "2026-11-25T04:01:15.6088330Z",
+    "exportedAtUtc": "2026-11-25T14:26:01.1571200Z",
     "items": [
         {
             "itemID": "albacore",
@@ -14407,19 +14407,19 @@
             "resultAmount": 1,
             "slot0": "platinum_bar:1",
             "slot1": "enhanced_amethyst:1",
-            "slot2": "platinum_bar:1",
+            "slot2": "obsidian_bar:1",
             "slot3": "",
-            "slot4": "obsidian_bar:1",
+            "slot4": "emerald:1",
             "slot5": "",
             "slot6": "",
-            "slot7": "emerald:1",
+            "slot7": "obsidian_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredientsSummary": "1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald) + 1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
             "ingredients": [
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 2,
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -14439,6 +14439,12 @@
                     "itemName": "Ngọc Lục Bảo (Emerald)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
                 }
             ]
         },
@@ -14452,13 +14458,13 @@
             "slot0": "cloth:1",
             "slot1": "group:Any_Feather:1",
             "slot2": "cloth:1",
-            "slot3": "",
+            "slot3": "platinum_bar:1",
             "slot4": "sapphire:1",
-            "slot5": "",
+            "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "platinum_bar:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 1x [Group: Any Feather] (group:Any_Feather) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 1x [Group: Any Feather] (group:Any_Feather) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "cloth",
@@ -14473,14 +14479,20 @@
                     "isWildcardGroup": true
                 },
                 {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
                     "itemID": "sapphire",
                     "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "platinum_bar",
-                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -14493,21 +14505,33 @@
             "resultItemID": "copper_boots",
             "resultItemName": "Giày Giáp Đồng (Copper Boots)",
             "resultAmount": 1,
-            "slot0": "",
+            "slot0": "leather:1",
             "slot1": "",
-            "slot2": "",
-            "slot3": "copper_ore:1",
+            "slot2": "leather:1",
+            "slot3": "copper_bar:1",
             "slot4": "",
-            "slot5": "copper_ore:1",
-            "slot6": "copper_ore:1",
-            "slot7": "",
-            "slot8": "copper_ore:1",
-            "ingredientsSummary": "4x Quặng Đồng (Copper Ore) (copper_ore)",
+            "slot5": "copper_bar:1",
+            "slot6": "",
+            "slot7": "copper_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Đồng (Copper Bar) (copper_bar) + 1x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "copper_bar",
+                    "itemName": "Thỏi Đồng (Copper Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -14519,27 +14543,33 @@
             "resultItemID": "copper_chestplate",
             "resultItemName": "Áo Giáp Đồng (Copper Chestplate)",
             "resultAmount": 1,
-            "slot0": "copper_ore:1",
+            "slot0": "copper_bar:1",
             "slot1": "leather:1",
-            "slot2": "copper_ore:1",
+            "slot2": "copper_bar:1",
             "slot3": "copper_ore:1",
-            "slot4": "copper_ore:1",
+            "slot4": "copper_bar:1",
             "slot5": "copper_ore:1",
-            "slot6": "copper_ore:1",
-            "slot7": "copper_ore:1",
-            "slot8": "copper_ore:1",
-            "ingredientsSummary": "8x Quặng Đồng (Copper Ore) (copper_ore) + 1x Da Thú (Leather) (leather)",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "3x Thỏi Đồng (Copper Bar) (copper_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
                 {
-                    "itemID": "copper_ore",
-                    "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 8,
+                    "itemID": "copper_bar",
+                    "itemName": "Thỏi Đồng (Copper Bar)",
+                    "totalAmount": 3,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "copper_ore",
+                    "itemName": "Quặng Đồng (Copper Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -14551,21 +14581,33 @@
             "resultItemID": "copper_helmet",
             "resultItemName": "Mũ Giáp Đồng (Copper Helmet)",
             "resultAmount": 1,
-            "slot0": "copper_ore:1",
-            "slot1": "copper_ore:1",
-            "slot2": "copper_ore:1",
+            "slot0": "copper_bar:1",
+            "slot1": "leather:1",
+            "slot2": "copper_bar:1",
             "slot3": "copper_ore:1",
             "slot4": "",
             "slot5": "copper_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "5x Quặng Đồng (Copper Ore) (copper_ore)",
+            "ingredientsSummary": "2x Thỏi Đồng (Copper Bar) (copper_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
+                {
+                    "itemID": "copper_bar",
+                    "itemName": "Thỏi Đồng (Copper Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 5,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -14577,27 +14619,33 @@
             "resultItemID": "copper_leggings",
             "resultItemName": "Quần Giáp Đồng (Copper Leggings)",
             "resultAmount": 1,
-            "slot0": "copper_ore:1",
+            "slot0": "copper_bar:1",
             "slot1": "leather:1",
-            "slot2": "copper_ore:1",
+            "slot2": "copper_bar:1",
             "slot3": "copper_ore:1",
             "slot4": "",
             "slot5": "copper_ore:1",
-            "slot6": "copper_ore:1",
+            "slot6": "copper_bar:1",
             "slot7": "",
-            "slot8": "copper_ore:1",
-            "ingredientsSummary": "6x Quặng Đồng (Copper Ore) (copper_ore) + 1x Da Thú (Leather) (leather)",
+            "slot8": "copper_bar:1",
+            "ingredientsSummary": "4x Thỏi Đồng (Copper Bar) (copper_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Đồng (Copper Ore) (copper_ore)",
             "ingredients": [
                 {
-                    "itemID": "copper_ore",
-                    "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 6,
+                    "itemID": "copper_bar",
+                    "itemName": "Thỏi Đồng (Copper Bar)",
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "copper_ore",
+                    "itemName": "Quặng Đồng (Copper Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -14610,20 +14658,26 @@
             "resultItemName": "Giày Giáp Huyết Nguyệt (Crimson Boots)",
             "resultAmount": 1,
             "slot0": "leather:1",
-            "slot1": "",
+            "slot1": "ruby:1",
             "slot2": "leather:1",
             "slot3": "crimson_bar:1",
             "slot4": "",
             "slot5": "crimson_bar:1",
-            "slot6": "topaz:1",
-            "slot7": "",
-            "slot8": "topaz:1",
-            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 2x Hoàng Ngọc (Topaz) (topaz)",
+            "slot6": "",
+            "slot7": "crimson_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 1x Hồng Ngọc (Ruby) (ruby) + 2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore)",
             "ingredients": [
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -14633,9 +14687,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "topaz",
-                    "itemName": "Hoàng Ngọc (Topaz)",
-                    "totalAmount": 2,
+                    "itemID": "crimson_ore",
+                    "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -14650,24 +14704,30 @@
             "slot0": "crimson_bar:1",
             "slot1": "leather:1",
             "slot2": "crimson_bar:1",
-            "slot3": "crimson_bar:1",
+            "slot3": "crimson_ore:1",
             "slot4": "ruby:1",
-            "slot5": "crimson_bar:1",
+            "slot5": "crimson_ore:1",
             "slot6": "crimson_bar:1",
             "slot7": "topaz:1",
             "slot8": "crimson_bar:1",
-            "ingredientsSummary": "6x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Da Thú (Leather) (leather) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredientsSummary": "4x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Hoàng Ngọc (Topaz) (topaz)",
             "ingredients": [
                 {
                     "itemID": "crimson_bar",
                     "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "crimson_ore",
+                    "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -14694,24 +14754,30 @@
             "slot0": "crimson_bar:1",
             "slot1": "ruby:1",
             "slot2": "crimson_bar:1",
-            "slot3": "crimson_bar:1",
+            "slot3": "crimson_ore:1",
             "slot4": "leather:1",
-            "slot5": "crimson_bar:1",
+            "slot5": "crimson_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "crimson_bar",
                     "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "ruby",
                     "itemName": "Hồng Ngọc (Ruby)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "crimson_ore",
+                    "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -14730,26 +14796,32 @@
             "resultItemName": "Quần Giáp Huyết Nguyệt (Crimson Leggings)",
             "resultAmount": 1,
             "slot0": "crimson_bar:1",
-            "slot1": "topaz:1",
+            "slot1": "ruby:1",
             "slot2": "crimson_bar:1",
             "slot3": "crimson_bar:1",
             "slot4": "",
             "slot5": "crimson_bar:1",
-            "slot6": "crimson_bar:1",
+            "slot6": "crimson_ore:1",
             "slot7": "",
-            "slot8": "crimson_bar:1",
-            "ingredientsSummary": "6x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "slot8": "crimson_ore:1",
+            "ingredientsSummary": "4x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 2x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore)",
             "ingredients": [
                 {
                     "itemID": "crimson_bar",
                     "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "topaz",
-                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "crimson_ore",
+                    "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -14761,21 +14833,33 @@
             "resultItemID": "diamond_amulet",
             "resultItemName": "Dây Chuyền Kim Cương (Diamond Amulet)",
             "resultAmount": 1,
-            "slot0": "platinum_bar:1",
+            "slot0": "vine_rope:1",
             "slot1": "",
-            "slot2": "platinum_bar:1",
-            "slot3": "",
-            "slot4": "gold_bar:1",
-            "slot5": "",
+            "slot2": "vine_rope:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "diamond:1",
+            "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "diamond:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Kim Cương (Diamond) (diamond)",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Kim Cương (Diamond) (diamond) + 1x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 2,
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -14785,8 +14869,8 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "diamond",
-                    "itemName": "Kim Cương (Diamond)",
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -14806,9 +14890,9 @@
             "slot4": "",
             "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "platinum_bar:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Kim Cương (Diamond) (diamond) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredientsSummary": "1x Kim Cương (Diamond) (diamond) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "diamond",
@@ -14819,7 +14903,13 @@
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -14831,21 +14921,33 @@
             "resultItemID": "emerald_amulet",
             "resultItemName": "Dây Chuyền Lục Bảo (Emerald Amulet)",
             "resultAmount": 1,
-            "slot0": "gold_bar:1",
+            "slot0": "vine_rope:1",
             "slot1": "",
-            "slot2": "gold_bar:1",
-            "slot3": "",
-            "slot4": "platinum_bar:1",
-            "slot5": "",
+            "slot2": "vine_rope:1",
+            "slot3": "gold_bar:1",
+            "slot4": "emerald:1",
+            "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "emerald:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 2,
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -14855,8 +14957,8 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "emerald",
-                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -14876,9 +14978,9 @@
             "slot4": "",
             "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "gold_bar:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
                 {
                     "itemID": "emerald",
@@ -14889,7 +14991,13 @@
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15054,20 +15162,26 @@
             "resultItemName": "Giày Giáp Băng Tuyết (Frost Boots)",
             "resultAmount": 1,
             "slot0": "cloth:1",
-            "slot1": "",
+            "slot1": "sapphire:1",
             "slot2": "cloth:1",
             "slot3": "frost_bar:1",
             "slot4": "",
             "slot5": "frost_bar:1",
-            "slot6": "sapphire:1",
-            "slot7": "",
-            "slot8": "sapphire:1",
-            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 2x Lam Ngọc (Sapphire) (sapphire)",
+            "slot6": "",
+            "slot7": "frost_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 1x Lam Ngọc (Sapphire) (sapphire) + 2x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Quặng Băng Tuyết (Frost Ore) (frost_ore)",
             "ingredients": [
                 {
                     "itemID": "cloth",
                     "itemName": "Vải Dệt (Cloth)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -15077,9 +15191,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "sapphire",
-                    "itemName": "Lam Ngọc (Sapphire)",
-                    "totalAmount": 2,
+                    "itemID": "frost_ore",
+                    "itemName": "Quặng Băng Tuyết (Frost Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15094,18 +15208,18 @@
             "slot0": "frost_bar:1",
             "slot1": "cloth:1",
             "slot2": "frost_bar:1",
-            "slot3": "frost_bar:1",
-            "slot4": "diamond:1",
-            "slot5": "frost_bar:1",
+            "slot3": "frost_ore:1",
+            "slot4": "sapphire:1",
+            "slot5": "frost_ore:1",
             "slot6": "frost_bar:1",
-            "slot7": "sapphire:1",
+            "slot7": "diamond:1",
             "slot8": "frost_bar:1",
-            "ingredientsSummary": "6x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Kim Cương (Diamond) (diamond) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Vải Dệt (Cloth) (cloth) + 2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Kim Cương (Diamond) (diamond)",
             "ingredients": [
                 {
                     "itemID": "frost_bar",
                     "itemName": "Thỏi Băng Tuyết (Frost Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
@@ -15115,14 +15229,20 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "diamond",
-                    "itemName": "Kim Cương (Diamond)",
-                    "totalAmount": 1,
+                    "itemID": "frost_ore",
+                    "itemName": "Quặng Băng Tuyết (Frost Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "sapphire",
                     "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -15138,24 +15258,30 @@
             "slot0": "frost_bar:1",
             "slot1": "sapphire:1",
             "slot2": "frost_bar:1",
-            "slot3": "frost_bar:1",
+            "slot3": "frost_ore:1",
             "slot4": "cloth:1",
-            "slot5": "frost_bar:1",
+            "slot5": "frost_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredientsSummary": "2x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 2x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Vải Dệt (Cloth) (cloth)",
             "ingredients": [
                 {
                     "itemID": "frost_bar",
                     "itemName": "Thỏi Băng Tuyết (Frost Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "sapphire",
                     "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "frost_ore",
+                    "itemName": "Quặng Băng Tuyết (Frost Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -15179,21 +15305,27 @@
             "slot3": "frost_bar:1",
             "slot4": "",
             "slot5": "frost_bar:1",
-            "slot6": "frost_bar:1",
+            "slot6": "frost_ore:1",
             "slot7": "",
-            "slot8": "frost_bar:1",
-            "ingredientsSummary": "6x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "slot8": "frost_ore:1",
+            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 2x Quặng Băng Tuyết (Frost Ore) (frost_ore)",
             "ingredients": [
                 {
                     "itemID": "frost_bar",
                     "itemName": "Thỏi Băng Tuyết (Frost Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "sapphire",
                     "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "frost_ore",
+                    "itemName": "Quặng Băng Tuyết (Frost Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -15316,18 +15448,18 @@
             "slot0": "gold_bar:1",
             "slot1": "cloth:1",
             "slot2": "gold_bar:1",
-            "slot3": "gold_bar:1",
-            "slot4": "topaz:1",
-            "slot5": "gold_bar:1",
+            "slot3": "gold_ore:1",
+            "slot4": "sapphire:1",
+            "slot5": "gold_ore:1",
             "slot6": "gold_bar:1",
             "slot7": "leather:1",
             "slot8": "gold_bar:1",
-            "ingredientsSummary": "6x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "4x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Vải Dệt (Cloth) (cloth) + 2x Quặng Vàng (Gold Ore) (gold_ore) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
@@ -15337,8 +15469,14 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "topaz",
-                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 },
@@ -15398,24 +15536,30 @@
             "slot0": "gold_bar:1",
             "slot1": "topaz:1",
             "slot2": "gold_bar:1",
-            "slot3": "gold_bar:1",
+            "slot3": "gold_ore:1",
             "slot4": "cloth:1",
-            "slot5": "gold_bar:1",
+            "slot5": "gold_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 2x Quặng Vàng (Gold Ore) (gold_ore) + 1x Vải Dệt (Cloth) (cloth)",
             "ingredients": [
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "topaz",
                     "itemName": "Hoàng Ngọc (Topaz)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -15439,21 +15583,27 @@
             "slot3": "gold_bar:1",
             "slot4": "",
             "slot5": "gold_bar:1",
-            "slot6": "gold_bar:1",
+            "slot6": "gold_ore:1",
             "slot7": "",
-            "slot8": "gold_bar:1",
-            "ingredientsSummary": "6x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Da Thú (Leather) (leather)",
+            "slot8": "gold_ore:1",
+            "ingredientsSummary": "4x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -15509,21 +15659,27 @@
             "resultItemID": "iron_boots",
             "resultItemName": "Giày Giáp Sắt (Iron Boots)",
             "resultAmount": 1,
-            "slot0": "cloth:1",
-            "slot1": "",
-            "slot2": "cloth:1",
+            "slot0": "leather:1",
+            "slot1": "amethyst:1",
+            "slot2": "leather:1",
             "slot3": "iron_bar:1",
             "slot4": "",
             "slot5": "iron_bar:1",
-            "slot6": "leather:1",
-            "slot7": "",
-            "slot8": "leather:1",
-            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Sắt (Iron Bar) (iron_bar) + 2x Da Thú (Leather) (leather)",
+            "slot6": "",
+            "slot7": "iron_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 1x Thạch Anh Tím (Amethyst) (amethyst) + 2x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Quặng Sắt (Iron Ore) (iron_ore)",
             "ingredients": [
                 {
-                    "itemID": "cloth",
-                    "itemName": "Vải Dệt (Cloth)",
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "amethyst",
+                    "itemName": "Thạch Anh Tím (Amethyst)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -15533,9 +15689,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "leather",
-                    "itemName": "Da Thú (Leather)",
-                    "totalAmount": 2,
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15550,18 +15706,18 @@
             "slot0": "iron_bar:1",
             "slot1": "leather:1",
             "slot2": "iron_bar:1",
-            "slot3": "iron_bar:1",
-            "slot4": "iron_bar:1",
-            "slot5": "iron_bar:1",
+            "slot3": "iron_ore:1",
+            "slot4": "amethyst:1",
+            "slot5": "iron_ore:1",
             "slot6": "iron_bar:1",
-            "slot7": "cloth:1",
+            "slot7": "topaz:1",
             "slot8": "iron_bar:1",
-            "ingredientsSummary": "7x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredientsSummary": "4x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Sắt (Iron Ore) (iron_ore) + 1x Thạch Anh Tím (Amethyst) (amethyst) + 1x Hoàng Ngọc (Topaz) (topaz)",
             "ingredients": [
                 {
                     "itemID": "iron_bar",
                     "itemName": "Thỏi Sắt (Iron Bar)",
-                    "totalAmount": 7,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
@@ -15571,8 +15727,20 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "cloth",
-                    "itemName": "Vải Dệt (Cloth)",
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "amethyst",
+                    "itemName": "Thạch Anh Tím (Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -15589,12 +15757,12 @@
             "slot1": "",
             "slot2": "iron_bar:1",
             "slot3": "leather:1",
-            "slot4": "",
+            "slot4": "iron_ore:1",
             "slot5": "leather:1",
-            "slot6": "copper_bar:1",
+            "slot6": "",
             "slot7": "",
-            "slot8": "copper_bar:1",
-            "ingredientsSummary": "2x Thỏi Sắt (Iron Bar) (iron_bar) + 2x Da Thú (Leather) (leather) + 2x Thỏi Đồng (Copper Bar) (copper_bar)",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Sắt (Iron Bar) (iron_bar) + 2x Da Thú (Leather) (leather) + 1x Quặng Sắt (Iron Ore) (iron_ore)",
             "ingredients": [
                 {
                     "itemID": "iron_bar",
@@ -15609,9 +15777,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "copper_bar",
-                    "itemName": "Thỏi Đồng (Copper Bar)",
-                    "totalAmount": 2,
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15624,20 +15792,32 @@
             "resultItemName": "Mũ Giáp Sắt (Iron Helmet)",
             "resultAmount": 1,
             "slot0": "iron_bar:1",
-            "slot1": "iron_bar:1",
+            "slot1": "amethyst:1",
             "slot2": "iron_bar:1",
-            "slot3": "iron_bar:1",
+            "slot3": "iron_ore:1",
             "slot4": "leather:1",
-            "slot5": "iron_bar:1",
+            "slot5": "iron_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "5x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "2x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Thạch Anh Tím (Amethyst) (amethyst) + 2x Quặng Sắt (Iron Ore) (iron_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "iron_bar",
                     "itemName": "Thỏi Sắt (Iron Bar)",
-                    "totalAmount": 5,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "amethyst",
+                    "itemName": "Thạch Anh Tím (Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -15656,26 +15836,32 @@
             "resultItemName": "Quần Giáp Sắt (Iron Leggings)",
             "resultAmount": 1,
             "slot0": "iron_bar:1",
-            "slot1": "leather:1",
+            "slot1": "amethyst:1",
             "slot2": "iron_bar:1",
             "slot3": "iron_bar:1",
             "slot4": "",
             "slot5": "iron_bar:1",
-            "slot6": "iron_bar:1",
+            "slot6": "iron_ore:1",
             "slot7": "",
-            "slot8": "iron_bar:1",
-            "ingredientsSummary": "6x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather)",
+            "slot8": "iron_ore:1",
+            "ingredientsSummary": "4x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Thạch Anh Tím (Amethyst) (amethyst) + 2x Quặng Sắt (Iron Ore) (iron_ore)",
             "ingredients": [
                 {
                     "itemID": "iron_bar",
                     "itemName": "Thỏi Sắt (Iron Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "leather",
-                    "itemName": "Da Thú (Leather)",
+                    "itemID": "amethyst",
+                    "itemName": "Thạch Anh Tím (Amethyst)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -15720,20 +15906,26 @@
             "resultItemName": "Giày Giáp Hắc Diệu Thạch (Obsidian Boots)",
             "resultAmount": 1,
             "slot0": "leather:1",
-            "slot1": "",
+            "slot1": "enhanced_ruby:1",
             "slot2": "leather:1",
             "slot3": "obsidian_bar:1",
             "slot4": "",
             "slot5": "obsidian_bar:1",
-            "slot6": "enhanced_ruby:1",
-            "slot7": "",
-            "slot8": "enhanced_ruby:1",
-            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 2x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "slot6": "",
+            "slot7": "obsidian_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
             "ingredients": [
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -15743,9 +15935,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "enhanced_ruby",
-                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
-                    "totalAmount": 2,
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15760,18 +15952,18 @@
             "slot0": "obsidian_bar:1",
             "slot1": "leather:1",
             "slot2": "obsidian_bar:1",
-            "slot3": "obsidian_bar:1",
-            "slot4": "diamond:1",
-            "slot5": "obsidian_bar:1",
+            "slot3": "obsidian_ore:1",
+            "slot4": "enhanced_ruby:1",
+            "slot5": "obsidian_ore:1",
             "slot6": "obsidian_bar:1",
-            "slot7": "enhanced_ruby:1",
+            "slot7": "diamond:1",
             "slot8": "obsidian_bar:1",
-            "ingredientsSummary": "6x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Da Thú (Leather) (leather) + 1x Kim Cương (Diamond) (diamond) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "ingredientsSummary": "4x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 1x Kim Cương (Diamond) (diamond)",
             "ingredients": [
                 {
                     "itemID": "obsidian_bar",
                     "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
@@ -15781,14 +15973,20 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "diamond",
-                    "itemName": "Kim Cương (Diamond)",
-                    "totalAmount": 1,
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_ruby",
                     "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -15804,24 +16002,30 @@
             "slot0": "obsidian_bar:1",
             "slot1": "enhanced_ruby:1",
             "slot2": "obsidian_bar:1",
-            "slot3": "obsidian_bar:1",
+            "slot3": "obsidian_ore:1",
             "slot4": "leather:1",
-            "slot5": "obsidian_bar:1",
+            "slot5": "obsidian_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "2x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "obsidian_bar",
                     "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_ruby",
                     "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -15845,21 +16049,27 @@
             "slot3": "obsidian_bar:1",
             "slot4": "",
             "slot5": "obsidian_bar:1",
-            "slot6": "obsidian_bar:1",
+            "slot6": "obsidian_ore:1",
             "slot7": "",
-            "slot8": "obsidian_bar:1",
-            "ingredientsSummary": "6x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "slot8": "obsidian_ore:1",
+            "ingredientsSummary": "4x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
             "ingredients": [
                 {
                     "itemID": "obsidian_bar",
                     "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_ruby",
                     "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -15872,20 +16082,26 @@
             "resultItemName": "Giày Giáp Bạch Kim (Platinum Boots)",
             "resultAmount": 1,
             "slot0": "cloth:1",
-            "slot1": "",
+            "slot1": "topaz:1",
             "slot2": "cloth:1",
             "slot3": "platinum_bar:1",
             "slot4": "",
             "slot5": "platinum_bar:1",
-            "slot6": "leather:1",
-            "slot7": "",
-            "slot8": "leather:1",
-            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 2x Da Thú (Leather) (leather)",
+            "slot6": "",
+            "slot7": "platinum_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 1x Hoàng Ngọc (Topaz) (topaz) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "cloth",
                     "itemName": "Vải Dệt (Cloth)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -15895,9 +16111,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "leather",
-                    "itemName": "Da Thú (Leather)",
-                    "totalAmount": 2,
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -15912,18 +16128,18 @@
             "slot0": "platinum_bar:1",
             "slot1": "cloth:1",
             "slot2": "platinum_bar:1",
-            "slot3": "platinum_bar:1",
-            "slot4": "sapphire:1",
-            "slot5": "platinum_bar:1",
+            "slot3": "platinum_ore:1",
+            "slot4": "topaz:1",
+            "slot5": "platinum_ore:1",
             "slot6": "platinum_bar:1",
-            "slot7": "leather:1",
+            "slot7": "sapphire:1",
             "slot8": "platinum_bar:1",
-            "ingredientsSummary": "6x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "4x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Vải Dệt (Cloth) (cloth) + 2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Lam Ngọc (Sapphire) (sapphire)",
             "ingredients": [
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
@@ -15933,14 +16149,20 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "sapphire",
-                    "itemName": "Lam Ngọc (Sapphire)",
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "leather",
-                    "itemName": "Da Thú (Leather)",
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -15954,26 +16176,32 @@
             "resultItemName": "Mũ Giáp Bạch Kim (Platinum Helmet)",
             "resultAmount": 1,
             "slot0": "platinum_bar:1",
-            "slot1": "sapphire:1",
+            "slot1": "topaz:1",
             "slot2": "platinum_bar:1",
-            "slot3": "platinum_bar:1",
+            "slot3": "platinum_ore:1",
             "slot4": "cloth:1",
-            "slot5": "platinum_bar:1",
+            "slot5": "platinum_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredientsSummary": "2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 2x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Vải Dệt (Cloth) (cloth)",
             "ingredients": [
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "sapphire",
-                    "itemName": "Lam Ngọc (Sapphire)",
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -15992,26 +16220,32 @@
             "resultItemName": "Quần Giáp Bạch Kim (Platinum Leggings)",
             "resultAmount": 1,
             "slot0": "platinum_bar:1",
-            "slot1": "leather:1",
+            "slot1": "topaz:1",
             "slot2": "platinum_bar:1",
             "slot3": "platinum_bar:1",
             "slot4": "",
             "slot5": "platinum_bar:1",
-            "slot6": "platinum_bar:1",
+            "slot6": "platinum_ore:1",
             "slot7": "",
-            "slot8": "platinum_bar:1",
-            "ingredientsSummary": "6x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Da Thú (Leather) (leather)",
+            "slot8": "platinum_ore:1",
+            "ingredientsSummary": "4x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 2x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "leather",
-                    "itemName": "Da Thú (Leather)",
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -16030,9 +16264,9 @@
             "slot4": "pink_sapphire:1",
             "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "platinum_bar:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire)",
+            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "emerald",
@@ -16043,12 +16277,18 @@
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "pink_sapphire",
                     "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -16064,13 +16304,13 @@
             "slot0": "",
             "slot1": "enhanced_ruby:1",
             "slot2": "",
-            "slot3": "crimson_bar:1",
+            "slot3": "obsidian_bar:1",
             "slot4": "diamond:1",
-            "slot5": "crimson_bar:1",
+            "slot5": "obsidian_bar:1",
             "slot6": "",
-            "slot7": "obsidian_bar:1",
+            "slot7": "obsidian_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Kim Cương (Diamond) (diamond) + 1x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar)",
+            "ingredientsSummary": "1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Kim Cương (Diamond) (diamond) + 1x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
             "ingredients": [
                 {
                     "itemID": "enhanced_ruby",
@@ -16079,8 +16319,8 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "crimson_bar",
-                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
                     "totalAmount": 2,
                     "isWildcardGroup": false
                 },
@@ -16091,8 +16331,8 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "obsidian_bar",
-                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "itemID": "obsidian_ore",
+                    "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -16105,17 +16345,23 @@
             "resultItemID": "ruby_amulet",
             "resultItemName": "Dây Chuyền Hồng Ngọc (Ruby Amulet)",
             "resultAmount": 1,
-            "slot0": "gold_bar:1",
+            "slot0": "vine_rope:1",
             "slot1": "",
-            "slot2": "gold_bar:1",
-            "slot3": "",
-            "slot4": "platinum_bar:1",
-            "slot5": "",
+            "slot2": "vine_rope:1",
+            "slot3": "gold_bar:1",
+            "slot4": "ruby:1",
+            "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "ruby:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hồng Ngọc (Ruby) (ruby)",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
@@ -16123,14 +16369,14 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "platinum_bar",
-                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "ruby",
-                    "itemName": "Hồng Ngọc (Ruby)",
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -16150,9 +16396,9 @@
             "slot4": "",
             "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "gold_bar:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Hồng Ngọc (Ruby) (ruby) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredientsSummary": "1x Hồng Ngọc (Ruby) (ruby) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
                 {
                     "itemID": "ruby",
@@ -16163,7 +16409,13 @@
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16175,17 +16427,23 @@
             "resultItemID": "sapphire_amulet",
             "resultItemName": "Dây Chuyền Lam Ngọc (Sapphire Amulet)",
             "resultAmount": 1,
-            "slot0": "gold_bar:1",
+            "slot0": "vine_rope:1",
             "slot1": "",
-            "slot2": "gold_bar:1",
-            "slot3": "",
-            "slot4": "platinum_bar:1",
-            "slot5": "",
+            "slot2": "vine_rope:1",
+            "slot3": "gold_bar:1",
+            "slot4": "sapphire:1",
+            "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "sapphire:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
@@ -16193,14 +16451,14 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "platinum_bar",
-                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "sapphire",
-                    "itemName": "Lam Ngọc (Sapphire)",
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -16220,9 +16478,9 @@
             "slot4": "",
             "slot5": "gold_bar:1",
             "slot6": "",
-            "slot7": "gold_bar:1",
+            "slot7": "gold_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Lam Ngọc (Sapphire) (sapphire) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredientsSummary": "1x Lam Ngọc (Sapphire) (sapphire) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Quặng Vàng (Gold Ore) (gold_ore)",
             "ingredients": [
                 {
                     "itemID": "sapphire",
@@ -16233,7 +16491,13 @@
                 {
                     "itemID": "gold_bar",
                     "itemName": "Thỏi Vàng (Gold Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_ore",
+                    "itemName": "Quặng Vàng (Gold Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16246,20 +16510,26 @@
             "resultItemName": "Giày Giáp Hắc Ám (Shadow Boots)",
             "resultAmount": 1,
             "slot0": "leather:1",
-            "slot1": "",
+            "slot1": "enhanced_amethyst:1",
             "slot2": "leather:1",
             "slot3": "shadow_bar:1",
             "slot4": "",
             "slot5": "shadow_bar:1",
-            "slot6": "enhanced_amethyst:1",
-            "slot7": "",
-            "slot8": "enhanced_amethyst:1",
-            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 2x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "slot6": "",
+            "slot7": "shadow_ore:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 2x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Quặng Hắc Ám (Shadow Ore) (shadow_ore)",
             "ingredients": [
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 },
                 {
@@ -16269,9 +16539,9 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "enhanced_amethyst",
-                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
-                    "totalAmount": 2,
+                    "itemID": "shadow_ore",
+                    "itemName": "Quặng Hắc Ám (Shadow Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16286,24 +16556,30 @@
             "slot0": "shadow_bar:1",
             "slot1": "leather:1",
             "slot2": "shadow_bar:1",
-            "slot3": "shadow_bar:1",
+            "slot3": "shadow_ore:1",
             "slot4": "enhanced_amethyst:1",
-            "slot5": "shadow_bar:1",
+            "slot5": "shadow_ore:1",
             "slot6": "shadow_bar:1",
             "slot7": "emerald:1",
             "slot8": "shadow_bar:1",
-            "ingredientsSummary": "6x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Da Thú (Leather) (leather) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredientsSummary": "4x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Da Thú (Leather) (leather) + 2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
             "ingredients": [
                 {
                     "itemID": "shadow_bar",
                     "itemName": "Thỏi Hắc Ám (Shadow Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "shadow_ore",
+                    "itemName": "Quặng Hắc Ám (Shadow Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -16330,24 +16606,30 @@
             "slot0": "shadow_bar:1",
             "slot1": "enhanced_amethyst:1",
             "slot2": "shadow_bar:1",
-            "slot3": "shadow_bar:1",
+            "slot3": "shadow_ore:1",
             "slot4": "leather:1",
-            "slot5": "shadow_bar:1",
+            "slot5": "shadow_ore:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Da Thú (Leather) (leather)",
+            "ingredientsSummary": "2x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 2x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Da Thú (Leather) (leather)",
             "ingredients": [
                 {
                     "itemID": "shadow_bar",
                     "itemName": "Thỏi Hắc Ám (Shadow Bar)",
-                    "totalAmount": 4,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_amethyst",
                     "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "shadow_ore",
+                    "itemName": "Quặng Hắc Ám (Shadow Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
@@ -16371,21 +16653,27 @@
             "slot3": "shadow_bar:1",
             "slot4": "",
             "slot5": "shadow_bar:1",
-            "slot6": "shadow_bar:1",
+            "slot6": "shadow_ore:1",
             "slot7": "",
-            "slot8": "shadow_bar:1",
-            "ingredientsSummary": "6x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "slot8": "shadow_ore:1",
+            "ingredientsSummary": "4x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 2x Quặng Hắc Ám (Shadow Ore) (shadow_ore)",
             "ingredients": [
                 {
                     "itemID": "shadow_bar",
                     "itemName": "Thỏi Hắc Ám (Shadow Bar)",
-                    "totalAmount": 6,
+                    "totalAmount": 4,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "enhanced_amethyst",
                     "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
                     "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "shadow_ore",
+                    "itemName": "Quặng Hắc Ám (Shadow Ore)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -16400,13 +16688,13 @@
             "slot0": "cloth:1",
             "slot1": "",
             "slot2": "cloth:1",
-            "slot3": "platinum_bar:1",
+            "slot3": "iron_ore:1",
             "slot4": "",
-            "slot5": "platinum_bar:1",
+            "slot5": "iron_ore:1",
             "slot6": "group:Any_Feather:1",
             "slot7": "",
             "slot8": "group:Any_Feather:1",
-            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 2x [Group: Any Feather] (group:Any_Feather)",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Quặng Sắt (Iron Ore) (iron_ore) + 2x [Group: Any Feather] (group:Any_Feather)",
             "ingredients": [
                 {
                     "itemID": "cloth",
@@ -16415,8 +16703,8 @@
                     "isWildcardGroup": false
                 },
                 {
-                    "itemID": "platinum_bar",
-                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "itemID": "iron_ore",
+                    "itemName": "Quặng Sắt (Iron Ore)",
                     "totalAmount": 2,
                     "isWildcardGroup": false
                 },
@@ -16438,13 +16726,13 @@
             "slot0": "vine_rope:1",
             "slot1": "",
             "slot2": "vine_rope:1",
-            "slot3": "",
-            "slot4": "platinum_bar:1",
-            "slot5": "",
+            "slot3": "platinum_bar:1",
+            "slot4": "topaz:1",
+            "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "topaz:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "vine_rope",
@@ -16455,12 +16743,18 @@
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 1,
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 },
                 {
                     "itemID": "topaz",
                     "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
@@ -16480,9 +16774,9 @@
             "slot4": "",
             "slot5": "platinum_bar:1",
             "slot6": "",
-            "slot7": "platinum_bar:1",
+            "slot7": "platinum_ore:1",
             "slot8": "",
-            "ingredientsSummary": "1x Hoàng Ngọc (Topaz) (topaz) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredientsSummary": "1x Hoàng Ngọc (Topaz) (topaz) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
             "ingredients": [
                 {
                     "itemID": "topaz",
@@ -16493,7 +16787,13 @@
                 {
                     "itemID": "platinum_bar",
                     "itemName": "Thỏi Bạch Kim (Platinum Bar)",
-                    "totalAmount": 3,
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_ore",
+                    "itemName": "Quặng Bạch Kim (Platinum Ore)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16671,6 +16971,32 @@
             ]
         },
         {
+            "recipeAssetName": "Cloth",
+            "category": "Resource",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "cloth",
+            "resultItemName": "Vải Dệt (Cloth)",
+            "resultAmount": 1,
+            "slot0": "wool:1",
+            "slot1": "wool:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Cuộn Len Cừu (Wool) (wool)",
+            "ingredients": [
+                {
+                    "itemID": "wool",
+                    "itemName": "Cuộn Len Cừu (Wool)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
             "recipeAssetName": "Copper Arrow",
             "category": "Resource",
             "unlockType": "AutoByIngredients",
@@ -16717,19 +17043,25 @@
             "resultAmount": 1,
             "slot0": "copper_ore:1",
             "slot1": "copper_ore:1",
-            "slot2": "",
-            "slot3": "copper_ore:1",
-            "slot4": "copper_ore:1",
+            "slot2": "copper_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Đồng (Copper Ore) (copper_ore)",
+            "ingredientsSummary": "3x Quặng Đồng (Copper Ore) (copper_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "copper_ore",
                     "itemName": "Quặng Đồng (Copper Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16743,19 +17075,25 @@
             "resultAmount": 1,
             "slot0": "crimson_ore:1",
             "slot1": "crimson_ore:1",
-            "slot2": "",
-            "slot3": "crimson_ore:1",
-            "slot4": "crimson_ore:1",
+            "slot2": "crimson_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore)",
+            "ingredientsSummary": "3x Quặng Huyết Nguyệt (Crimson Ore) (crimson_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "crimson_ore",
                     "itemName": "Quặng Huyết Nguyệt (Crimson Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16845,19 +17183,25 @@
             "resultAmount": 1,
             "slot0": "frost_ore:1",
             "slot1": "frost_ore:1",
-            "slot2": "",
-            "slot3": "frost_ore:1",
-            "slot4": "frost_ore:1",
+            "slot2": "frost_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Băng Tuyết (Frost Ore) (frost_ore)",
+            "ingredientsSummary": "3x Quặng Băng Tuyết (Frost Ore) (frost_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "frost_ore",
                     "itemName": "Quặng Băng Tuyết (Frost Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16871,19 +17215,25 @@
             "resultAmount": 1,
             "slot0": "gold_ore:1",
             "slot1": "gold_ore:1",
-            "slot2": "",
-            "slot3": "gold_ore:1",
-            "slot4": "gold_ore:1",
+            "slot2": "gold_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Vàng (Gold Ore) (gold_ore)",
+            "ingredientsSummary": "3x Quặng Vàng (Gold Ore) (gold_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "gold_ore",
                     "itemName": "Quặng Vàng (Gold Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -16973,19 +17323,51 @@
             "resultAmount": 1,
             "slot0": "iron_ore:1",
             "slot1": "iron_ore:1",
-            "slot2": "",
-            "slot3": "iron_ore:1",
-            "slot4": "iron_ore:1",
+            "slot2": "iron_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Sắt (Iron Ore) (iron_ore)",
+            "ingredientsSummary": "3x Quặng Sắt (Iron Ore) (iron_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "iron_ore",
                     "itemName": "Quặng Sắt (Iron Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Leather",
+            "category": "Resource",
+            "unlockType": "DefaultUnlocked",
+            "resultItemID": "leather",
+            "resultItemName": "Da Thú (Leather)",
+            "resultAmount": 1,
+            "slot0": "black_rabbit_fur:1",
+            "slot1": "black_rabbit_fur:1",
+            "slot2": "",
+            "slot3": "",
+            "slot4": "",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Lông Thỏ Đen (Black Rabbit Fur) (black_rabbit_fur)",
+            "ingredients": [
+                {
+                    "itemID": "black_rabbit_fur",
+                    "itemName": "Lông Thỏ Đen (Black Rabbit Fur)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -17037,19 +17419,25 @@
             "resultAmount": 1,
             "slot0": "obsidian_ore:1",
             "slot1": "obsidian_ore:1",
-            "slot2": "",
-            "slot3": "obsidian_ore:1",
+            "slot2": "obsidian_ore:1",
+            "slot3": "coal:1",
             "slot4": "obsidian_ore:1",
-            "slot5": "",
+            "slot5": "coal:1",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore)",
+            "ingredientsSummary": "4x Quặng Hắc Diệu Thạch (Obsidian Ore) (obsidian_ore) + 2x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "obsidian_ore",
                     "itemName": "Quặng Hắc Diệu Thạch (Obsidian Ore)",
                     "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 2,
                     "isWildcardGroup": false
                 }
             ]
@@ -17101,19 +17489,25 @@
             "resultAmount": 1,
             "slot0": "platinum_ore:1",
             "slot1": "platinum_ore:1",
-            "slot2": "",
-            "slot3": "platinum_ore:1",
-            "slot4": "platinum_ore:1",
+            "slot2": "platinum_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Bạch Kim (Platinum Ore) (platinum_ore)",
+            "ingredientsSummary": "3x Quặng Bạch Kim (Platinum Ore) (platinum_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "platinum_ore",
                     "itemName": "Quặng Bạch Kim (Platinum Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
@@ -17165,19 +17559,25 @@
             "resultAmount": 1,
             "slot0": "shadow_ore:1",
             "slot1": "shadow_ore:1",
-            "slot2": "",
-            "slot3": "shadow_ore:1",
-            "slot4": "shadow_ore:1",
+            "slot2": "shadow_ore:1",
+            "slot3": "",
+            "slot4": "coal:1",
             "slot5": "",
             "slot6": "",
             "slot7": "",
             "slot8": "",
-            "ingredientsSummary": "4x Quặng Hắc Ám (Shadow Ore) (shadow_ore)",
+            "ingredientsSummary": "3x Quặng Hắc Ám (Shadow Ore) (shadow_ore) + 1x Than Đá (Coal) (coal)",
             "ingredients": [
                 {
                     "itemID": "shadow_ore",
                     "itemName": "Quặng Hắc Ám (Shadow Ore)",
-                    "totalAmount": 4,
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "coal",
+                    "itemName": "Than Đá (Coal)",
+                    "totalAmount": 1,
                     "isWildcardGroup": false
                 }
             ]
