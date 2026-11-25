@@ -1,5 +1,5 @@
 ﻿{
-    "exportedAtUtc": "2026-11-24T14:44:20.4658521Z",
+    "exportedAtUtc": "2026-11-25T04:01:15.6088330Z",
     "items": [
         {
             "itemID": "albacore",
@@ -7581,6 +7581,38 @@
             "unlocksResultItemID": "frost_staff"
         },
         {
+            "scrollItemID": "large_health_potion_scroll",
+            "scrollName": "Công thức chế tạo Thuốc HP Lớn",
+            "buyPrice": 0,
+            "sellPrice": 0,
+            "unlocksRecipeName": "Large Health Potion",
+            "unlocksResultItemID": "large_health_potion"
+        },
+        {
+            "scrollItemID": "large_mana_potion_scroll",
+            "scrollName": "Công thức chế tạo Thuốc Mana Lớn",
+            "buyPrice": 0,
+            "sellPrice": 0,
+            "unlocksRecipeName": "Large Mana Potion",
+            "unlocksResultItemID": "large_mana_potion"
+        },
+        {
+            "scrollItemID": "medium_health_potion_scroll",
+            "scrollName": "Công thức chế tạo Thuốc HP Vừa",
+            "buyPrice": 0,
+            "sellPrice": 0,
+            "unlocksRecipeName": "Medium Health Potion",
+            "unlocksResultItemID": "medium_health_potion"
+        },
+        {
+            "scrollItemID": "medium_mana_potion_scroll",
+            "scrollName": "Công thức chế tạo Thuốc Mana Vừa",
+            "buyPrice": 0,
+            "sellPrice": 0,
+            "unlocksRecipeName": "Medium Mana Potion",
+            "unlocksResultItemID": "medium_mana_potion"
+        },
+        {
             "scrollItemID": "obsidianstaff_scroll",
             "scrollName": "Cuộn công thức Obsidian Staff",
             "buyPrice": 2000,
@@ -11211,7 +11243,7 @@
         {
             "recipeAssetName": "Large Health Potion",
             "category": "Consumable",
-            "unlockType": "AutoByIngredients",
+            "unlockType": "ManualViaScroll",
             "resultItemID": "large_health_potion",
             "resultItemName": "Bình Máu Lớn (Large Health Potion)",
             "resultAmount": 1,
@@ -11255,7 +11287,7 @@
         {
             "recipeAssetName": "Large Mana Potion",
             "category": "Consumable",
-            "unlockType": "AutoByIngredients",
+            "unlockType": "ManualViaScroll",
             "resultItemID": "large_mana_potion",
             "resultItemName": "Bình Năng Lượng Lớn (Large Mana Potion)",
             "resultAmount": 1,
@@ -11645,7 +11677,7 @@
         {
             "recipeAssetName": "Medium Health Potion",
             "category": "Consumable",
-            "unlockType": "AutoByIngredients",
+            "unlockType": "ManualViaScroll",
             "resultItemID": "medium_health_potion",
             "resultItemName": "Bình Máu Vừa (Medium Health Potion)",
             "resultAmount": 1,
@@ -11683,7 +11715,7 @@
         {
             "recipeAssetName": "Medium Mana Potion",
             "category": "Consumable",
-            "unlockType": "AutoByIngredients",
+            "unlockType": "ManualViaScroll",
             "resultItemID": "medium_mana_potion",
             "resultItemName": "Bình Năng Lượng Vừa (Medium Mana Potion)",
             "resultAmount": 1,
@@ -14367,6 +14399,94 @@
             ]
         },
         {
+            "recipeAssetName": "Amulet of Protection",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "amulet_of_protection",
+            "resultItemName": "Bùa Hộ Mệnh (Amulet of Protection)",
+            "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "enhanced_amethyst:1",
+            "slot2": "platinum_bar:1",
+            "slot3": "",
+            "slot4": "obsidian_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "emerald:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredients": [
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Amulet of Speed",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "amulet_of_speed",
+            "resultItemName": "Bùa Phong Hành (Amulet of Speed)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "group:Any_Feather:1",
+            "slot2": "cloth:1",
+            "slot3": "",
+            "slot4": "sapphire:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "platinum_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 1x [Group: Any Feather] (group:Any_Feather) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "group:Any_Feather",
+                    "itemName": "[Group: Any Feather]",
+                    "totalAmount": 1,
+                    "isWildcardGroup": true
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
             "recipeAssetName": "Copper Boots",
             "category": "Equipment",
             "unlockType": "AutoByIngredients",
@@ -14477,6 +14597,1946 @@
                 {
                     "itemID": "leather",
                     "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Crimson Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "crimson_boots",
+            "resultItemName": "Giày Giáp Huyết Nguyệt (Crimson Boots)",
+            "resultAmount": 1,
+            "slot0": "leather:1",
+            "slot1": "",
+            "slot2": "leather:1",
+            "slot3": "crimson_bar:1",
+            "slot4": "",
+            "slot5": "crimson_bar:1",
+            "slot6": "topaz:1",
+            "slot7": "",
+            "slot8": "topaz:1",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 2x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "crimson_bar",
+                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Crimson Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "crimson_chestplate",
+            "resultItemName": "Áo Giáp Huyết Nguyệt (Crimson Chestplate)",
+            "resultAmount": 1,
+            "slot0": "crimson_bar:1",
+            "slot1": "leather:1",
+            "slot2": "crimson_bar:1",
+            "slot3": "crimson_bar:1",
+            "slot4": "ruby:1",
+            "slot5": "crimson_bar:1",
+            "slot6": "crimson_bar:1",
+            "slot7": "topaz:1",
+            "slot8": "crimson_bar:1",
+            "ingredientsSummary": "6x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Da Thú (Leather) (leather) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "crimson_bar",
+                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Crimson Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "crimson_helmet",
+            "resultItemName": "Mũ Giáp Huyết Nguyệt (Crimson Helmet)",
+            "resultAmount": 1,
+            "slot0": "crimson_bar:1",
+            "slot1": "ruby:1",
+            "slot2": "crimson_bar:1",
+            "slot3": "crimson_bar:1",
+            "slot4": "leather:1",
+            "slot5": "crimson_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hồng Ngọc (Ruby) (ruby) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "crimson_bar",
+                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Crimson Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "crimson_leggings",
+            "resultItemName": "Quần Giáp Huyết Nguyệt (Crimson Leggings)",
+            "resultAmount": 1,
+            "slot0": "crimson_bar:1",
+            "slot1": "topaz:1",
+            "slot2": "crimson_bar:1",
+            "slot3": "crimson_bar:1",
+            "slot4": "",
+            "slot5": "crimson_bar:1",
+            "slot6": "crimson_bar:1",
+            "slot7": "",
+            "slot8": "crimson_bar:1",
+            "ingredientsSummary": "6x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "crimson_bar",
+                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Diamond Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "diamond_amulet",
+            "resultItemName": "Dây Chuyền Kim Cương (Diamond Amulet)",
+            "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "",
+            "slot2": "platinum_bar:1",
+            "slot3": "",
+            "slot4": "gold_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "diamond:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Kim Cương (Diamond) (diamond)",
+            "ingredients": [
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Diamond Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "diamond_ring",
+            "resultItemName": "Nhẫn Kim Cương (Diamond Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "diamond:1",
+            "slot2": "",
+            "slot3": "platinum_bar:1",
+            "slot4": "",
+            "slot5": "platinum_bar:1",
+            "slot6": "",
+            "slot7": "platinum_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Kim Cương (Diamond) (diamond) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredients": [
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Emerald Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "emerald_amulet",
+            "resultItemName": "Dây Chuyền Lục Bảo (Emerald Amulet)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "",
+            "slot2": "gold_bar:1",
+            "slot3": "",
+            "slot4": "platinum_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "emerald:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Emerald Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "emerald_ring",
+            "resultItemName": "Nhẫn Lục Bảo (Emerald Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "emerald:1",
+            "slot2": "",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "",
+            "slot7": "gold_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredients": [
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Fairy Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "fairy_boots",
+            "resultItemName": "Giày Giáp Thần Tiên (Fairy Boots)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "pink_sapphire:1",
+            "slot4": "",
+            "slot5": "pink_sapphire:1",
+            "slot6": "enhanced_amethyst:1",
+            "slot7": "",
+            "slot8": "enhanced_amethyst:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 2x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "pink_sapphire",
+                    "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Fairy Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "fairy_chestplate",
+            "resultItemName": "Áo Giáp Thần Tiên (Fairy Chestplate)",
+            "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "cloth:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "pink_sapphire:1",
+            "slot4": "diamond:1",
+            "slot5": "pink_sapphire:1",
+            "slot6": "pink_sapphire:1",
+            "slot7": "enhanced_amethyst:1",
+            "slot8": "pink_sapphire:1",
+            "ingredientsSummary": "6x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Vải Dệt (Cloth) (cloth) + 1x Kim Cương (Diamond) (diamond) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "ingredients": [
+                {
+                    "itemID": "pink_sapphire",
+                    "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Fairy Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "fairy_helmet",
+            "resultItemName": "Mũ Giáp Thần Tiên (Fairy Helmet)",
+            "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "enhanced_amethyst:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "pink_sapphire:1",
+            "slot4": "cloth:1",
+            "slot5": "pink_sapphire:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredients": [
+                {
+                    "itemID": "pink_sapphire",
+                    "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Fairy Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "fairy_leggings",
+            "resultItemName": "Quần Giáp Thần Tiên (Fairy Leggings)",
+            "resultAmount": 1,
+            "slot0": "pink_sapphire:1",
+            "slot1": "enhanced_amethyst:1",
+            "slot2": "pink_sapphire:1",
+            "slot3": "pink_sapphire:1",
+            "slot4": "",
+            "slot5": "pink_sapphire:1",
+            "slot6": "pink_sapphire:1",
+            "slot7": "",
+            "slot8": "pink_sapphire:1",
+            "ingredientsSummary": "6x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "ingredients": [
+                {
+                    "itemID": "pink_sapphire",
+                    "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Frost Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "frost_boots",
+            "resultItemName": "Giày Giáp Băng Tuyết (Frost Boots)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "frost_bar:1",
+            "slot4": "",
+            "slot5": "frost_bar:1",
+            "slot6": "sapphire:1",
+            "slot7": "",
+            "slot8": "sapphire:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 2x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "frost_bar",
+                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Frost Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "frost_chestplate",
+            "resultItemName": "Áo Giáp Băng Tuyết (Frost Chestplate)",
+            "resultAmount": 1,
+            "slot0": "frost_bar:1",
+            "slot1": "cloth:1",
+            "slot2": "frost_bar:1",
+            "slot3": "frost_bar:1",
+            "slot4": "diamond:1",
+            "slot5": "frost_bar:1",
+            "slot6": "frost_bar:1",
+            "slot7": "sapphire:1",
+            "slot8": "frost_bar:1",
+            "ingredientsSummary": "6x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Kim Cương (Diamond) (diamond) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredients": [
+                {
+                    "itemID": "frost_bar",
+                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Frost Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "frost_helmet",
+            "resultItemName": "Mũ Giáp Băng Tuyết (Frost Helmet)",
+            "resultAmount": 1,
+            "slot0": "frost_bar:1",
+            "slot1": "sapphire:1",
+            "slot2": "frost_bar:1",
+            "slot3": "frost_bar:1",
+            "slot4": "cloth:1",
+            "slot5": "frost_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredients": [
+                {
+                    "itemID": "frost_bar",
+                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Frost Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "frost_leggings",
+            "resultItemName": "Quần Giáp Băng Tuyết (Frost Leggings)",
+            "resultAmount": 1,
+            "slot0": "frost_bar:1",
+            "slot1": "sapphire:1",
+            "slot2": "frost_bar:1",
+            "slot3": "frost_bar:1",
+            "slot4": "",
+            "slot5": "frost_bar:1",
+            "slot6": "frost_bar:1",
+            "slot7": "",
+            "slot8": "frost_bar:1",
+            "ingredientsSummary": "6x Thỏi Băng Tuyết (Frost Bar) (frost_bar) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredients": [
+                {
+                    "itemID": "frost_bar",
+                    "itemName": "Thỏi Băng Tuyết (Frost Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Gold Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "gold_amulet",
+            "resultItemName": "Dây Chuyền Vàng (Gold Amulet)",
+            "resultAmount": 1,
+            "slot0": "vine_rope:1",
+            "slot1": "",
+            "slot2": "vine_rope:1",
+            "slot3": "",
+            "slot4": "gold_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "topaz:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Gold Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "gold_ring",
+            "resultItemName": "Nhẫn Vàng (Gold Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "topaz:1",
+            "slot2": "",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "",
+            "slot7": "gold_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Hoàng Ngọc (Topaz) (topaz) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredients": [
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Golden Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "golden_boots",
+            "resultItemName": "Giày Giáp Vàng (Golden Boots)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "leather:1",
+            "slot7": "",
+            "slot8": "leather:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Vàng (Gold Bar) (gold_bar) + 2x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Golden Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "golden_chestplate",
+            "resultItemName": "Áo Giáp Vàng (Golden Chestplate)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "cloth:1",
+            "slot2": "gold_bar:1",
+            "slot3": "gold_bar:1",
+            "slot4": "topaz:1",
+            "slot5": "gold_bar:1",
+            "slot6": "gold_bar:1",
+            "slot7": "leather:1",
+            "slot8": "gold_bar:1",
+            "ingredientsSummary": "6x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Golden Gauntlets",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "golden_gauntlets",
+            "resultItemName": "Găng Tay Vàng (Golden Gauntlets)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "",
+            "slot2": "gold_bar:1",
+            "slot3": "cloth:1",
+            "slot4": "",
+            "slot5": "cloth:1",
+            "slot6": "topaz:1",
+            "slot7": "",
+            "slot8": "topaz:1",
+            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 2x Vải Dệt (Cloth) (cloth) + 2x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Golden Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "golden_helmet",
+            "resultItemName": "Mũ Giáp Vàng (Golden Helmet)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "topaz:1",
+            "slot2": "gold_bar:1",
+            "slot3": "gold_bar:1",
+            "slot4": "cloth:1",
+            "slot5": "gold_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Hoàng Ngọc (Topaz) (topaz) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Golden Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "golden_leggings",
+            "resultItemName": "Quần Giáp Vàng (Golden Leggings)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "leather:1",
+            "slot2": "gold_bar:1",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "gold_bar:1",
+            "slot7": "",
+            "slot8": "gold_bar:1",
+            "ingredientsSummary": "6x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Hunter Quiver",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "hunter_quiver",
+            "resultItemName": "Ống Đựng Tên (Hunter Quiver)",
+            "resultAmount": 1,
+            "slot0": "vine_rope:1",
+            "slot1": "leather:1",
+            "slot2": "group:Any_Feather:1",
+            "slot3": "",
+            "slot4": "leather:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "wood_board:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Da Thú (Leather) (leather) + 1x [Group: Any Feather] (group:Any_Feather) + 1x Ván Gỗ (Wood Board) (wood_board)",
+            "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "group:Any_Feather",
+                    "itemName": "[Group: Any Feather]",
+                    "totalAmount": 1,
+                    "isWildcardGroup": true
+                },
+                {
+                    "itemID": "wood_board",
+                    "itemName": "Ván Gỗ (Wood Board)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Iron Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "iron_boots",
+            "resultItemName": "Giày Giáp Sắt (Iron Boots)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "iron_bar:1",
+            "slot4": "",
+            "slot5": "iron_bar:1",
+            "slot6": "leather:1",
+            "slot7": "",
+            "slot8": "leather:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Sắt (Iron Bar) (iron_bar) + 2x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Iron Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "iron_chestplate",
+            "resultItemName": "Áo Giáp Sắt (Iron Chestplate)",
+            "resultAmount": 1,
+            "slot0": "iron_bar:1",
+            "slot1": "leather:1",
+            "slot2": "iron_bar:1",
+            "slot3": "iron_bar:1",
+            "slot4": "iron_bar:1",
+            "slot5": "iron_bar:1",
+            "slot6": "iron_bar:1",
+            "slot7": "cloth:1",
+            "slot8": "iron_bar:1",
+            "ingredientsSummary": "7x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredients": [
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
+                    "totalAmount": 7,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Iron Gauntlets",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "iron_gauntlets",
+            "resultItemName": "Găng Tay Sắt (Iron Gauntlets)",
+            "resultAmount": 1,
+            "slot0": "iron_bar:1",
+            "slot1": "",
+            "slot2": "iron_bar:1",
+            "slot3": "leather:1",
+            "slot4": "",
+            "slot5": "leather:1",
+            "slot6": "copper_bar:1",
+            "slot7": "",
+            "slot8": "copper_bar:1",
+            "ingredientsSummary": "2x Thỏi Sắt (Iron Bar) (iron_bar) + 2x Da Thú (Leather) (leather) + 2x Thỏi Đồng (Copper Bar) (copper_bar)",
+            "ingredients": [
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "copper_bar",
+                    "itemName": "Thỏi Đồng (Copper Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Iron Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "iron_helmet",
+            "resultItemName": "Mũ Giáp Sắt (Iron Helmet)",
+            "resultAmount": 1,
+            "slot0": "iron_bar:1",
+            "slot1": "iron_bar:1",
+            "slot2": "iron_bar:1",
+            "slot3": "iron_bar:1",
+            "slot4": "leather:1",
+            "slot5": "iron_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "5x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
+                    "totalAmount": 5,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Iron Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "iron_leggings",
+            "resultItemName": "Quần Giáp Sắt (Iron Leggings)",
+            "resultAmount": 1,
+            "slot0": "iron_bar:1",
+            "slot1": "leather:1",
+            "slot2": "iron_bar:1",
+            "slot3": "iron_bar:1",
+            "slot4": "",
+            "slot5": "iron_bar:1",
+            "slot6": "iron_bar:1",
+            "slot7": "",
+            "slot8": "iron_bar:1",
+            "ingredientsSummary": "6x Thỏi Sắt (Iron Bar) (iron_bar) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Leather Gloves",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "leather_gloves",
+            "resultItemName": "Găng Tay Da (Leather Gloves)",
+            "resultAmount": 1,
+            "slot0": "leather:1",
+            "slot1": "",
+            "slot2": "leather:1",
+            "slot3": "vine_rope:1",
+            "slot4": "",
+            "slot5": "vine_rope:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Dây Thừng Dây Leo (Vine Rope) (vine_rope)",
+            "ingredients": [
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Obsidian Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "obsidian_boots",
+            "resultItemName": "Giày Giáp Hắc Diệu Thạch (Obsidian Boots)",
+            "resultAmount": 1,
+            "slot0": "leather:1",
+            "slot1": "",
+            "slot2": "leather:1",
+            "slot3": "obsidian_bar:1",
+            "slot4": "",
+            "slot5": "obsidian_bar:1",
+            "slot6": "enhanced_ruby:1",
+            "slot7": "",
+            "slot8": "enhanced_ruby:1",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 2x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "ingredients": [
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Obsidian Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "obsidian_chestplate",
+            "resultItemName": "Áo Giáp Hắc Diệu Thạch (Obsidian Chestplate)",
+            "resultAmount": 1,
+            "slot0": "obsidian_bar:1",
+            "slot1": "leather:1",
+            "slot2": "obsidian_bar:1",
+            "slot3": "obsidian_bar:1",
+            "slot4": "diamond:1",
+            "slot5": "obsidian_bar:1",
+            "slot6": "obsidian_bar:1",
+            "slot7": "enhanced_ruby:1",
+            "slot8": "obsidian_bar:1",
+            "ingredientsSummary": "6x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Da Thú (Leather) (leather) + 1x Kim Cương (Diamond) (diamond) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "ingredients": [
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Obsidian Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "obsidian_helmet",
+            "resultItemName": "Mũ Giáp Hắc Diệu Thạch (Obsidian Helmet)",
+            "resultAmount": 1,
+            "slot0": "obsidian_bar:1",
+            "slot1": "enhanced_ruby:1",
+            "slot2": "obsidian_bar:1",
+            "slot3": "obsidian_bar:1",
+            "slot4": "leather:1",
+            "slot5": "obsidian_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Obsidian Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "obsidian_leggings",
+            "resultItemName": "Quần Giáp Hắc Diệu Thạch (Obsidian Leggings)",
+            "resultAmount": 1,
+            "slot0": "obsidian_bar:1",
+            "slot1": "enhanced_ruby:1",
+            "slot2": "obsidian_bar:1",
+            "slot3": "obsidian_bar:1",
+            "slot4": "",
+            "slot5": "obsidian_bar:1",
+            "slot6": "obsidian_bar:1",
+            "slot7": "",
+            "slot8": "obsidian_bar:1",
+            "ingredientsSummary": "6x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar) + 1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby)",
+            "ingredients": [
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Platinum Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "platinum_boots",
+            "resultItemName": "Giày Giáp Bạch Kim (Platinum Boots)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "",
+            "slot5": "platinum_bar:1",
+            "slot6": "leather:1",
+            "slot7": "",
+            "slot8": "leather:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 2x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Platinum Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "platinum_chestplate",
+            "resultItemName": "Áo Giáp Bạch Kim (Platinum Chestplate)",
+            "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "cloth:1",
+            "slot2": "platinum_bar:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "sapphire:1",
+            "slot5": "platinum_bar:1",
+            "slot6": "platinum_bar:1",
+            "slot7": "leather:1",
+            "slot8": "platinum_bar:1",
+            "ingredientsSummary": "6x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Vải Dệt (Cloth) (cloth) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Platinum Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "platinum_helmet",
+            "resultItemName": "Mũ Giáp Bạch Kim (Platinum Helmet)",
+            "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "sapphire:1",
+            "slot2": "platinum_bar:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "cloth:1",
+            "slot5": "platinum_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc (Sapphire) (sapphire) + 1x Vải Dệt (Cloth) (cloth)",
+            "ingredients": [
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Platinum Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "platinum_leggings",
+            "resultItemName": "Quần Giáp Bạch Kim (Platinum Leggings)",
+            "resultAmount": 1,
+            "slot0": "platinum_bar:1",
+            "slot1": "leather:1",
+            "slot2": "platinum_bar:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "",
+            "slot5": "platinum_bar:1",
+            "slot6": "platinum_bar:1",
+            "slot7": "",
+            "slot8": "platinum_bar:1",
+            "ingredientsSummary": "6x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Ring of Life",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "ring_of_life",
+            "resultItemName": "Nhẫn Sinh Mệnh (Ring of Life)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "emerald:1",
+            "slot2": "",
+            "slot3": "platinum_bar:1",
+            "slot4": "pink_sapphire:1",
+            "slot5": "platinum_bar:1",
+            "slot6": "",
+            "slot7": "platinum_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Ngọc Lục Bảo (Emerald) (emerald) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc Hồng (Pink Sapphire) (pink_sapphire)",
+            "ingredients": [
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "pink_sapphire",
+                    "itemName": "Lam Ngọc Hồng (Pink Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Ring of Power",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "ring_of_power",
+            "resultItemName": "Nhẫn Sức Mạnh (Ring of Power)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "enhanced_ruby:1",
+            "slot2": "",
+            "slot3": "crimson_bar:1",
+            "slot4": "diamond:1",
+            "slot5": "crimson_bar:1",
+            "slot6": "",
+            "slot7": "obsidian_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Hồng Ngọc Cường Hóa (Enhanced Ruby) (enhanced_ruby) + 2x Thỏi Huyết Nguyệt (Crimson Bar) (crimson_bar) + 1x Kim Cương (Diamond) (diamond) + 1x Thỏi Hắc Diệu Thạch (Obsidian Bar) (obsidian_bar)",
+            "ingredients": [
+                {
+                    "itemID": "enhanced_ruby",
+                    "itemName": "Hồng Ngọc Cường Hóa (Enhanced Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "crimson_bar",
+                    "itemName": "Thỏi Huyết Nguyệt (Crimson Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "diamond",
+                    "itemName": "Kim Cương (Diamond)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "obsidian_bar",
+                    "itemName": "Thỏi Hắc Diệu Thạch (Obsidian Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Ruby Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "ruby_amulet",
+            "resultItemName": "Dây Chuyền Hồng Ngọc (Ruby Amulet)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "",
+            "slot2": "gold_bar:1",
+            "slot3": "",
+            "slot4": "platinum_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "ruby:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hồng Ngọc (Ruby) (ruby)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Ruby Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "ruby_ring",
+            "resultItemName": "Nhẫn Hồng Ngọc (Ruby Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "ruby:1",
+            "slot2": "",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "",
+            "slot7": "gold_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Hồng Ngọc (Ruby) (ruby) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredients": [
+                {
+                    "itemID": "ruby",
+                    "itemName": "Hồng Ngọc (Ruby)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Sapphire Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "sapphire_amulet",
+            "resultItemName": "Dây Chuyền Lam Ngọc (Sapphire Amulet)",
+            "resultAmount": 1,
+            "slot0": "gold_bar:1",
+            "slot1": "",
+            "slot2": "gold_bar:1",
+            "slot3": "",
+            "slot4": "platinum_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "sapphire:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Thỏi Vàng (Gold Bar) (gold_bar) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Lam Ngọc (Sapphire) (sapphire)",
+            "ingredients": [
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Sapphire Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "sapphire_ring",
+            "resultItemName": "Nhẫn Lam Ngọc (Sapphire Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "sapphire:1",
+            "slot2": "",
+            "slot3": "gold_bar:1",
+            "slot4": "",
+            "slot5": "gold_bar:1",
+            "slot6": "",
+            "slot7": "gold_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Lam Ngọc (Sapphire) (sapphire) + 3x Thỏi Vàng (Gold Bar) (gold_bar)",
+            "ingredients": [
+                {
+                    "itemID": "sapphire",
+                    "itemName": "Lam Ngọc (Sapphire)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "gold_bar",
+                    "itemName": "Thỏi Vàng (Gold Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Shadow Boots",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "shadow_boots",
+            "resultItemName": "Giày Giáp Hắc Ám (Shadow Boots)",
+            "resultAmount": 1,
+            "slot0": "leather:1",
+            "slot1": "",
+            "slot2": "leather:1",
+            "slot3": "shadow_bar:1",
+            "slot4": "",
+            "slot5": "shadow_bar:1",
+            "slot6": "enhanced_amethyst:1",
+            "slot7": "",
+            "slot8": "enhanced_amethyst:1",
+            "ingredientsSummary": "2x Da Thú (Leather) (leather) + 2x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 2x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "ingredients": [
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "shadow_bar",
+                    "itemName": "Thỏi Hắc Ám (Shadow Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Shadow Chestplate",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "shadow_chestplate",
+            "resultItemName": "Áo Giáp Hắc Ám (Shadow Chestplate)",
+            "resultAmount": 1,
+            "slot0": "shadow_bar:1",
+            "slot1": "leather:1",
+            "slot2": "shadow_bar:1",
+            "slot3": "shadow_bar:1",
+            "slot4": "enhanced_amethyst:1",
+            "slot5": "shadow_bar:1",
+            "slot6": "shadow_bar:1",
+            "slot7": "emerald:1",
+            "slot8": "shadow_bar:1",
+            "ingredientsSummary": "6x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Da Thú (Leather) (leather) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Ngọc Lục Bảo (Emerald) (emerald)",
+            "ingredients": [
+                {
+                    "itemID": "shadow_bar",
+                    "itemName": "Thỏi Hắc Ám (Shadow Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "emerald",
+                    "itemName": "Ngọc Lục Bảo (Emerald)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Shadow Helmet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "shadow_helmet",
+            "resultItemName": "Mũ Giáp Hắc Ám (Shadow Helmet)",
+            "resultAmount": 1,
+            "slot0": "shadow_bar:1",
+            "slot1": "enhanced_amethyst:1",
+            "slot2": "shadow_bar:1",
+            "slot3": "shadow_bar:1",
+            "slot4": "leather:1",
+            "slot5": "shadow_bar:1",
+            "slot6": "",
+            "slot7": "",
+            "slot8": "",
+            "ingredientsSummary": "4x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst) + 1x Da Thú (Leather) (leather)",
+            "ingredients": [
+                {
+                    "itemID": "shadow_bar",
+                    "itemName": "Thỏi Hắc Ám (Shadow Bar)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Shadow Leggings",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "shadow_leggings",
+            "resultItemName": "Quần Giáp Hắc Ám (Shadow Leggings)",
+            "resultAmount": 1,
+            "slot0": "shadow_bar:1",
+            "slot1": "enhanced_amethyst:1",
+            "slot2": "shadow_bar:1",
+            "slot3": "shadow_bar:1",
+            "slot4": "",
+            "slot5": "shadow_bar:1",
+            "slot6": "shadow_bar:1",
+            "slot7": "",
+            "slot8": "shadow_bar:1",
+            "ingredientsSummary": "6x Thỏi Hắc Ám (Shadow Bar) (shadow_bar) + 1x Thạch Anh Tím Cường Hóa (Enhanced Amethyst) (enhanced_amethyst)",
+            "ingredients": [
+                {
+                    "itemID": "shadow_bar",
+                    "itemName": "Thỏi Hắc Ám (Shadow Bar)",
+                    "totalAmount": 6,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "enhanced_amethyst",
+                    "itemName": "Thạch Anh Tím Cường Hóa (Enhanced Amethyst)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Silk Gloves",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "silk_gloves",
+            "resultItemName": "Găng Tay Lụa (Silk Gloves)",
+            "resultAmount": 1,
+            "slot0": "cloth:1",
+            "slot1": "",
+            "slot2": "cloth:1",
+            "slot3": "platinum_bar:1",
+            "slot4": "",
+            "slot5": "platinum_bar:1",
+            "slot6": "group:Any_Feather:1",
+            "slot7": "",
+            "slot8": "group:Any_Feather:1",
+            "ingredientsSummary": "2x Vải Dệt (Cloth) (cloth) + 2x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 2x [Group: Any Feather] (group:Any_Feather)",
+            "ingredients": [
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "group:Any_Feather",
+                    "itemName": "[Group: Any Feather]",
+                    "totalAmount": 2,
+                    "isWildcardGroup": true
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Silver Amulet",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "silver_amulet",
+            "resultItemName": "Dây Chuyền Bạc (Silver Amulet)",
+            "resultAmount": 1,
+            "slot0": "vine_rope:1",
+            "slot1": "",
+            "slot2": "vine_rope:1",
+            "slot3": "",
+            "slot4": "platinum_bar:1",
+            "slot5": "",
+            "slot6": "",
+            "slot7": "topaz:1",
+            "slot8": "",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 1x Thỏi Bạch Kim (Platinum Bar) (platinum_bar) + 1x Hoàng Ngọc (Topaz) (topaz)",
+            "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Silver Ring",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "silver_ring",
+            "resultItemName": "Nhẫn Bạc (Silver Ring)",
+            "resultAmount": 1,
+            "slot0": "",
+            "slot1": "topaz:1",
+            "slot2": "",
+            "slot3": "platinum_bar:1",
+            "slot4": "",
+            "slot5": "platinum_bar:1",
+            "slot6": "",
+            "slot7": "platinum_bar:1",
+            "slot8": "",
+            "ingredientsSummary": "1x Hoàng Ngọc (Topaz) (topaz) + 3x Thỏi Bạch Kim (Platinum Bar) (platinum_bar)",
+            "ingredients": [
+                {
+                    "itemID": "topaz",
+                    "itemName": "Hoàng Ngọc (Topaz)",
+                    "totalAmount": 1,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "platinum_bar",
+                    "itemName": "Thỏi Bạch Kim (Platinum Bar)",
+                    "totalAmount": 3,
+                    "isWildcardGroup": false
+                }
+            ]
+        },
+        {
+            "recipeAssetName": "Traveler Backpack",
+            "category": "Equipment",
+            "unlockType": "AutoByIngredients",
+            "resultItemID": "traveler_backpack",
+            "resultItemName": "Ba Lô Du Lịch (Traveler Backpack)",
+            "resultAmount": 1,
+            "slot0": "vine_rope:1",
+            "slot1": "cloth:1",
+            "slot2": "vine_rope:1",
+            "slot3": "leather:1",
+            "slot4": "cloth:1",
+            "slot5": "leather:1",
+            "slot6": "leather:1",
+            "slot7": "iron_bar:1",
+            "slot8": "leather:1",
+            "ingredientsSummary": "2x Dây Thừng Dây Leo (Vine Rope) (vine_rope) + 2x Vải Dệt (Cloth) (cloth) + 4x Da Thú (Leather) (leather) + 1x Thỏi Sắt (Iron Bar) (iron_bar)",
+            "ingredients": [
+                {
+                    "itemID": "vine_rope",
+                    "itemName": "Dây Thừng Dây Leo (Vine Rope)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "cloth",
+                    "itemName": "Vải Dệt (Cloth)",
+                    "totalAmount": 2,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "leather",
+                    "itemName": "Da Thú (Leather)",
+                    "totalAmount": 4,
+                    "isWildcardGroup": false
+                },
+                {
+                    "itemID": "iron_bar",
+                    "itemName": "Thỏi Sắt (Iron Bar)",
                     "totalAmount": 1,
                     "isWildcardGroup": false
                 }
